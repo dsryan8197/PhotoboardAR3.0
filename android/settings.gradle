@@ -1,0 +1,3 @@
+rootProject.name = 'StoryboardAR3'
+
+include ':app'
