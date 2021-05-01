@@ -24,20 +24,19 @@ import { NativeRouter, Route, Link } from "react-router-native";
 // var InitialVRScene = require('./js/HelloWorldScene');
 
 export default class PickAProject extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      // sharedProps : sharedProps,
+      activeProject : null,
       ProjectObj : {
          Project1: {
-           Scene1 : [],
-           Scene2 : []
+           Scene1 : ["hi1"],
+           Scene2 : ["hi1"]
          },
          Project2: {
-           Scene1 : [],
-           Scene2 : [],
-           Scene3 : []
-
+           Scene1 : ["hi2"],
+           Scene2 : ["hi2:"],
+           Scene3 : ["hi2"]
          }
       }
     }
@@ -55,26 +54,32 @@ export default class PickAProject extends Component {
            {/* loop over state projects */}
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
-          <Link to="/scene">
+              // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
            <TouchableHighlight key={i} style={localStyles.buttons}
-              onPress={(i) => {}}
+              onPress={()=> {(
+                this.setState((prevState) => ({
+                  ...prevState, 
+                  activeProject : el
+                }))
+              )}}
               underlayColor={'#68a0ff'} >
+           <Link to="/scene">
               <Text style={localStyles.buttonText}>{el}</Text>
-           </TouchableHighlight>
           </Link>
+             </TouchableHighlight>
           )})}
            {/* add a plus button */}
-           <Link to="/scene">
-              <TouchableHighlight style={localStyles.buttons}
-                onPress={(i) => {}}
+             <TouchableHighlight style={localStyles.buttons}
+                // onPress={(i) => {}}
                 underlayColor={'#68a0ff'} >
+                <Link to="/scene">
                 <Text style={localStyles.buttonText}>{"+"}</Text>
-             </TouchableHighlight>
-           </Link>
+                </Link>
+              </TouchableHighlight>
           </Route>
           {/* routes */}
           <Route path="/scene" render={props => 
-          (<PickAScene/>)
+          (<PickAScene {...props} Info={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>
           {/* <Route path="/about" component={About} />
           <Route path="/topics" component={Topics} /> */}

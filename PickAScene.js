@@ -28,10 +28,10 @@ import { NativeRouter, Route, Link } from "react-router-native";
 // var defaultNavigatorType = UNSET;
 
 export default class PickAScene extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-    
+      activeScene: null
     }
   }
   render() {
@@ -40,31 +40,33 @@ export default class PickAScene extends Component {
       <View style={localStyles.outer} >
          <View style={localStyles.inner} >
           <Text style={localStyles.titleText}>
-             Select Your Scene
+            Pick your scene 
            </Text>
            {/* loop over state projects */}
-
-
-{/* 
-          {Object.keys(this.state.ProjectObj).map((el, i) => { 
-            return (
-          <Link to="/scene">
+          {Object.keys(this.props.Info).map((el, i) => { 
+          return (
+                  // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
            <TouchableHighlight key={i} style={localStyles.buttons}
-              onPress={(i) => {}}
-              underlayColor={'#68a0ff'} >
+              onPress={()=> {(
+                this.setState((prevState) => ({
+                  activeScene : el
+                }))
+              )}}             
+             underlayColor={'#68a0ff'} >
+            <Link to="/pics">
               <Text style={localStyles.buttonText}>{el}</Text>
+            </Link>
            </TouchableHighlight>
-          </Link>
+        
           )})}
-           <Link to="/scene">
-              <TouchableHighlight style={localStyles.buttons}
-                onPress={(i) => {}}
-                underlayColor={'#68a0ff'} >
-                <Text style={localStyles.buttonText}>{"+"}</Text>
-             </TouchableHighlight>
-           </Link> */}
-
-
+          {/* ++ */}
+           <TouchableHighlight style={localStyles.buttons}
+               // onPress={(i) => {}}
+            underlayColor={'#68a0ff'} >
+            <Link to="/scene">
+              <Text style={localStyles.buttonText}>{"+"}</Text>
+            </Link>
+          </TouchableHighlight>
           {/* routes */}
           {/* <Route exact path="/scene" component={PickAScene} /> */}
           {/* <Route path="/about" component={About} />
