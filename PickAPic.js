@@ -14,7 +14,6 @@ import {
 } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
-import PickAPic from './PickAPic'
 
 // var sharedProps = {
 //   apiKey:"API_KEY_HERE",
@@ -28,11 +27,11 @@ import PickAPic from './PickAPic'
 
 // var defaultNavigatorType = UNSET;
 
-export default class PickAScene extends Component {
+export default class PickAPic extends Component {
   constructor(props) {
     super();
     this.state = {
-      activeScene: null
+      // activeScene: null
     }
   }
   render() {
@@ -42,10 +41,11 @@ export default class PickAScene extends Component {
          <View style={localStyles.inner} >
           <Route exact path="/">
           <Text style={localStyles.titleText}>
-            Pick your scene 
+           Heres some feet pics {this.props.Info} !
            </Text>
            {/* loop over state projects */}
-          {Object.keys(this.props.Info).map((el, i) => { 
+
+          {/* {Object.keys(this.props.Info).map((el, i) => { 
           return (
                   // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
            <TouchableHighlight key={i} style={localStyles.buttons}
@@ -60,21 +60,21 @@ export default class PickAScene extends Component {
             </Link>
            </TouchableHighlight>
         
-          )})}
+          )})} */}
           {/* ++ */}
-           <TouchableHighlight style={localStyles.buttons}
+           {/* <TouchableHighlight style={localStyles.buttons}
                // onPress={(i) => {}}
             underlayColor={'#68a0ff'} >
             <Link to="/pics">
               <Text style={localStyles.buttonText}>{"+"}</Text>
             </Link>
-          </TouchableHighlight>
+          </TouchableHighlight> */}
           {/* routes */}
-          </Route>
 
-          <Route path="/pics" render={props => 
-           (<PickAPic {...props} Info={this.props[this.state.activeProject]}/>)
-          }/>
+          </Route>
+          {/* <Route path="/scene" render={props => 
+           (<PickAPic {...props} Info={this.state.ProjectObj[this.state.activeProject]}/>)
+          }/> */}
           {/* <Route exact path="/scene" component={PickAScene} /> */}
           {/* <Route path="/about" component={About} />
           <Route path="/topics" component={Topics} /> */}
@@ -140,4 +140,4 @@ var localStyles = StyleSheet.create({
     borderColor: '#fff',
   }
 });
-module.exports = PickAScene
+module.exports = PickAPic
