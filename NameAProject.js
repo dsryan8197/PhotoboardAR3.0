@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   Text,
-  View,
   Button,
+  View,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
@@ -15,6 +15,7 @@ import {
 } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
+import PickAPic from './PickAPic'
 
 // var sharedProps = {
 //   apiKey:"API_KEY_HERE",
@@ -28,15 +29,15 @@ import { NativeRouter, Route, Link } from "react-router-native";
 
 // var defaultNavigatorType = UNSET;
 
-export default class PickAPic extends Component {
+export default class NameAProject extends Component {
   constructor(props) {
     super();
     this.state = {
-        activePic: null 
-      }
+      activeScene: null
+    }
   }
 
-  goBac(){
+goBack(){
   this.props.history.push('/')
 }
 
@@ -45,46 +46,13 @@ export default class PickAPic extends Component {
       <NativeRouter>
       <View style={localStyles.outer} >
          <View style={localStyles.inner} >
-      <Button title="back to scene" onPress={() => this.goBac()}/>
+       <Button title="back to project" onPress={() => this.goBack()}/>
           <Route exact path="/">
           <Text style={localStyles.titleText}>
-           Select Your pic or start a new !
+            Pick your scene or start a new
            </Text>
-           {/* loop over state projects */}
-         {this.props.Info.map((el, i) => { 
-          return (
-                  // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
-           <TouchableHighlight key={i} style={localStyles.buttons}
-              onPress={()=> {(
-                this.setState((prevState) => ({
-                  activePic : el
-                }))
-              )}}             
-             underlayColor={'#68a0ff'} >
-            <Link to="/pics">
-              <Text style={localStyles.buttonText}>{el}</Text>
-            </Link>
-           </TouchableHighlight>
-        
-           )})}
-          {/* ++ */}
-           <TouchableHighlight style={localStyles.buttons}
-               // onPress={(i) => {}}
-            underlayColor={'#68a0ff'} >
-            <Link to="/pics">
-              <Text style={localStyles.buttonText}>{"+"}</Text>
-            </Link>
-          </TouchableHighlight>
-
-
-          {/* routes */}
+         
           </Route>
-          {/* <Route path="/scene" render={props => 
-           (<PickAPic {...props} Info={this.state.ProjectObj[this.state.activeProject]}/>)
-          }/> */}
-          {/* <Route exact path="/scene" component={PickAScene} /> */}
-          {/* <Route path="/about" component={About} />
-          <Route path="/topics" component={Topics} /> */}
         </View>
       </View>
     </NativeRouter>
@@ -147,4 +115,4 @@ var localStyles = StyleSheet.create({
     borderColor: '#fff',
   }
 });
-module.exports = PickAPic
+module.exports = NameAProject
