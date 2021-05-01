@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PickAScene from './PickAScene'
+
 import {
   AppRegistry,
   Text,
@@ -13,24 +15,29 @@ import {
   ViroARSceneNavigator
 } from 'react-viro';
 
-var sharedProps = {
-  apiKey:"API_KEY_HERE",
-}
+import { NativeRouter, Route, Link } from "react-router-native";
+// var sharedProps = {
+//   apiKey:"API_KEY_HERE",
+// }
 
-var InitialARScene = require('./js/HelloWorldSceneAR');
-var InitialVRScene = require('./js/HelloWorldScene');
+// var InitialARScene = require('./js/HelloWorldSceneAR');
+// var InitialVRScene = require('./js/HelloWorldScene');
 
 export default class PickAProject extends Component {
   constructor() {
     super();
     this.state = {
-      sharedProps : sharedProps,
+      // sharedProps : sharedProps,
       ProjectObj : {
          Project1: {
-           Scene1 : []
+           Scene1 : [],
+           Scene2 : []
          },
          Project2: {
-           Scene2 : []
+           Scene1 : [],
+           Scene2 : [],
+           Scene3 : []
+
          }
       }
     }
@@ -38,27 +45,42 @@ export default class PickAProject extends Component {
 
   render() {
     return (
+    <NativeRouter>
       <View style={localStyles.outer} >
          <View style={localStyles.inner} >
+         <Route exact path="/">
           <Text style={localStyles.titleText}>
              Select a current project or start a new one
            </Text>
            {/* loop over state projects */}
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
-          <TouchableHighlight key={i} style={localStyles.buttons}
-            onPress={(i) => {}}
-            underlayColor={'#68a0ff'} >
-            <Text style={localStyles.buttonText}>{el}</Text>
-          </TouchableHighlight>)})}
+          <Link to="/scene">
+           <TouchableHighlight key={i} style={localStyles.buttons}
+              onPress={(i) => {}}
+              underlayColor={'#68a0ff'} >
+              <Text style={localStyles.buttonText}>{el}</Text>
+           </TouchableHighlight>
+          </Link>
+          )})}
            {/* add a plus button */}
-           <TouchableHighlight style={localStyles.buttons}
-            onPress={(i) => {}}
-            underlayColor={'#68a0ff'} >
-            <Text style={localStyles.buttonText}>{"+"}</Text>
-          </TouchableHighlight>
+           <Link to="/scene">
+              <TouchableHighlight style={localStyles.buttons}
+                onPress={(i) => {}}
+                underlayColor={'#68a0ff'} >
+                <Text style={localStyles.buttonText}>{"+"}</Text>
+             </TouchableHighlight>
+           </Link>
+          </Route>
+          {/* routes */}
+          <Route path="/scene" render={props => 
+          (<PickAScene/>)
+          }/>
+          {/* <Route path="/about" component={About} />
+          <Route path="/topics" component={Topics} /> */}
         </View>
       </View>
+    </NativeRouter>
     )
   }
 }
