@@ -4,6 +4,7 @@ import PickAScene from './PickAScene'
 import {
   AppRegistry,
   Text,
+  Button,
   View,
   StyleSheet,
   PixelRatio,
@@ -30,16 +31,16 @@ export default class PickAProject extends Component {
       activeProject : null,
       ProjectObj : {
          Project1: {
-           Scene1 : ["hi1"],
-           Scene2 : ["hi1"]
+           Scene1 : ["P1S1", "P1S1", "P1S1"],
+           Scene2 : ["P1S2", "P1S2", "P1S2"]
          },
          Project2: {
-           Scene1 : ["hi2"],
-           Scene2 : ["hi2:"],
-           Scene3 : ["hi2"]
+           Scene1 : ["P2S1", "P2S1", "P2S1"],
+           Scene2 : ["P2S2", "P2S2", "P2S2"],
+           Scene3 : ["P2S3", "P2S3", "P2S3"]
          }
       }
-    }
+    } 
   }
 
   render() {
@@ -71,6 +72,16 @@ export default class PickAProject extends Component {
            {/* add a plus button */}
              <TouchableHighlight style={localStyles.buttons}
                 // onPress={(i) => {}}
+              //   onPress={()=> {(
+              //   this.setState(prevState => ({
+              //     ...prevState,
+              //     ProjectObj["New Scene"] : {};
+              //   }));
+              // //   this.setState((prevState) => ({
+              // //     ...prevState, 
+              // //     activeProject : j
+              // //   }))
+              // )}}
                 underlayColor={'#68a0ff'} >
                 <Link to="/scene">
                 <Text style={localStyles.buttonText}>{"+"}</Text>
@@ -81,8 +92,6 @@ export default class PickAProject extends Component {
           <Route path="/scene" render={props => 
           (<PickAScene {...props} Info={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>
-          {/* <Route path="/about" component={About} />
-          <Route path="/topics" component={Topics} /> */}
         </View>
       </View>
     </NativeRouter>

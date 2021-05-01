@@ -3,6 +3,7 @@ import {
   AppRegistry,
   Text,
   View,
+  Button,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
@@ -31,27 +32,32 @@ export default class PickAPic extends Component {
   constructor(props) {
     super();
     this.state = {
-      // activeScene: null
-    }
+        activePic: null 
+      }
   }
+
+  goBack(){
+  this.props.history.push('/')
+}
+
   render() {
     return (
       <NativeRouter>
       <View style={localStyles.outer} >
          <View style={localStyles.inner} >
+      <Button title="back to scene" onPress={() => this.goBack()}/>
           <Route exact path="/">
           <Text style={localStyles.titleText}>
-           Heres some feet pics {this.props.Info} !
+           Select Your pic or start a new !
            </Text>
            {/* loop over state projects */}
-
-          {/* {Object.keys(this.props.Info).map((el, i) => { 
+         {this.props.Info.map((el, i) => { 
           return (
                   // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
            <TouchableHighlight key={i} style={localStyles.buttons}
               onPress={()=> {(
                 this.setState((prevState) => ({
-                  activeScene : el
+                  activePic : el
                 }))
               )}}             
              underlayColor={'#68a0ff'} >
@@ -60,17 +66,18 @@ export default class PickAPic extends Component {
             </Link>
            </TouchableHighlight>
         
-          )})} */}
+           )})}
           {/* ++ */}
-           {/* <TouchableHighlight style={localStyles.buttons}
+           <TouchableHighlight style={localStyles.buttons}
                // onPress={(i) => {}}
             underlayColor={'#68a0ff'} >
             <Link to="/pics">
               <Text style={localStyles.buttonText}>{"+"}</Text>
             </Link>
-          </TouchableHighlight> */}
-          {/* routes */}
+          </TouchableHighlight>
 
+
+          {/* routes */}
           </Route>
           {/* <Route path="/scene" render={props => 
            (<PickAPic {...props} Info={this.state.ProjectObj[this.state.activeProject]}/>)

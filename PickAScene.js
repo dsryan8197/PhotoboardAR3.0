@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   Text,
+  Button,
   View,
   StyleSheet,
   PixelRatio,
@@ -35,14 +36,20 @@ export default class PickAScene extends Component {
       activeScene: null
     }
   }
+
+goBack(){
+  this.props.history.push('/')
+}
+
   render() {
     return (
       <NativeRouter>
       <View style={localStyles.outer} >
          <View style={localStyles.inner} >
+       <Button title="back to project" onPress={() => this.goBack()}/>
           <Route exact path="/">
           <Text style={localStyles.titleText}>
-            Pick your scene 
+            Pick your scene or start a new
            </Text>
            {/* loop over state projects */}
           {Object.keys(this.props.Info).map((el, i) => { 
@@ -59,7 +66,6 @@ export default class PickAScene extends Component {
               <Text style={localStyles.buttonText}>{el}</Text>
             </Link>
            </TouchableHighlight>
-        
           )})}
           {/* ++ */}
            <TouchableHighlight style={localStyles.buttons}
@@ -71,9 +77,9 @@ export default class PickAScene extends Component {
           </TouchableHighlight>
           {/* routes */}
           </Route>
-
+          {/* <Route path="/project" render={props => (<)} */}
           <Route path="/pics" render={props => 
-           (<PickAPic {...props} Info={this.props[this.state.activeProject]}/>)
+           (<PickAPic {...props} Info={this.props.Info[this.state.activeScene]}/>)
           }/>
           {/* <Route exact path="/scene" component={PickAScene} /> */}
           {/* <Route path="/about" component={About} />
