@@ -3,6 +3,7 @@ import {
   AppRegistry,
   Text,
   Button,
+  TextInput,
   View,
   StyleSheet,
   PixelRatio,
@@ -17,17 +18,8 @@ import {
 import { NativeRouter, Route, Link } from "react-router-native";
 import PickAPic from './PickAPic'
 
-// var sharedProps = {
-//   apiKey:"API_KEY_HERE",
-// }
-
-// var InitialARScene = require('./js/HelloWorldSceneAR');
-// var InitialVRScene = require('./js/HelloWorldScene');
-// var UNSET = "UNSET";
-// var VR_NAVIGATOR_TYPE = "VR";
-// var AR_NAVIGATOR_TYPE = "AR";
-
-// var defaultNavigatorType = UNSET;
+//tge goal of this is to add a project3 = {} to the porojectobj
+//with a unique name 
 
 export default class NameAProject extends Component {
   constructor(props) {
@@ -35,11 +27,13 @@ export default class NameAProject extends Component {
     this.state = {
       activeScene: null
     }
+    // this.handleChange = this.handleChange.bind(this);
   }
 
 goBack(){
   this.props.history.push('/')
 }
+
 
   render() {
     return (
@@ -49,9 +43,20 @@ goBack(){
        <Button title="back to project" onPress={() => this.goBack()}/>
           <Route exact path="/">
           <Text style={localStyles.titleText}>
-            Pick your scene or start a new
+            Form to Add a Project
            </Text>
-         
+           <TextInput 
+            //  name={"NameAProject"}
+             placeholder="placeholder"
+             value={this.state.ProjectNameInput}
+             style={localStyles.buttons}
+             onChangeText={e => {this.props.handleChange(e)}}
+             />
+            <Button 
+              title="Create"
+              onPress={() => {this.props.AddProject(this.props.Info.ProjectNameInput)}}     
+            />
+            <Text style={localStyles.titleText}>dd{JSON.stringify(this.props.Info.ProjectNameInput)}</Text>
           </Route>
         </View>
       </View>

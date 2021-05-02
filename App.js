@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PickAScene from './PickAScene'
 import NameAProject from './NameAProject'
+
 import {
   AppRegistry,
   Text,
@@ -29,6 +30,7 @@ export default class PickAProject extends Component {
     super();
     this.state = {
       activeProject : null,
+      ProjectNameInput : '',
       ProjectObj : {
          Project1: {
            Scene1 : ["P1S1", "P1S1", "P1S1"],
@@ -41,7 +43,33 @@ export default class PickAProject extends Component {
          }
       }
     } 
+        // this.handleChange = this.handleChange.bind(this);
   }
+
+handleChange = (e) => {
+  // const name = e.target && e.target.name;
+  const value = e;
+  // alert(e)
+  this.setState((prevState) => ({
+    ...prevState,
+    ProjectNameInput : e
+  }));
+  // setTimeout(() => {
+  //   alert(this.props.Info.ProjectNameInput)
+  // }, 1000);
+}
+
+AddProject = (ProjectNameInput) => {
+this.setState((prevState) => ({
+  ...prevState,
+  ProjectObj : {
+    ...prevState.ProjectObj,
+    [ProjectNameInput] : {}
+  }
+}))  
+alert(this.state.ProjectObj)
+}
+
 
   render() {
     return (
@@ -83,7 +111,7 @@ export default class PickAProject extends Component {
               // //   }))
               // )}}
                 underlayColor={'#68a0ff'} >
-                <Link to="/scene">
+                <Link to="/addAProject">
                 <Text style={localStyles.buttonText}>{"+"}</Text>
                 </Link>
               </TouchableHighlight>
@@ -91,6 +119,9 @@ export default class PickAProject extends Component {
           {/* routes */}
           <Route path="/scene" render={props => 
           (<PickAScene {...props} Info={this.state.ProjectObj[this.state.activeProject]}/>)
+          }/>
+          <Route path="/addAProject" render={props => 
+          (<NameAProject {...props} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
           }/>
         </View>
       </View>
