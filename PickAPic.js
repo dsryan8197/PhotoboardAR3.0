@@ -51,7 +51,7 @@ export default class PickAPic extends Component {
            Select Your pic or start a new !
            </Text>
            {/* loop over state projects */}
-         {this.props.Info.map((el, i) => { 
+         {this.props.Info.images.map((el, i) => { 
           return (
                   // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
            <TouchableHighlight key={i} style={localStyles.buttons}

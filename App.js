@@ -33,14 +33,24 @@ export default class PickAProject extends Component {
       ProjectNameInput : '',
       ProjectObj : {
          Project1: {
-           Scene1 : ["P1S1", "P1S1", "P1S1"],
-           Scene2 : ["P1S2", "P1S2", "P1S2"]
+           Scene1 : {
+             description: '',
+             images: ["P1S1", "P1S1", "P1S1"]},
+           Scene2 : {
+             description: '',
+             images : ["P1S2", "P1S2", "P1S2"]}
          },
          Project2: {
-           Scene1 : ["P2S1", "P2S1", "P2S1"],
-           Scene2 : ["P2S2", "P2S2", "P2S2"],
-           Scene3 : ["P2S3", "P2S3", "P2S3"]
+           Scene1 : {
+             description: '',
+             images: ["P2S1", "P2S1", "P2S1"]},
+           Scene2 : {
+             description: '',
+             images : ["P2S2", "P2S2", "P2S2"]}
          }
+      },
+      SceneInformation: {
+        
       }
     } 
         // this.handleChange = this.handleChange.bind(this);

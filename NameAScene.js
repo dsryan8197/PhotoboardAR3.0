@@ -5,6 +5,7 @@ import {
   Button,
   TextInput,
   View,
+  // Picker,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
@@ -17,12 +18,12 @@ import {
 
 import { NativeRouter, Route, Link } from "react-router-native";
 import PickAPic from './PickAPic'
-import NameAScene from './NameAScene'
+import PickAScene from './PickAScene'
 
 //tge goal of this is to add a project3 = {} to the porojectobj
 //with a unique name 
 
-export default class NameAProject extends Component {
+export default class NameAScene extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -44,31 +45,9 @@ goBack(){
        <Button title="back to project" onPress={() => this.goBack()}/>
           <Route exact path="/">
           <Text style={localStyles.titleText}>
-            Form to Add a Project
+            Add A Scene to Your New Project
            </Text>
-           <TextInput 
-            //  name={"NameAProject"}
-             placeholder="placeholder"
-             value={this.state.ProjectNameInput}
-             style={localStyles.buttons}
-             onChangeText={e => {this.props.handleChange(e)}}
-             />
-            
-            <TouchableHighlight style={localStyles.buttons}
-              // title="Create"
-              onPress={() => {this.props.AddProject(this.props.Info.ProjectNameInput)}}
-              >
-              <Link to="/NameAScene">
-              <Text style={localStyles.buttonText}>{"+"}</Text>
-              </Link >
-            </TouchableHighlight>
-
-            <Text style={localStyles.titleText}>dd{JSON.stringify(this.props.Info.ProjectNameInput)}</Text>
           </Route>
-
-          <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} Info={this.props.Info}/>)
-          }/>
         </View>
       </View>
     </NativeRouter>
@@ -131,4 +110,4 @@ var localStyles = StyleSheet.create({
     borderColor: '#fff',
   }
 });
-module.exports = NameAProject
+module.exports = NameAScene
