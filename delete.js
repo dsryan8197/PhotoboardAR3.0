@@ -1,9 +1,18 @@
+// }
+
+// var InitialARScene = require('./js/HelloWorldSceneAR');
+// var InitialVRScene = require('./js/HelloWorldScene');
+// var UNSET = "UNSET";
+// var VR_NAVIGATOR_TYPE = "VR";
+// var AR_NAVIGATOR_TYPE = "AR";
+
+// var defaultNavigatorType = UNSET;
 import React, { Component } from 'react';
 import {
   AppRegistry,
   Text,
-  View,
   Button,
+  View,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
@@ -15,15 +24,17 @@ import {
 } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
-import ARScene from './js/HelloWorldSceneAR'
+import PickAPic from './PickAPic'
+ 
 
-export default class PickAPic extends Component {
+export default class Delete extends Component {
   constructor(props) {
     super();
     this.state = {
         activePic: null 
       }
   }
+
   goBac(){
   this.props.history.push('/')
 }
@@ -36,46 +47,14 @@ export default class PickAPic extends Component {
       <Button title="back to scene" onPress={() => this.goBac()}/>
           <Route exact path="/">
           <Text style={localStyles.titleText}>
-           Select Your pic or start a new !
+           Se`
            </Text>
-           {/* loop over state projects */}
-         {this.props.Info.images.map((el, i) => { 
-          return (
-                  // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
-           <TouchableHighlight key={i} style={localStyles.buttons}
-              onPress={()=> {(
-                this.setState((prevState) => ({
-                  activePic : el
-                }))
-              )}}             
-             underlayColor={'#68a0ff'} >
-            <Link to="/pics">
-              <Text style={localStyles.buttonText}>{el}</Text>
-            </Link>
-           </TouchableHighlight>
-        
-           )})}
-
-          {/* this shoudl send you to the AR scene */}
-           <TouchableHighlight
-            style={localStyles.buttons}
-            // onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
-            underlayColor={'#68a0ff'} >
-            <Link to="/AR">
-              <Text style={localStyles.buttonText}>{"+"}</Text>
-            </Link>
-          </TouchableHighlight>
-          </Route>
-           <Route path="/AR" render={props => 
-           ( <ViroVRSceneNavigator
-        initialScene={{scene: ARScene}} onExitViro={this._exitViro}/>)
-          }/>
+           </Route>
         </View>
       </View>
     </NativeRouter>
     )
   }
-
 }
 
 var localStyles = StyleSheet.create({
@@ -132,4 +111,4 @@ var localStyles = StyleSheet.create({
     borderColor: '#fff',
   }
 });
-module.exports = PickAPic
+module.exports = Delete

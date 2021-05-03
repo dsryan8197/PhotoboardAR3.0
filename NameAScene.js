@@ -83,9 +83,7 @@ goBack(){
               <Text style={localStyles.buttonText}>{"Create"}</Text>
               {/* </Link > */}
             </TouchableHighlight>
-         
-             {/* <Text style={localStyles.titleText}>{JSON.stringify(this.props.Info[this.props.ProjectNameInput])}</Text> */}
-          </Route>
+         </Route>
         </View>
       </View>
     </NativeRouter>

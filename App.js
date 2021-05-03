@@ -42,10 +42,10 @@ export default class PickAProject extends Component {
          },
          Project2: {
            Scene1 : {
-             description: '',
+             description: 'INT HOUSE NIght',
              images: ["P2S1", "P2S1", "P2S1"]},
            Scene2 : {
-             description: '',
+             description: 'INT HOUSE NIght',
              images : ["P2S2", "P2S2", "P2S2"]}
          }
       },
