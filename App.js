@@ -49,12 +49,25 @@ export default class PickAProject extends Component {
              images : ["P2S2", "P2S2", "P2S2"]}
          }
       },
-      SceneInformation: {
-        
-      }
     } 
         // this.handleChange = this.handleChange.bind(this);
   }
+
+AddSceneDescription = (project, intro, sceneName, outro) => {
+this.setState((prevState) => ({
+  ...prevState,
+  ProjectObj: {
+    ...prevState,
+    [project]: {
+     [sceneName] : {
+       description: intro + '' + sceneName + '' + outro,
+       images: []
+     }
+    }
+  }
+}))
+}
+
 
 handleChange = (e) => {
   // const name = e.target && e.target.name;
@@ -77,7 +90,7 @@ this.setState((prevState) => ({
     [ProjectNameInput] : {}
   }
 }))  
-alert(this.state.ProjectObj)
+// alert(this.state.ProjectObj)
 }
 
 
@@ -131,7 +144,7 @@ alert(this.state.ProjectObj)
           (<PickAScene {...props} Info={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>
           <Route path="/addAProject" render={props => 
-          (<NameAProject {...props} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
+          (<NameAProject {...props} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
           }/>
         </View>
       </View>

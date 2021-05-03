@@ -65,9 +65,8 @@ goBack(){
 
             <Text style={localStyles.titleText}>dd{JSON.stringify(this.props.Info.ProjectNameInput)}</Text>
           </Route>
-
           <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} Info={this.props.Info}/>)
+           (<NameAScene {...props} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
         </View>
       </View>

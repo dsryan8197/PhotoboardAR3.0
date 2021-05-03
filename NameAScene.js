@@ -5,7 +5,7 @@ import {
   Button,
   TextInput,
   View,
-  // Picker,
+  Picker,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
@@ -27,7 +27,9 @@ export default class NameAScene extends Component {
   constructor(props) {
     super();
     this.state = {
-      activeScene: null
+      intExt: 'INT',
+      location: '',
+      dayNight : 'Day'
     }
     // this.handleChange = this.handleChange.bind(this);
   }
@@ -47,6 +49,42 @@ goBack(){
           <Text style={localStyles.titleText}>
             Add A Scene to Your New Project
            </Text>
+           <Picker
+           style={{backgroundColor: 'white', width:'25%'}}
+           selectedValue={this.state.intExt}
+           onValueChange={(itemValue,itemIndex) => this.setState({intExt: itemValue})}
+           >
+            <Picker.Item label="INT" value="INT" />
+           <Picker.Item label="EXT" value="EXT" />
+         </Picker>
+        
+           <TextInput 
+             placeholder="location"
+             value={this.state.ProjectNameInput}
+             style={localStyles.buttons}
+             onChangeText={e => this.setState((prevState) => ({
+               location: e
+             }))}
+             />
+
+          <Picker  style={{backgroundColor: 'white', width:'25%'}}
+           selectedValue={this.state.dayNight}
+           onValueChange={(itemValue,itemIndex) => this.setState({dayNight: itemValue})}
+           >
+            <Picker.Item label="Day" value="Day" />
+           <Picker.Item label="Night" value="Night" />
+         </Picker>
+
+            <TouchableHighlight style={localStyles.buttons}
+              // title="Create"
+              onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}
+              >
+              {/* <Link to="/NameAScene"> */}
+              <Text style={localStyles.buttonText}>{"Create"}</Text>
+              {/* </Link > */}
+            </TouchableHighlight>
+         
+             {/* <Text style={localStyles.titleText}>{JSON.stringify(this.props.Info[this.props.ProjectNameInput])}</Text> */}
           </Route>
         </View>
       </View>
