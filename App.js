@@ -60,7 +60,7 @@ this.setState((prevState) => ({
     ...prevState,
     [project]: {
      [sceneName] : {
-       description: intro + '' + sceneName + '' + outro,
+       description: intro + ' ' + sceneName + ' ' + outro,
        images: []
      }
     }

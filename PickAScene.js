@@ -63,7 +63,7 @@ goBack(){
               )}}             
              underlayColor={'#68a0ff'} >
             <Link to="/pics">
-              <Text style={localStyles.buttonText}>{el}</Text>
+              <Text style={localStyles.buttonText}>{this.props.Info[el].description}</Text>
             </Link>
            </TouchableHighlight>
           )})}
