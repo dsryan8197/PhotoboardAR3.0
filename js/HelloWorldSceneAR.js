@@ -30,7 +30,7 @@ export default class HelloWorldSceneAR extends Component {
 
   render() {
     return (
-      <ViroARScene onTrackingUpdated={this._onInitialized} >
+      <ViroARScene onTrackingUpdated={this._onInitialized} style={styles.ARNav} >
         <ViroText text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} />
         <ViroBox position={[0, -.5, -2]} scale={[.3, .3, .1]} materials={["grid"]} animation={{name: "rotate", run: true, loop: true}}/>
         <ViroAmbientLight color={"#aaaaaa"} />
@@ -75,6 +75,10 @@ var styles = StyleSheet.create({
     color: '#ffffff',
     textAlignVertical: 'center',
     textAlign: 'center',  
+  },
+    ARNav : {
+    width: '100%',
+    height: '100%'
   },
 });
 

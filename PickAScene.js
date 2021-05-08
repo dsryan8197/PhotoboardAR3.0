@@ -16,7 +16,7 @@ import {
 
 import { NativeRouter, Route, Link } from "react-router-native";
 import PickAPic from './PickAPic'
-
+import NameAScene from './NameAScene'
 // var sharedProps = {
 //   apiKey:"API_KEY_HERE",
 // }
@@ -52,7 +52,7 @@ goBack(){
             Pick your scene or start a new
            </Text>
            {/* loop over state projects */}
-          {Object.keys(this.props.Info).map((el, i) => { 
+          {Object.keys(this.props.ObjofProje).map((el, i) => { 
           return (
                   // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
            <TouchableHighlight key={i} style={localStyles.buttons}
@@ -60,10 +60,10 @@ goBack(){
                 this.setState((prevState) => ({
                   activeScene : el
                 }))
-              )}}             
+              )}}            
              underlayColor={'#68a0ff'} >
             <Link to="/pics">
-              <Text style={localStyles.buttonText}>{this.props.Info[el].description}</Text>
+              <Text style={localStyles.buttonText}>{this.props.ObjofProje[el].description}</Text>
             </Link>
            </TouchableHighlight>
           )})}
@@ -71,7 +71,7 @@ goBack(){
            <TouchableHighlight style={localStyles.buttons}
                // onPress={(i) => {}}
             underlayColor={'#68a0ff'} >
-            <Link to="/pics">
+            <Link to="/NameAScene">
               <Text style={localStyles.buttonText}>{"+"}</Text>
             </Link>
           </TouchableHighlight>
@@ -79,7 +79,10 @@ goBack(){
           </Route>
           {/* <Route path="/project" render={props => (<)} */}
           <Route path="/pics" render={props => 
-           (<PickAPic {...props} Info={this.props.Info[this.state.activeScene]}/>)
+           (<PickAPic {...props} Info={this.props.ObjofProje[this.state.activeScene]}/>)
+          }/>
+             <Route path="/NameAScene" render={props => 
+           (<NameAScene {...props} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
           {/* <Route exact path="/scene" component={PickAScene} /> */}
           {/* <Route path="/about" component={About} />

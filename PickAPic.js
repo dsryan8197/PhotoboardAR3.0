@@ -16,12 +16,17 @@ import {
 
 import { NativeRouter, Route, Link } from "react-router-native";
 import ARScene from './js/HelloWorldSceneAR'
+var sharedProps = {
+  apiKey:"API_KEY_HERE",
+}
 
 export default class PickAPic extends Component {
   constructor(props) {
     super();
     this.state = {
-        activePic: null 
+        activePic: null,
+        navigator: 'PIC',
+        sharedProps : sharedProps
       }
   }
   goBac(){
@@ -29,7 +34,8 @@ export default class PickAPic extends Component {
 }
 
   render() {
-    return (
+  if (this.state.navigator == 'PIC') {
+     return (
       <NativeRouter>
       <View style={localStyles.outer} >
          <View style={localStyles.inner} >
@@ -59,29 +65,45 @@ export default class PickAPic extends Component {
           {/* this shoudl send you to the AR scene */}
            <TouchableHighlight
             style={localStyles.buttons}
-            // onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+            onPress={()=> {(
+                this.setState((prevState) => ({
+                  navigator : 'AR'
+                }))
+              )}} 
             underlayColor={'#68a0ff'} >
-            <Link to="/AR">
               <Text style={localStyles.buttonText}>{"+"}</Text>
-            </Link>
           </TouchableHighlight>
           </Route>
-           <Route path="/AR" render={props => 
+           {/* <Route path="/AR" render={props => 
            ( <ViroVRSceneNavigator
-        initialScene={{scene: ARScene}} onExitViro={this._exitViro}/>)
-          }/>
+            initialScene={{scene: ARScene}} onExitViro={this._exitViro}/>)
+          }/> */}
         </View>
       </View>
     </NativeRouter>
     )
   }
-
+  else if (this.state.navigator == 'AR') { 
+     return (
+       <View style={localStyles.ARNav} >
+        <Text style={localStyles.buttonText}>hi</Text>
+      <ViroARSceneNavigator
+        {...this.state.sharedProps}
+        initialScene={{scene: ARScene}} />
+        </View>
+    );
+  }
+  }
 }
 
 var localStyles = StyleSheet.create({
   viroContainer :{
     flex : 1,
     backgroundColor: "black",
+  },
+  ARNav : {
+    width: '8%',
+    height: '8%'
   },
   outer : {
     flex : 1,

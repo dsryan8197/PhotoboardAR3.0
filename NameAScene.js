@@ -74,10 +74,10 @@ goBack(){
             <Picker.Item label="Day" value="Day" />
            <Picker.Item label="Night" value="Night" />
          </Picker>
-
+ {/* <Text style={localStyles.titleText}>dd{JSON.stringify(this.props.ProjectNameInput)}</Text> */}
             <TouchableHighlight style={localStyles.buttons}
               // title="Create"
-              onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}
+              onPress={() => {this.props.AddSceneDescription(this.props.Info.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}
               >
               {/* <Link to="/NameAScene"> */}
               <Text style={localStyles.buttonText}>{"Create"}</Text>

@@ -57,8 +57,9 @@ AddSceneDescription = (project, intro, sceneName, outro) => {
 this.setState((prevState) => ({
   ...prevState,
   ProjectObj: {
-    ...prevState,
+    ...prevState.ProjectObj,
     [project]: {
+      ...prevState.ProjectObj[project],
      [sceneName] : {
        description: intro + ' ' + sceneName + ' ' + outro,
        images: []
@@ -111,7 +112,8 @@ this.setState((prevState) => ({
               onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState, 
-                  activeProject : el
+                  activeProject : el,
+                  ProjectNameInput: el
                 }))
               )}}
               underlayColor={'#68a0ff'} >
@@ -141,7 +143,7 @@ this.setState((prevState) => ({
           </Route>
           {/* routes */}
           <Route path="/scene" render={props => 
-          (<PickAScene {...props} Info={this.state.ProjectObj[this.state.activeProject]}/>)
+          (<PickAScene {...props} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>
           <Route path="/addAProject" render={props => 
           (<NameAProject {...props} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
