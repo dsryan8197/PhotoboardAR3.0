@@ -82,7 +82,7 @@ goBack(){
            (<PickAPic {...props} Info={this.props.ObjofProje[this.state.activeScene]}/>)
           }/>
              <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
+           (<NameAScene {...props} DataForPic={this.props.ObjofProje[this.state.activeScene]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
           {/* <Route exact path="/scene" component={PickAScene} /> */}
           {/* <Route path="/about" component={About} />

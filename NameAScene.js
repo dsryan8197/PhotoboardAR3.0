@@ -77,13 +77,19 @@ goBack(){
  {/* <Text style={localStyles.titleText}>dd{JSON.stringify(this.props.ProjectNameInput)}</Text> */}
             <TouchableHighlight style={localStyles.buttons}
               // title="Create"
-              onPress={() => {this.props.AddSceneDescription(this.props.Info.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}
+              onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}
               >
+              <Link to="/pics">
               {/* <Link to="/NameAScene"> */}
               <Text style={localStyles.buttonText}>{"Create"}</Text>
-              {/* </Link > */}
+              </Link >
+              {/* </Link> */}
             </TouchableHighlight>
+            {/* <Text style={localStyles.littleText}>dd{JSON.stringify(this.props.ObjofProje)}</Text> */}
          </Route>
+         <Route path="/pics" render={props => 
+           (<PickAPic {...props} Info={this.props.ObjofProje[this.state.location]}/>)
+          }/>
         </View>
       </View>
     </NativeRouter>
@@ -115,6 +121,13 @@ var localStyles = StyleSheet.create({
     color:'#fff',
     textAlign:'center',
     fontSize : 25
+  },
+  littleText: {
+     paddingTop: 30,
+    paddingBottom: 20,
+    color:'#fff',
+    textAlign:'center',
+    fontSize : 10
   },
   buttonText: {
     color:'#fff',

@@ -26,7 +26,6 @@ export default class NameAProject extends Component {
   constructor(props) {
     super();
     this.state = {
-      activeScene: null
     }
     // this.handleChange = this.handleChange.bind(this);
   }
@@ -56,24 +55,23 @@ goBack(){
             
             <TouchableHighlight style={localStyles.buttons}
               // title="Create"
-              onPress={() => {this.props.AddProject(this.props.Info.ProjectNameInput)}}
+              onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}}
               >
               <Link to="/NameAScene">
               <Text style={localStyles.buttonText}>{"+"}</Text>
               </Link >
             </TouchableHighlight>
 
-            <Text style={localStyles.titleText}>dd{JSON.stringify(this.props.Info.ProjectNameInput)}</Text>
+            {/* <Text style={localStyles.littleText}>dd{JSON.stringify(this.props.ObjofProje[this.props.Info.activeProject])}</Text> */}
           </Route>
           <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
+           (<NameAScene {...props} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
         </View>
       </View>
     </NativeRouter>
     )
   }
-
 }
 
 var localStyles = StyleSheet.create({
@@ -86,6 +84,12 @@ var localStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems:'center',
     backgroundColor: "black",
+  },  littleText: {
+     paddingTop: 30,
+    paddingBottom: 20,
+    color:'#fff',
+    textAlign:'center',
+    fontSize : 10
   },
   inner: {
     flex : 1,

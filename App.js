@@ -86,6 +86,7 @@ handleChange = (e) => {
 AddProject = (ProjectNameInput) => {
 this.setState((prevState) => ({
   ...prevState,
+  activeProject: ProjectNameInput,
   ProjectObj : {
     ...prevState.ProjectObj,
     [ProjectNameInput] : {}
@@ -146,7 +147,7 @@ this.setState((prevState) => ({
           (<PickAScene {...props} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>
           <Route path="/addAProject" render={props => 
-          (<NameAProject {...props} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
+          (<NameAProject {...props} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
           }/>
         </View>
       </View>

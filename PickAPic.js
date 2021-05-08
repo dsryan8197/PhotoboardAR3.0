@@ -55,9 +55,9 @@ export default class PickAPic extends Component {
                 }))
               )}}             
              underlayColor={'#68a0ff'} >
-            <Link to="/pics">
+            {/* <Link to="/pics"> */}
               <Text style={localStyles.buttonText}>{el}</Text>
-            </Link>
+            {/* </Link> */}
            </TouchableHighlight>
         
            )})}
