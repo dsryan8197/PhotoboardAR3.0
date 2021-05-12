@@ -95,6 +95,30 @@ this.setState((prevState) => ({
 // alert(this.state.ProjectObj)
 }
 
+// takeScreenshot = () => {
+//   // check for write permissions, if not then request
+//   if (!this.state.writeAccessPermission) {
+//     this.requestWriteAccessPermission();
+//   }
+
+//   this._arNavigator._takeScreenshot("figment_still_" + this.state.screenshot_count, false).then((retDict)=>{
+//     if (!retDict.success) {
+//       if (retDict.errorCode == ViroConstants.RECORD_ERROR_NO_PERMISSION) {
+//         this._displayVideoRecordAlert("Screenshot Error", "Please allow camera permissions!" + errorCode);
+//       }
+//     }
+//     let currentCount = this.state.screenshot_count + 1;
+//     this.setState({
+//       videoUrl: "file://" + retDict.url,
+//       haveSavedMedia : false,
+//       playPreview : false,
+//       previewType: kPreviewTypePhoto,
+//       screenshot_count: currentCount,
+//     });
+//     this.props.dispatchDisplayUIScreen(UIConstants.SHOW_SHARE_SCREEN);
+//   });
+// }
+
 
   render() {
     return (

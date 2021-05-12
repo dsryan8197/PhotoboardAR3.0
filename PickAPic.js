@@ -11,7 +11,8 @@ import {
 
 import {
   ViroVRSceneNavigator,
-  ViroARSceneNavigator
+  ViroARSceneNavigator,
+  ViroConstants,
 } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
@@ -19,6 +20,11 @@ import ARScene from './js/HelloWorldSceneAR'
 var sharedProps = {
   apiKey:"API_KEY_HERE",
 }
+// import {captureScreen} from 'react-native-view-shot';
+import ViewShot from "react-native-view-shot";
+import { NativeModules, PermissionsAndroid, Image } from 'react-native';
+
+const kPreviewTypePhoto = 1;
 
 export default class PickAPic extends Component {
   constructor(props) {
@@ -26,12 +32,88 @@ export default class PickAPic extends Component {
     this.state = {
         activePic: null,
         navigator: 'PIC',
-        sharedProps : sharedProps
+        sharedProps : sharedProps,
+        setSavedImagePath : '',
+        setImageURI : '',
+        screenshot_count:0,
+        writeAccessPermission:false,
+        videoUrl: null,
+        haveSavedMedia : false,
+        playPreview : false,
+        previewType: kPreviewTypePhoto ,
       }
+    // this._onButtonTap = this._onButtonTap.bind(this);
+    // this._arScene.sceneNavigator.takeScreenshot('output', true)
+    this._setARNavigatorRef = this._setARNavigatorRef.bind(this);
+    this._takeScreenshot = this._takeScreenshot.bind(this);
+    this.requestWriteAccessPermission = this.requestWriteAccessPermission.bind(this);
   }
   goBac(){
   this.props.history.push('/')
 }
+
+  async requestWriteAccessPermission() {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        {
+          'title': 'Figment AR Audio Permission',
+          'message': 'Figment AR App needs to access your photos / videos ' +
+                     'so you can record cool videos and photos of' + 
+                     'your augmented scenes.'
+        }
+      )
+      if (granted == PermissionsAndroid.RESULTS.GRANTED) {
+        this.setState({
+          writeAccessPermission:true,
+        });
+      } else {
+        this.setState({
+          writeAccessPermission:false,
+        });
+      }
+    } catch (err) {
+      console.warn("[PermissionsAndroid]" + err)
+    }
+  }
+
+_setARNavigatorRef(ARNavigator){
+  this._arNavigator = ARNavigator;
+}
+
+_takeScreenshot() {
+  if (!this.state.writeAccessPermission) {
+    this.requestWriteAccessPermission();
+  }
+  this._arNavigator._takeScreenshot("figment_still_" + this.state.screenshot_count, true).then((retDict)=>{
+    if (!retDict.success) {
+      if (retDict.errorCode == ViroConstants.RECORD_ERROR_NO_PERMISSION) {
+        this._displayVideoRecordAlert("Screenshot Error", "Please allow camera permissions!" + errorCode);
+      }
+    }
+    let currentCount = this.state.screenshot_count + 1;
+    this.setState({
+      videoUrl: "file://" + retDict.url,
+      haveSavedMedia : false,
+      playPreview : false,
+      previewType: kPreviewTypePhoto,
+      screenshot_count: currentCount,
+    });
+    alert(this.state.videoUrl)
+  });
+}
+
+// _displayVideoRecordAlert(title, message) {
+//   Alert.alert(
+//     title,
+//     message,
+//     [
+//       {text: 'OK', onPress: () => this.props.dispatchDisplayUIScreen(UIConstants.SHOW_MAIN_SCREEN)},
+//     ],
+//     { cancelable: false }
+//   )
+// }
+
 
   render() {
   if (this.state.navigator == 'PIC') {
@@ -74,10 +156,6 @@ export default class PickAPic extends Component {
               <Text style={localStyles.buttonText}>{"+"}</Text>
           </TouchableHighlight>
           </Route>
-           {/* <Route path="/AR" render={props => 
-           ( <ViroVRSceneNavigator
-            initialScene={{scene: ARScene}} onExitViro={this._exitViro}/>)
-          }/> */}
         </View>
       </View>
     </NativeRouter>
@@ -86,10 +164,42 @@ export default class PickAPic extends Component {
   else if (this.state.navigator == 'AR') { 
      return (
        <View style={localStyles.ARNav} >
-        <Text style={localStyles.buttonText}>hi</Text>
-      <ViroARSceneNavigator
-        {...this.state.sharedProps}
-        initialScene={{scene: ARScene}} />
+         <Button
+            style={localStyles.buttons}
+            title={'back'}
+            onPress={()=> {(
+                this.setState((prevState) => ({
+                  navigator : 'PIC'
+                }))
+              )}} 
+            underlayColor={'#68a0ff'} >
+          </Button>
+      {/* <ViewShot ref="viewShot" options={{ format: "jpg", quality: 0.9 }}> */}
+        {/* <View style={localStyles.ARNav}> */}
+         <ViroARSceneNavigator
+            // ref={(c) => this._arScene = c}
+             ref={this._setARNavigatorRef} 
+            {...this.state.sharedProps}
+            initialScene={{scene: ARScene}} />
+        {/* </View> */}
+      {/* </ViewShot> */}
+      <Button
+      title="snapshot"
+       key="camera_button"
+       onPress={()=>{this._takeScreenshot()}}
+      // onPress={this._onButtonTap}
+      // onPress={() => {
+      //   this.refs.viewShot.capture().then(uri => {
+      //     alert('hi').catch(err => alert(err))
+      //   });
+      // }
+      // }
+      >
+      </Button>
+      <View style={localStyles.ViewTemp}>
+       {this.state.videoUrl && <Image source={{uri: this.state.videoUrl}} ></Image>}
+        <Text title={"asdfasdfasdfaSDFasdfasdfasdf"}></Text>
+      </View>
         </View>
     );
   }
@@ -102,8 +212,13 @@ var localStyles = StyleSheet.create({
     backgroundColor: "black",
   },
   ARNav : {
-    width: '8%',
-    height: '8%'
+    width: '85%',
+    height: '85%'
+  },
+   ViewTemp : {
+    width: '30%',
+    backgroundColor: 'white',
+    height: '30%'
   },
   outer : {
     flex : 1,
