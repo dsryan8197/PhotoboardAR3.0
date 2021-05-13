@@ -36,8 +36,8 @@ export default class HelloWorldSceneAR extends Component {
         <ViroAmbientLight color={"#aaaaaa"} />
         <ViroSpotLight innerAngle={5} outerAngle={90} direction={[0,-1,-.2]}
           position={[0, 3, 1]} color="#ffffff" castsShadow={true} />
-        <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
-           <Viro3DObject
+        {/* <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} > */}
+           {/* <Viro3DObject
             source={require('./res/emoji_smile/emoji_smile.vrx')}
             resources={[require('./res/emoji_smile/emoji_smile_diffuse.png'),
                 require('./res/emoji_smile/emoji_smile_normal.png'),
@@ -45,15 +45,15 @@ export default class HelloWorldSceneAR extends Component {
             position={[0, .5, 0]}
             scale={[.2, .2, .2]}
             type="VRX" />
-        </ViroNode>
-        <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
+        </ViroNode> */}
+        {/* <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
            <Viro3DObject
             source={require('../models/skeleton/scene.gltf')}
             resources={[require('../models/skeleton/scene.bin')]}
             position={[0, .5, 0]}
             scale={[.2, .2, .2]}
             type="GLTF" />
-        </ViroNode>
+        </ViroNode> */}
       </ViroARScene>
     );
   }

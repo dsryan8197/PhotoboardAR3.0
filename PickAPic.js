@@ -93,27 +93,15 @@ _takeScreenshot() {
     }
     let currentCount = this.state.screenshot_count + 1;
     this.setState({
-      videoUrl: "file://" + retDict.url,
-      haveSavedMedia : false,
-      playPreview : false,
+      videoUrl: retDict.url,
+      haveSavedMedia : true,
+      playPreview : true,
       previewType: kPreviewTypePhoto,
       screenshot_count: currentCount,
     });
     alert(this.state.videoUrl)
   });
 }
-
-// _displayVideoRecordAlert(title, message) {
-//   Alert.alert(
-//     title,
-//     message,
-//     [
-//       {text: 'OK', onPress: () => this.props.dispatchDisplayUIScreen(UIConstants.SHOW_MAIN_SCREEN)},
-//     ],
-//     { cancelable: false }
-//   )
-// }
-
 
   render() {
   if (this.state.navigator == 'PIC') {
@@ -137,14 +125,10 @@ _takeScreenshot() {
                 }))
               )}}             
              underlayColor={'#68a0ff'} >
-            {/* <Link to="/pics"> */}
               <Text style={localStyles.buttonText}>{el}</Text>
-            {/* </Link> */}
            </TouchableHighlight>
         
            )})}
-
-          {/* this shoudl send you to the AR scene */}
            <TouchableHighlight
             style={localStyles.buttons}
             onPress={()=> {(
@@ -174,30 +158,19 @@ _takeScreenshot() {
               )}} 
             underlayColor={'#68a0ff'} >
           </Button>
-      {/* <ViewShot ref="viewShot" options={{ format: "jpg", quality: 0.9 }}> */}
-        {/* <View style={localStyles.ARNav}> */}
          <ViroARSceneNavigator
-            // ref={(c) => this._arScene = c}
              ref={this._setARNavigatorRef} 
             {...this.state.sharedProps}
             initialScene={{scene: ARScene}} />
-        {/* </View> */}
-      {/* </ViewShot> */}
       <Button
       title="snapshot"
        key="camera_button"
        onPress={()=>{this._takeScreenshot()}}
-      // onPress={this._onButtonTap}
-      // onPress={() => {
-      //   this.refs.viewShot.capture().then(uri => {
-      //     alert('hi').catch(err => alert(err))
-      //   });
-      // }
-      // }
+
       >
       </Button>
       <View style={localStyles.ViewTemp}>
-       {this.state.videoUrl && <Image source={{uri: this.state.videoUrl}} ></Image>}
+       {this.state.videoUrl && <Image style={localStyles.ViewTemp} source={{uri: this.state.videoUrl} }></Image>}
         <Text title={"asdfasdfasdfaSDFasdfasdfasdf"}></Text>
       </View>
         </View>
@@ -216,9 +189,10 @@ var localStyles = StyleSheet.create({
     height: '85%'
   },
    ViewTemp : {
-    width: '30%',
-    backgroundColor: 'white',
-    height: '30%'
+    width: '40%',
+    height: '40%',
+    borderWidth: 3,
+    borderColor: 'white'
   },
   outer : {
     flex : 1,
