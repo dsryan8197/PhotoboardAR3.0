@@ -40,7 +40,7 @@ export default class PickAPic extends Component {
         videoUrl: null,
         haveSavedMedia : false,
         playPreview : false,
-        previewType: kPreviewTypePhoto ,
+        previewType: kPreviewTypePhoto,
       }
     // this._onButtonTap = this._onButtonTap.bind(this);
     // this._arScene.sceneNavigator.takeScreenshot('output', true)
@@ -93,14 +93,25 @@ _takeScreenshot() {
     }
     let currentCount = this.state.screenshot_count + 1;
     this.setState({
-      videoUrl: retDict.url,
+      videoUrl: "file://" + retDict.url,
       haveSavedMedia : true,
       playPreview : true,
       previewType: kPreviewTypePhoto,
       screenshot_count: currentCount,
     });
-    alert(this.state.videoUrl)
+    // alert(this.state.videoUrl)
   });
+}
+
+shot() {
+ this._takeScreenshot()
+//  alert(JSON.stringify(this.props.Info)) // { descritption: 'int house night' images : [P, P, file] }
+//  alert(JSON.stringify(this.props.Info.description)) // int house night
+//  alert(JSON.stringify(this.props.Info.images)) /// [; ; ]
+// alert(JSON.stringify(this.))
+ setTimeout(() => {
+  this.props.updatePictures(this.state.videoUrl, this.props.Info.description, this.props.Info.images, this.props.ProjectNameInput)
+ }, 2000)
 }
 
   render() {
@@ -165,18 +176,16 @@ _takeScreenshot() {
       <Button
       title="snapshot"
        key="camera_button"
-       onPress={()=>{this._takeScreenshot()}}
-
+       onPress={()=> this.shot()}
       >
       </Button>
-      <View style={localStyles.ViewTemp}>
-       {this.state.videoUrl && <Image style={localStyles.ViewTemp} source={{uri: this.state.videoUrl} }></Image>}
-        <Text title={"asdfasdfasdfaSDFasdfasdfasdf"}></Text>
-      </View>
+      {/* <View style={localStyles.ViewTemp}> */}
+       {/* {this.state.videoUrl && <Image style={localStyles.ViewTemp} source={{uri: this.state.videoUrl}}></Image>} */}
+        {/* <Text title={"asdfasdfasdfaSDFasdfasdfasdf"}></Text> */}
+      {/* </View> */}
         </View>
     );
-  }
-  }
+  }}
 }
 
 var localStyles = StyleSheet.create({
@@ -185,15 +194,15 @@ var localStyles = StyleSheet.create({
     backgroundColor: "black",
   },
   ARNav : {
-    width: '85%',
-    height: '85%'
+    width: '100%',
+    height: '90%'
   },
-   ViewTemp : {
-    width: '40%',
-    height: '40%',
-    borderWidth: 3,
-    borderColor: 'white'
-  },
+  //  ViewTemp : {
+  //   width: '40%',
+  //   height: '40%',
+  //   borderWidth: 3,
+  //   borderColor: 'white'
+  // },
   outer : {
     flex : 1,
     flexDirection: 'row',

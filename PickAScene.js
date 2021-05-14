@@ -79,10 +79,10 @@ goBack(){
           </Route>
           {/* <Route path="/project" render={props => (<)} */}
           <Route path="/pics" render={props => 
-           (<PickAPic {...props} Info={this.props.ObjofProje[this.state.activeScene]}/>)
+           (<PickAPic {...props} updatePictures={this.props.updatePictures} ProjectNameInput={this.props.ProjectNameInput} Info={this.props.ObjofProje[this.state.activeScene]}/>)
           }/>
              <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} DataForPic={this.props.ObjofProje[this.state.activeScene]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
+           (<NameAScene {...props} updatePictures={this.props.updatePictures} DataForPic={this.props.ObjofProje[this.state.activeScene]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
           {/* <Route exact path="/scene" component={PickAScene} /> */}
           {/* <Route path="/about" component={About} />

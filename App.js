@@ -41,12 +41,12 @@ export default class PickAProject extends Component {
              images : ["P1S2", "P1S2", "P1S2"]}
          },
          Project2: {
-           Scene1 : {
+           "EXT ALLEY DAY" : {
+             description: 'EXT ALLEY DAY',
+             images: ["P2S1", "P2S1"]},
+           "INT HOUSE NIght" : {
              description: 'INT HOUSE NIght',
-             images: ["P2S1", "P2S1", "P2S1"]},
-           Scene2 : {
-             description: 'INT HOUSE NIght',
-             images : ["P2S2", "P2S2", "P2S2"]}
+             images : ["P2S2", "P2S2"]}
          }
       },
     } 
@@ -94,7 +94,24 @@ this.setState((prevState) => ({
 }))  
 // alert(this.state.ProjectObj)
 }
-
+ 
+updatePictures = (imageURL, Scene, Img, project ) => {
+// alert(JSON.stringify(Img))
+this.setState((prevState) => ({
+  ...prevState,
+  ProjectObj: {
+    ...prevState.ProjectObj,
+    [project] : {
+      ...prevState.ProjectObj.[project],
+      [Scene] : {
+        // ...prevState.ProjectObj.[project].[Scene],
+        description: Scene,
+        images: [...Img, imageURL]
+      }
+    }
+  }
+}))
+}
 // takeScreenshot = () => {
 //   // check for write permissions, if not then request
 //   if (!this.state.writeAccessPermission) {
@@ -168,10 +185,10 @@ this.setState((prevState) => ({
           </Route>
           {/* routes */}
           <Route path="/scene" render={props => 
-          (<PickAScene {...props} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
+          (<PickAScene {...props} updatePictures={this.updatePictures} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>
           <Route path="/addAProject" render={props => 
-          (<NameAProject {...props} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
+          (<NameAProject {...props} updatePictures={this.updatePictures} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
           }/>
         </View>
       </View>

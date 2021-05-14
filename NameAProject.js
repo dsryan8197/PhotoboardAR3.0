@@ -65,7 +65,7 @@ goBack(){
             {/* <Text style={localStyles.littleText}>dd{JSON.stringify(this.props.ObjofProje[this.props.Info.activeProject])}</Text> */}
           </Route>
           <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
+           (<NameAScene {...props} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
         </View>
       </View>

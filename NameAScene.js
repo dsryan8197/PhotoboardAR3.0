@@ -88,7 +88,7 @@ goBack(){
             {/* <Text style={localStyles.littleText}>dd{JSON.stringify(this.props.ObjofProje)}</Text> */}
          </Route>
          <Route path="/pics" render={props => 
-           (<PickAPic {...props} Info={this.props.ObjofProje[this.state.location]}/>)
+           (<PickAPic {...props} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]}/>)
           }/>
         </View>
       </View>
