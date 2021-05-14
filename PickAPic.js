@@ -158,6 +158,7 @@ shot() {
   }
   else if (this.state.navigator == 'AR') { 
      return (
+     <NativeRouter>
        <View style={localStyles.ARNav} >
          <Button
             style={localStyles.buttons}
@@ -174,6 +175,7 @@ shot() {
             {...this.state.sharedProps}
             initialScene={{scene: ARScene}} />
       <Button
+      // style={localStyles.butt}
       title="snapshot"
        key="camera_button"
        onPress={()=> this.shot()}
@@ -184,6 +186,8 @@ shot() {
         {/* <Text title={"asdfasdfasdfaSDFasdfasdfasdf"}></Text> */}
       {/* </View> */}
         </View>
+     </NativeRouter>
+
     );
   }}
 }
@@ -193,6 +197,9 @@ var localStyles = StyleSheet.create({
     flex : 1,
     backgroundColor: "black",
   },
+  // butt : {
+  //     padding: '80px'
+  // },
   ARNav : {
     width: '100%',
     height: '90%'

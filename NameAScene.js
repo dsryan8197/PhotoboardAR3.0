@@ -44,8 +44,8 @@ goBack(){
       <NativeRouter>
       <View style={localStyles.outer} >
          <View style={localStyles.inner} >
-       <Button title="back to project" onPress={() => this.goBack()}/>
           <Route exact path="/">
+          <Button title="back to scene" onPress={() => this.goBack()}/>
           <Text style={localStyles.titleText}>
             Add A Scene to Your New Project
            </Text>
