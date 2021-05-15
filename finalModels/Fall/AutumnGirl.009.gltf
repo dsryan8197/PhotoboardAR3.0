@@ -1,0 +1,146 @@
+{
+  "asset": {
+    "copyright": "By Studio Ochi",
+    "generator": "Khronos glTF Blender I/O v1.5.17",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "AutumnGirl.009"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Autumn06",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "AutumnGirl.002",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "COLOR_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "StudioOchi_AutumnPeople.006",
+      "uri": "AutumnGirl.009_img0.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1566,
+      "max": [
+        0.2493777871131897,
+        1.683164358139038,
+        0.3913966417312622
+      ],
+      "min": [
+        -0.2716901898384094,
+        -0.015640797093510628,
+        -0.3829357922077179
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1566,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1566,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 1566,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5123,
+      "count": 2286,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 18792,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 18792,
+      "byteOffset": 18792
+    },
+    {
+      "buffer": 0,
+      "byteLength": 12528,
+      "byteOffset": 37584
+    },
+    {
+      "buffer": 0,
+      "byteLength": 12528,
+      "byteOffset": 50112
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4572,
+      "byteOffset": 62640
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "AutumnGirl.009_data.bin",
+      "byteLength": 67212
+    }
+  ]
+}

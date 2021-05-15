@@ -1,0 +1,146 @@
+{
+  "asset": {
+    "copyright": "By Studio Ochi",
+    "generator": "Khronos glTF Blender I/O v1.5.17",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "AutumnWomanA.007"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Autumn06",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "AutumnWomanA.012",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "COLOR_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "StudioOchi_AutumnPeople.006",
+      "uri": "AutumnWomanA.007_img0.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1626,
+      "max": [
+        0.2203049510717392,
+        1.6924453973770142,
+        0.40752044320106506
+      ],
+      "min": [
+        -0.22752730548381805,
+        -0.005424933508038521,
+        -0.44517555832862854
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1626,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1626,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 1626,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5123,
+      "count": 2382,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 19512,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 19512,
+      "byteOffset": 19512
+    },
+    {
+      "buffer": 0,
+      "byteLength": 13008,
+      "byteOffset": 39024
+    },
+    {
+      "buffer": 0,
+      "byteLength": 13008,
+      "byteOffset": 52032
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4764,
+      "byteOffset": 65040
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "AutumnWomanA.007_data.bin",
+      "byteLength": 69804
+    }
+  ]
+}

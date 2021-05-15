@@ -1,0 +1,133 @@
+{
+  "asset": {
+    "copyright": "By Studio Ochi",
+    "generator": "Khronos glTF Blender I/O v1.5.17",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "AutumnManA.008"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Autumn05",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "AutumnManA.018",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "StudioOchi_AutumnPeople.005",
+      "uri": "AutumnManA.008_img0.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1292,
+      "max": [
+        0.23052223026752472,
+        1.551485538482666,
+        0.5589660406112671
+      ],
+      "min": [
+        -0.24522070586681366,
+        -0.01881708763539791,
+        -0.7334274053573608
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1292,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1292,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 1896,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 15504,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 15504,
+      "byteOffset": 15504
+    },
+    {
+      "buffer": 0,
+      "byteLength": 10336,
+      "byteOffset": 31008
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3792,
+      "byteOffset": 41344
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "AutumnManA.008_data.bin",
+      "byteLength": 45136
+    }
+  ]
+}

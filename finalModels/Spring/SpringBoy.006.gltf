@@ -1,0 +1,133 @@
+{
+  "asset": {
+    "copyright": "By Studio Ochi",
+    "generator": "Khronos glTF Blender I/O v1.5.17",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SpringBoy.006"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Spring02",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SpringBoy.008",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "StudioOchi_SpringPeople.002",
+      "uri": "SpringBoy.006_img0.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1590,
+      "max": [
+        0.2407815009355545,
+        1.2049992084503174,
+        0.1891789585351944
+      ],
+      "min": [
+        -0.18099641799926758,
+        -0.008246921934187412,
+        -0.48801371455192566
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1590,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1590,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 2346,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 19080,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 19080,
+      "byteOffset": 19080
+    },
+    {
+      "buffer": 0,
+      "byteLength": 12720,
+      "byteOffset": 38160
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4692,
+      "byteOffset": 50880
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "SpringBoy.006_data.bin",
+      "byteLength": 55572
+    }
+  ]
+}

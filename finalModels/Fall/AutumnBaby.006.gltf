@@ -1,0 +1,146 @@
+{
+  "asset": {
+    "copyright": "By Studio Ochi",
+    "generator": "Khronos glTF Blender I/O v1.5.17",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "AutumnBaby.006"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Autumn04",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "AutumnBaby.005",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "COLOR_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "StudioOchi_AutumnPeople.004",
+      "uri": "AutumnBaby.006_img0.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1146,
+      "max": [
+        0.15947560966014862,
+        0.601417064666748,
+        0.1268863081932068
+      ],
+      "min": [
+        -0.1283540278673172,
+        -0.0015048120403662324,
+        -0.17848151922225952
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1146,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1146,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 1146,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5123,
+      "count": 1686,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 13752,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 13752,
+      "byteOffset": 13752
+    },
+    {
+      "buffer": 0,
+      "byteLength": 9168,
+      "byteOffset": 27504
+    },
+    {
+      "buffer": 0,
+      "byteLength": 9168,
+      "byteOffset": 36672
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3372,
+      "byteOffset": 45840
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "AutumnBaby.006_data.bin",
+      "byteLength": 49212
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "asset": {
+    "copyright": "By Studio Ochi",
+    "generator": "Khronos glTF Blender I/O v1.5.17",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SpringManC.008"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Spring03",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SpringManC.008",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "StudioOchi_SpringPeople.003",
+      "uri": "SpringManC.007_img0.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1392,
+      "max": [
+        0.2121841311454773,
+        1.7290302515029907,
+        0.4397233724594116
+      ],
+      "min": [
+        -0.22069665789604187,
+        -0.005534323398023844,
+        -0.45846569538116455
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1392,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1392,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 2052,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 16704,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 16704,
+      "byteOffset": 16704
+    },
+    {
+      "buffer": 0,
+      "byteLength": 11136,
+      "byteOffset": 33408
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4104,
+      "byteOffset": 44544
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "SpringManC.007_data.bin",
+      "byteLength": 48648
+    }
+  ]
+}

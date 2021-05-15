@@ -33,20 +33,20 @@ export default class PickAProject extends Component {
       ProjectNameInput : '',
       ProjectObj : {
          Project1: {
-           Scene1 : {
-             description: '',
-             images: ["P1S1", "P1S1", "P1S1"]},
-           Scene2 : {
-             description: '',
-             images : ["P1S2", "P1S2", "P1S2"]}
+           "EXT ALLEY DAY" : {
+             description: 'EXT ALLEY DAY',
+             images: []},
+           "EXT ALLEY DAY" : {
+             description: 'EXT ALLEY DAY',
+             images : []}
          },
          Project2: {
            "EXT ALLEY DAY" : {
              description: 'EXT ALLEY DAY',
-             images: ["P2S1", "P2S1"]},
+             images: []},
            "INT HOUSE NIght" : {
              description: 'INT HOUSE NIght',
-             images : ["P2S2", "P2S2"]}
+             images : []}
          }
       },
     } 

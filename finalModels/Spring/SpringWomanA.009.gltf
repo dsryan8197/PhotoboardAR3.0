@@ -1,0 +1,133 @@
+{
+  "asset": {
+    "copyright": "By Studio Ochi",
+    "generator": "Khronos glTF Blender I/O v1.5.17",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SpringWomanA.010"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Spring01",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SpringWomanA.010",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "StudioOchi_SpringPeople.001",
+      "uri": "SpringWomanA.009_img0.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1414,
+      "max": [
+        0.22917531430721283,
+        1.3039567470550537,
+        0.4553406834602356
+      ],
+      "min": [
+        -0.23320196568965912,
+        -0.05287022516131401,
+        -0.15372373163700104
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1414,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1414,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 2082,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 16968,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 16968,
+      "byteOffset": 16968
+    },
+    {
+      "buffer": 0,
+      "byteLength": 11312,
+      "byteOffset": 33936
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4164,
+      "byteOffset": 45248
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "SpringWomanA.009_data.bin",
+      "byteLength": 49412
+    }
+  ]
+}

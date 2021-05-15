@@ -1,0 +1,133 @@
+{
+  "asset": {
+    "copyright": "By Studio Ochi",
+    "generator": "Khronos glTF Blender I/O v1.5.17",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SpringGirl.010"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Spring01",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SpringGirl.012",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "StudioOchi_SpringPeople.001",
+      "uri": "SpringGirl.010_img0.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1260,
+      "max": [
+        0.15931321680545807,
+        1.1650456190109253,
+        0.28066787123680115
+      ],
+      "min": [
+        -0.17523989081382751,
+        -0.00629802979528904,
+        -0.27490219473838806
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1260,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1260,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 1860,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 15120,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 15120,
+      "byteOffset": 15120
+    },
+    {
+      "buffer": 0,
+      "byteLength": 10080,
+      "byteOffset": 30240
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3720,
+      "byteOffset": 40320
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "SpringGirl.010_data.bin",
+      "byteLength": 44040
+    }
+  ]
+}

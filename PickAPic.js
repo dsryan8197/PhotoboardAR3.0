@@ -4,6 +4,7 @@ import {
   Text,
   View,
   Button,
+  ScrollView,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
@@ -30,6 +31,7 @@ export default class PickAPic extends Component {
   constructor(props) {
     super();
     this.state = {
+
         activePic: null,
         navigator: 'PIC',
         sharedProps : sharedProps,
@@ -115,6 +117,17 @@ shot() {
 }
 
   render() {
+  //we need variables to hold all the uri + number
+  const FallBabyGLTF = './finalModels/Fall/AutumnBaby.'
+  const FallBoyGLTF = './finalModels/Fall/AutumnBoy.'
+  const FallGirlGLTF = './finalModels/Fall/AutumnGirl.'
+  const FallManAGLTF = './finalModels/Fall/AutumnManA.'
+  const FallManBGLTF = './finalModels/Fall/AutumnManB.'
+  const FallManCGLTF = './finalModels/Fall/AutumnManC.'
+  const FallWomanAGLTF = './finalModels/Fall/AutumnWomanA.'
+  const FallWomanBGLTF = './finalModels/Fall/AutumnWomanB.'
+  const FallWomanCGLTF = './finalModels/Fall/AutumnWomanC.'
+
   if (this.state.navigator == 'PIC') {
      return (
       <NativeRouter>
@@ -129,14 +142,8 @@ shot() {
          {this.props.Info.images.map((el, i) => { 
           return (
                   // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
-           <TouchableHighlight key={i} style={localStyles.buttons}
-              onPress={()=> {(
-                this.setState((prevState) => ({
-                  activePic : el
-                }))
-              )}}             
-             underlayColor={'#68a0ff'} >
-              <Text style={localStyles.buttonText}>{el}</Text>
+           <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ activePic : el })) )}} >
+             <Image style={localStyles.buttons} source={{ uri :el }}></Image>
            </TouchableHighlight>
         
            )})}
@@ -156,13 +163,14 @@ shot() {
     </NativeRouter>
     )
   }
+  //ARARARARARARARARARARA
   else if (this.state.navigator == 'AR') { 
      return (
      <NativeRouter>
        <View style={localStyles.ARNav} >
          <Button
             style={localStyles.buttons}
-            title={'back'}
+            title="back"
             onPress={()=> {(
                 this.setState((prevState) => ({
                   navigator : 'PIC'
@@ -170,10 +178,12 @@ shot() {
               )}} 
             underlayColor={'#68a0ff'} >
           </Button>
+        {/* <View> */}
          <ViroARSceneNavigator
              ref={this._setARNavigatorRef} 
             {...this.state.sharedProps}
             initialScene={{scene: ARScene}} />
+        {/* </View> */}
       <Button
       // style={localStyles.butt}
       title="snapshot"
@@ -181,25 +191,115 @@ shot() {
        onPress={()=> this.shot()}
       >
       </Button>
-      {/* <View style={localStyles.ViewTemp}> */}
-       {/* {this.state.videoUrl && <Image style={localStyles.ViewTemp} source={{uri: this.state.videoUrl}}></Image>} */}
-        {/* <Text title={"asdfasdfasdfaSDFasdfasdfasdf"}></Text> */}
-      {/* </View> */}
+      <Button
+      // style={localStyles.butt}
+      title='Character'
+       key='character'
+       onPress={()=> {(
+       this.setState((prevState) => ({
+        navigator : 'Characters'
+       })))}}>
+      </Button>
         </View>
      </NativeRouter>
 
     );
-  }}
-}
+  } 
+  //CHARACTEFCHARACTER CHARACTERCHAR ACTHE CHARACTER CHARARACT ER
+  if (this.state.navigator == 'Characters') {
+  return (
+<NativeRouter>
+       <View style={localStyles.outer}  >
+         <Button
+            style={localStyles.buttons}
+            title="back"
+            onPress={()=> {(
+                this.setState((prevState) => ({
+                  navigator : 'AR'
+                }))
+              )}} 
+            underlayColor={'#68a0ff'} >
+          </Button>
+          <Text style={localStyles.titleText}>
+           Select Your models style
+           </Text>
+       <ScrollView style={localstyles.character}>
+      <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallbaby1.png')}></Image>
+      </TouchableHighlight>
+       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallbaby2.png')}></Image>
+      </TouchableHighlight>
+       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallboy1.png')}></Image>
+      </TouchableHighlight>
+       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallboy2.png')}></Image>
+      </TouchableHighlight>
+       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallgirl1.png')}></Image>
+      </TouchableHighlight>
+       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallgirl2.png')}></Image>
+      </TouchableHighlight>
+       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallmanA1.png')}></Image>
+      </TouchableHighlight>
+       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallManA2.png')}></Image>
+      </TouchableHighlight>
+       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallManB1.png')}></Image>
+      </TouchableHighlight>
+       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallManB2.png')}></Image>
+      </TouchableHighlight>
+       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallManC1.png')}></Image>
+      </TouchableHighlight>
+       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallManC2.png')}></Image>
+      </TouchableHighlight>
+
+       </ScrollView>
+        </View>
+     </NativeRouter>
+  )
+  }
+
+  if (this.state.navigator == 'Positions') {
+    return (
+    <NativeRouter>
+       <View style={localStyles.outer} >
+         <Button
+            style={localStyles.buttons}
+            title="back"
+            onPress={()=> {(
+                this.setState((prevState) => ({
+                  navigator : 'Characters'
+                }))
+              )}} 
+            underlayColor={'#68a0ff'} >
+          </Button>
+          <Text style={localStyles.titleText}>
+           Select A Stance
+           </Text>
+       </View>
+   </NativeRouter>
+    )}
+}}
 
 var localStyles = StyleSheet.create({
   viroContainer :{
     flex : 1,
     backgroundColor: "black",
   },
-  // butt : {
-  //     padding: '80px'
-  // },
+  character : {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems:'center',
+    backgroundColor: "black",
+  },
   ARNav : {
     width: '100%',
     height: '90%'
@@ -233,6 +333,18 @@ var localStyles = StyleSheet.create({
     color:'#fff',
     textAlign:'center',
     fontSize : 20
+  },
+  Modelbuttons : {
+    height: 180,
+    width: 150,
+    paddingTop:20,
+    paddingBottom:20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor:'#68a0cf',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
   },
   buttons : {
     height: 80,
