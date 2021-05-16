@@ -30,23 +30,25 @@ export default class HelloWorldSceneAR extends Component {
     this.renderModels = this.renderModels.bind(this);
   }
 
-//should take array of models and loop over creating viro Node with each 'gltf' and 'bin'
-  renderModels = () => {
-    alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
-    // return this.props
-     return(<ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
-           <Viro3DObject
-            source={require('../finalModels/Fall/AutumnManA.002.gltf')}
-            resources={[require('../finalModels/Fall/AutumnManA.002_data.bin')]}
-            position={[1, .5, 0]}
-            scale={[1, 1, 1]}
-            type="GLTF" />
-        </ViroNode>)
-  }
-
+//takers in state and loops over it creating array of models
+renderModels = () => {
+alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
+const arr = []
+for (let i = 0; i < 3; i++) {
+  arr.push(
+    <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
+      <Viro3DObject
+       source={require('../finalModels/Fall/AutumnManA.002.gltf')}
+       resources={[require('../finalModels/Fall/AutumnManA.002_data.bin')]}
+       position={[1, .5, 0]}
+       scale={[1, 1, 1]}
+       type="GLTF" />
+     </ViroNode>
+  )}
+return arr
+}
+   
   render() {
-    const arrayObjects = []
-
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized} style={styles.ARNav}  >
         <ViroText text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} />
@@ -54,22 +56,6 @@ export default class HelloWorldSceneAR extends Component {
         <ViroAmbientLight color={"#aaaaaa"} />
         <ViroSpotLight innerAngle={5} outerAngle={90} direction={[0,-1,-.2]}
           position={[0, 3, 1]} color="#ffffff" castsShadow={true} />
-        {/* <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
-           <Viro3DObject
-            source={require('./importsAutumn/scene.gltf')}
-            resources={[require('./importsAutumn/scene.bin'),
-                require('./importsAutumn/textures/Autumn01_baseColor.png'),
-                // require('./res/emoji_smile/emoji_smile_specular.png')
-                ]}
-            position={[0, .5, 0]}
-            scale={[.2, .2, .2]}
-            type="VRX" />
-        </ViroNode> */}
-        {/* {this.props.models} */}
-        {/* <ViroText text={this.props.sceneNavigator.viroAppProps} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} /> */}
-        {this.renderModels()}
-       {/* {this.props.viroAppsProps} */}
-        {/* </ViroNode> */}
       <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
            <Viro3DObject
             source={require('../finalModels/Fall/AutumnManA.002.gltf')}
@@ -78,6 +64,7 @@ export default class HelloWorldSceneAR extends Component {
             scale={[1, 1, 1]}
             type="GLTF" />
         </ViroNode>
+        {this.renderModels()}
       </ViroARScene>
     );
   }

@@ -51,14 +51,7 @@ export default class PickAPic extends Component {
     this.state = {
         chosenModel : null,
         chosenStyle : null,
-        // Viro: (<ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
-        //    <Viro3DObject
-        //     source={require('./finalModels/Fall/AutumnManA.002.gltf')}
-        //     resources={[require('./finalModels/Fall/AutumnManA.002_data.bin')]}
-        //     position={[1, .5, 0]}
-        //     scale={[1, 1, 1]}
-        //     type="GLTF" />
-        // </ViroNode>),
+        Viro: [],
         activePic: null,
         navigator: 'PIC',
         sharedProps : sharedProps,
@@ -218,14 +211,12 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
               )}} 
             underlayColor={'#68a0ff'} >
           </Button>
-        {/* <View> */}
          <ViroARSceneNavigator
              ref={this._setARNavigatorRef} 
             {...this.state.sharedProps}
             initialScene={{scene: ARScene}}
-            // viroAppProps={this.state.Viro} 
+            viroAppProps={this.state.Viro} 
             />
-        {/* </View> */}
       <Button
       // style={localStyles.butt}
       title="snapshot"
