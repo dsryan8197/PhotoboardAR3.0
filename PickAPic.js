@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import modelArray from './modelScript'
+
 import {
   AppRegistry,
   Text,
@@ -95,6 +97,7 @@ _takeScreenshot() {
     }
     let currentCount = this.state.screenshot_count + 1;
     this.setState({
+      chosenModel : null,
       videoUrl: "file://" + retDict.url,
       haveSavedMedia : true,
       playPreview : true,
@@ -117,16 +120,34 @@ shot() {
 }
 
   render() {
-  //we need variables to hold all the uri + number
-  const FallBabyGLTF = './finalModels/Fall/AutumnBaby.'
-  const FallBoyGLTF = './finalModels/Fall/AutumnBoy.'
-  const FallGirlGLTF = './finalModels/Fall/AutumnGirl.'
-  const FallManAGLTF = './finalModels/Fall/AutumnManA.'
-  const FallManBGLTF = './finalModels/Fall/AutumnManB.'
-  const FallManCGLTF = './finalModels/Fall/AutumnManC.'
-  const FallWomanAGLTF = './finalModels/Fall/AutumnWomanA.'
-  const FallWomanBGLTF = './finalModels/Fall/AutumnWomanB.'
-  const FallWomanCGLTF = './finalModels/Fall/AutumnWomanC.'
+  // const FallBabyGLTF = './finalModels/Fall/AutumnBaby.'
+  // const FallBoyGLTF = './finalModels/Fall/AutumnBoy.'
+  // const FallGirlGLTF = './finalModels/Fall/AutumnGirl.'
+  // const FallManAGLTF = './finalModels/Fall/AutumnManA.'
+  // const FallManBGLTF = './finalModels/Fall/AutumnManB.'
+  // const FallManCGLTF = './finalModels/Fall/AutumnManC.'
+  // const FallWomanAGLTF = './finalModels/Fall/AutumnWomanA.'
+  // const FallWomanBGLTF = './finalModels/Fall/AutumnWomanB.'
+  // const FallWomanCGLTF = './finalModels/Fall/AutumnWomanC.'
+  
+  let Display = []
+  for (let i = 0; i < modelArray.length; i++) {
+    Display.push(
+      <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({ chosenModel: [i], navigator : 'Positions' })))}}>
+        <Image style={localStyles.Modelbuttons} source={modelArray[i].image}></Image>
+      </TouchableHighlight>
+    )
+  }
+
+const stance = []
+if (this.state.chosenModel) {
+for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
+  stance.push(
+    <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({ navigator : 'AR' })))}}>
+        <Image style={localStyles.Modelbuttons} source={ modelArray[this.state.chosenModel].models[i]}></Image>
+      </TouchableHighlight>
+  )}
+}
 
   if (this.state.navigator == 'PIC') {
      return (
@@ -223,44 +244,8 @@ shot() {
           <Text style={localStyles.titleText}>
            Select Your models style
            </Text>
-       <ScrollView style={localstyles.character}>
-      <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallbaby1.png')}></Image>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallbaby2.png')}></Image>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallboy1.png')}></Image>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallboy2.png')}></Image>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallgirl1.png')}></Image>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallgirl2.png')}></Image>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallmanA1.png')}></Image>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallManA2.png')}></Image>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallManB1.png')}></Image>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallManB2.png')}></Image>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallManC1.png')}></Image>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={require('./picsofmodels/fallManC2.png')}></Image>
-      </TouchableHighlight>
-
+       <ScrollView>
+      {Display}
        </ScrollView>
         </View>
      </NativeRouter>
@@ -284,6 +269,9 @@ shot() {
           <Text style={localStyles.titleText}>
            Select A Stance
            </Text>
+       <ScrollView>
+        {stance}
+        </ScrollView> 
        </View>
    </NativeRouter>
     )}
