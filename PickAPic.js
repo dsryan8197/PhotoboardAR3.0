@@ -33,7 +33,7 @@ export default class PickAPic extends Component {
   constructor(props) {
     super();
     this.state = {
-
+        chosenModel : null,
         activePic: null,
         navigator: 'PIC',
         sharedProps : sharedProps,
@@ -97,7 +97,6 @@ _takeScreenshot() {
     }
     let currentCount = this.state.screenshot_count + 1;
     this.setState({
-      chosenModel : null,
       videoUrl: "file://" + retDict.url,
       haveSavedMedia : true,
       playPreview : true,
@@ -120,16 +119,6 @@ shot() {
 }
 
   render() {
-  // const FallBabyGLTF = './finalModels/Fall/AutumnBaby.'
-  // const FallBoyGLTF = './finalModels/Fall/AutumnBoy.'
-  // const FallGirlGLTF = './finalModels/Fall/AutumnGirl.'
-  // const FallManAGLTF = './finalModels/Fall/AutumnManA.'
-  // const FallManBGLTF = './finalModels/Fall/AutumnManB.'
-  // const FallManCGLTF = './finalModels/Fall/AutumnManC.'
-  // const FallWomanAGLTF = './finalModels/Fall/AutumnWomanA.'
-  // const FallWomanBGLTF = './finalModels/Fall/AutumnWomanB.'
-  // const FallWomanCGLTF = './finalModels/Fall/AutumnWomanC.'
-  
   let Display = []
   for (let i = 0; i < modelArray.length; i++) {
     Display.push(
@@ -140,6 +129,7 @@ shot() {
   }
 
 const stance = []
+
 if (this.state.chosenModel) {
 for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
   stance.push(
