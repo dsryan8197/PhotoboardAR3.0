@@ -13,10 +13,26 @@ import {
 } from 'react-native';
 
 import {
+  ViroARScene,
+  ViroText,
+  ViroConstants,
+  ViroBox,
+  ViroMaterials,
+  Viro3DObject,
+  ViroAmbientLight,
+  ViroSpotLight,
+  ViroARPlaneSelector,
+  ViroNode,
+  ViroAnimations,
   ViroVRSceneNavigator,
   ViroARSceneNavigator,
-  ViroConstants,
 } from 'react-viro';
+
+// import {
+//   ViroVRSceneNavigator,
+//   ViroARSceneNavigator,
+//   ViroConstants,
+// } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
 import ARScene from './js/HelloWorldSceneAR'
@@ -34,6 +50,15 @@ export default class PickAPic extends Component {
     super();
     this.state = {
         chosenModel : null,
+        chosenStyle : null,
+        // Viro: (<ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
+        //    <Viro3DObject
+        //     source={require('./finalModels/Fall/AutumnManA.002.gltf')}
+        //     resources={[require('./finalModels/Fall/AutumnManA.002_data.bin')]}
+        //     position={[1, .5, 0]}
+        //     scale={[1, 1, 1]}
+        //     type="GLTF" />
+        // </ViroNode>),
         activePic: null,
         navigator: 'PIC',
         sharedProps : sharedProps,
@@ -51,6 +76,7 @@ export default class PickAPic extends Component {
     this._setARNavigatorRef = this._setARNavigatorRef.bind(this);
     this._takeScreenshot = this._takeScreenshot.bind(this);
     this.requestWriteAccessPermission = this.requestWriteAccessPermission.bind(this);
+    // this.renderModel = this.renderModel.bind(this);
   }
   goBac(){
   this.props.history.push('/')
@@ -109,14 +135,14 @@ _takeScreenshot() {
 
 shot() {
  this._takeScreenshot()
-//  alert(JSON.stringify(this.props.Info)) // { descritption: 'int house night' images : [P, P, file] }
-//  alert(JSON.stringify(this.props.Info.description)) // int house night
-//  alert(JSON.stringify(this.props.Info.images)) /// [; ; ]
-// alert(JSON.stringify(this.))
  setTimeout(() => {
   this.props.updatePictures(this.state.videoUrl, this.props.Info.description, this.props.Info.images, this.props.ProjectNameInput)
  }, 2000)
 }
+
+// renderModel() {
+
+// }
 
   render() {
   let Display = []
@@ -133,7 +159,10 @@ const stance = []
 if (this.state.chosenModel) {
 for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
   stance.push(
-    <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({ navigator : 'AR' })))}}>
+    <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({ 
+      chosenStyle: modelArray[this.state.chosenModel].models[i], 
+      navigator : 'AR',
+       })))}}>
         <Image style={localStyles.Modelbuttons} source={ modelArray[this.state.chosenModel].models[i]}></Image>
       </TouchableHighlight>
   )}
@@ -193,7 +222,9 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
          <ViroARSceneNavigator
              ref={this._setARNavigatorRef} 
             {...this.state.sharedProps}
-            initialScene={{scene: ARScene}} />
+            initialScene={{scene: ARScene}}
+            // viroAppProps={this.state.Viro} 
+            />
         {/* </View> */}
       <Button
       // style={localStyles.butt}

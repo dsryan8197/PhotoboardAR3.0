@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import modelArray from '../modelScript'
 
 import {StyleSheet} from 'react-native';
 
@@ -20,18 +21,34 @@ import {
 
 export default class HelloWorldSceneAR extends Component {
 
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       text : "Initializing AR..."
     };
     this._onInitialized = this._onInitialized.bind(this);
+    this.renderModels = this.renderModels.bind(this);
   }
+
+//should take array of models and loop over creating viro Node with each 'gltf' and 'bin'
+  renderModels = () => {
+    alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
+    // return this.props
+     return(<ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
+           <Viro3DObject
+            source={require('../finalModels/Fall/AutumnManA.002.gltf')}
+            resources={[require('../finalModels/Fall/AutumnManA.002_data.bin')]}
+            position={[1, .5, 0]}
+            scale={[1, 1, 1]}
+            type="GLTF" />
+        </ViroNode>)
+  }
+
   render() {
     const arrayObjects = []
 
     return (
-      <ViroARScene onTrackingUpdated={this._onInitialized} style={styles.ARNav} >
+      <ViroARScene onTrackingUpdated={this._onInitialized} style={styles.ARNav}  >
         <ViroText text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} />
         <ViroBox position={[0, -.5, -2]} scale={[.3, .3, .1]} materials={["grid"]} animation={{name: "rotate", run: true, loop: true}}/>
         <ViroAmbientLight color={"#aaaaaa"} />
@@ -48,12 +65,17 @@ export default class HelloWorldSceneAR extends Component {
             scale={[.2, .2, .2]}
             type="VRX" />
         </ViroNode> */}
+        {/* {this.props.models} */}
+        {/* <ViroText text={this.props.sceneNavigator.viroAppProps} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} /> */}
+        {this.renderModels()}
+       {/* {this.props.viroAppsProps} */}
+        {/* </ViroNode> */}
       <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
            <Viro3DObject
             source={require('../finalModels/Fall/AutumnManA.002.gltf')}
             resources={[require('../finalModels/Fall/AutumnManA.002_data.bin')]}
-            position={[0, .5, 0]}
-            scale={[.2, .2, .2]}
+            position={[1, .5, 0]}
+            scale={[1, 1, 1]}
             type="GLTF" />
         </ViroNode>
       </ViroARScene>
