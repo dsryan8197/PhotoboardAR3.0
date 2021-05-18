@@ -69,7 +69,6 @@ export default class PickAPic extends Component {
     this._setARNavigatorRef = this._setARNavigatorRef.bind(this);
     this._takeScreenshot = this._takeScreenshot.bind(this);
     this.requestWriteAccessPermission = this.requestWriteAccessPermission.bind(this);
-    // this.renderModel = this.renderModel.bind(this);
   }
   goBac(){
   this.props.history.push('/')
@@ -133,28 +132,25 @@ shot() {
  }, 2000)
 }
 
-// renderModel() {
-
-// }
-
   render() {
   let Display = []
   for (let i = 0; i < modelArray.length; i++) {
     Display.push(
-      <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({ chosenModel: [i], navigator : 'Positions' })))}}>
+      <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
         <Image style={localStyles.Modelbuttons} source={modelArray[i].image}></Image>
       </TouchableHighlight>
     )
   }
 
 const stance = []
-
 if (this.state.chosenModel) {
 for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
   stance.push(
     <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({ 
+      ...prevState,
       chosenStyle: modelArray[this.state.chosenModel].models[i], 
       navigator : 'AR',
+      Viro: [...prevState.Viro, [modelArray[this.state.chosenModel].gltf[i], modelArray[this.state.chosenModel].bin[i]] ]
        })))}}>
         <Image style={localStyles.Modelbuttons} source={ modelArray[this.state.chosenModel].models[i]}></Image>
       </TouchableHighlight>

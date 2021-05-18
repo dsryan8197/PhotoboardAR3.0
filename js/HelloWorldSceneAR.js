@@ -30,22 +30,27 @@ export default class HelloWorldSceneAR extends Component {
     this.renderModels = this.renderModels.bind(this);
   }
 
-//takers in state and loops over it creating array of models
+// takers in state and loops over it creating array of models
+// componentDidUpdate(prevProps) {
+//   if (this.props.sceneNavigator.viroAppProps !== this.props.sceneNavigator.viroAppProps) {
+//     this.renderModels()
+//   }
+// }
 renderModels = () => {
-alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
-const arr = []
-for (let i = 0; i < 3; i++) {
+let arr = []
+// alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
+for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
   arr.push(
     <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
       <Viro3DObject
-       source={require('../finalModels/Fall/AutumnManA.002.gltf')}
-       resources={[require('../finalModels/Fall/AutumnManA.002_data.bin')]}
+       source={(this.props.sceneNavigator.viroAppProps[i][0])}
+       resources={[(this.props.sceneNavigator.viroAppProps[i][1])]}
        position={[1, .5, 0]}
        scale={[1, 1, 1]}
        type="GLTF" />
      </ViroNode>
   )}
-return arr
+return [arr]
 }
    
   render() {
@@ -64,7 +69,7 @@ return arr
             scale={[1, 1, 1]}
             type="GLTF" />
         </ViroNode>
-        {this.renderModels()}
+        {this.props.sceneNavigator.viroAppProps && this.renderModels()}
       </ViroARScene>
     );
   }
