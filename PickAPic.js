@@ -28,18 +28,11 @@ import {
   ViroARSceneNavigator,
 } from 'react-viro';
 
-// import {
-//   ViroVRSceneNavigator,
-//   ViroARSceneNavigator,
-//   ViroConstants,
-// } from 'react-viro';
-
 import { NativeRouter, Route, Link } from "react-router-native";
 import ARScene from './js/HelloWorldSceneAR'
 var sharedProps = {
   apiKey:"API_KEY_HERE",
 }
-// import {captureScreen} from 'react-native-view-shot';
 import ViewShot from "react-native-view-shot";
 import { NativeModules, PermissionsAndroid, Image } from 'react-native';
 
@@ -64,8 +57,6 @@ export default class PickAPic extends Component {
         playPreview : false,
         previewType: kPreviewTypePhoto,
       }
-    // this._onButtonTap = this._onButtonTap.bind(this);
-    // this._arScene.sceneNavigator.takeScreenshot('output', true)
     this._setARNavigatorRef = this._setARNavigatorRef.bind(this);
     this._takeScreenshot = this._takeScreenshot.bind(this);
     this.requestWriteAccessPermission = this.requestWriteAccessPermission.bind(this);
@@ -73,8 +64,8 @@ export default class PickAPic extends Component {
   goBac(){
   this.props.history.push('/')
 }
-
-  async requestWriteAccessPermission() {
+// get write access for android 
+async requestWriteAccessPermission() {
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
@@ -98,11 +89,11 @@ export default class PickAPic extends Component {
       console.warn("[PermissionsAndroid]" + err)
     }
   }
-
+//navigates to AR view
 _setARNavigatorRef(ARNavigator){
   this._arNavigator = ARNavigator;
 }
-
+//takescreenshot function
 _takeScreenshot() {
   if (!this.state.writeAccessPermission) {
     this.requestWriteAccessPermission();
@@ -121,10 +112,9 @@ _takeScreenshot() {
       previewType: kPreviewTypePhoto,
       screenshot_count: currentCount,
     });
-    // alert(this.state.videoUrl)
   });
 }
-
+//async function that invokes screenshot function then updates state with a new image
 shot() {
  this._takeScreenshot()
  setTimeout(() => {
@@ -132,7 +122,13 @@ shot() {
  }, 2000)
 }
 
+//this render method returns 4 possible functions
+//1. PIC - shows all pics (images) in a selected scene or allows you to add a new which routes to AR
+//2. AR - AR view that shows all the models, enables user to take screenshot or add model which routes to 3.
+//3. Character - upon clicking a new model in AR view , this function shows all types of models. onclick routes to 4.
+//4. Position - this shows all the stances of a selected Character. Routes to AR view with that model rendered
   render() {
+    //this is an array of all the model types thats looped over
   let Display = []
   for (let i = 0; i < modelArray.length; i++) {
     Display.push(
@@ -141,7 +137,7 @@ shot() {
       </TouchableHighlight>
     )
   }
-
+  //upon selection of a model type, all the poses that model is availiable in is looped over and stored in an array to be selected
 const stance = []
 if (this.state.chosenModel) {
 for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
@@ -156,7 +152,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
       </TouchableHighlight>
   )}
 }
-
+//1.
   if (this.state.navigator == 'PIC') {
      return (
       <NativeRouter>
@@ -167,10 +163,8 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
           <Text style={localStyles.titleText}>
            Select Your pic or start a new !
            </Text>
-           {/* loop over state projects */}
          {this.props.Info.images.map((el, i) => { 
           return (
-                  // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
            <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ activePic : el })) )}} >
              <Image style={localStyles.buttons} source={{ uri :el }}></Image>
            </TouchableHighlight>
@@ -192,7 +186,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
     </NativeRouter>
     )
   }
-  //ARARARARARARARARARARA
+  // 2.
   else if (this.state.navigator == 'AR') { 
      return (
      <NativeRouter>
@@ -202,11 +196,13 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
             title="back"
             onPress={()=> {(
                 this.setState((prevState) => ({
+                  ...prevState,
                   navigator : 'PIC'
                 }))
               )}} 
             underlayColor={'#68a0ff'} >
           </Button>
+          {/* this is the AR view that is found in helloWorldSceneAR.js */}
          <ViroARSceneNavigator
              ref={this._setARNavigatorRef} 
             {...this.state.sharedProps}
@@ -214,14 +210,12 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
             viroAppProps={this.state.Viro} 
             />
       <Button
-      // style={localStyles.butt}
       title="snapshot"
        key="camera_button"
        onPress={()=> this.shot()}
       >
       </Button>
       <Button
-      // style={localStyles.butt}
       title='Character'
        key='character'
        onPress={()=> {(
@@ -234,7 +228,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
 
     );
   } 
-  //CHARACTEFCHARACTER CHARACTERCHAR ACTHE CHARACTER CHARARACT ER
+  // 3.
   if (this.state.navigator == 'Characters') {
   return (
 <NativeRouter>
@@ -259,7 +253,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
      </NativeRouter>
   )
   }
-
+// 4.
   if (this.state.navigator == 'Positions') {
     return (
     <NativeRouter>
@@ -300,12 +294,6 @@ var localStyles = StyleSheet.create({
     width: '100%',
     height: '90%'
   },
-  //  ViewTemp : {
-  //   width: '40%',
-  //   height: '40%',
-  //   borderWidth: 3,
-  //   borderColor: 'white'
-  // },
   outer : {
     flex : 1,
     flexDirection: 'row',

@@ -21,14 +21,6 @@ import NameAScene from './NameAScene'
 //   apiKey:"API_KEY_HERE",
 // }
 
-// var InitialARScene = require('./js/HelloWorldSceneAR');
-// var InitialVRScene = require('./js/HelloWorldScene');
-// var UNSET = "UNSET";
-// var VR_NAVIGATOR_TYPE = "VR";
-// var AR_NAVIGATOR_TYPE = "AR";
-
-// var defaultNavigatorType = UNSET;
-
 export default class PickAScene extends Component {
   constructor(props) {
     super();
@@ -41,6 +33,7 @@ goBack(){
   this.props.history.push('/')
 }
 
+//on selecting a projec,this shows all the scenes in that project or allows you to create a new
   render() {
     return (
       <NativeRouter>
@@ -51,10 +44,8 @@ goBack(){
           <Text style={localStyles.titleText}>
             Pick your scene or start a new
            </Text>
-           {/* loop over state projects */}
           {Object.keys(this.props.ObjofProje).map((el, i) => { 
           return (
-                  // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
            <TouchableHighlight key={i} style={localStyles.buttons}
               onPress={()=> {(
                 this.setState((prevState) => ({
@@ -67,32 +58,26 @@ goBack(){
             </Link>
            </TouchableHighlight>
           )})}
-          {/* ++ */}
            <TouchableHighlight style={localStyles.buttons}
-               // onPress={(i) => {}}
             underlayColor={'#68a0ff'} >
             <Link to="/NameAScene">
               <Text style={localStyles.buttonText}>{"+"}</Text>
             </Link>
           </TouchableHighlight>
-          {/* routes */}
           </Route>
-          {/* <Route path="/project" render={props => (<)} */}
+          {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
            (<PickAPic {...props} updatePictures={this.props.updatePictures} ProjectNameInput={this.props.ProjectNameInput} Info={this.props.ObjofProje[this.state.activeScene]}/>)
           }/>
+          {/* select "+" to route to create a scene */}
              <Route path="/NameAScene" render={props => 
            (<NameAScene {...props} updatePictures={this.props.updatePictures} DataForPic={this.props.ObjofProje[this.state.activeScene]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
-          {/* <Route exact path="/scene" component={PickAScene} /> */}
-          {/* <Route path="/about" component={About} />
-          <Route path="/topics" component={Topics} /> */}
         </View>
       </View>
     </NativeRouter>
     )
   }
-
 }
 
 var localStyles = StyleSheet.create({

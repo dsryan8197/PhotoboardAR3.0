@@ -20,9 +20,6 @@ import { NativeRouter, Route, Link } from "react-router-native";
 import PickAPic from './PickAPic'
 import PickAScene from './PickAScene'
 
-//tge goal of this is to add a project3 = {} to the porojectobj
-//with a unique name 
-
 export default class NameAScene extends Component {
   constructor(props) {
     super();
@@ -31,14 +28,14 @@ export default class NameAScene extends Component {
       location: '',
       dayNight : 'Day'
     }
-    // this.handleChange = this.handleChange.bind(this);
   }
 
 goBack(){
   this.props.history.push('/')
 }
 
-
+//function that enables you to create the three params of a film scene 
+// (INTerior/EXTerior, location, time of day) routes to list of pics
   render() {
     return (
       <NativeRouter>
@@ -74,19 +71,15 @@ goBack(){
             <Picker.Item label="Day" value="Day" />
            <Picker.Item label="Night" value="Night" />
          </Picker>
- {/* <Text style={localStyles.titleText}>dd{JSON.stringify(this.props.ProjectNameInput)}</Text> */}
             <TouchableHighlight style={localStyles.buttons}
-              // title="Create"
               onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}
               >
               <Link to="/pics">
-              {/* <Link to="/NameAScene"> */}
               <Text style={localStyles.buttonText}>{"Create"}</Text>
               </Link >
-              {/* </Link> */}
             </TouchableHighlight>
-            {/* <Text style={localStyles.littleText}>dd{JSON.stringify(this.props.ObjofProje)}</Text> */}
          </Route>
+         {/* routes to your list of pics in that scene (which will be none) */}
          <Route path="/pics" render={props => 
            (<PickAPic {...props} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]}/>)
           }/>

@@ -29,30 +29,25 @@ export default class HelloWorldSceneAR extends Component {
     this._onInitialized = this._onInitialized.bind(this);
     this.renderModels = this.renderModels.bind(this);
   }
-
-// takers in state and loops over it creating array of models
-// componentDidUpdate(prevProps) {
-//   if (this.props.sceneNavigator.viroAppProps !== this.props.sceneNavigator.viroAppProps) {
-//     this.renderModels()
-//   }
-// }
+//this is the AR view that gets rendered
 renderModels = () => {
 let arr = []
-// alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
+// this loops over all the selected models in state and creates components for them
+ alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
 for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
   arr.push(
     <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
       <Viro3DObject
        source={(this.props.sceneNavigator.viroAppProps[i][0])}
        resources={[(this.props.sceneNavigator.viroAppProps[i][1])]}
-       position={[1, .5, 0]}
-       scale={[1, 1, 1]}
+       position={[0,-2,-2]}
+       scale={[1.4, 1.4, 1.4]}
        type="GLTF" />
      </ViroNode>
   )}
 return [arr]
 }
-   
+//rendered AR view
   render() {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized} style={styles.ARNav}  >
@@ -65,15 +60,17 @@ return [arr]
            <Viro3DObject
             source={require('../finalModels/Fall/AutumnManA.002.gltf')}
             resources={[require('../finalModels/Fall/AutumnManA.002_data.bin')]}
-            position={[1, .5, 0]}
-            scale={[1, 1, 1]}
+            position={[0,-2,-2]}
+            scale={[1.4, 1.4, 1.4]}
             type="GLTF" />
         </ViroNode>
+        {/* function on line 33 that creates all the selected models */}
         {this.props.sceneNavigator.viroAppProps && this.renderModels()}
       </ViroARScene>
     );
   }
 
+// this does something with the viro react library. i dunno
   _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
       this.setState({
@@ -109,7 +106,7 @@ ViroAnimations.registerAnimations({
     properties: {
       rotateY: "+=90"
     },
-    duration: 250, //.25 seconds
+    duration: 250,
   },
 });
 

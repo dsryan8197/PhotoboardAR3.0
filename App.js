@@ -22,9 +22,6 @@ import { NativeRouter, Route, Link } from "react-router-native";
 //   apiKey:"API_KEY_HERE",
 // }
 
-// var InitialARScene = require('./js/HelloWorldSceneAR');
-// var InitialVRScene = require('./js/HelloWorldScene');
-
 export default class PickAProject extends Component {
   constructor(props) {
     super();
@@ -50,9 +47,9 @@ export default class PickAProject extends Component {
          }
       },
     } 
-        // this.handleChange = this.handleChange.bind(this);
   }
 
+//adds a descrition to a created scene which then becomes the name of the scene as well
 AddSceneDescription = (project, intro, sceneName, outro) => {
 this.setState((prevState) => ({
   ...prevState,
@@ -69,20 +66,16 @@ this.setState((prevState) => ({
 }))
 }
 
-
+//this holds the typed onChange value of a project name when being created
 handleChange = (e) => {
-  // const name = e.target && e.target.name;
   const value = e;
-  // alert(e)
   this.setState((prevState) => ({
     ...prevState,
     ProjectNameInput : e
   }));
-  // setTimeout(() => {
-  //   alert(this.props.Info.ProjectNameInput)
-  // }, 1000);
 }
 
+//this function adds a new project to state and makes it the current project
 AddProject = (ProjectNameInput) => {
 this.setState((prevState) => ({
   ...prevState,
@@ -92,11 +85,11 @@ this.setState((prevState) => ({
     [ProjectNameInput] : {}
   }
 }))  
-// alert(this.state.ProjectObj)
 }
- 
+
+//upon taking screenshot, this function adds that image to the list of pics in a selected scene
+//within a selected project
 updatePictures = (imageURL, Scene, Img, project ) => {
-// alert(JSON.stringify(Img))
 this.setState((prevState) => ({
   ...prevState,
   ProjectObj: {
@@ -104,7 +97,6 @@ this.setState((prevState) => ({
     [project] : {
       ...prevState.ProjectObj.[project],
       [Scene] : {
-        // ...prevState.ProjectObj.[project].[Scene],
         description: Scene,
         images: [...Img, imageURL]
       }
@@ -112,31 +104,7 @@ this.setState((prevState) => ({
   }
 }))
 }
-// takeScreenshot = () => {
-//   // check for write permissions, if not then request
-//   if (!this.state.writeAccessPermission) {
-//     this.requestWriteAccessPermission();
-//   }
-
-//   this._arNavigator._takeScreenshot("figment_still_" + this.state.screenshot_count, false).then((retDict)=>{
-//     if (!retDict.success) {
-//       if (retDict.errorCode == ViroConstants.RECORD_ERROR_NO_PERMISSION) {
-//         this._displayVideoRecordAlert("Screenshot Error", "Please allow camera permissions!" + errorCode);
-//       }
-//     }
-//     let currentCount = this.state.screenshot_count + 1;
-//     this.setState({
-//       videoUrl: "file://" + retDict.url,
-//       haveSavedMedia : false,
-//       playPreview : false,
-//       previewType: kPreviewTypePhoto,
-//       screenshot_count: currentCount,
-//     });
-//     this.props.dispatchDisplayUIScreen(UIConstants.SHOW_SHARE_SCREEN);
-//   });
-// }
-
-
+//home page that shows all your projects and provides option to add a new project
   render() {
     return (
     <NativeRouter>
@@ -146,10 +114,8 @@ this.setState((prevState) => ({
           <Text style={localStyles.titleText}>
              Select a current project or start a new one
            </Text>
-           {/* loop over state projects */}
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
-              // BIG BAD BUG YOU HAVE TO CLICK THE HIGHLIGHT TO GET STATE CHANED THEN CLICK THE LINK
            <TouchableHighlight key={i} style={localStyles.buttons}
               onPress={()=> {(
                 this.setState((prevState) => ({
@@ -164,29 +130,18 @@ this.setState((prevState) => ({
           </Link>
              </TouchableHighlight>
           )})}
-           {/* add a plus button */}
              <TouchableHighlight style={localStyles.buttons}
-                // onPress={(i) => {}}
-              //   onPress={()=> {(
-              //   this.setState(prevState => ({
-              //     ...prevState,
-              //     ProjectObj["New Scene"] : {};
-              //   }));
-              // //   this.setState((prevState) => ({
-              // //     ...prevState, 
-              // //     activeProject : j
-              // //   }))
-              // )}}
                 underlayColor={'#68a0ff'} >
                 <Link to="/addAProject">
                 <Text style={localStyles.buttonText}>{"+"}</Text>
                 </Link>
               </TouchableHighlight>
           </Route>
-          {/* routes */}
+          route for when you click an existing project
           <Route path="/scene" render={props => 
           (<PickAScene {...props} updatePictures={this.updatePictures} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>
+          {/* route for when you click "+" add a new project */}
           <Route path="/addAProject" render={props => 
           (<NameAProject {...props} updatePictures={this.updatePictures} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
           }/>

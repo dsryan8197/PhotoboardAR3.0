@@ -19,22 +19,19 @@ import { NativeRouter, Route, Link } from "react-router-native";
 import PickAPic from './PickAPic'
 import NameAScene from './NameAScene'
 
-//tge goal of this is to add a project3 = {} to the porojectobj
-//with a unique name 
-
 export default class NameAProject extends Component {
   constructor(props) {
     super();
     this.state = {
     }
-    // this.handleChange = this.handleChange.bind(this);
   }
 
 goBack(){
   this.props.history.push('/')
 }
 
-
+//this is all the functinality to add a new project to state and immediatley route to
+//create a new scene in that project
   render() {
     return (
       <NativeRouter>
@@ -46,7 +43,6 @@ goBack(){
             Form to Add a Project
            </Text>
            <TextInput 
-            //  name={"NameAProject"}
              placeholder="placeholder"
              value={this.state.ProjectNameInput}
              style={localStyles.buttons}
@@ -54,16 +50,14 @@ goBack(){
              />
             
             <TouchableHighlight style={localStyles.buttons}
-              // title="Create"
               onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}}
               >
               <Link to="/NameAScene">
               <Text style={localStyles.buttonText}>{"+"}</Text>
               </Link >
             </TouchableHighlight>
-
-            {/* <Text style={localStyles.littleText}>dd{JSON.stringify(this.props.ObjofProje[this.props.Info.activeProject])}</Text> */}
           </Route>
+          {/* create a scene route */}
           <Route path="/NameAScene" render={props => 
            (<NameAScene {...props} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
