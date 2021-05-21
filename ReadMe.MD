@@ -15,7 +15,7 @@
 ## Contribute To Our Project
 ### Get PhotoboARd on your machine
 <p>Fork and clone the photoboARd repo from this repo</p>
-<p>See Project Board for up for grabs tickets. Please mark those you take on</p>
+<p>See Projects tab at the top of the GH repo for up for grabs tickets. Please mark those you take on</p>
 <p>Submit a PR!</p>
 
 ### Get The Project Running
