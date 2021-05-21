@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PickAScene from './PickAScene'
-import NameAProject from './NameAProject'
+import PickAScene from './view/PickAScene'
+import NameAProject from './create/NameAProject'
 
 import {
   AppRegistry,

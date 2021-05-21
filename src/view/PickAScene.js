@@ -3,7 +3,6 @@ import {
   AppRegistry,
   Text,
   Button,
-  TextInput,
   View,
   StyleSheet,
   PixelRatio,
@@ -17,12 +16,16 @@ import {
 
 import { NativeRouter, Route, Link } from "react-router-native";
 import PickAPic from './PickAPic'
-import NameAScene from './NameAScene'
+import NameAScene from '../create/NameAScene'
+// var sharedProps = {
+//   apiKey:"API_KEY_HERE",
+// }
 
-export default class NameAProject extends Component {
+export default class PickAScene extends Component {
   constructor(props) {
     super();
     this.state = {
+      activeScene: null
     }
   }
 
@@ -30,36 +33,45 @@ goBack(){
   this.props.history.push('/')
 }
 
-//this is all the functinality to add a new project to state and immediatley route to
-//create a new scene in that project
+//on selecting a projec,this shows all the scenes in that project or allows you to create a new
   render() {
     return (
       <NativeRouter>
       <View style={localStyles.outer} >
          <View style={localStyles.inner} >
-       <Button title="back to project" onPress={() => this.goBack()}/>
           <Route exact path="/">
+          <Button title="back to project" onPress={() => this.goBack()}/>
           <Text style={localStyles.titleText}>
-           {"Form to Add a Project"}
+            {"Pick your scene or start a new"}
            </Text>
-           <TextInput 
-             placeholder="placeholder"
-             value={this.state.ProjectNameInput}
-             style={localStyles.buttons}
-             onChangeText={e => {this.props.handleChange(e)}}
-             />
-            
-            <TouchableHighlight style={localStyles.buttons}
-              onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}}
-              >
-              <Link to="/NameAScene">
+          {Object.keys(this.props.ObjofProje).map((el, i) => { 
+          return (
+           <TouchableHighlight key={i} style={localStyles.buttons}
+              onPress={()=> {(
+                this.setState((prevState) => ({
+                  activeScene : el
+                }))
+              )}}            
+             underlayColor={'#68a0ff'} >
+            <Link to="/pics">
+              <Text style={localStyles.buttonText}>{this.props.ObjofProje[el].description}</Text>
+            </Link>
+           </TouchableHighlight>
+          )})}
+           <TouchableHighlight style={localStyles.buttons}
+            underlayColor={'#68a0ff'} >
+            <Link to="/NameAScene">
               <Text style={localStyles.buttonText}>{"+"}</Text>
-              </Link >
-            </TouchableHighlight>
+            </Link>
+          </TouchableHighlight>
           </Route>
-          {/* create a scene route */}
-          <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
+          {/* select a projec to go to the list of images (pics) */}
+          <Route path="/pics" render={props => 
+           (<PickAPic {...props} updatePictures={this.props.updatePictures} ProjectNameInput={this.props.ProjectNameInput} Info={this.props.ObjofProje[this.state.activeScene]}/>)
+          }/>
+          {/* select "+" to route to create a scene */}
+             <Route path="/NameAScene" render={props => 
+           (<NameAScene {...props} updatePictures={this.props.updatePictures} DataForPic={this.props.ObjofProje[this.state.activeScene]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
         </View>
       </View>
@@ -78,12 +90,6 @@ var localStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems:'center',
     backgroundColor: "black",
-  },  littleText: {
-     paddingTop: 30,
-    paddingBottom: 20,
-    color:'#fff',
-    textAlign:'center',
-    fontSize : 10
   },
   inner: {
     flex : 1,
@@ -128,4 +134,4 @@ var localStyles = StyleSheet.create({
     borderColor: '#fff',
   }
 });
-module.exports = NameAProject
+module.exports = PickAScene

@@ -1,5 +1,5 @@
 import { AppRegistry } from 'react-native';
-import App from './App.js';
+import App from './src/App.js';
 import VRSelect from './VRSelect';
 
 AppRegistry.registerComponent('StoryboardAR3', () => App);

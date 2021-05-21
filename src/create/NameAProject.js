@@ -5,7 +5,6 @@ import {
   Button,
   TextInput,
   View,
-  Picker,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
@@ -17,16 +16,13 @@ import {
 } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
-import PickAPic from './PickAPic'
-import PickAScene from './PickAScene'
+import PickAPic from '../view/PickAPic'
+import NameAScene from './NameAScene'
 
-export default class NameAScene extends Component {
+export default class NameAProject extends Component {
   constructor(props) {
     super();
     this.state = {
-      intExt: 'INT',
-      location: '',
-      dayNight : 'Day'
     }
   }
 
@@ -34,61 +30,42 @@ goBack(){
   this.props.history.push('/')
 }
 
-//function that enables you to create the three params of a film scene 
-// (INTerior/EXTerior, location, time of day) routes to list of pics
+//this is all the functinality to add a new project to state and immediatley route to
+//create a new scene in that project
   render() {
     return (
       <NativeRouter>
       <View style={localStyles.outer} >
          <View style={localStyles.inner} >
+       <Button title="back to project" onPress={() => this.goBack()}/>
           <Route exact path="/">
-          <Button title="back to scene" onPress={() => this.goBack()}/>
           <Text style={localStyles.titleText}>
-            {"Add A Scene to Your New Project"}
+           {"Form to Add a Project"}
            </Text>
-           <Picker
-           style={{backgroundColor: 'white', width:'25%'}}
-           selectedValue={this.state.intExt}
-           onValueChange={(itemValue,itemIndex) => this.setState({intExt: itemValue})}
-           >
-            <Picker.Item label="INT" value="INT" />
-           <Picker.Item label="EXT" value="EXT" />
-         </Picker>
-        
            <TextInput 
-             placeholder="location"
+             placeholder="placeholder"
              value={this.state.ProjectNameInput}
              style={localStyles.buttons}
-             onChangeText={e => this.setState((prevState) => ({
-               location: e
-             }))}
+             onChangeText={e => {this.props.handleChange(e)}}
              />
-
-          <Picker  style={{backgroundColor: 'white', width:'25%'}}
-           selectedValue={this.state.dayNight}
-           onValueChange={(itemValue,itemIndex) => this.setState({dayNight: itemValue})}
-           >
-            <Picker.Item label="Day" value="Day" />
-           <Picker.Item label="Night" value="Night" />
-         </Picker>
+            
             <TouchableHighlight style={localStyles.buttons}
-              onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}
+              onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}}
               >
-              <Link to="/pics">
-              <Text style={localStyles.buttonText}>{"Create"}</Text>
+              <Link to="/NameAScene">
+              <Text style={localStyles.buttonText}>{"+"}</Text>
               </Link >
             </TouchableHighlight>
-         </Route>
-         {/* routes to your list of pics in that scene (which will be none) */}
-         <Route path="/pics" render={props => 
-           (<PickAPic {...props} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]}/>)
+          </Route>
+          {/* create a scene route */}
+          <Route path="/NameAScene" render={props => 
+           (<NameAScene {...props} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
         </View>
       </View>
     </NativeRouter>
     )
   }
-
 }
 
 var localStyles = StyleSheet.create({
@@ -101,6 +78,12 @@ var localStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems:'center',
     backgroundColor: "black",
+  },  littleText: {
+     paddingTop: 30,
+    paddingBottom: 20,
+    color:'#fff',
+    textAlign:'center',
+    fontSize : 10
   },
   inner: {
     flex : 1,
@@ -114,13 +97,6 @@ var localStyles = StyleSheet.create({
     color:'#fff',
     textAlign:'center',
     fontSize : 25
-  },
-  littleText: {
-     paddingTop: 30,
-    paddingBottom: 20,
-    color:'#fff',
-    textAlign:'center',
-    fontSize : 10
   },
   buttonText: {
     color:'#fff',
@@ -152,4 +128,4 @@ var localStyles = StyleSheet.create({
     borderColor: '#fff',
   }
 });
-module.exports = NameAScene
+module.exports = NameAProject
