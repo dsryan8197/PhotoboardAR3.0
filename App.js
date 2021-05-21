@@ -112,7 +112,7 @@ this.setState((prevState) => ({
          <View style={localStyles.inner} >
          <Route exact path="/">
           <Text style={localStyles.titleText}>
-             Select a current project or start a new one
+             {"Select a current project or start a new one"}
            </Text>
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
@@ -137,7 +137,7 @@ this.setState((prevState) => ({
                 </Link>
               </TouchableHighlight>
           </Route>
-          route for when you click an existing project
+          {/* route for when you click an existing project */}
           <Route path="/scene" render={props => 
           (<PickAScene {...props} updatePictures={this.updatePictures} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>

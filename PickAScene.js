@@ -42,7 +42,7 @@ goBack(){
           <Route exact path="/">
           <Button title="back to project" onPress={() => this.goBack()}/>
           <Text style={localStyles.titleText}>
-            Pick your scene or start a new
+            {"Pick your scene or start a new"}
            </Text>
           {Object.keys(this.props.ObjofProje).map((el, i) => { 
           return (

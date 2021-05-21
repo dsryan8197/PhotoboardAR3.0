@@ -44,7 +44,7 @@ goBack(){
           <Route exact path="/">
           <Button title="back to scene" onPress={() => this.goBack()}/>
           <Text style={localStyles.titleText}>
-            Add A Scene to Your New Project
+            {"Add A Scene to Your New Project"}
            </Text>
            <Picker
            style={{backgroundColor: 'white', width:'25%'}}

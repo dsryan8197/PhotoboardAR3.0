@@ -161,7 +161,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
       <Button title="back to scene" onPress={() => this.goBac()}/>
           <Route exact path="/">
           <Text style={localStyles.titleText}>
-           Select Your pic or start a new !
+           {"Select Your pic or start a new !"}
            </Text>
          {this.props.Info.images.map((el, i) => { 
           return (
@@ -216,7 +216,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
       >
       </Button>
       <Button
-      title='Character'
+      title="Character"
        key='character'
        onPress={()=> {(
        this.setState((prevState) => ({
@@ -244,7 +244,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
             underlayColor={'#68a0ff'} >
           </Button>
           <Text style={localStyles.titleText}>
-           Select Your models style
+           {"Select Your models style"}
            </Text>
        <ScrollView>
       {Display}
@@ -269,7 +269,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
             underlayColor={'#68a0ff'} >
           </Button>
           <Text style={localStyles.titleText}>
-           Select A Stance
+           {"Select A Stance"}
            </Text>
        <ScrollView>
         {stance}

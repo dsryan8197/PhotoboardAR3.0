@@ -40,7 +40,7 @@ goBack(){
        <Button title="back to project" onPress={() => this.goBack()}/>
           <Route exact path="/">
           <Text style={localStyles.titleText}>
-            Form to Add a Project
+           {"Form to Add a Project"}
            </Text>
            <TextInput 
              placeholder="placeholder"
