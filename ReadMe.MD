@@ -12,17 +12,16 @@
 <img src='./assets/finalGif2.gif' width=560 height=361/>
 </p> -->
 
-## Contribute To Our Project
-### Get PhotoboARd on your machine
-<p>Fork and clone the photoboARd repo from this repo</p>
-<p>See Projects tab at the top of the GH repo for up for grabs tickets. Please mark those you take on</p>
-<p>Submit a PR!</p>
+# photoboARd
+<h4>A Augmented Reality app to help filmmakers storyboard their films</h4>
 
-### Get The Project Running
-```js
-mpm install
-download the Viro Media App, swipe right and click on enter testbed
-npm start
-take the url and pass it into the testbed on Viro Media App to view your dev enviornment
-at any point shake your phone to reload the application
-```
+## Contribute
+<p>1. download the Viro Media App, swipe right and click on enter testbed</p>
+<p>2. Fork and clone photoboARd from this repo</p>
+<p>3. npm install</p>
+<p>4. npm start</p>
+<p>5. take the url from the cli and pass it into the testbed on Viro Media App to view your dev enviornment</p>
+<p>6. at any point shake your phone to reload the application</p>
+<p>7. Check out the Projects tab at the top of the page for open tickets. Please mark those you take on as 'in progress'</p>
+<p>8. Submit a PR!</p>
+<p>9. Create a github issue for any ideas or bugs</p>
