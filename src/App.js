@@ -51,13 +51,14 @@ export default class PickAProject extends Component {
 
 //adds a descrition to a created scene which then becomes the name of the scene as well
 AddSceneDescription = (project, intro, sceneName, outro) => {
+  alert(sceneName)
 this.setState((prevState) => ({
   ...prevState,
   ProjectObj: {
     ...prevState.ProjectObj,
     [project]: {
       ...prevState.ProjectObj[project],
-     [sceneName] : {
+    [sceneName]: {
        description: intro + ' ' + sceneName + ' ' + outro,
        images: []
      }
@@ -68,7 +69,8 @@ this.setState((prevState) => ({
 
 //this holds the typed onChange value of a project name when being created
 handleChange = (e) => {
-  const value = e;
+  // alert(value)
+  // const value = e;
   this.setState((prevState) => ({
     ...prevState,
     ProjectNameInput : e
@@ -97,13 +99,17 @@ this.setState((prevState) => ({
     [project] : {
       ...prevState.ProjectObj.[project],
       [Scene] : {
-        description: Scene,
+        description: [Scene],
         images: [...Img, imageURL]
       }
     }
   }
 }))
 }
+ pathDirect = e => {
+  this.props.history.push(e)
+ }
+
 //home page that shows all your projects and provides option to add a new project
   render() {
     return (
@@ -116,7 +122,7 @@ this.setState((prevState) => ({
            </Text>
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
-           <TouchableHighlight key={i} style={localStyles.buttons}
+              <Link to="/scene" key={i} style={localStyles.buttons}
               onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState, 
@@ -124,18 +130,13 @@ this.setState((prevState) => ({
                   ProjectNameInput: el
                 }))
               )}}
-              underlayColor={'#68a0ff'} >
-           <Link to="/scene">
+             >
               <Text style={localStyles.buttonText}>{el}</Text>
-          </Link>
-             </TouchableHighlight>
+             </Link>
           )})}
-             <TouchableHighlight style={localStyles.buttons}
-                underlayColor={'#68a0ff'} >
-                <Link to="/addAProject">
+                <Link to="/addAProject" style={localStyles.buttons}>
                 <Text style={localStyles.buttonText}>{"+"}</Text>
                 </Link>
-              </TouchableHighlight>
           </Route>
           {/* route for when you click an existing project */}
           <Route path="/scene" render={props => 

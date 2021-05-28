@@ -32,7 +32,6 @@ export default class PickAScene extends Component {
 goBack(){
   this.props.history.push('/')
 }
-
 //on selecting a projec,this shows all the scenes in that project or allows you to create a new
   render() {
     return (
@@ -46,32 +45,28 @@ goBack(){
            </Text>
           {Object.keys(this.props.ObjofProje).map((el, i) => { 
           return (
-           <TouchableHighlight key={i} style={localStyles.buttons}
-              onPress={()=> {(
+            <Link to="/pics" key={i} style={localStyles.buttons}
+            onPress={()=> {(
                 this.setState((prevState) => ({
+                  ...prevState,
                   activeScene : el
                 }))
-              )}}            
-             underlayColor={'#68a0ff'} >
-            <Link to="/pics">
+              )}}    
+              >
               <Text style={localStyles.buttonText}>{this.props.ObjofProje[el].description}</Text>
             </Link>
-           </TouchableHighlight>
           )})}
-           <TouchableHighlight style={localStyles.buttons}
-            underlayColor={'#68a0ff'} >
-            <Link to="/NameAScene">
+            <Link to="/NameAScene"  style={localStyles.buttons}>
               <Text style={localStyles.buttonText}>{"+"}</Text>
             </Link>
-          </TouchableHighlight>
           </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
-           (<PickAPic {...props} updatePictures={this.props.updatePictures} ProjectNameInput={this.props.ProjectNameInput} Info={this.props.ObjofProje[this.state.activeScene]}/>)
+           (<PickAPic {...props} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ProjectNameInput={this.props.ProjectNameInput} Info={this.props.ObjofProje[this.state.activeScene]}/>)
           }/>
           {/* select "+" to route to create a scene */}
              <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} updatePictures={this.props.updatePictures} DataForPic={this.props.ObjofProje[this.state.activeScene]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
+           (<NameAScene {...props} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
         </View>
       </View>

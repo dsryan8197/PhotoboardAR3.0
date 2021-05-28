@@ -33,7 +33,7 @@ export default class HelloWorldSceneAR extends Component {
 renderModels = () => {
 let arr = []
 // this loops over all the selected models in state and creates components for them
- alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
+//  alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
 for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
   arr.push(
     <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >

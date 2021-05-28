@@ -48,18 +48,13 @@ goBack(){
              style={localStyles.buttons}
              onChangeText={e => {this.props.handleChange(e)}}
              />
-            
-            <TouchableHighlight style={localStyles.buttons}
-              onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}}
-              >
-              <Link to="/NameAScene">
+              <Link to="/NameAScene" onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttons}>
               <Text style={localStyles.buttonText}>{"+"}</Text>
               </Link >
-            </TouchableHighlight>
           </Route>
           {/* create a scene route */}
           <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
+           (<NameAScene {...props} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} activeProject={this.props.Info.activeProject} Info={this.props.Info}/>)
           }/>
         </View>
       </View>
@@ -129,3 +124,49 @@ var localStyles = StyleSheet.create({
   }
 });
 module.exports = NameAProject
+
+
+
+// WHAT goes into nameAProject from App IT WORK              what goes into pickascene from app
+//  ObjofProje={this.state.ProjectObj}                           
+//                                                       ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
+//   // handleChange={this.handleChange} Info={this.state}/>)
+
+
+
+// // name a proj -> name a scene WORKS! look at name a project
+// updatePictures={                                       this.props.updatePictures}
+// ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]}
+// ProjectNameInput={                                                        this.props.ProjectNameInput}
+// AddSceneDescription={this.props.AddSceneDescription}
+// activeProject={                                     this.props.Info.activeProject}
+// Info={this.props.Info}/>)
+
+
+
+
+
+
+// when left gets passed in to name a scene it gets passed to pic well. when its passed from pick a scene
+
+// // name ascene -> pics works!
+// DataForPic={this.props.DataForPic}
+// // updatePictures={this.props.updatePictures}
+// Info={this.props.ObjofProje[this.state.location]} //just the scene object then go to the images of that scene
+
+// Info2={this.props.Info}
+// projectNameInput={this.props.ProjectNameInput}
+// activeProject={this.props.activeProject}/>)
+
+
+// make pic a scene props -> name a scene                                 dont touch beyond     name a scene -> select a pic NAME A SCENE HAS LOCATION (SCENE NAME)
+// //     DataForPic={this.props.ObjofProje[this.state.activeScene]}           DataForPic={this.props.DataForPic} UNUSED    Info={this.props.ObjofProje[this.state.location]} ********so name a scene gives a location!!!!
+// look more like name a proj props -> name a scene
+// // ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]}
+
+
+
+// so maybe all i need to do is remove activeScene from PICASCENE and give it a activeproject instead
+// to accept in pic a pic  
+//  DataForPic={this.props.DataForPic}
+// Info={this.props.ObjofProje[this.state.location]} 

@@ -34,6 +34,7 @@ goBack(){
   this.props.history.push('/')
 }
 
+ 
 //function that enables you to create the three params of a film scene 
 // (INTerior/EXTerior, location, time of day) routes to list of pics
   render() {
@@ -71,17 +72,14 @@ goBack(){
             <Picker.Item label="Day" value="Day" />
            <Picker.Item label="Night" value="Night" />
          </Picker>
-            <TouchableHighlight style={localStyles.buttons}
-              onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}
-              >
-              <Link to="/pics">
+              <Link to="/pics" style={localStyles.buttons}
+              onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}>
               <Text style={localStyles.buttonText}>{"Create"}</Text>
               </Link >
-            </TouchableHighlight>
          </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
          <Route path="/pics" render={props => 
-           (<PickAPic {...props} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]}/>)
+           (<PickAPic {...props} DataForPic={this.props.DataForPic} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]} projectNameInput={this.props.ProjectNameInput} activeProject={this.props.activeProject}/>)
           }/>
         </View>
       </View>
@@ -153,3 +151,18 @@ var localStyles = StyleSheet.create({
   }
 });
 module.exports = NameAScene
+
+
+// // wheres its right side oming from
+// // pic a scene to name a scene
+// activeProject={         this.props.Info.activeProject}
+// updatePictures={        this.props.updatePictures}
+//     DataForPic={this.props.ObjofProje[this.state.activeScene]}
+// ProjectNameInput={       this.props.ProjectNameInput}
+// AddSceneDescription={this.props.AddSceneDescription}
+// Info={this.props.Info}/>
+
+
+
+// name a scene to pic a pic should stay the same. do not touch name a scene
+// touch what goes in. not from name a projct but pick a scene

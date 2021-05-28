@@ -105,21 +105,27 @@ _takeScreenshot() {
       }
     }
     let currentCount = this.state.screenshot_count + 1;
-    this.setState({
+    this.setState((prevState) => ({
+      ...prevState,
       videoUrl: "file://" + retDict.url,
       haveSavedMedia : true,
       playPreview : true,
       previewType: kPreviewTypePhoto,
       screenshot_count: currentCount,
-    });
+    }));
   });
 }
 //async function that invokes screenshot function then updates state with a new image
 shot() {
  this._takeScreenshot()
+ alert(this.props.activeProject) //undefined again!
  setTimeout(() => {
-  this.props.updatePictures(this.state.videoUrl, this.props.Info.description, this.props.Info.images, this.props.ProjectNameInput)
+  this.props.updatePictures(this.state.videoUrl, this.props.Info.description, this.props.Info.images, this.props.activeProject)
  }, 2000)
+}
+
+componentDidMount() {
+  alert(JSON.stringify(this.props.Info))
 }
 
 //this render method returns 4 possible functions
@@ -174,6 +180,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
             style={localStyles.buttons}
             onPress={()=> {(
                 this.setState((prevState) => ({
+                  ...prevState,
                   navigator : 'AR'
                 }))
               )}} 
