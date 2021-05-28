@@ -41,7 +41,7 @@ for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
        source={(this.props.sceneNavigator.viroAppProps[i][0])}
        resources={[(this.props.sceneNavigator.viroAppProps[i][1])]}
        position={[0,-2,-2]}
-       scale={[1.4, 1.4, 1.4]}
+       scale={[2.5, 2.5, 2.5]}
        type="GLTF" />
      </ViroNode>
   )}
@@ -60,8 +60,8 @@ return [arr]
            <Viro3DObject
             source={require('../finalModels/Fall/AutumnManA.002.gltf')}
             resources={[require('../finalModels/Fall/AutumnManA.002_data.bin')]}
-            position={[0,-2,-2]}
-            scale={[1.4, 1.4, 1.4]}
+            position={[0,-2.5,-1]}
+            scale={[2.5, 2.5, 2.5]}
             type="GLTF" />
         </ViroNode>
         {/* function on line 33 that creates all the selected models */}

@@ -165,6 +165,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
       <View style={localStyles.outer} >
          <View style={localStyles.inner} >
       <Button title="back to scene" onPress={() => this.goBac()}/>
+         <Button title="Delete(TrashCan)" onPress={()=>{alert('delete')}}/>
           <Route exact path="/">
           <Text style={localStyles.titleText}>
            {"Select Your pic or start a new !"}
@@ -187,6 +188,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
             underlayColor={'#68a0ff'} >
               <Text style={localStyles.buttonText}>{"+"}</Text>
           </TouchableHighlight>
+          <Button title="Download button" onPress={()=>{alert('download')}}/>
           </Route>
         </View>
       </View>

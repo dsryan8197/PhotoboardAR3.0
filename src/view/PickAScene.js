@@ -40,6 +40,7 @@ goBack(){
          <View style={localStyles.inner} >
           <Route exact path="/">
           <Button title="back to project" onPress={() => this.goBack()}/>
+          <Button title="Delete(TrashCan)" onPress={()=>{alert('delete')}}/>
           <Text style={localStyles.titleText}>
             {"Pick your scene or start a new"}
            </Text>
@@ -59,6 +60,7 @@ goBack(){
             <Link to="/NameAScene"  style={localStyles.buttons}>
               <Text style={localStyles.buttonText}>{"+"}</Text>
             </Link>
+           <Button title="Download button" onPress={()=>{alert('download')}}/>
           </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 

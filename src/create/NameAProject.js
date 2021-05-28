@@ -50,7 +50,7 @@ goBack(){
              />
               <Link to="/NameAScene" onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttons}>
               <Text style={localStyles.buttonText}>{"+"}</Text>
-              </Link >
+              </Link>
           </Route>
           {/* create a scene route */}
           <Route path="/NameAScene" render={props => 

@@ -117,6 +117,7 @@ this.setState((prevState) => ({
       <View style={localStyles.outer} >
          <View style={localStyles.inner} >
          <Route exact path="/">
+         <Button title="Delete(TrashCan)" onPress={()=>{alert('delete')}}/>
           <Text style={localStyles.titleText}>
              {"Select a current project or start a new one"}
            </Text>
