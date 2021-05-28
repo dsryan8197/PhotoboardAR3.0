@@ -13,7 +13,7 @@
 </p> -->
 
 # photoboARd
-<h4>A Augmented Reality app to help filmmakers storyboard their films</h4>
+<h4>an Augmented Reality app to help filmmakers storyboard their films</h4>
 
 ## Contribute
 <p>1. download the Viro Media App, swipe right and click on enter testbed</p>
@@ -38,7 +38,7 @@ NameAScene          |
 
 (PickAPic.js conditionally renders 4 components for
  -list of pics(images)
- -AR visualizer (also connected otHlloWorldSceneAR.js)
+ -AR visualizer (also connected HlloWorldSceneAR.js)
  -Component of a dozen model selections
  -Component of a dozen stance selections)        
 
