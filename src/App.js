@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PickAScene from './view/PickAScene'
 import NameAProject from './create/NameAProject'
+// import NavigationBar from 'react-native-navigation-bar';
+import trash from '../trashicon2.png'
+// import { BsFillTrashFill } from 'react-icons/fa';
 
 import {
   AppRegistry,
@@ -9,6 +12,7 @@ import {
   View,
   StyleSheet,
   PixelRatio,
+  Image,
   TouchableHighlight,
 } from 'react-native';
 
@@ -114,13 +118,13 @@ this.setState((prevState) => ({
   render() {
     return (
     <NativeRouter>
-      <View style={localStyles.outer} >
+      <Route exact path="/">
          <View style={localStyles.inner} >
-         <Route exact path="/">
-         <Button title="Delete(TrashCan)" onPress={()=>{alert('delete')}}/>
-          <Text style={localStyles.titleText}>
-             {"Select a current project or start a new one"}
-           </Text>
+         <View style={localStyles.outer}>
+            <Text style={localStyles.titleText}>Films</Text>
+            <Image style={localStyles.Modelbuttons} source={trash}></Image>
+         </View>
+         <View style={localStyles.viewforobjects} >
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
               <Link to="/scene" key={i} style={localStyles.buttons}
@@ -132,13 +136,18 @@ this.setState((prevState) => ({
                 }))
               )}}
              >
-              <Text style={localStyles.buttonText}>{el}</Text>
+              <Text style={localStyles.titleText}>{el}</Text>
              </Link>
           )})}
-                <Link to="/addAProject" style={localStyles.buttons}>
+                <Link to="/addAProject" style={localStyles.buttonsplus}>
                 <Text style={localStyles.buttonText}>{"+"}</Text>
                 </Link>
-          </Route>
+          </View>
+        </View>
+        <View style={localStyles.outer}>
+        </View>
+      </Route>
+
           {/* route for when you click an existing project */}
           <Route path="/scene" render={props => 
           (<PickAScene {...props} updatePictures={this.updatePictures} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
@@ -147,8 +156,7 @@ this.setState((prevState) => ({
           <Route path="/addAProject" render={props => 
           (<NameAProject {...props} updatePictures={this.updatePictures} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
           }/>
-        </View>
-      </View>
+       
     </NativeRouter>
     )
   }
@@ -160,40 +168,68 @@ var localStyles = StyleSheet.create({
     backgroundColor: "black",
   },
   outer : {
-    flex : 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '10%',
     flexDirection: 'row',
-    alignItems:'center',
-    backgroundColor: "black",
+    backgroundColor: "#8A4FFF",
   },
   inner: {
     flex : 1,
     flexDirection: 'column',
     alignItems:'center',
-    backgroundColor: "black",
+    backgroundColor: "#FFFFFF",
+  },
+  viewforobjects : {
+    // justifyContent: 'center',
+    width: '100%',
+    alignItems:'center',
+    justifyContent: 'center',
+    paddingBottom: '10%',
+    height: '100%',
   },
   titleText: {
-    paddingTop: 30,
-    paddingBottom: 20,
-    color:'#fff',
+    // paddingTop: 30,
+    // left: '50%',
+    // paddingBottom: 20,
+    color:'white',
     textAlign:'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
     fontSize : 25
   },
   buttonText: {
-    color:'#fff',
+    color:'#C3BEF7',
     textAlign:'center',
-    fontSize : 20
+    fontSize : 30
+  },
+  deleteButton : {
+    color: 'white'
   },
   buttons : {
     height: 80,
-    width: 150,
+    width: '70%',
     paddingTop:20,
     paddingBottom:20,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor:'#68a0cf',
+    backgroundColor:'#C3BEF7',
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
+    borderWidth: 5,
+    borderColor: 'rgba(0,0,0,.2)',
+  },
+   buttonsplus : {
+    height: 80,
+    width: 80,
+    borderRadius: 80/2,
+    paddingTop:10,
+    paddingBottom:20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor:'#FFFFFF',
+    borderWidth: 8,
+    borderColor: '#C3BEF7',
   },
   exitButton : {
     height: 50,
@@ -206,7 +242,16 @@ var localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
-  }
+  },
+   Modelbuttons : {
+    height: 25,
+    width: 25,
+    paddingTop:20,
+    paddingBottom:20,
+    // marginLeft: '0%',
+    marginTop: 10,
+    marginBottom: 10,
+  },
 });
 
 module.exports = PickAProject

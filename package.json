@@ -8,9 +8,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "font-awesome": "^4.7.0",
     "react": "16.8.3",
+    "react-icons": "^4.2.0",
     "react-native": "0.59.9",
     "react-native-file-viewer": "^2.1.4",
+    "react-native-navbar": "^2.1.0",
+    "react-native-navigation-bar": "^0.2.1",
     "react-native-view-shot": "^3.1.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",

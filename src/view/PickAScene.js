@@ -5,9 +5,14 @@ import {
   Button,
   View,
   StyleSheet,
+  Image,
   PixelRatio,
   TouchableHighlight,
 } from 'react-native';
+
+import trash from '../../trashicon2.png'
+import download from '../../downArrow.png'
+import back from '../../backArrow.png'
 
 import {
   ViroVRSceneNavigator,
@@ -36,14 +41,15 @@ goBack(){
   render() {
     return (
       <NativeRouter>
-      <View style={localStyles.outer} >
+      {/* <View style={localStyles.outer} > */}
          <View style={localStyles.inner} >
           <Route exact path="/">
-          <Button title="back to project" onPress={() => this.goBack()}/>
-          <Button title="Delete(TrashCan)" onPress={()=>{alert('delete')}}/>
-          <Text style={localStyles.titleText}>
-            {"Pick your scene or start a new"}
-           </Text>
+          <View style={localStyles.outer}>
+           <Image style={localStyles.Modelbuttons} onPress={() => this.goBack()} source={back}></Image>
+            <Text style={localStyles.titleText}>Scene</Text>
+            <Image style={localStyles.Modelbuttons} source={trash}></Image>
+          </View>
+          <View style={localStyles.viewforobjects} >
           {Object.keys(this.props.ObjofProje).map((el, i) => { 
           return (
             <Link to="/pics" key={i} style={localStyles.buttons}
@@ -54,13 +60,14 @@ goBack(){
                 }))
               )}}    
               >
-              <Text style={localStyles.buttonText}>{this.props.ObjofProje[el].description}</Text>
+              <Text style={localStyles.titleText}>{this.props.ObjofProje[el].description}</Text>
             </Link>
           )})}
-            <Link to="/NameAScene"  style={localStyles.buttons}>
+            <Link to="/NameAScene"  style={localStyles.buttonsplus}>
               <Text style={localStyles.buttonText}>{"+"}</Text>
             </Link>
-           <Button title="Download button" onPress={()=>{alert('download')}}/>
+           <Image style={localStyles.Modelbuttons} onPress={()=>{alert('download')}} source={download}></Image>
+          </View>
           </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
@@ -71,7 +78,9 @@ goBack(){
            (<NameAScene {...props} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
         </View>
+      <View style={localStyles.outer}>
       </View>
+      {/* </View> */}
     </NativeRouter>
     )
   }
@@ -83,40 +92,64 @@ var localStyles = StyleSheet.create({
     backgroundColor: "black",
   },
   outer : {
-    flex : 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '10%',
     flexDirection: 'row',
-    alignItems:'center',
-    backgroundColor: "black",
+    backgroundColor: "#8A4FFF",
   },
   inner: {
     flex : 1,
+    width: '100%',
     flexDirection: 'column',
     alignItems:'center',
-    backgroundColor: "black",
+    backgroundColor: "#FFFFFF",
   },
   titleText: {
-    paddingTop: 30,
-    paddingBottom: 20,
-    color:'#fff',
+    color:'white',
     textAlign:'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
     fontSize : 25
   },
   buttonText: {
-    color:'#fff',
+    color:'#C3BEF7',
     textAlign:'center',
-    fontSize : 20
+    fontSize : 30
   },
   buttons : {
     height: 80,
-    width: 150,
+    width: '70%',
     paddingTop:20,
     paddingBottom:20,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor:'#68a0cf',
+    backgroundColor:'#C3BEF7',
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
+    borderWidth: 5,
+    borderColor: 'rgba(0,0,0,.2)',
+  },
+  buttonsplus : {
+      height: 80,
+    width: 80,
+    borderRadius: 80/2,
+    paddingTop:10,
+    paddingBottom:20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor:'#FFFFFF',
+    borderWidth: 8,
+    borderColor: '#C3BEF7',
+  },
+   Modelbuttons : {
+    height: 25,
+    width: 25,
+    paddingTop:20,
+    paddingBottom:20,
+    // marginLeft: '0%',
+    marginTop: 10,
+    marginBottom: 10,
   },
   exitButton : {
     height: 50,
@@ -129,6 +162,14 @@ var localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
-  }
+  },
+  viewforobjects : {
+    // justifyContent: 'center',
+    width: '100%',
+    alignItems:'center',
+    justifyContent: 'center',
+    paddingBottom: '10%',
+    height: '100%',
+  },
 });
 module.exports = PickAScene

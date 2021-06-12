@@ -162,11 +162,13 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
   if (this.state.navigator == 'PIC') {
      return (
       <NativeRouter>
-      <View style={localStyles.outer} >
-         <View style={localStyles.inner} >
+      {/* <View style={localStyles.outer} > */}
+         {/* <View style={localStyles.inner} > */}
+        <View style={localStyles.outer}>
       <Button title="back to scene" onPress={() => this.goBac()}/>
          <Button title="Delete(TrashCan)" onPress={()=>{alert('delete')}}/>
-          <Route exact path="/">
+         </View>
+         <Route exact path="/">
           <Text style={localStyles.titleText}>
            {"Select Your pic or start a new !"}
            </Text>
@@ -190,8 +192,8 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
           </TouchableHighlight>
           <Button title="Download button" onPress={()=>{alert('download')}}/>
           </Route>
-        </View>
-      </View>
+        {/* </View>
+      </View> */}
     </NativeRouter>
     )
   }
@@ -241,7 +243,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
   if (this.state.navigator == 'Characters') {
   return (
 <NativeRouter>
-       <View style={localStyles.outer}  >
+       {/* <View style={localStyles.outer}  > */}
          <Button
             style={localStyles.buttons}
             title="back"
@@ -258,7 +260,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
        <ScrollView>
       {Display}
        </ScrollView>
-        </View>
+        {/* </View> */}
      </NativeRouter>
   )
   }
@@ -266,7 +268,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
   if (this.state.navigator == 'Positions') {
     return (
     <NativeRouter>
-       <View style={localStyles.outer} >
+       {/* <View style={localStyles.outer} > */}
          <Button
             style={localStyles.buttons}
             title="back"
@@ -283,7 +285,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
        <ScrollView>
         {stance}
         </ScrollView> 
-       </View>
+       {/* </View> */}
    </NativeRouter>
     )}
 }}
@@ -303,17 +305,20 @@ var localStyles = StyleSheet.create({
     width: '100%',
     height: '90%'
   },
-  outer : {
-    flex : 1,
+ outer : {
+    // flex : 1,
+    width: '100%',
+    height: '10%',
     flexDirection: 'row',
     alignItems:'center',
-    backgroundColor: "black",
+    backgroundColor: "#8A4FFF",
+    // : 'center',
   },
   inner: {
     flex : 1,
     flexDirection: 'column',
     alignItems:'center',
-    backgroundColor: "black",
+    backgroundColor: "#FFFFFF",
   },
   titleText: {
     paddingTop: 30,
