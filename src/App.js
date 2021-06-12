@@ -55,7 +55,7 @@ export default class PickAProject extends Component {
 
 //adds a descrition to a created scene which then becomes the name of the scene as well
 AddSceneDescription = (project, intro, sceneName, outro) => {
-  alert(sceneName)
+  // alert(sceneName)
 this.setState((prevState) => ({
   ...prevState,
   ProjectObj: {

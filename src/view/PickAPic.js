@@ -123,14 +123,14 @@ _takeScreenshot() {
 //async function that invokes screenshot function then updates state with a new image
 shot() {
  this._takeScreenshot()
- alert(this.props.activeProject) //undefined again!
+//  alert(this.props.activeProject) //undefined again!
  setTimeout(() => {
   this.props.updatePictures(this.state.videoUrl, this.props.Info.description, this.props.Info.images, this.props.activeProject)
  }, 2000)
 }
 
 componentDidMount() {
-  alert(JSON.stringify(this.props.Info))
+  // alert(JSON.stringify(this.props.Info))
 }
 
 //this render method returns 4 possible functions
@@ -144,7 +144,7 @@ componentDidMount() {
   for (let i = 0; i < modelArray.length; i++) {
     Display.push(
       <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
-        <Image style={localStyles.Modelbuttons} source={modelArray[i].image}></Image>
+        <Image style={localStyles.models} source={modelArray[i].image}></Image>
       </TouchableHighlight>
     )
   }
@@ -159,7 +159,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
       navigator : 'AR',
       Viro: [...prevState.Viro, [modelArray[this.state.chosenModel].gltf[i], modelArray[this.state.chosenModel].bin[i]] ]
        })))}}>
-        <Image style={localStyles.Modelbuttons} source={ modelArray[this.state.chosenModel].models[i]}></Image>
+        <Image style={localStyles.models} source={ modelArray[this.state.chosenModel].models[i]}></Image>
       </TouchableHighlight>
   )}
 }
@@ -211,16 +211,17 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
      <NativeRouter>
     <View style={localStyles.inner} >
        <View style={localStyles.outer}>
-         <Image
-            style={localStyles.Modelbuttons}
-            source={back}
-            onPress={()=> {(
+       <TouchableHighlight onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
                   navigator : 'PIC'
                 }))
-              )}} >
+              )}}>
+         <Image
+            style={localStyles.Modelbuttons}
+            source={back} >
           </Image>
+       </TouchableHighlight>
         </View>
        <View style={localStyles.ARNav} >
           {/* this is the AR view that is found in helloWorldSceneAR.js */}
@@ -233,23 +234,25 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
         </View>
         </View>
          <View style={localStyles.outer}>
+      <TouchableHighlight onPress={()=> {(
+          this.setState((prevState) => ({
+           navigator : 'Characters'
+           })))}}>
          <Image
         //  title="Character"
         style={localStyles.character}
          source={character}
-          key='character'
-          onPress={()=> {(
-          this.setState((prevState) => ({
-           navigator : 'Characters'
-           })))}}>
+          key='character' >
       </Image>  
+      </TouchableHighlight>
+      <TouchableHighlight onPress={()=> this.shot()}>
         <Image
         style={localStyles.buttonsplus}
         source={camera}
         key="camera_button"
-        onPress={()=> this.shot()}
        >
        </Image>
+       </TouchableHighlight>
         
       </View>
      </NativeRouter>
@@ -260,24 +263,26 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
   if (this.state.navigator == 'Characters') {
   return (
 <NativeRouter>
-       {/* <View style={localStyles.outer}  > */}
-         <Button
-            style={localStyles.buttons}
-            title="back"
-            onPress={()=> {(
+        <View style={localStyles.outer}>
+          <TouchableHighlight  onPress={()=> {(
                 this.setState((prevState) => ({
                   navigator : 'AR'
                 }))
-              )}} 
-            underlayColor={'#68a0ff'} >
-          </Button>
-          <Text style={localStyles.titleText}>
-           {"Select Your models style"}
-           </Text>
-       <ScrollView>
+              )}}>
+          <Image 
+          style={localStyles.Modelbuttons}
+          source={back}></Image>
+         </TouchableHighlight>
+         <Text style={localStyles.titleText}>Characters</Text>
+            {/* <Image style={localStyles.Modelbuttons} source={trash}></Image> */}
+         </View>
+       <ScrollView contentContainerStyle={localStyles.modelobjects}>
       {Display}
        </ScrollView>
         {/* </View> */}
+        <View style={localStyles.outer}>
+            {/* <Image style={localStyles.Modelbuttons} onPress={()=>{alert('download')}} source={download}></Image> */}
+        </View>
      </NativeRouter>
   )
   }
@@ -285,21 +290,19 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
   if (this.state.navigator == 'Positions') {
     return (
     <NativeRouter>
-       {/* <View style={localStyles.outer} > */}
-         <Button
-            style={localStyles.buttons}
-            title="back"
-            onPress={()=> {(
+       <View style={localStyles.outer} >
+       <TouchableHighlight onPress={()=> {(
                 this.setState((prevState) => ({
                   navigator : 'Characters'
                 }))
-              )}} 
-            underlayColor={'#68a0ff'} >
-          </Button>
-          <Text style={localStyles.titleText}>
-           {"Select A Stance"}
-           </Text>
-       <ScrollView>
+              )}} >
+         <Image
+            style={localStyles.Modelbuttons} source={back}>
+          </Image>
+          </TouchableHighlight>
+          <Text style={localStyles.titleText}>Poses</Text>
+         </View>
+       <ScrollView contentContainerStyle={localStyles.modelobjects}>
         {stance}
         </ScrollView> 
        {/* </View> */}
@@ -353,6 +356,15 @@ var localStyles = StyleSheet.create({
     textAlign:'center',
     fontSize : 20
   },
+  models: {
+    height: 200,
+    width: 200,
+    marginTop: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 5,
+    borderColor: 'rgba(0,0,0,.2)'
+  },
   Modelbuttons : {
    height: 25,
     width: 25,
@@ -405,6 +417,14 @@ var localStyles = StyleSheet.create({
     justifyContent: 'center',
     paddingBottom: '10%',
     height: '100%',
+  },
+   modelobjects : {
+    // justifyContent: 'center',
+    // width: '100%',
+    alignItems:'center',
+    justifyContent: 'center',
+    paddingBottom: '10%',
+    // height: '50%',
   },
 });
 module.exports = PickAPic
