@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import modelArray from '../../modelScript'
+import trash from '../../trashicon2.png'
+import download from '../../downArrow.png'
+import back from '../../backArrow.png'
+import camera from '../../camerasnapshot.png'
+import character from '../../charactericon.png'
 
 import {
   AppRegistry,
@@ -162,16 +167,15 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
   if (this.state.navigator == 'PIC') {
      return (
       <NativeRouter>
+        <Route exact path="/">
       {/* <View style={localStyles.outer} > */}
-         {/* <View style={localStyles.inner} > */}
+         <View style={localStyles.inner} >
         <View style={localStyles.outer}>
-      <Button title="back to scene" onPress={() => this.goBac()}/>
-         <Button title="Delete(TrashCan)" onPress={()=>{alert('delete')}}/>
+          <Image style={localStyles.Modelbuttons} onPress={() => this.goBac()} source={back}></Image>
+            <Text style={localStyles.titleText}>Snapshot</Text>
+            <Image style={localStyles.Modelbuttons} source={trash}></Image>
          </View>
-         <Route exact path="/">
-          <Text style={localStyles.titleText}>
-           {"Select Your pic or start a new !"}
-           </Text>
+          <View style={localStyles.viewforobjects} >
          {this.props.Info.images.map((el, i) => { 
           return (
            <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ activePic : el })) )}} >
@@ -190,8 +194,12 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
             underlayColor={'#68a0ff'} >
               <Text style={localStyles.buttonText}>{"+"}</Text>
           </TouchableHighlight>
-          <Button title="Download button" onPress={()=>{alert('download')}}/>
-          </Route>
+       </View>
+       </View>
+        <View style={localStyles.outer}>
+            <Image style={localStyles.Modelbuttons} onPress={()=>{alert('download')}} source={download}></Image>
+        </View>
+      </Route>
         {/* </View>
       </View> */}
     </NativeRouter>
@@ -201,18 +209,20 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
   else if (this.state.navigator == 'AR') { 
      return (
      <NativeRouter>
-       <View style={localStyles.ARNav} >
-         <Button
-            style={localStyles.buttons}
-            title="back"
+    <View style={localStyles.inner} >
+       <View style={localStyles.outer}>
+         <Image
+            style={localStyles.Modelbuttons}
+            source={back}
             onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
                   navigator : 'PIC'
                 }))
-              )}} 
-            underlayColor={'#68a0ff'} >
-          </Button>
+              )}} >
+          </Image>
+        </View>
+       <View style={localStyles.ARNav} >
           {/* this is the AR view that is found in helloWorldSceneAR.js */}
          <ViroARSceneNavigator
              ref={this._setARNavigatorRef} 
@@ -220,21 +230,28 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
             initialScene={{scene: ARScene}}
             viroAppProps={this.state.Viro} 
             />
-      <Button
-      title="snapshot"
-       key="camera_button"
-       onPress={()=> this.shot()}
-      >
-      </Button>
-      <Button
-      title="Character"
-       key='character'
-       onPress={()=> {(
-       this.setState((prevState) => ({
-        navigator : 'Characters'
-       })))}}>
-      </Button>
         </View>
+        </View>
+         <View style={localStyles.outer}>
+         <Image
+        //  title="Character"
+        style={localStyles.character}
+         source={character}
+          key='character'
+          onPress={()=> {(
+          this.setState((prevState) => ({
+           navigator : 'Characters'
+           })))}}>
+      </Image>  
+        <Image
+        style={localStyles.buttonsplus}
+        source={camera}
+        key="camera_button"
+        onPress={()=> this.shot()}
+       >
+       </Image>
+        
+      </View>
      </NativeRouter>
 
     );
@@ -306,16 +323,20 @@ var localStyles = StyleSheet.create({
     height: '90%'
   },
  outer : {
-    // flex : 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '100%',
     height: '10%',
     flexDirection: 'row',
-    alignItems:'center',
     backgroundColor: "#8A4FFF",
-    // : 'center',
   },
-  inner: {
+  character : {
+    width: 25,
+    height: 25,
+  },
+ inner: {
     flex : 1,
+    width: '100%',
     flexDirection: 'column',
     alignItems:'center',
     backgroundColor: "#FFFFFF",
@@ -333,28 +354,37 @@ var localStyles = StyleSheet.create({
     fontSize : 20
   },
   Modelbuttons : {
-    height: 180,
-    width: 150,
+   height: 25,
+    width: 25,
     paddingTop:20,
     paddingBottom:20,
+    // marginLeft: '0%',
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor:'#68a0cf',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
   },
   buttons : {
     height: 80,
-    width: 150,
+    width: '70%',
     paddingTop:20,
     paddingBottom:20,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor:'#68a0cf',
+    backgroundColor:'#C3BEF7',
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
+    borderWidth: 5,
+    borderColor: 'rgba(0,0,0,.2)',
+  },
+  buttonsplus : {
+    height: 80,
+    width: 80,
+    borderRadius: 80/2,
+    paddingTop:20,
+    paddingBottom:20,
+    marginTop: 10,
+    marginBottom: 10,
+    // backgroundColor:'#FFFFFF',
+    borderWidth: 8,
+    borderColor: '#FFFFFF',
   },
   exitButton : {
     height: 50,
@@ -367,6 +397,14 @@ var localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
-  }
+  },
+  viewforobjects : {
+    // justifyContent: 'center',
+    width: '100%',
+    alignItems:'center',
+    justifyContent: 'center',
+    paddingBottom: '10%',
+    height: '100%',
+  },
 });
 module.exports = PickAPic

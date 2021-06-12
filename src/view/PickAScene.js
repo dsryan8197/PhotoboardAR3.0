@@ -41,9 +41,9 @@ goBack(){
   render() {
     return (
       <NativeRouter>
+       <Route exact path="/">
       {/* <View style={localStyles.outer} > */}
          <View style={localStyles.inner} >
-          <Route exact path="/">
           <View style={localStyles.outer}>
            <Image style={localStyles.Modelbuttons} onPress={() => this.goBack()} source={back}></Image>
             <Text style={localStyles.titleText}>Scene</Text>
@@ -66,7 +66,10 @@ goBack(){
             <Link to="/NameAScene"  style={localStyles.buttonsplus}>
               <Text style={localStyles.buttonText}>{"+"}</Text>
             </Link>
-           <Image style={localStyles.Modelbuttons} onPress={()=>{alert('download')}} source={download}></Image>
+          </View>
+           </View>
+          <View style={localStyles.outer}>
+            <Image style={localStyles.Modelbuttons} onPress={()=>{alert('download')}} source={download}></Image>
           </View>
           </Route>
           {/* select a projec to go to the list of images (pics) */}
@@ -77,9 +80,6 @@ goBack(){
              <Route path="/NameAScene" render={props => 
            (<NameAScene {...props} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
-        </View>
-      <View style={localStyles.outer}>
-      </View>
       {/* </View> */}
     </NativeRouter>
     )
