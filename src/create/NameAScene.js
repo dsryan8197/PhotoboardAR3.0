@@ -4,12 +4,16 @@ import {
   Text,
   Button,
   TextInput,
+  Image,
   View,
   Picker,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
 } from 'react-native';
+import trash from '../../trashicon2.png'
+import download from '../../downArrow.png'
+import back from '../../backArrow.png'
 
 import {
   ViroVRSceneNavigator,
@@ -40,13 +44,13 @@ goBack(){
   render() {
     return (
       <NativeRouter>
-      <View style={localStyles.outer} >
-         <View style={localStyles.inner} >
-          <Route exact path="/">
-          <Button title="back to scene" onPress={() => this.goBack()}/>
-          <Text style={localStyles.titleText}>
-            {"Add A Scene to Your New Project"}
-           </Text>
+      <Route exact path="/">
+      <View style={localStyles.inner} >
+         <View style={localStyles.outer} >
+          <Image style={localStyles.Modelbuttons} onPress={() => this.goBack()} source={back}></Image>      
+            <Text style={localStyles.titleText}>Create A Scene</Text>
+        </View>
+       <View style={localStyles.createSCene} >
            <Picker
            style={{backgroundColor: 'white', width:'25%'}}
            selectedValue={this.state.intExt}
@@ -55,11 +59,11 @@ goBack(){
             <Picker.Item label="INT" value="INT" />
            <Picker.Item label="EXT" value="EXT" />
          </Picker>
-        
+
            <TextInput 
              placeholder="location"
              value={this.state.ProjectNameInput}
-             style={localStyles.buttons}
+             style={{paddingLeft: 10, paddingRight: 10}}
              onChangeText={e => this.setState((prevState) => ({
                location: e
              }))}
@@ -72,17 +76,23 @@ goBack(){
             <Picker.Item label="Day" value="Day" />
            <Picker.Item label="Night" value="Night" />
          </Picker>
+         </View>
+          <View style={localStyles.createSCene}>
               <Link to="/pics" style={localStyles.buttons}
               onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}>
               <Text style={localStyles.buttonText}>{"Create"}</Text>
               </Link >
+          </View>
+        {/* </View> */}
+
+            </View>
+           <View style={localStyles.outer}>
+          </View>
          </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
          <Route path="/pics" render={props => 
            (<PickAPic {...props} DataForPic={this.props.DataForPic} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]} projectNameInput={this.props.ProjectNameInput} activeProject={this.props.activeProject}/>)
           }/>
-        </View>
-      </View>
     </NativeRouter>
     )
   }
@@ -95,22 +105,25 @@ var localStyles = StyleSheet.create({
     backgroundColor: "black",
   },
   outer : {
-    flex : 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '10%',
     flexDirection: 'row',
-    alignItems:'center',
-    backgroundColor: "black",
+    backgroundColor: "#8A4FFF",
   },
   inner: {
     flex : 1,
+    width: '100%',
     flexDirection: 'column',
     alignItems:'center',
-    backgroundColor: "black",
+    backgroundColor: "#FFFFFF",
   },
   titleText: {
-    paddingTop: 30,
-    paddingBottom: 20,
-    color:'#fff',
+     color:'white',
     textAlign:'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
     fontSize : 25
   },
   littleText: {
@@ -123,19 +136,40 @@ var localStyles = StyleSheet.create({
   buttonText: {
     color:'#fff',
     textAlign:'center',
-    fontSize : 20
+    fontSize : 30
   },
   buttons : {
     height: 80,
-    width: 150,
+    width: '70%',
     paddingTop:20,
     paddingBottom:20,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor:'#68a0cf',
+    backgroundColor:'#C3BEF7',
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
+    borderWidth: 5,
+    borderColor: 'rgba(0,0,0,.2)',
+  },
+  buttonsplus : {
+      height: 80,
+    width: 80,
+    borderRadius: 80/2,
+    paddingTop:10,
+    paddingBottom:20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor:'#FFFFFF',
+    borderWidth: 8,
+    borderColor: '#C3BEF7',
+  },
+   Modelbuttons : {
+    height: 25,
+    width: 25,
+    paddingTop:20,
+    paddingBottom:20,
+    // marginLeft: '0%',
+    marginTop: 10,
+    marginBottom: 10,
   },
   exitButton : {
     height: 50,
@@ -148,7 +182,25 @@ var localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
-  }
+  },
+  viewforobjects : {
+    // justifyContent: 'center',
+    width: '100%',
+    alignItems:'center',
+    justifyContent: 'center',
+    paddingBottom: '10%',
+    height: '100%',
+  },
+   createSCene : {
+    // justifyContent: 'center',
+    paddingTop: '30%',
+    width: '50%',
+    flexDirection: 'row',
+    alignItems:'center',
+    justifyContent: 'center',
+    paddingBottom: '10%',
+    // height: '40%',
+  },
 });
 module.exports = NameAScene
 

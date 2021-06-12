@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import trash from '../../trashicon2.png'
+import download from '../../downArrow.png'
+import back from '../../backArrow.png'
+
 import {
   AppRegistry,
   Text,
   Button,
   TextInput,
+  Image,
   View,
   StyleSheet,
   PixelRatio,
@@ -35,29 +40,36 @@ goBack(){
   render() {
     return (
       <NativeRouter>
-      <View style={localStyles.outer} >
-         <View style={localStyles.inner} >
-       <Button title="back to project" onPress={() => this.goBack()}/>
-          <Route exact path="/">
+      <Route exact path="/">
+      <View style={localStyles.inner} >
+         <View style={localStyles.outer} >
+          <Image style={localStyles.Modelbuttons} onPress={() => this.goBack()} source={back}></Image>      
           <Text style={localStyles.titleText}>
-           {"Form to Add a Project"}
+           Form to Add a Project
            </Text>
+           </View>
+           <View style={localStyles.createSCene}>
            <TextInput 
              placeholder="placeholder"
              value={this.state.ProjectNameInput}
              style={localStyles.buttons}
              onChangeText={e => {this.props.handleChange(e)}}
              />
+             </View>
+            <View style={localStyles.createSCene}>
               <Link to="/NameAScene" onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttons}>
-              <Text style={localStyles.buttonText}>{"+"}</Text>
+              <Text style={localStyles.buttonText}>+</Text>
               </Link>
+             </View>
+            </View>
+             <View style={localStyles.outer}>
+          </View>
           </Route>
           {/* create a scene route */}
           <Route path="/NameAScene" render={props => 
            (<NameAScene {...props} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} activeProject={this.props.Info.activeProject} Info={this.props.Info}/>)
           }/>
-        </View>
-      </View>
+       
     </NativeRouter>
     )
   }
@@ -69,11 +81,14 @@ var localStyles = StyleSheet.create({
     backgroundColor: "black",
   },
   outer : {
-    flex : 1,
+   justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '10%',
     flexDirection: 'row',
-    alignItems:'center',
-    backgroundColor: "black",
-  },  littleText: {
+    backgroundColor: "#8A4FFF",
+  }, 
+  littleText: {
      paddingTop: 30,
     paddingBottom: 20,
     color:'#fff',
@@ -81,34 +96,56 @@ var localStyles = StyleSheet.create({
     fontSize : 10
   },
   inner: {
-    flex : 1,
+       flex : 1,
+    width: '100%',
     flexDirection: 'column',
     alignItems:'center',
-    backgroundColor: "black",
+    backgroundColor: "#FFFFFF",
   },
   titleText: {
-    paddingTop: 30,
-    paddingBottom: 20,
-    color:'#fff',
+    color:'white',
     textAlign:'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
     fontSize : 25
   },
   buttonText: {
     color:'#fff',
     textAlign:'center',
-    fontSize : 20
+    fontSize : 30
   },
   buttons : {
-    height: 80,
-    width: 150,
+   height: 80,
+    width: '70%',
     paddingTop:20,
     paddingBottom:20,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor:'#68a0cf',
+    backgroundColor:'#C3BEF7',
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
+    borderWidth: 5,
+    borderColor: 'rgba(0,0,0,.2)',
+  },
+ buttonsplus : {
+      height: 80,
+    width: 80,
+    borderRadius: 80/2,
+    paddingTop:10,
+    paddingBottom:20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor:'#FFFFFF',
+    borderWidth: 8,
+    borderColor: '#C3BEF7',
+  },
+   Modelbuttons : {
+    height: 25,
+    width: 25,
+    paddingTop:20,
+    paddingBottom:20,
+    // marginLeft: '0%',
+    marginTop: 10,
+    marginBottom: 10,
   },
   exitButton : {
     height: 50,
@@ -121,7 +158,25 @@ var localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
-  }
+  },
+  viewforobjects : {
+    // justifyContent: 'center',
+    width: '100%',
+    alignItems:'center',
+    justifyContent: 'center',
+    paddingBottom: '10%',
+    height: '100%',
+  },
+   createSCene : {
+    // justifyContent: 'center',
+    paddingTop: '30%',
+    width: '50%',
+    flexDirection: 'row',
+    alignItems:'center',
+    justifyContent: 'center',
+    paddingBottom: '10%',
+    // height: '40%',
+  },
 });
 module.exports = NameAProject
 
