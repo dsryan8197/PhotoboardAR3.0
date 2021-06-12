@@ -45,21 +45,23 @@ goBack(){
          <View style={localStyles.outer} >
           <Image style={localStyles.Modelbuttons} onPress={() => this.goBack()} source={back}></Image>      
           <Text style={localStyles.titleText}>
-           Form to Add a Project
+           Name Your Film
            </Text>
            </View>
+           <View style={localStyles.viewforobjects}>
            <View style={localStyles.createSCene}>
            <TextInput 
-             placeholder="placeholder"
+             placeholder="Title"
              value={this.state.ProjectNameInput}
-             style={localStyles.buttons}
+             style={localStyles.insertfilmname}
              onChangeText={e => {this.props.handleChange(e)}}
              />
              </View>
             <View style={localStyles.createSCene}>
-              <Link to="/NameAScene" onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttons}>
+              <Link to="/NameAScene" onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
               <Text style={localStyles.buttonText}>+</Text>
               </Link>
+             </View>
              </View>
             </View>
              <View style={localStyles.outer}>
@@ -110,9 +112,19 @@ var localStyles = StyleSheet.create({
     fontSize : 25
   },
   buttonText: {
-    color:'#fff',
+   color:'#C3BEF7',
     textAlign:'center',
     fontSize : 30
+  },
+  insertfilmname : {
+    height: 80, 
+    width: '70%',
+    alignItems: 'center',
+    borderBottomColor:'rgba(0,0,0,.2)',
+    borderBottomWidth: 2,
+    textAlign: 'center',
+    marginBottom: 30
+
   },
   buttons : {
    height: 80,
@@ -127,7 +139,7 @@ var localStyles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,.2)',
   },
  buttonsplus : {
-      height: 80,
+  height: 80,
     width: 80,
     borderRadius: 80/2,
     paddingTop:10,
@@ -169,12 +181,12 @@ var localStyles = StyleSheet.create({
   },
    createSCene : {
     // justifyContent: 'center',
-    paddingTop: '30%',
+    // paddingTop: '30%',
     width: '50%',
     flexDirection: 'row',
     alignItems:'center',
     justifyContent: 'center',
-    paddingBottom: '10%',
+    // paddingBottom: '10%',
     // height: '40%',
   },
 });
