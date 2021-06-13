@@ -37,47 +37,42 @@ goBack(){
 
 //this is all the functinality to add a new project to state and immediatley route to
 //create a new scene in that project
-  render() {
-    return (
-      <NativeRouter>
-      <Route exact path="/">
+render() {
+  return (
+    <NativeRouter>
+     <Route exact path="/">
       <View style={localStyles.inner} >
-         <View style={localStyles.outer} >
-         <TouchableHighlight onPress={() => this.goBack()}>
-          <Image style={localStyles.Modelbuttons} source={back}></Image>      
-         </TouchableHighlight>
-          <Text style={localStyles.titleText}>
-           Name Your Film
-           </Text>
-           </View>
-           <View style={localStyles.viewforobjects}>
+        <View style={localStyles.outer} >
+           <TouchableHighlight onPress={() => this.goBack()}>
+             <Image style={localStyles.Modelbuttons} source={back}></Image>      
+           </TouchableHighlight>
+          <Text style={localStyles.titleText}>Name Your Film</Text>
+       </View>
+         <View style={localStyles.viewforobjects}>
            <View style={localStyles.createSCene}>
-           <TextInput 
+             <TextInput 
              placeholder="Title"
              value={this.state.ProjectNameInput}
              style={localStyles.insertfilmname}
              onChangeText={e => {this.props.handleChange(e)}}
              />
+           </View>
+             <View style={localStyles.createSCene}>
+               <Link to="/NameAScene" onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
+                 <Text style={localStyles.buttonText}>+</Text>
+               </Link>
              </View>
-            <View style={localStyles.createSCene}>
-              <Link to="/NameAScene" onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
-              <Text style={localStyles.buttonText}>+</Text>
-              </Link>
-             </View>
-             </View>
-            </View>
-             <View style={localStyles.outer}>
-          </View>
-          </Route>
-          {/* create a scene route */}
-          <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} activeProject={this.props.Info.activeProject} Info={this.props.Info}/>)
-          }/>
-       
-    </NativeRouter>
-    )
-  }
-}
+        </View>
+     </View>
+   <View style={localStyles.outer}>
+   </View>
+      </Route>
+      {/* create a scene route */}
+       <Route path="/NameAScene" render={props => 
+         (<NameAScene {...props} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} activeProject={this.props.Info.activeProject} Info={this.props.Info}/>)
+       }/>   
+</NativeRouter>
+)}}
 
 var localStyles = StyleSheet.create({
   viroContainer :{
@@ -157,7 +152,6 @@ var localStyles = StyleSheet.create({
     width: 25,
     paddingTop:20,
     paddingBottom:20,
-    // marginLeft: '0%',
     marginTop: 10,
     marginBottom: 10,
   },
@@ -174,7 +168,6 @@ var localStyles = StyleSheet.create({
     borderColor: '#fff',
   },
   viewforobjects : {
-    // justifyContent: 'center',
     width: '100%',
     alignItems:'center',
     justifyContent: 'center',
@@ -182,60 +175,10 @@ var localStyles = StyleSheet.create({
     height: '100%',
   },
    createSCene : {
-    // justifyContent: 'center',
-    // paddingTop: '30%',
     width: '50%',
     flexDirection: 'row',
     alignItems:'center',
     justifyContent: 'center',
-    // paddingBottom: '10%',
-    // height: '40%',
   },
 });
 module.exports = NameAProject
-
-
-
-// WHAT goes into nameAProject from App IT WORK              what goes into pickascene from app
-//  ObjofProje={this.state.ProjectObj}                           
-//                                                       ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
-//   // handleChange={this.handleChange} Info={this.state}/>)
-
-
-
-// // name a proj -> name a scene WORKS! look at name a project
-// updatePictures={                                       this.props.updatePictures}
-// ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]}
-// ProjectNameInput={                                                        this.props.ProjectNameInput}
-// AddSceneDescription={this.props.AddSceneDescription}
-// activeProject={                                     this.props.Info.activeProject}
-// Info={this.props.Info}/>)
-
-
-
-
-
-
-// when left gets passed in to name a scene it gets passed to pic well. when its passed from pick a scene
-
-// // name ascene -> pics works!
-// DataForPic={this.props.DataForPic}
-// // updatePictures={this.props.updatePictures}
-// Info={this.props.ObjofProje[this.state.location]} //just the scene object then go to the images of that scene
-
-// Info2={this.props.Info}
-// projectNameInput={this.props.ProjectNameInput}
-// activeProject={this.props.activeProject}/>)
-
-
-// make pic a scene props -> name a scene                                 dont touch beyond     name a scene -> select a pic NAME A SCENE HAS LOCATION (SCENE NAME)
-// //     DataForPic={this.props.ObjofProje[this.state.activeScene]}           DataForPic={this.props.DataForPic} UNUSED    Info={this.props.ObjofProje[this.state.location]} ********so name a scene gives a location!!!!
-// look more like name a proj props -> name a scene
-// // ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]}
-
-
-
-// so maybe all i need to do is remove activeScene from PICASCENE and give it a activeproject instead
-// to accept in pic a pic  
-//  DataForPic={this.props.DataForPic}
-// Info={this.props.ObjofProje[this.state.location]} 

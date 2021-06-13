@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PickAScene from './view/PickAScene'
 import NameAProject from './create/NameAProject'
-// import NavigationBar from 'react-native-navigation-bar';
 import trash from '../trashicon2.png'
-// import { BsFillTrashFill } from 'react-icons/fa';
 
 import {
   AppRegistry,
@@ -23,9 +21,6 @@ import {
 } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
-// var sharedProps = {
-//   apiKey:"API_KEY_HERE",
-// }
 
 export default class PickAProject extends Component {
   constructor(props) {
@@ -56,7 +51,6 @@ export default class PickAProject extends Component {
 
 //adds a descrition to a created scene which then becomes the name of the scene as well
 AddSceneDescription = (project, intro, sceneName, outro) => {
-  // alert(sceneName)
 this.setState((prevState) => ({
   ...prevState,
   ProjectObj: {
@@ -74,8 +68,6 @@ this.setState((prevState) => ({
 
 //this holds the typed onChange value of a project name when being created
 handleChange = (e) => {
-  // alert(value)
-  // const value = e;
   this.setState((prevState) => ({
     ...prevState,
     ProjectNameInput : e
@@ -121,46 +113,40 @@ this.setState((prevState) => ({
     <NativeRouter>
       <Route exact path="/">
          <View style={localStyles.inner} >
-         <View style={localStyles.outer}>
-            <Text style={localStyles.titleText}>Films</Text>
-           <Image style={localStyles.Modelbuttons} source={trash}></Image>
-         </View>
+           <View style={localStyles.outer}>
+             <Text style={localStyles.titleText}>Films</Text>
+             <Image style={localStyles.Modelbuttons} source={trash}></Image>
+           </View>
          <View style={localStyles.viewforobjects} >
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
-              <Link to="/scene" key={i} style={localStyles.buttons}
-              onPress={()=> {(
+              <Link to="/scene" key={i} style={localStyles.buttons} onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState, 
                   activeProject : el,
                   ProjectNameInput: el
-                }))
-              )}}
-             >
+                })))}}>
               <Text style={localStyles.titleText}>{el}</Text>
              </Link>
           )})}
-                <Link to="/addAProject" style={localStyles.buttonsplus}>
+              <Link to="/addAProject" style={localStyles.buttonsplus}>
                 <Text style={localStyles.buttonText}>{"+"}</Text>
-                </Link>
+               </Link>
           </View>
         </View>
-        <View style={localStyles.outer}>
-        </View>
+       <View style={localStyles.outer}>
+       </View>
       </Route>
-
           {/* route for when you click an existing project */}
           <Route path="/scene" render={props => 
-          (<PickAScene {...props} updatePictures={this.updatePictures} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
+          (<PickAScene {...props} updatePictures={this.updatePictures} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} Draggable={this.state[this.state.activeProject]} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>
           {/* route for when you click "+" add a new project */}
           <Route path="/addAProject" render={props => 
           (<NameAProject {...props} updatePictures={this.updatePictures} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
           }/>
     </NativeRouter>
-    )
-  }
-}
+    )}}
 
 var localStyles = StyleSheet.create({
   viroContainer :{
@@ -182,7 +168,6 @@ var localStyles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   viewforobjects : {
-    // justifyContent: 'center',
     width: '100%',
     alignItems:'center',
     justifyContent: 'center',
@@ -190,9 +175,6 @@ var localStyles = StyleSheet.create({
     height: '100%',
   },
   titleText: {
-    // paddingTop: 30,
-    // left: '50%',
-    // paddingBottom: 20,
     color:'white',
     textAlign:'center',
     borderColor: '#C3BEF7',
@@ -249,7 +231,6 @@ var localStyles = StyleSheet.create({
     paddingTop:20,
     left: '95%',
     paddingBottom:20,
-    // marginLeft: '0%',
     marginTop: 10,
     marginBottom: 10,
   },

@@ -31,48 +31,44 @@ export default class PickAScene extends Component {
     super();
     this.state = {
       activeScene: null
-    }
-  }
+  }}
 
 goBack(){
   this.props.history.push('/')
 }
+
 //on selecting a projec,this shows all the scenes in that project or allows you to create a new
   render() {
     return (
       <NativeRouter>
        <Route exact path="/">
-      {/* <View style={localStyles.outer} > */}
          <View style={localStyles.inner} >
-          <View style={localStyles.outer}>
-          <TouchableHighlight onPress={() => this.goBack()}>
-           <Image style={localStyles.Modelbuttons} source={back}></Image>
-          </TouchableHighlight>
-            <Text style={localStyles.titleText}>Scene</Text>
-            <Image style={localStyles.Modelbuttons} source={trash}></Image>
+           <View style={localStyles.outer}>
+             <TouchableHighlight onPress={() => this.goBack()}>
+               <Image style={localStyles.Modelbuttons} source={back}></Image>
+             </TouchableHighlight>
+             <Text style={localStyles.titleText}>Scene</Text>
+             <Image style={localStyles.Modelbuttons} source={trash}></Image>
           </View>
           <View style={localStyles.viewforobjects} >
-          {Object.keys(this.props.ObjofProje).map((el, i) => { 
-          return (
-            <Link to="/pics" key={i} style={localStyles.buttons}
-            onPress={()=> {(
+            {Object.keys(this.props.ObjofProje).map((el, i) => { 
+             return (
+               <Link to="/pics" key={i} style={localStyles.buttons} onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
                   activeScene : el
-                }))
-              )}}    
-              >
-              <Text style={localStyles.titleText}>{this.props.ObjofProje[el].description}</Text>
-            </Link>
-          )})}
+                })))}}>
+                 <Text style={localStyles.titleText}>{this.props.ObjofProje[el].description}</Text>
+                </Link>
+            )})}
             <Link to="/NameAScene"  style={localStyles.buttonsplus}>
               <Text style={localStyles.buttonText}>{"+"}</Text>
             </Link>
-          </View>
-           </View>
-          <View style={localStyles.outer}>
-            <Image style={localStyles.Modelbuttons} onPress={()=>{alert('download')}} source={download}></Image>
-          </View>
+        </View>
+      </View>
+      <View style={localStyles.outer}>
+         <Image style={localStyles.Modelbuttons} onPress={()=>{alert('download')}} source={download}></Image>
+      </View>
           </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
@@ -82,11 +78,8 @@ goBack(){
              <Route path="/NameAScene" render={props => 
            (<NameAScene {...props} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
-      {/* </View> */}
     </NativeRouter>
-    )
-  }
-}
+  )}}
 
 var localStyles = StyleSheet.create({
   viroContainer :{
@@ -166,7 +159,6 @@ var localStyles = StyleSheet.create({
     borderColor: '#fff',
   },
   viewforobjects : {
-    // justifyContent: 'center',
     width: '100%',
     alignItems:'center',
     justifyContent: 'center',

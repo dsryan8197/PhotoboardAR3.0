@@ -31,36 +31,34 @@ export default class NameAScene extends Component {
       intExt: 'INT',
       location: '',
       dayNight : 'Day'
-    }
-  }
+}}
 
 goBack(){
   this.props.history.push('/')
 }
 
- 
 //function that enables you to create the three params of a film scene 
 // (INTerior/EXTerior, location, time of day) routes to list of pics
-  render() {
-    return (
-      <NativeRouter>
+render() {
+  return (
+    <NativeRouter>
       <Route exact path="/">
-      <View style={localStyles.inner} >
-         <View style={localStyles.outer} >
-         <TouchableHighlight onPress={() => this.goBack()}>
-          <Image style={localStyles.Modelbuttons} source={back}></Image>     
-          </TouchableHighlight> 
+         <View style={localStyles.inner} >
+           <View style={localStyles.outer} >
+             <TouchableHighlight onPress={() => this.goBack()}>
+                <Image style={localStyles.Modelbuttons} source={back}></Image>     
+             </TouchableHighlight> 
             <Text style={localStyles.titleText}>Create A Scene</Text>
-        </View>
-       <View style={localStyles.createSCene} >
+           </View>
+         <View style={localStyles.createSCene} >
            <Picker
            style={{backgroundColor: 'white', width:'25%', paddingRight: 20}}
            selectedValue={this.state.intExt}
            onValueChange={(itemValue,itemIndex) => this.setState({intExt: itemValue})}
            >
             <Picker.Item label="INT" value="INT" />
-           <Picker.Item label="EXT" value="EXT" />
-         </Picker>
+            <Picker.Item label="EXT" value="EXT" />
+           </Picker>
 
            <TextInput 
              placeholder="location"
@@ -71,34 +69,29 @@ goBack(){
              }))}
              />
 
-          <Picker  style={{backgroundColor: 'white', paddingRight: 20, width:'25%'}}
-           selectedValue={this.state.dayNight}
-           onValueChange={(itemValue,itemIndex) => this.setState({dayNight: itemValue})}
-           >
-            <Picker.Item label="Day" value="Day" />
-           <Picker.Item label="Night" value="Night" />
-         </Picker>
+            <Picker  style={{backgroundColor: 'white', paddingRight: 20, width:'25%'}}
+              selectedValue={this.state.dayNight}
+              onValueChange={(itemValue,itemIndex) => this.setState({dayNight: itemValue})}
+             >
+             <Picker.Item label="Day" value="Day" />
+             <Picker.Item label="Night" value="Night" />
+          </Picker>
          </View>
-          {/* <View styles={localStyles.createSCene2} > */}
-              <Link to="/pics" style={localStyles.buttonsplus}
-              onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}>
-                <Text >+</Text>
-              </Link >
-          {/* </View> */}
+            <Link to="/pics" style={localStyles.buttonsplus}
+            onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}>
+              <Text >+</Text>
+            </Link >
         </View>
 
-           <View style={localStyles.outer}>
-          </View>
-         </Route>
+      <View style={localStyles.outer}>
+      </View>
+      </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
-         <Route path="/pics" render={props => 
-           (<PickAPic {...props} DataForPic={this.props.DataForPic} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]} projectNameInput={this.props.ProjectNameInput} activeProject={this.props.activeProject}/>)
-          }/>
+     <Route path="/pics" render={props => 
+       (<PickAPic {...props} DataForPic={this.props.DataForPic} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]} projectNameInput={this.props.ProjectNameInput} activeProject={this.props.activeProject}/>)
+     }/>
     </NativeRouter>
-    )
-  }
-
-}
+)}}
 
 var localStyles = StyleSheet.create({
   viroContainer :{
@@ -136,7 +129,6 @@ var localStyles = StyleSheet.create({
   },
   buttonText: {
     color:'#C3BEF7',
-    // textAlign:'center',
     fontSize : 30
   },
   buttons : {
@@ -154,13 +146,8 @@ var localStyles = StyleSheet.create({
   buttonsplus : {
     height: 80,
     width: 80,
-    // PaddingTop: '70%',
     borderRadius: 80/2,
-    // paddingTop:10,
-    // paddingBottom:20,
     marginTop: '50%',
-    // marginBottom: 10,
-    // marginTop: '70%',
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',
@@ -174,7 +161,6 @@ var localStyles = StyleSheet.create({
     width: 25,
     paddingTop:20,
     paddingBottom:20,
-    // marginLeft: '0%',
     marginTop: 10,
     marginBottom: 10,
   },
@@ -191,7 +177,6 @@ var localStyles = StyleSheet.create({
     borderColor: '#fff',
   },
   viewforobjects : {
-    // justifyContent: 'center',
     width: '100%',
     alignItems:'center',
     justifyContent: 'center',
@@ -201,17 +186,11 @@ var localStyles = StyleSheet.create({
    createSCene : {
     justifyContent: 'center',
     height: 150,
-    // borderWidth: 2,
-    // borderColor: 'black',
-    // paddingTop: '30%',
     top: '50%',
     width: '100%',
     flexDirection: 'row',
-    // alignContent: 'center',
     alignItems:'center',
-    // justifyContent: 'center',
     paddingBottom: '10%',
-    // height: '40%',
   },
   createSCene2 : {
     position: 'absolute',
@@ -219,30 +198,10 @@ var localStyles = StyleSheet.create({
     height: 150,
     borderWidth: 2,
     borderColor: 'black',
-    // paddingTop: '30%',
     top: '90%',
     width: '100%',
     flexDirection: 'row',
-    // alignContent: 'center',
     alignItems:'center',
-    // justifyContent: 'center',
-    // paddingBottom: '%',
-    // height: '40%',
   },
 });
 module.exports = NameAScene
-
-
-// // wheres its right side oming from
-// // pic a scene to name a scene
-// activeProject={         this.props.Info.activeProject}
-// updatePictures={        this.props.updatePictures}
-//     DataForPic={this.props.ObjofProje[this.state.activeScene]}
-// ProjectNameInput={       this.props.ProjectNameInput}
-// AddSceneDescription={this.props.AddSceneDescription}
-// Info={this.props.Info}/>
-
-
-
-// name a scene to pic a pic should stay the same. do not touch name a scene
-// touch what goes in. not from name a projct but pick a scene
