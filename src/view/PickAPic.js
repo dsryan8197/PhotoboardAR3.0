@@ -171,20 +171,22 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
       {/* <View style={localStyles.outer} > */}
          <View style={localStyles.inner} >
         <View style={localStyles.outer}>
-          <Image style={localStyles.Modelbuttons} onPress={() => this.goBac()} source={back}></Image>
+        <TouchableHighlight onPress={() => this.goBac()}>
+          <Image style={localStyles.Modelbuttons} source={back}></Image>
+          </TouchableHighlight>
             <Text style={localStyles.titleText}>Snapshot</Text>
             <Image style={localStyles.Modelbuttons} source={trash}></Image>
          </View>
           <View style={localStyles.viewforobjects} >
          {this.props.Info.images.map((el, i) => { 
           return (
-           <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ activePic : el })) )}} >
-             <Image style={localStyles.buttons} source={{ uri :el }}></Image>
+           <TouchableHighlight style={{width: '70%', paddingBottom: 20, height: 130, alignItems: 'center'}}key={i} onPress={()=> {(this.setState((prevState) => ({ activePic : el })) )}} >
+             <Image style={localStyles.imagesthing} source={{ uri :el }}></Image>
            </TouchableHighlight>
         
            )})}
            <TouchableHighlight
-            style={localStyles.buttons}
+            style={localStyles.buttonsplus}
             onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
@@ -192,7 +194,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
                 }))
               )}} 
             underlayColor={'#68a0ff'} >
-              <Text style={localStyles.buttonText}>{"+"}</Text>
+              <Text style={localStyles.buttonText}>+</Text>
           </TouchableHighlight>
        </View>
        </View>
@@ -352,9 +354,9 @@ var localStyles = StyleSheet.create({
     fontSize : 25
   },
   buttonText: {
-    color:'#fff',
+   color:'#C3BEF7',
     textAlign:'center',
-    fontSize : 20
+    fontSize : 30
   },
   models: {
     height: 200,
@@ -364,6 +366,15 @@ var localStyles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 5,
     borderColor: 'rgba(0,0,0,.2)'
+  },
+  pictures : {
+    height: 25,
+    width: '50%',
+    paddingTop:20,
+    paddingBottom:20,
+    // marginLeft: '0%',
+    marginTop: 10,
+    marginBottom: 10,
   },
   Modelbuttons : {
    height: 25,
@@ -386,17 +397,29 @@ var localStyles = StyleSheet.create({
     borderWidth: 5,
     borderColor: 'rgba(0,0,0,.2)',
   },
-  buttonsplus : {
-    height: 80,
-    width: 80,
-    borderRadius: 80/2,
+  imagesthing : {
+     height: '100%',
+    width: '100%',
     paddingTop:20,
     paddingBottom:20,
     marginTop: 10,
     marginBottom: 10,
-    // backgroundColor:'#FFFFFF',
+    backgroundColor:'#C3BEF7',
+    borderRadius: 10,
+    borderWidth: 5,
+    borderColor: 'rgba(0,0,0,.2)',
+  },
+  buttonsplus : {
+   height: 80,
+    width: 80,
+    borderRadius: 80/2,
+    paddingTop:10,
+    paddingBottom:20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor:'#FFFFFF',
     borderWidth: 8,
-    borderColor: '#FFFFFF',
+    borderColor: '#C3BEF7',
   },
   exitButton : {
     height: 50,

@@ -43,7 +43,9 @@ goBack(){
       <Route exact path="/">
       <View style={localStyles.inner} >
          <View style={localStyles.outer} >
-          <Image style={localStyles.Modelbuttons} onPress={() => this.goBack()} source={back}></Image>      
+         <TouchableHighlight onPress={() => this.goBack()}>
+          <Image style={localStyles.Modelbuttons} source={back}></Image>      
+         </TouchableHighlight>
           <Text style={localStyles.titleText}>
            Name Your Film
            </Text>
@@ -123,8 +125,8 @@ var localStyles = StyleSheet.create({
     borderBottomColor:'rgba(0,0,0,.2)',
     borderBottomWidth: 2,
     textAlign: 'center',
-    marginBottom: 30
-
+    marginBottom: 30,
+    fontSize: 20
   },
   buttons : {
    height: 80,

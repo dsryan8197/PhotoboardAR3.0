@@ -45,7 +45,9 @@ goBack(){
       {/* <View style={localStyles.outer} > */}
          <View style={localStyles.inner} >
           <View style={localStyles.outer}>
-           <Image style={localStyles.Modelbuttons} onPress={() => this.goBack()} source={back}></Image>
+          <TouchableHighlight onPress={() => this.goBack()}>
+           <Image style={localStyles.Modelbuttons} source={back}></Image>
+          </TouchableHighlight>
             <Text style={localStyles.titleText}>Scene</Text>
             <Image style={localStyles.Modelbuttons} source={trash}></Image>
           </View>

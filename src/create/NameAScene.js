@@ -47,12 +47,14 @@ goBack(){
       <Route exact path="/">
       <View style={localStyles.inner} >
          <View style={localStyles.outer} >
-          <Image style={localStyles.Modelbuttons} onPress={() => this.goBack()} source={back}></Image>      
+         <TouchableHighlight onPress={() => this.goBack()}>
+          <Image style={localStyles.Modelbuttons} source={back}></Image>     
+          </TouchableHighlight> 
             <Text style={localStyles.titleText}>Create A Scene</Text>
         </View>
        <View style={localStyles.createSCene} >
            <Picker
-           style={{backgroundColor: 'white', width:'25%'}}
+           style={{backgroundColor: 'white', width:'25%', paddingRight: 20}}
            selectedValue={this.state.intExt}
            onValueChange={(itemValue,itemIndex) => this.setState({intExt: itemValue})}
            >
@@ -63,13 +65,13 @@ goBack(){
            <TextInput 
              placeholder="location"
              value={this.state.ProjectNameInput}
-             style={{paddingLeft: 10, paddingRight: 10}}
+             style={{paddingLeft: 10, fontSize: 20, textAlign: 'center', width: '40%', paddingRight: 20}}
              onChangeText={e => this.setState((prevState) => ({
                location: e
              }))}
              />
 
-          <Picker  style={{backgroundColor: 'white', width:'25%'}}
+          <Picker  style={{backgroundColor: 'white', paddingRight: 20, width:'25%'}}
            selectedValue={this.state.dayNight}
            onValueChange={(itemValue,itemIndex) => this.setState({dayNight: itemValue})}
            >
@@ -77,15 +79,14 @@ goBack(){
            <Picker.Item label="Night" value="Night" />
          </Picker>
          </View>
-          <View style={localStyles.createSCene}>
-              <Link to="/pics" style={localStyles.buttons}
+          {/* <View styles={localStyles.createSCene2} > */}
+              <Link to="/pics" style={localStyles.buttonsplus}
               onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}>
-              <Text style={localStyles.buttonText}>{"Create"}</Text>
+                <Text >+</Text>
               </Link >
-          </View>
-        {/* </View> */}
+          {/* </View> */}
+        </View>
 
-            </View>
            <View style={localStyles.outer}>
           </View>
          </Route>
@@ -134,8 +135,8 @@ var localStyles = StyleSheet.create({
     fontSize : 10
   },
   buttonText: {
-    color:'#fff',
-    textAlign:'center',
+    color:'#C3BEF7',
+    // textAlign:'center',
     fontSize : 30
   },
   buttons : {
@@ -151,16 +152,22 @@ var localStyles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,.2)',
   },
   buttonsplus : {
-      height: 80,
+    height: 80,
     width: 80,
+    // PaddingTop: '70%',
     borderRadius: 80/2,
-    paddingTop:10,
-    paddingBottom:20,
-    marginTop: 10,
-    marginBottom: 10,
+    // paddingTop:10,
+    // paddingBottom:20,
+    marginTop: '50%',
+    // marginBottom: 10,
+    // marginTop: '70%',
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',
+    color:'#C3BEF7',
+    textAlign:'center',
+    justifyContent: 'center',
+    fontSize : 30
   },
    Modelbuttons : {
     height: 25,
@@ -192,13 +199,34 @@ var localStyles = StyleSheet.create({
     height: '100%',
   },
    createSCene : {
-    // justifyContent: 'center',
-    paddingTop: '30%',
-    width: '50%',
-    flexDirection: 'row',
-    alignItems:'center',
     justifyContent: 'center',
+    height: 150,
+    // borderWidth: 2,
+    // borderColor: 'black',
+    // paddingTop: '30%',
+    top: '50%',
+    width: '100%',
+    flexDirection: 'row',
+    // alignContent: 'center',
+    alignItems:'center',
+    // justifyContent: 'center',
     paddingBottom: '10%',
+    // height: '40%',
+  },
+  createSCene2 : {
+    position: 'absolute',
+    justifyContent: 'center',
+    height: 150,
+    borderWidth: 2,
+    borderColor: 'black',
+    // paddingTop: '30%',
+    top: '90%',
+    width: '100%',
+    flexDirection: 'row',
+    // alignContent: 'center',
+    alignItems:'center',
+    // justifyContent: 'center',
+    // paddingBottom: '%',
     // height: '40%',
   },
 });

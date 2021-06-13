@@ -10,6 +10,7 @@ import {
   Text,
   Button,
   View,
+  SafeAreaView,
   StyleSheet,
   PixelRatio,
   Image,
@@ -122,7 +123,7 @@ this.setState((prevState) => ({
          <View style={localStyles.inner} >
          <View style={localStyles.outer}>
             <Text style={localStyles.titleText}>Films</Text>
-            <Image style={localStyles.Modelbuttons} source={trash}></Image>
+           <Image style={localStyles.Modelbuttons} source={trash}></Image>
          </View>
          <View style={localStyles.viewforobjects} >
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
@@ -156,7 +157,6 @@ this.setState((prevState) => ({
           <Route path="/addAProject" render={props => 
           (<NameAProject {...props} updatePictures={this.updatePictures} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
           }/>
-       
     </NativeRouter>
     )
   }
@@ -247,6 +247,7 @@ var localStyles = StyleSheet.create({
     height: 25,
     width: 25,
     paddingTop:20,
+    left: '95%',
     paddingBottom:20,
     // marginLeft: '0%',
     marginTop: 10,
