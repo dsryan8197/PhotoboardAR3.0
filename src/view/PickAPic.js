@@ -136,10 +136,11 @@ shot() {
 //4. Position - this shows all the stances of a selected Character. Routes to AR view with that model rendered
 render() {
 //this is an array of all the model types thats looped over
+// alert(this.state.chosenModel)
   let Display = []
   for (let i = 0; i < modelArray.length; i++) {
     Display.push(
-      <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
+      <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
         <Image style={localStyles.models} source={modelArray[i].image}></Image>
       </TouchableHighlight>
    )}
@@ -148,7 +149,7 @@ const stance = []
 if (this.state.chosenModel) {
 for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
   stance.push(
-    <TouchableHighlight onPress={()=> {(this.setState((prevState) => ({ 
+    <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ 
       ...prevState,
       chosenStyle: modelArray[this.state.chosenModel].models[i], 
       navigator : 'AR',
@@ -169,7 +170,7 @@ if (this.state.navigator == 'PIC') {
             <Image style={localStyles.Modelbuttons} source={back}></Image>
           </TouchableHighlight>
           <Text style={localStyles.titleText}>Snapshot</Text>
-          <Image style={localStyles.Modelbuttons} source={trash}></Image>
+          {/* <Image style={localStyles.Modelbuttons} source={trash}></Image> */}
         </View>
          <View style={localStyles.viewforobjects} >
            {this.props.Info.images.map((el, i) => { 
@@ -191,7 +192,7 @@ if (this.state.navigator == 'PIC') {
          </View>
        </View>
         <View style={localStyles.outer}>
-            <Image style={localStyles.Modelbuttons} onPress={()=>{alert('download')}} source={download}></Image>
+            <Image style={localStyles.Modelbuttonsone} onPress={()=>{alert('download')}} source={download}></Image>
        </View>
       </Route>
     </NativeRouter>
@@ -199,6 +200,7 @@ if (this.state.navigator == 'PIC') {
   }
   // 2.
 else if (this.state.navigator == 'AR') { 
+  // alert(JSON.stringify(this.state.Viro))
 return (
  <NativeRouter>
   <View style={localStyles.inner} >
@@ -209,7 +211,7 @@ return (
          navigator : 'PIC'
           })))}}>
        <Image
-        style={localStyles.Modelbuttons}
+        style={localStyles.Modelbuttons2}
         source={back} >
        </Image>
       </TouchableHighlight>
@@ -256,7 +258,7 @@ if (this.state.navigator == 'Characters') {
                   navigator : 'AR'
                 })))}}>
               <Image 
-              style={localStyles.Modelbuttons}
+              style={localStyles.Modelbuttons3}
               source={back}></Image>
          </TouchableHighlight>
          <Text style={localStyles.titleText}>Characters</Text>
@@ -279,7 +281,7 @@ if (this.state.navigator == 'Positions') {
              navigator : 'Characters'
             })))}}>
          <Image
-            style={localStyles.Modelbuttons} source={back}>
+            style={localStyles.Modelbuttons4} source={back}>
          </Image>
       </TouchableHighlight>
       <Text style={localStyles.titleText}>Poses</Text>
@@ -287,6 +289,8 @@ if (this.state.navigator == 'Positions') {
      <ScrollView contentContainerStyle={localStyles.modelobjects}>
         {stance}
      </ScrollView> 
+     <View style={localStyles.outer}>
+        </View>
    </NativeRouter>
 )}}
 }
@@ -326,8 +330,8 @@ var localStyles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   titleText: {
-    paddingTop: 30,
-    paddingBottom: 20,
+    paddingTop: 35,
+    // paddingBottom: 20,
     color:'#fff',
     textAlign:'center',
     fontSize : 25
@@ -354,13 +358,49 @@ var localStyles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
   },
+  Modelbuttonsone : {
+    height: 25,
+    width: 25,
+    // paddingTop:35,
+    paddingBottom:20,
+    // marginLeft: '0%',
+    // marginTop: 10,
+    // marginBottom: 30,
+    position: 'absolute',
+    left: '85%',
+    top: '20%',
+  },
   Modelbuttons : {
    height: 25,
     width: 25,
-    paddingTop:20,
     paddingBottom:20,
-    marginTop: 10,
-    marginBottom: 10,
+    position: 'absolute',
+    right: 110,
+    top: 2,
+  },
+  Modelbuttons2 : {
+     height: 25,
+    width: 25,
+    paddingBottom:20,
+    position: 'absolute',
+    right: 160,
+    top: 2,
+  },
+  Modelbuttons3 : {
+     height: 25,
+    width: 25,
+    paddingBottom:20,
+    position: 'absolute',
+    right: 110,
+    top: 2,
+  },
+  Modelbuttons4 : {
+     height: 25,
+    width: 25,
+    paddingBottom:20,
+    position: 'absolute',
+    right: 125,
+    top: 2,
   },
   buttons : {
     height: 80,

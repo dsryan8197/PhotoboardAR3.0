@@ -36,7 +36,7 @@ let arr = []
 //  alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
 for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
   arr.push(
-    <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
+    <ViroNode key={i} position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
       <Viro3DObject
        source={(this.props.sceneNavigator.viroAppProps[i][0])}
        resources={[(this.props.sceneNavigator.viroAppProps[i][1])]}
@@ -51,8 +51,8 @@ return [arr]
   render() {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized} style={styles.ARNav}  >
-        <ViroText text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} />
-        <ViroBox position={[0, -.5, -2]} scale={[.3, .3, .1]} materials={["grid"]} animation={{name: "rotate", run: true, loop: true}}/>
+        {/* <ViroText text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} /> */}
+        {/* <ViroBox position={[0, -.5, -2]} scale={[.3, .3, .1]} materials={["grid"]} animation={{name: "rotate", run: true, loop: true}}/> */}
         <ViroAmbientLight color={"#aaaaaa"} />
         <ViroSpotLight innerAngle={5} outerAngle={90} direction={[0,-1,-.2]}
           position={[0, 3, 1]} color="#ffffff" castsShadow={true} />

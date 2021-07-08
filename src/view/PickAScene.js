@@ -10,6 +10,9 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
+// import FastImage from 'react-native-fast-image'
+
+
 import trash from '../../trashicon2.png'
 import download from '../../downArrow.png'
 import back from '../../backArrow.png'
@@ -48,7 +51,7 @@ goBack(){
                <Image style={localStyles.Modelbuttons} source={back}></Image>
              </TouchableHighlight>
              <Text style={localStyles.titleText}>Scene</Text>
-             <Image style={localStyles.Modelbuttons} source={trash}></Image>
+             {/* <Image style={localStyles.Modelbuttons} source={trash}></Image> */}
           </View>
           <View style={localStyles.viewforobjects} >
             {Object.keys(this.props.ObjofProje).map((el, i) => { 
@@ -58,7 +61,7 @@ goBack(){
                   ...prevState,
                   activeScene : el
                 })))}}>
-                 <Text style={localStyles.titleText}>{this.props.ObjofProje[el].description}</Text>
+                 <Text style={localStyles.titleText2}>{this.props.ObjofProje[el].description}</Text>
                 </Link>
             )})}
             <Link to="/NameAScene"  style={localStyles.buttonsplus}>
@@ -67,7 +70,7 @@ goBack(){
         </View>
       </View>
       <View style={localStyles.outer}>
-         <Image style={localStyles.Modelbuttons} onPress={()=>{alert('download')}} source={download}></Image>
+         <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
       </View>
           </Route>
           {/* select a projec to go to the list of images (pics) */}
@@ -102,6 +105,14 @@ var localStyles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   titleText: {
+    paddingTop: 35,
+    color:'white',
+    textAlign:'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25
+  },
+  titleText2: {
     color:'white',
     textAlign:'center',
     borderColor: '#C3BEF7',
@@ -140,11 +151,27 @@ var localStyles = StyleSheet.create({
    Modelbuttons : {
     height: 25,
     width: 25,
-    paddingTop:20,
+    // paddingTop:35,
     paddingBottom:20,
     // marginLeft: '0%',
-    marginTop: 10,
-    marginBottom: 10,
+    // marginTop: 10,
+    // marginBottom: 30,
+    position: 'absolute',
+    right: 120,
+    top: 2,
+    // justifyContent: 'flex-start',
+  },
+   Modelbuttons2 : {
+    height: 25,
+    width: 25,
+    // paddingTop:20,
+    // paddingBottom:10,
+    // marginLeft: '0%',
+    // marginTop: 10,
+    // marginBottom: 10,
+    position: 'absolute',
+    left: '85%',
+    top: '20%',
   },
   exitButton : {
     height: 50,

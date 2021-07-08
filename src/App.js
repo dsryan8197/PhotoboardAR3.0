@@ -115,7 +115,7 @@ this.setState((prevState) => ({
          <View style={localStyles.inner} >
            <View style={localStyles.outer}>
              <Text style={localStyles.titleText}>Films</Text>
-             <Image style={localStyles.Modelbuttons} source={trash}></Image>
+             {/* <Image style={localStyles.Modelbuttons} source={trash}></Image> */}
            </View>
          <View style={localStyles.viewforobjects} >
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
@@ -126,7 +126,7 @@ this.setState((prevState) => ({
                   activeProject : el,
                   ProjectNameInput: el
                 })))}}>
-              <Text style={localStyles.titleText}>{el}</Text>
+              <Text style={localStyles.titleText2}>{el}</Text>
              </Link>
           )})}
               <Link to="/addAProject" style={localStyles.buttonsplus}>
@@ -175,6 +175,15 @@ var localStyles = StyleSheet.create({
     height: '100%',
   },
   titleText: {
+    paddingTop: 35,
+    color:'white',
+    textAlign:'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25
+  },
+  titleText2: {
+    // paddingTop: 10,
     color:'white',
     textAlign:'center',
     borderColor: '#C3BEF7',
