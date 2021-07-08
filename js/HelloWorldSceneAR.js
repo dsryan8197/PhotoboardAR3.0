@@ -32,7 +32,7 @@ export default class HelloWorldSceneAR extends Component {
 //this is the AR view that gets rendered
 renderModels = () => {
 let arr = []
-alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
+// alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
 // this loops over all the selected models in state and creates components for them
 for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
   arr.push(
