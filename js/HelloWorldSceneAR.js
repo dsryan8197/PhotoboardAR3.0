@@ -32,17 +32,17 @@ export default class HelloWorldSceneAR extends Component {
 //this is the AR view that gets rendered
 renderModels = () => {
 let arr = []
+alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
 // this loops over all the selected models in state and creates components for them
-//  alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
 for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
   arr.push(
     <ViroNode key={i} position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
       <Viro3DObject
-       source={(this.props.sceneNavigator.viroAppProps[i][0])}
-       resources={[(this.props.sceneNavigator.viroAppProps[i][1])]}
+       source={(this.props.sceneNavigator.viroAppProps[i])}
+      //  resources={[(this.props.sceneNavigator.viroAppProps[i][1])]}
        position={[0,-2,-2]}
        scale={[2.5, 2.5, 2.5]}
-       type="GLTF" />
+       type="GLB" />
      </ViroNode>
   )}
 return [arr]
@@ -58,14 +58,14 @@ return [arr]
           position={[0, 3, 1]} color="#ffffff" castsShadow={true} />
       <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
            <Viro3DObject
-            source={require('../finalModels/Fall/AutumnManA.002.gltf')}
-            resources={[require('../finalModels/Fall/AutumnManA.002_data.bin')]}
+            source={require('../finalModels/Fall/AutumnManA.002.glb')}
+            // resources={[require('../finalModels/Fall/AutumnManA.002_data.bin')]}
             position={[0,-2.5,-1]}
             scale={[2.5, 2.5, 2.5]}
-            type="GLTF" />
+            type="GLB" />
         </ViroNode>
         {/* function on line 33 that creates all the selected models */}
-        {this.props.sceneNavigator.viroAppProps && this.renderModels()}
+        {this.renderModels()}
       </ViroARScene>
     );
   }

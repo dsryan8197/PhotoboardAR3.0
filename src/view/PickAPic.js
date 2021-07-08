@@ -136,28 +136,28 @@ shot() {
 //4. Position - this shows all the stances of a selected Character. Routes to AR view with that model rendered
 render() {
 //this is an array of all the model types thats looped over
-// alert(this.state.chosenModel)
-  let Display = []
-  for (let i = 0; i < modelArray.length; i++) {
-    Display.push(
-      <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
-        <Image style={localStyles.models} source={modelArray[i].image}></Image>
-      </TouchableHighlight>
-   )}
+// alert(this.state.chosenStyle)
+  // let Display = []
+  // for (let i = 0; i < modelArray.length; i++) {
+  //   Display.push(
+  //     <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
+  //       <Image style={localStyles.models} source={modelArray[i].image}></Image>
+  //     </TouchableHighlight>
+  //  )}
 //upon selection of a model type, all the poses that model is availiable in is looped over and stored in an array to be selected
-const stance = []
-if (this.state.chosenModel) {
-for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
-  stance.push(
-    <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ 
-      ...prevState,
-      chosenStyle: modelArray[this.state.chosenModel].models[i], 
-      navigator : 'AR',
-      Viro: [...prevState.Viro, [modelArray[this.state.chosenModel].gltf[i], modelArray[this.state.chosenModel].bin[i]] ]
-       })))}}>
-        <Image style={localStyles.models} source={ modelArray[this.state.chosenModel].models[i]}></Image>
-      </TouchableHighlight>
-)}}
+// const stance = []
+// if (this.state.chosenModel) {
+// for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
+//   stance.push(
+//     <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ 
+//       ...prevState,
+//       chosenStyle: modelArray[this.state.chosenModel].models[i], 
+//       navigator : 'AR',
+//       Viro: [...prevState.Viro, [modelArray[this.state.chosenModel].gltf[i], modelArray[this.state.chosenModel].bin[i]] ]
+//        })))}}>
+//         <Image style={localStyles.models} source={ modelArray[this.state.chosenModel].models[i]}></Image>
+//       </TouchableHighlight>
+// )}}
 
 //1.
 if (this.state.navigator == 'PIC') {
@@ -227,7 +227,7 @@ return (
     </View>
   </View>
    <View style={localStyles.outer}>
-     <TouchableHighlight onPress={()=> {(
+     <TouchableHighlight style={localStyles.Modelbuttonschar} onPress={()=> {(
        this.setState((prevState) => ({
         navigator : 'Characters'
         })))}}>
@@ -250,10 +250,18 @@ return (
 } 
   // 3.
 if (this.state.navigator == 'Characters') {
+  let Display = []
+  for (let i = 0; i < modelArray.length; i++) {
+    Display.push(
+      <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
+        <Image style={localStyles.models} source={modelArray[i].image}></Image>
+      </TouchableHighlight>
+   )}
+
   return (
     <NativeRouter>
         <View style={localStyles.outer}>
-          <TouchableHighlight  onPress={()=> {(
+          <TouchableHighlight onPress={()=> {(
                 this.setState((prevState) => ({
                   navigator : 'AR'
                 })))}}>
@@ -273,6 +281,21 @@ if (this.state.navigator == 'Characters') {
 
 // 4.
 if (this.state.navigator == 'Positions') {
+const stance = []
+
+if (this.state.chosenModel) {
+for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
+  alert('in position')
+  stance.push(
+    <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ 
+      ...prevState,
+      chosenStyle: modelArray[this.state.chosenModel].models[i], 
+      navigator : 'AR',
+      Viro: [...prevState.Viro, modelArray[this.state.chosenModel].gltf[i]]
+       })))}}>
+        <Image style={localStyles.models} source={ modelArray[this.state.chosenModel].models[i]}></Image>
+      </TouchableHighlight>
+)}}
  return (
   <NativeRouter>
     <View style={localStyles.outer} >
@@ -385,6 +408,18 @@ var localStyles = StyleSheet.create({
     position: 'absolute',
     right: 160,
     top: 2,
+  },
+  Modelbuttonschar: {
+height: 25,
+    width: 25,
+    // paddingTop:20,
+    // paddingBottom:10,
+    // marginLeft: '0%',
+    // marginTop: 10,
+    // marginBottom: 10,
+    position: 'absolute',
+    right: '85%',
+    top: '20%',
   },
   Modelbuttons3 : {
      height: 25,
