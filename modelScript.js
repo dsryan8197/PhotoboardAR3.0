@@ -1,16 +1,16 @@
 const modelsArray = [
-{
-  image: require('./picsofmodels/fallbaby1/fallbaby1.jpg'),
-  models: [require('./picsofmodels/fallbaby1/fallbaby1.jpg'), require('./picsofmodels/fallbaby1/fallbaby2.jpg'), require('./picsofmodels/fallbaby1/fallbaby3.jpg'), require('./picsofmodels/fallbaby1/fallbaby4.jpg'), require('./picsofmodels/fallbaby1/fallbaby5.jpg')],
-  gltf: [require('./finalModels/Fall/AutumnBaby.001.glb'), require('./finalModels/Fall/AutumnBaby.002.glb'), require('./finalModels/Fall/AutumnBaby.003.glb'), require('./finalModels/Fall/AutumnBaby.004.glb'), require('./finalModels/Fall/AutumnBaby.005.glb') ],
-  // bin: [require('./finalModels/Fall/AutumnBaby.001_data.bin'), require('./finalModels/Fall/AutumnBaby.002_data.bin'), require('./finalModels/Fall/AutumnBaby.003_data.bin'), require('./finalModels/Fall/AutumnBaby.004_data.bin'), require('./finalModels/Fall/AutumnBaby.005_data.bin') ]
-},
-{
-  image: require('./picsofmodels/fallbaby2/fallbaby1.jpg'),
-  models: [require('./picsofmodels/fallbaby2/fallbaby1.jpg'), require('./picsofmodels/fallbaby2/fallbaby2.jpg'), require('./picsofmodels/fallbaby2/fallbaby3.jpg'), require('./picsofmodels/fallbaby2/fallbaby4.jpg'), require('./picsofmodels/fallbaby2/fallbaby5.jpg')],
-  gltf: [require('./finalModels/Fall/AutumnBaby.001.glb'), require('./finalModels/Fall/AutumnBaby.007.glb'), require('./finalModels/Fall/AutumnBaby.008.glb'), require('./finalModels/Fall/AutumnBaby.009.glb'), require('./finalModels/Fall/AutumnBaby.010.glb')],
-  // bin:[require('./finalModels/Fall/AutumnBaby.001_data.bin'), require('./finalModels/Fall/AutumnBaby.007_data.bin'), require('./finalModels/Fall/AutumnBaby.008_data.bin'), require('./finalModels/Fall/AutumnBaby.009_data.bin'), require('./finalModels/Fall/AutumnBaby.010_data.bin')]
-},
+// {
+//   image: require('./picsofmodels/fallbaby1/fallbaby1.jpg'),
+//   models: [require('./picsofmodels/fallbaby1/fallbaby1.jpg'), require('./picsofmodels/fallbaby1/fallbaby2.jpg'), require('./picsofmodels/fallbaby1/fallbaby3.jpg'), require('./picsofmodels/fallbaby1/fallbaby4.jpg'), require('./picsofmodels/fallbaby1/fallbaby5.jpg')],
+//   gltf: [require('./finalModels/Fall/AutumnBaby.001.glb'), require('./finalModels/Fall/AutumnBaby.002.glb'), require('./finalModels/Fall/AutumnBaby.003.glb'), require('./finalModels/Fall/AutumnBaby.004.glb'), require('./finalModels/Fall/AutumnBaby.005.glb') ],
+//   // bin: [require('./finalModels/Fall/AutumnBaby.001_data.bin'), require('./finalModels/Fall/AutumnBaby.002_data.bin'), require('./finalModels/Fall/AutumnBaby.003_data.bin'), require('./finalModels/Fall/AutumnBaby.004_data.bin'), require('./finalModels/Fall/AutumnBaby.005_data.bin') ]
+// },
+// {
+//   image: require('./picsofmodels/fallbaby2/fallbaby1.jpg'),
+//   models: [require('./picsofmodels/fallbaby2/fallbaby1.jpg'), require('./picsofmodels/fallbaby2/fallbaby2.jpg'), require('./picsofmodels/fallbaby2/fallbaby3.jpg'), require('./picsofmodels/fallbaby2/fallbaby4.jpg'), require('./picsofmodels/fallbaby2/fallbaby5.jpg')],
+//   gltf: [require('./finalModels/Fall/AutumnBaby.001.glb'), require('./finalModels/Fall/AutumnBaby.007.glb'), require('./finalModels/Fall/AutumnBaby.008.glb'), require('./finalModels/Fall/AutumnBaby.009.glb'), require('./finalModels/Fall/AutumnBaby.010.glb')],
+//   // bin:[require('./finalModels/Fall/AutumnBaby.001_data.bin'), require('./finalModels/Fall/AutumnBaby.007_data.bin'), require('./finalModels/Fall/AutumnBaby.008_data.bin'), require('./finalModels/Fall/AutumnBaby.009_data.bin'), require('./finalModels/Fall/AutumnBaby.010_data.bin')]
+// },
 {
   image: require('./picsofmodels/fallboy1/fallboy1.jpg'),
   models: [require('./picsofmodels/fallboy1/fallboy1.jpg'), require('./picsofmodels/fallboy1/fallboy2.jpg'), require('./picsofmodels/fallboy1/fallboy3.jpg'), require('./picsofmodels/fallboy1/fallboy4.jpg'), require('./picsofmodels/fallboy1/fallboy5.jpg')],
@@ -81,7 +81,7 @@ const modelsArray = [
 //   image: require('./picsofmodels/fallwomanA2/fallwomanA1.jpg'),
 //   models: [require('./picsofmodels/fallwomanA2/fallwomanA1.jpg'), require('./picsofmodels/fallwomanA2/fallwomanA2.jpg'), require('./picsofmodels/fallwomanA2/fallwomanA3.jpg'), require('./picsofmodels/fallwomanA2/fallwomanA4.jpg'), require('./picsofmodels/fallwomanA2/fallwomanA5.jpg')],
 //   gltf: [require('./finalModels/Fall/AutumnWomanA.006.gltf'), require('./finalModels/Fall/AutumnWomanA.007.gltf'), require('./finalModels/Fall/AutumnWomanA.008.gltf'), require('./finalModels/Fall/AutumnWomanA.009.gltf'), require('./finalModels/Fall/AutumnWomanA.010.gltf')],
-//   bin: [require('./finalModels/Fall/AutumnWomanA.006_data.bin'), require('./finalModels/Fall/AutumnWomanA.007_data.bin'), require('./finalModels/Fall/AutumnWomanA.008_data.bin'), require('./finalModels/Fall/AutumnWomanA.009_data.bin'), require('./finalModels/Fall/AutumnWomanA.010_data.bin')]
+//   // bin: [require('./finalModels/Fall/AutumnWomanA.006_data.bin'), require('./finalModels/Fall/AutumnWomanA.007_data.bin'), require('./finalModels/Fall/AutumnWomanA.008_data.bin'), require('./finalModels/Fall/AutumnWomanA.009_data.bin'), require('./finalModels/Fall/AutumnWomanA.010_data.bin')]
 // },
 // {
 //   image: require('./picsofmodels/fallwomanB1/fallwomanB1.jpg'),

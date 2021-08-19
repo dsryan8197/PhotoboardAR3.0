@@ -38,7 +38,7 @@ import ARScene from '../../js/HelloWorldSceneAR'
 var sharedProps = {
   apiKey:"API_KEY_HERE",
 }
-import ViewShot from "react-native-view-shot";
+// import ViewShot from "react-native-view-shot";
 import { NativeModules, PermissionsAndroid, Image } from 'react-native';
 
 const kPreviewTypePhoto = 1;
@@ -135,30 +135,6 @@ shot() {
 //3. Character - upon clicking a new model in AR view , this function shows all types of models. onclick routes to 4.
 //4. Position - this shows all the stances of a selected Character. Routes to AR view with that model rendered
 render() {
-//this is an array of all the model types thats looped over
-// alert(this.state.chosenStyle)
-  // let Display = []
-  // for (let i = 0; i < modelArray.length; i++) {
-  //   Display.push(
-  //     <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
-  //       <Image style={localStyles.models} source={modelArray[i].image}></Image>
-  //     </TouchableHighlight>
-  //  )}
-//upon selection of a model type, all the poses that model is availiable in is looped over and stored in an array to be selected
-// const stance = []
-// if (this.state.chosenModel) {
-// for (let i = 0; i < modelArray[this.state.chosenModel].models.length ; i++) {
-//   stance.push(
-//     <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ 
-//       ...prevState,
-//       chosenStyle: modelArray[this.state.chosenModel].models[i], 
-//       navigator : 'AR',
-//       Viro: [...prevState.Viro, [modelArray[this.state.chosenModel].gltf[i], modelArray[this.state.chosenModel].bin[i]] ]
-//        })))}}>
-//         <Image style={localStyles.models} source={ modelArray[this.state.chosenModel].models[i]}></Image>
-//       </TouchableHighlight>
-// )}}
-
 //1.
 if (this.state.navigator == 'PIC') {
   return (
@@ -200,7 +176,7 @@ if (this.state.navigator == 'PIC') {
   }
   // 2.
 else if (this.state.navigator == 'AR') { 
-  // alert(JSON.stringify(this.state.Viro))
+  // alert(JSON.stringify(this.props.Info.description))
 return (
  <NativeRouter>
   <View style={localStyles.inner} >
@@ -251,9 +227,10 @@ return (
   // 3.
 if (this.state.navigator == 'Characters') {
   let Display = []
+  // alert(Display.length)
   for (let i = 0; i < modelArray.length; i++) {
     Display.push(
-      <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
+      <TouchableHighlight loading="lazy" key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
         <Image style={localStyles.models} source={modelArray[i].image}></Image>
       </TouchableHighlight>
    )}
@@ -282,12 +259,10 @@ if (this.state.navigator == 'Characters') {
 // 4.
 if (this.state.navigator == 'Positions') {
 const stance = []
-
 if (this.state.chosenModel) {
 for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
-  alert('in position')
   stance.push(
-    <TouchableHighlight key={i} onPress={()=> {(this.setState((prevState) => ({ 
+    <TouchableHighlight loading="lazy" key={i} onPress={()=> {(this.setState((prevState) => ({ 
       ...prevState,
       chosenStyle: modelArray[this.state.chosenModel].models[i], 
       navigator : 'AR',
@@ -295,7 +270,11 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
        })))}}>
         <Image style={localStyles.models} source={ modelArray[this.state.chosenModel].models[i]}></Image>
       </TouchableHighlight>
-)}}
+)}
+// alert(JSON.stringify(stance.length))
+}
+
+
  return (
   <NativeRouter>
     <View style={localStyles.outer} >
