@@ -88,7 +88,7 @@ render() {
       </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
      <Route path="/pics" render={props => 
-       (<PickAPic {...props} DataForPic={this.props.DataForPic} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]} projectNameInput={this.props.ProjectNameInput} activeProject={this.props.activeProject}/>)
+       (<PickAPic {...props} deletePicture={this.props.deletePicture} DataForPic={this.props.DataForPic} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]} projectNameInput={this.props.ProjectNameInput} ObjofProje={this.props.ObjofProje} activeProject={this.props.activeProject}/>)
      }/>
     </NativeRouter>
 )}}

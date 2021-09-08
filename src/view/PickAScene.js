@@ -12,7 +12,7 @@ import {
 
 // import FastImage from 'react-native-fast-image'
 
-
+import Swipeout from 'react-native-swipeout';
 import trash from '../../trashicon2.png'
 import download from '../../downArrow.png'
 import back from '../../backArrow.png'
@@ -39,9 +39,10 @@ export default class PickAScene extends Component {
 goBack(){
   this.props.history.push('/')
 }
-
 //on selecting a projec,this shows all the scenes in that project or allows you to create a new
   render() {
+window.alert(JSON.stringify(this.props))
+
     return (
       <NativeRouter>
        <Route exact path="/">
@@ -56,6 +57,14 @@ goBack(){
           <View style={localStyles.viewforobjects} >
             {Object.keys(this.props.ObjofProje).map((el, i) => { 
              return (
+               <Swipeout right={[{
+                    text: 'Delete',
+                    backgroundColor: 'red',
+                    underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+                    onPress: () => { this.props.DeleteSceneDescription(el, this.props.ProjectNameInput, this.props.Info) }
+                  }]} autoClose='true'
+                  style={{width: 200, height: 130, alignItems: 'center'}}
+                     backgroundColor= 'transparent'>
                <Link to="/pics" key={i} style={localStyles.buttons} onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
@@ -63,6 +72,7 @@ goBack(){
                 })))}}>
                  <Text style={localStyles.titleText2}>{this.props.ObjofProje[el].description}</Text>
                 </Link>
+              </Swipeout>
             )})}
             <Link to="/NameAScene"  style={localStyles.buttonsplus}>
               <Text style={localStyles.buttonText}>{"+"}</Text>
@@ -75,11 +85,11 @@ goBack(){
           </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
-           (<PickAPic {...props} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ProjectNameInput={this.props.ProjectNameInput} Info={this.props.ObjofProje[this.state.activeScene]}/>)
+           (<PickAPic {...props} deletePicture={this.props.deletePicture} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ProjectNameInput={this.props.ProjectNameInput} Info={this.props.ObjofProje[this.state.activeScene]}/>)
           }/>
           {/* select "+" to route to create a scene */}
              <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
+           (<NameAScene {...props} deletePicture={this.props.deletePicture} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
     </NativeRouter>
   )}}

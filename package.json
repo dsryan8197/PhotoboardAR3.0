@@ -10,9 +10,12 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "font-awesome": "^4.7.0",
+    "pdfkit": "^0.12.3",
     "react": "16.8.3",
     "react-icons": "^4.2.0",
     "react-native": "0.59.9",
+    "react-native-image-to-pdf": "^1.2.0",
+    "react-native-swipeout": "^2.3.6",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-router-native": "^5.2.0",

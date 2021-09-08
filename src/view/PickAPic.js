@@ -5,6 +5,15 @@ import download from '../../downArrow.png'
 import back from '../../backArrow.png'
 import camera from '../../camerasnapshot.png'
 import character from '../../charactericon.png'
+// import RNImageToPdf from 'react-native-image-to-pdf';
+// const PDFDocument = require('pdfkit');
+// const fs = require('fs');
+// const ejs = require('ejs');
+// const htmlPdf = require('html-pdf');
+import Swipeout from 'react-native-swipeout';
+
+// const fs = require('fs');
+// const path = require('path');
 
 import {
   AppRegistry,
@@ -69,6 +78,7 @@ export default class PickAPic extends Component {
   goBac(){
   this.props.history.push('/')
 }
+
 // get write access for android 
 async requestWriteAccessPermission() {
     try {
@@ -129,6 +139,11 @@ shot() {
  }, 2000)
 }
 
+downloadMe = () => {
+
+}
+
+
 //this render method returns 4 possible functions
 //1. PIC - shows all pics (images) in a selected scene or allows you to add a new which routes to AR
 //2. AR - AR view that shows all the models, enables user to take screenshot or add model which routes to 3.
@@ -137,6 +152,15 @@ shot() {
 render() {
 //1.
 if (this.state.navigator == 'PIC') {
+//   let swipeBtns = [
+//   {
+//     text: 'Delete',
+//     backgroundColor: 'red',
+//     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+//     onPress: () => { this.deleteNote(rowData) }
+//  }
+// window.alert(JSON.stringify(this.props.Info))
+// ];
   return (
    <NativeRouter>
      <Route exact path="/">
@@ -151,9 +175,18 @@ if (this.state.navigator == 'PIC') {
          <View style={localStyles.viewforobjects} >
            {this.props.Info.images.map((el, i) => { 
             return (
-             <TouchableHighlight style={{width: '70%', paddingBottom: 20, height: 130, alignItems: 'center'}}key={i} onPress={()=> {(this.setState((prevState) => ({ activePic : el })) )}} >
+            <Swipeout right={[{
+                    text: 'Delete',
+                    backgroundColor: 'red',
+                    underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+                    onPress: () => { this.props.deletePicture(el, this.props.Info.description, this.props.Info.images, this.props.activeProject) }
+                  }]} autoClose='true'
+                  style={{width: 200, height: 130, alignItems: 'center'}}
+                     backgroundColor= 'transparent'>
+             <TouchableHighlight style={{width: 200, paddingBottom: 20, height: 130, alignItems: 'center'}}key={i} >
               <Image style={localStyles.imagesthing} source={{ uri :el }}></Image>
              </TouchableHighlight>
+            </Swipeout>
            )})}
            <TouchableHighlight
             style={localStyles.buttonsplus}
@@ -168,7 +201,9 @@ if (this.state.navigator == 'PIC') {
          </View>
        </View>
         <View style={localStyles.outer}>
-            <Image style={localStyles.Modelbuttonsone} onPress={()=>{alert('download')}} source={download}></Image>
+            <TouchableHighlight onPress={()=>{this.downloadMe()}}>
+            <Image style={localStyles.Modelbuttonsone} source={download}></Image>
+            </TouchableHighlight>
        </View>
       </Route>
     </NativeRouter>
@@ -429,8 +464,8 @@ height: 25,
     borderColor: 'rgba(0,0,0,.2)',
   },
   imagesthing : {
-     height: '100%',
-    width: '100%',
+     height: 200,
+    width: 200,
     paddingTop:20,
     paddingBottom:20,
     marginTop: 10,

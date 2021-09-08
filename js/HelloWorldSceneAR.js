@@ -32,12 +32,14 @@ export default class HelloWorldSceneAR extends Component {
   }
 
 _onClick = (z) => {
-let falsear = [false,false,false,false,false,false,false,false,false,false,false]
 let ar = this.state.animation
-if (this.state.animation[z]) {
-  this.setState((prevState) => ({animation: falsear}));
+let flag = this.state.animation[z]
+let falsear = [false,false,false,false,false,false,false,false,false,false,false]
+if (flag) {
+  ar[z] = false
+  this.setState((prevState) => ({animation: ar}));
 }
-else {
+if (!flag) {
 ar[z] = true
   this.setState((prevState) => ({
     animation: ar
@@ -47,7 +49,6 @@ ar[z] = true
 //this is the AR view that gets rendered
 renderModels = () => {
 let arr = []
-// alert(JSON.stringify(this.props.sceneNavigator.viroAppProps))
 // this loops over all the selected models in state and creates components for them
 for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
   arr.push(
@@ -58,6 +59,7 @@ for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
       //  resources={[(this.props.sceneNavigator.viroAppProps[i][1])]}
        position={[0,-2.5,-1]}
       //  rotation={this.state.rotate[i]}
+       animation={{name: "rotate", run: this.state.animation[i] , loop: true}}
        scale={[2.2, 2.2, 2.2]}
        type="GLB" />
      </ViroNode>
@@ -74,7 +76,7 @@ return [arr]
         <ViroSpotLight innerAngle={5} outerAngle={90} direction={[0,-1,-.2]}
           position={[0, 3, 1]} color="#ffffff" castsShadow={true} />
       <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
-           <Viro3DObject
+           {/* <Viro3DObject
             source={require('../finalModels/Fall/AutumnManA.002.glb')}
             onClick={() => {this._onClick(0)}}
             animation={{name: "rotate", run: this.state.animation[0] , loop: true}}
@@ -82,7 +84,7 @@ return [arr]
             position={[0,-2.5,-1]}
             // rotation={[0, 0, 0]}
             scale={[2.5, 2.5, 2.5]}
-            type="GLB" />
+            type="GLB" /> */}
         </ViroNode>
         {/* function on line 33 that creates all the selected models */}
         {this.renderModels()}

@@ -69,7 +69,7 @@ render() {
       </Route>
       {/* create a scene route */}
        <Route path="/NameAScene" render={props => 
-         (<NameAScene {...props} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} activeProject={this.props.Info.activeProject} Info={this.props.Info}/>)
+         (<NameAScene {...props} DeleteSceneDescription={this.props.DeleteSceneDescription} deletePicture={this.props.deletePicture} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} activeProject={this.props.Info.activeProject} Info={this.props.Info}/>)
        }/>   
 </NativeRouter>
 )}}

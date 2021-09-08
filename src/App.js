@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PickAScene from './view/PickAScene'
 import NameAProject from './create/NameAProject'
 import trash from '../trashicon2.png'
+import Swipeout from 'react-native-swipeout';
 
 import {
   AppRegistry,
@@ -50,6 +51,23 @@ export default class PickAProject extends Component {
   }
 
 //adds a descrition to a created scene which then becomes the name of the scene as well
+DeleteSceneDescription = (sceneName, project, states) => {
+const x = states.ProjectObj[project]
+delete x[sceneName]
+  return (
+this.setState((prevState) => ({
+  ...prevState,
+  ProjectObj: {
+    ...prevState.ProjectObj,
+    [project]: {
+      ...x
+     }
+    }
+  }
+))
+  )
+}
+
 AddSceneDescription = (project, intro, sceneName, outro) => {
 this.setState((prevState) => ({
   ...prevState,
@@ -86,6 +104,19 @@ this.setState((prevState) => ({
 }))  
 }
 
+deleteProj = (ProjectNameInput) => {
+const y = this.state.ProjectObj
+delete y[ProjectNameInput]
+return (
+this.setState((prevState) => ({
+  ...prevState,
+  activeProject: ProjectNameInput,
+  ProjectObj : {
+     ...y
+  }
+}))  
+)
+}
 //upon taking screenshot, this function adds that image to the list of pics in a selected scene
 //within a selected project
 updatePictures = (imageURL, Scene, Img, project ) => {
@@ -103,6 +134,23 @@ this.setState((prevState) => ({
   }
 }))
 }
+
+deletePicture = (imageURL, Scene, Img, project ) => {
+this.setState((prevState) => ({
+  ...prevState,
+  ProjectObj: {
+    ...prevState.ProjectObj,
+    [project] : {
+      ...prevState.ProjectObj.[project],
+      [Scene] : {
+        description: [Scene],
+        images: [...Img].filter(el => el !== imageURL)
+      }
+    }
+  }
+}))
+}
+
  pathDirect = e => {
   this.props.history.push(e)
  }
@@ -120,6 +168,14 @@ this.setState((prevState) => ({
          <View style={localStyles.viewforobjects} >
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
+               <Swipeout right={[{
+                    text: 'Delete',
+                    backgroundColor: 'red',
+                    underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+                    onPress: () => { this.deleteProj(el) }
+                  }]} autoClose='true'
+                  style={{width: 200, height: 130, alignItems: 'center'}}
+                     backgroundColor= 'transparent'>
               <Link to="/scene" key={i} style={localStyles.buttons} onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState, 
@@ -128,6 +184,7 @@ this.setState((prevState) => ({
                 })))}}>
               <Text style={localStyles.titleText2}>{el}</Text>
              </Link>
+             </Swipeout>
           )})}
               <Link to="/addAProject" style={localStyles.buttonsplus}>
                 <Text style={localStyles.buttonText}>{"+"}</Text>
@@ -139,11 +196,11 @@ this.setState((prevState) => ({
       </Route>
           {/* route for when you click an existing project */}
           <Route path="/scene" render={props => 
-          (<PickAScene {...props} updatePictures={this.updatePictures} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} Draggable={this.state[this.state.activeProject]} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
+          (<PickAScene {...props} DeleteSceneDescription={this.DeleteSceneDescription} deletePicture={this.deletePicture} updatePictures={this.updatePictures} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} Draggable={this.state[this.state.activeProject]} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>
           {/* route for when you click "+" add a new project */}
           <Route path="/addAProject" render={props => 
-          (<NameAProject {...props} updatePictures={this.updatePictures} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
+          (<NameAProject {...props} DeleteSceneDescription={this.DeleteSceneDescription} deletePicture={this.deletePicture} updatePictures={this.updatePictures} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
           }/>
     </NativeRouter>
     )}}

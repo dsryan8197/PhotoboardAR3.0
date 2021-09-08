@@ -3,6 +3,7 @@ package com.storyboardar3;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.anyline.RNImageToPDF.RNImageToPdfPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.vinzscam.reactnativefileviewer.RNFileViewerPackage;
 import fr.greweb.reactnativeviewshot.RNViewShotPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNImageToPdfPackage(),
             new RNGestureHandlerPackage(),
             new RNFileViewerPackage(),
             new RNViewShotPackage()
