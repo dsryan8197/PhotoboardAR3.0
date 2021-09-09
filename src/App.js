@@ -30,22 +30,6 @@ export default class PickAProject extends Component {
       activeProject : null,
       ProjectNameInput : '',
       ProjectObj : {
-         Project1: {
-           "EXT ALLEY DAY" : {
-             description: 'EXT ALLEY DAY',
-             images: []},
-           "EXT ALLEY DAY" : {
-             description: 'EXT ALLEY DAY',
-             images : []}
-         },
-         Project2: {
-           "EXT ALLEY DAY" : {
-             description: 'EXT ALLEY DAY',
-             images: []},
-           "INT HOUSE NIght" : {
-             description: 'INT HOUSE NIght',
-             images : []}
-         }
       },
     } 
   }
@@ -64,8 +48,7 @@ this.setState((prevState) => ({
      }
     }
   }
-))
-  )
+)))
 }
 
 AddSceneDescription = (project, intro, sceneName, outro) => {
@@ -154,9 +137,25 @@ this.setState((prevState) => ({
  pathDirect = e => {
   this.props.history.push(e)
  }
+componentDidMount() {
+if (this.props.reRender) {
+this.setState((prevState) => ({
+  ...this.props.reRender
+  }))
+}}
+
+// reRender = () => {
+// if (this.props.reRender) {
+//       this.setState((prevState) => ({
+//         ...this.props.reRender
+//       }))
+//     }
+//  },()
+
 
 //home page that shows all your projects and provides option to add a new project
   render() {
+    
     return (
     <NativeRouter>
       <Route exact path="/">

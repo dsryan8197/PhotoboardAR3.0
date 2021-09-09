@@ -12,8 +12,6 @@ import character from '../../charactericon.png'
 // const htmlPdf = require('html-pdf');
 import Swipeout from 'react-native-swipeout';
 import App from '../App.js';
-// const fs = require('fs');
-// const path = require('path');
 
 import {
   AppRegistry,
@@ -133,7 +131,6 @@ _takeScreenshot() {
 //async function that invokes screenshot function then updates state with a new image
 shot() {
  this._takeScreenshot()
-//  alert(this.props.activeProject) //undefined again!
  setTimeout(() => {
   this.props.updatePictures(this.state.videoUrl, this.props.Info.description, this.props.Info.images, this.props.activeProject)
  }, 2000)
@@ -152,16 +149,6 @@ downloadMe = () => {
 render() {
 //1.
 if (this.state.navigator == 'PIC') {
-//   let swipeBtns = [
-//   {
-//     text: 'Delete',
-//     backgroundColor: 'red',
-//     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-//     onPress: () => { this.deleteNote(rowData) }
-//  }
-// window.alert(JSON.stringify(this.props.Info))
-// ];
-window.alert(this.props.created)
   return (
    <NativeRouter>
      <Route exact path="/">
@@ -178,7 +165,6 @@ window.alert(this.props.created)
           </Link>
         }
           <Text style={localStyles.titleText}>Snapshot</Text>
-          {/* <Image style={localStyles.Modelbuttons} source={trash}></Image> */}
         </View>
          <View style={localStyles.viewforobjects} >
            {this.props.Info.images.map((el, i) => { 
@@ -216,7 +202,7 @@ window.alert(this.props.created)
       </Route>
       {/* route for when you click an existing project */}
           <Route path="/homepage" render={props => 
-          (<App {...props} />)
+          (<App {...props} renewed={"true"} reRender={this.props.reRender} />)
           }/>
     </NativeRouter>
     )
