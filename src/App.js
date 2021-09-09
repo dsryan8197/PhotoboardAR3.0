@@ -34,11 +34,10 @@ export default class PickAProject extends Component {
     } 
   }
 
-//adds a descrition to a created scene which then becomes the name of the scene as well
 DeleteSceneDescription = (sceneName, project, states) => {
 const x = states.ProjectObj[project]
 delete x[sceneName]
-  return (
+return (
 this.setState((prevState) => ({
   ...prevState,
   ProjectObj: {
@@ -46,9 +45,9 @@ this.setState((prevState) => ({
     [project]: {
       ...x
      }
-    }
-  }
-)))
+   }
+  }))
+  )
 }
 
 AddSceneDescription = (project, intro, sceneName, outro) => {
@@ -75,7 +74,6 @@ handleChange = (e) => {
   }));
 }
 
-//this function adds a new project to state and makes it the current project
 AddProject = (ProjectNameInput) => {
 this.setState((prevState) => ({
   ...prevState,
@@ -100,8 +98,7 @@ this.setState((prevState) => ({
 }))  
 )
 }
-//upon taking screenshot, this function adds that image to the list of pics in a selected scene
-//within a selected project
+
 updatePictures = (imageURL, Scene, Img, project ) => {
 this.setState((prevState) => ({
   ...prevState,
@@ -134,9 +131,9 @@ this.setState((prevState) => ({
 }))
 }
 
- pathDirect = e => {
-  this.props.history.push(e)
- }
+//  pathDirect = e => {
+//   this.props.history.push(e)
+//  }
 componentDidMount() {
 if (this.props.reRender) {
 this.setState((prevState) => ({
@@ -144,25 +141,14 @@ this.setState((prevState) => ({
   }))
 }}
 
-// reRender = () => {
-// if (this.props.reRender) {
-//       this.setState((prevState) => ({
-//         ...this.props.reRender
-//       }))
-//     }
-//  },()
-
-
-//home page that shows all your projects and provides option to add a new project
-  render() {
-    
-    return (
+//home page that shows all your projects (films) and provides option to add a new project
+render() {
+ return (
     <NativeRouter>
       <Route exact path="/">
          <View style={localStyles.inner} >
            <View style={localStyles.outer}>
              <Text style={localStyles.titleText}>Films</Text>
-             {/* <Image style={localStyles.Modelbuttons} source={trash}></Image> */}
            </View>
          <View style={localStyles.viewforobjects} >
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
@@ -185,9 +171,9 @@ this.setState((prevState) => ({
              </Link>
              </Swipeout>
           )})}
-              <Link to="/addAProject" style={localStyles.buttonsplus}>
-                <Text style={localStyles.buttonText}>{"+"}</Text>
-               </Link>
+           <Link to="/addAProject" style={localStyles.buttonsplus}>
+               <Text style={localStyles.buttonText}>{"+"}</Text>
+           </Link>
           </View>
         </View>
        <View style={localStyles.outer}>
@@ -239,7 +225,6 @@ var localStyles = StyleSheet.create({
     fontSize : 25
   },
   titleText2: {
-    // paddingTop: 10,
     color:'white',
     textAlign:'center',
     borderColor: '#C3BEF7',

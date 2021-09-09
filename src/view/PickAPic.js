@@ -12,6 +12,7 @@ import character from '../../charactericon.png'
 // const htmlPdf = require('html-pdf');
 import Swipeout from 'react-native-swipeout';
 import App from '../App.js';
+import ARScene from '../../js/HelloWorldSceneAR'
 
 import {
   AppRegistry,
@@ -40,13 +41,11 @@ import {
   ViroARSceneNavigator,
 } from 'react-viro';
 
+import { NativeModules, PermissionsAndroid, Image } from 'react-native';
 import { NativeRouter, Route, Link } from "react-router-native";
-import ARScene from '../../js/HelloWorldSceneAR'
 var sharedProps = {
   apiKey:"API_KEY_HERE",
 }
-// import ViewShot from "react-native-view-shot";
-import { NativeModules, PermissionsAndroid, Image } from 'react-native';
 
 const kPreviewTypePhoto = 1;
 
@@ -158,7 +157,6 @@ if (this.state.navigator == 'PIC') {
         <TouchableHighlight onPress={() => this.goBac()}>
             <Image style={localStyles.Modelbuttons} source={back}></Image>
           </TouchableHighlight>
-          // <Text style={localStyles.titleText}>Snapshot</Text>
         : 
           <Link to={'/homepage'}>
             <Image style={localStyles.Modelbuttons} source={back}></Image>
@@ -198,18 +196,17 @@ if (this.state.navigator == 'PIC') {
             <TouchableHighlight onPress={()=>{this.downloadMe()}}>
             <Image style={localStyles.Modelbuttonsone} source={download}></Image>
             </TouchableHighlight>
-       </View>
-      </Route>
+        </View>
+  </Route>
       {/* route for when you click an existing project */}
-          <Route path="/homepage" render={props => 
+        <Route path="/homepage" render={props => 
           (<App {...props} renewed={"true"} reRender={this.props.reRender} />)
-          }/>
-    </NativeRouter>
-    )
-  }
+        }/>
+  </NativeRouter>
+  )}
+
   // 2.
 else if (this.state.navigator == 'AR') { 
-  // alert(JSON.stringify(this.props.Info.description))
 return (
  <NativeRouter>
   <View style={localStyles.inner} >
@@ -260,7 +257,6 @@ return (
   // 3.
 if (this.state.navigator == 'Characters') {
   let Display = []
-  // alert(Display.length)
   for (let i = 0; i < modelArray.length; i++) {
     Display.push(
       <TouchableHighlight loading="lazy" key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
@@ -304,10 +300,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
         <Image style={localStyles.models} source={ modelArray[this.state.chosenModel].models[i]}></Image>
       </TouchableHighlight>
 )}
-// alert(JSON.stringify(stance.length))
 }
-
-
  return (
   <NativeRouter>
     <View style={localStyles.outer} >
@@ -366,7 +359,6 @@ var localStyles = StyleSheet.create({
   },
   titleText: {
     paddingTop: 35,
-    // paddingBottom: 20,
     color:'#fff',
     textAlign:'center',
     fontSize : 25
@@ -396,17 +388,13 @@ var localStyles = StyleSheet.create({
   Modelbuttonsone : {
     height: 25,
     width: 25,
-    // paddingTop:35,
     paddingBottom:20,
-    // marginLeft: '0%',
-    // marginTop: 10,
-    // marginBottom: 30,
     position: 'absolute',
     left: '85%',
     top: '20%',
   },
   Modelbuttons : {
-   height: 25,
+    height: 25,
     width: 25,
     paddingBottom:20,
     position: 'absolute',
@@ -414,7 +402,7 @@ var localStyles = StyleSheet.create({
     top: 2,
   },
   Modelbuttons2 : {
-     height: 25,
+    height: 25,
     width: 25,
     paddingBottom:20,
     position: 'absolute',
@@ -422,19 +410,14 @@ var localStyles = StyleSheet.create({
     top: 2,
   },
   Modelbuttonschar: {
-height: 25,
+    height: 25,
     width: 25,
-    // paddingTop:20,
-    // paddingBottom:10,
-    // marginLeft: '0%',
-    // marginTop: 10,
-    // marginBottom: 10,
     position: 'absolute',
     right: '85%',
     top: '20%',
   },
   Modelbuttons3 : {
-     height: 25,
+    height: 25,
     width: 25,
     paddingBottom:20,
     position: 'absolute',
@@ -442,7 +425,7 @@ height: 25,
     top: 2,
   },
   Modelbuttons4 : {
-     height: 25,
+    height: 25,
     width: 25,
     paddingBottom:20,
     position: 'absolute',
@@ -462,7 +445,7 @@ height: 25,
     borderColor: 'rgba(0,0,0,.2)',
   },
   imagesthing : {
-     height: 200,
+    height: 200,
     width: 200,
     paddingTop:20,
     paddingBottom:20,
@@ -474,7 +457,7 @@ height: 25,
     borderColor: 'rgba(0,0,0,.2)',
   },
   buttonsplus : {
-   height: 80,
+    height: 80,
     width: 80,
     borderRadius: 80/2,
     paddingTop:10,
