@@ -45,9 +45,9 @@ render() {
       <Route exact path="/">
          <View style={localStyles.inner} >
            <View style={localStyles.outer} >
-             <TouchableHighlight onPress={() => this.goBack()}>
+             {this.props.created && <TouchableHighlight onPress={() => this.goBack()}>
                 <Image style={localStyles.Modelbuttons} source={back}></Image>     
-             </TouchableHighlight> 
+             </TouchableHighlight> }
             <Text style={localStyles.titleText}>Create A Scene</Text>
            </View>
          <View style={localStyles.createSCene} >
@@ -88,7 +88,7 @@ render() {
       </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
      <Route path="/pics" render={props => 
-       (<PickAPic {...props} deletePicture={this.props.deletePicture} DataForPic={this.props.DataForPic} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]} projectNameInput={this.props.ProjectNameInput} ObjofProje={this.props.ObjofProje} activeProject={this.props.activeProject}/>)
+       (<PickAPic {...props} created={"true"} deletePicture={this.props.deletePicture} DataForPic={this.props.DataForPic} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]} projectNameInput={this.props.ProjectNameInput} ObjofProje={this.props.ObjofProje} activeProject={this.props.activeProject}/>)
      }/>
     </NativeRouter>
 )}}

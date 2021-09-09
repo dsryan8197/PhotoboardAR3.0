@@ -41,7 +41,7 @@ goBack(){
 }
 //on selecting a projec,this shows all the scenes in that project or allows you to create a new
   render() {
-window.alert(JSON.stringify(this.props))
+// window.alert(JSON.stringify(this.props))
 
     return (
       <NativeRouter>
@@ -89,7 +89,7 @@ window.alert(JSON.stringify(this.props))
           }/>
           {/* select "+" to route to create a scene */}
              <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} deletePicture={this.props.deletePicture} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
+           (<NameAScene {...props} created={"true"} deletePicture={this.props.deletePicture} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
           }/>
     </NativeRouter>
   )}}

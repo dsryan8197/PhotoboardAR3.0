@@ -200,7 +200,7 @@ this.setState((prevState) => ({
           }/>
           {/* route for when you click "+" add a new project */}
           <Route path="/addAProject" render={props => 
-          (<NameAProject {...props} DeleteSceneDescription={this.DeleteSceneDescription} deletePicture={this.deletePicture} updatePictures={this.updatePictures} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
+          (<NameAProject {...props} created={"true"} DeleteSceneDescription={this.DeleteSceneDescription} deletePicture={this.deletePicture} updatePictures={this.updatePictures} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
           }/>
     </NativeRouter>
     )}}

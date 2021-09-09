@@ -43,9 +43,9 @@ render() {
      <Route exact path="/">
       <View style={localStyles.inner} >
         <View style={localStyles.outer} >
-           <TouchableHighlight onPress={() => this.goBack()}>
+           {this.props.created && <TouchableHighlight onPress={() => this.goBack()}>
              <Image style={localStyles.Modelbuttons} source={back}></Image>      
-           </TouchableHighlight>
+           </TouchableHighlight>}
           <Text style={localStyles.titleText}>Name Your Film</Text>
        </View>
          <View style={localStyles.viewforobjects}>

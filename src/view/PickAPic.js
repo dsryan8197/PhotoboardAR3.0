@@ -11,7 +11,7 @@ import character from '../../charactericon.png'
 // const ejs = require('ejs');
 // const htmlPdf = require('html-pdf');
 import Swipeout from 'react-native-swipeout';
-
+import App from '../App.js';
 // const fs = require('fs');
 // const path = require('path');
 
@@ -161,14 +161,22 @@ if (this.state.navigator == 'PIC') {
 //  }
 // window.alert(JSON.stringify(this.props.Info))
 // ];
+window.alert(this.props.created)
   return (
    <NativeRouter>
      <Route exact path="/">
        <View style={localStyles.inner} >
         <View style={localStyles.outer}>
-          <TouchableHighlight onPress={() => this.goBac()}>
+        {!this.props.created ? 
+        <TouchableHighlight onPress={() => this.goBac()}>
             <Image style={localStyles.Modelbuttons} source={back}></Image>
           </TouchableHighlight>
+          // <Text style={localStyles.titleText}>Snapshot</Text>
+        : 
+          <Link to={'/homepage'}>
+            <Image style={localStyles.Modelbuttons} source={back}></Image>
+          </Link>
+        }
           <Text style={localStyles.titleText}>Snapshot</Text>
           {/* <Image style={localStyles.Modelbuttons} source={trash}></Image> */}
         </View>
@@ -206,6 +214,10 @@ if (this.state.navigator == 'PIC') {
             </TouchableHighlight>
        </View>
       </Route>
+      {/* route for when you click an existing project */}
+          <Route path="/homepage" render={props => 
+          (<App {...props} />)
+          }/>
     </NativeRouter>
     )
   }
