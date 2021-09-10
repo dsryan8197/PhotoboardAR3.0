@@ -77,7 +77,9 @@ render() {
           </Picker>
          </View>
             <Link to="/pics" style={localStyles.buttonsplus}
-            onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}>
+            onPress={() => {
+              this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight, this.state.intExt + ' ' + this.state.location + ' ' + this.state.dayNight)}
+              }>
               <Text >+</Text>
             </Link >
         </View>
@@ -87,7 +89,16 @@ render() {
  </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
      <Route path="/pics" render={props => 
-       (<PickAPic {...props} created={"true"} deletePicture={this.props.deletePicture} DataForPic={this.props.DataForPic} updatePictures={this.props.updatePictures} reRender={this.props.Info} Info={this.props.ObjofProje[this.state.location]} projectNameInput={this.props.ProjectNameInput} ObjofProje={this.props.ObjofProje} activeProject={this.props.activeProject}/>)
+       (<PickAPic {...props}
+       created={"true"}
+       deletePicture={this.props.deletePicture}
+       DataForPic={this.props.DataForPic}
+       updatePictures={this.props.updatePictures}
+       reRender={this.props.Info}
+       Info={this.props.ObjofProje[this.state.intExt + ' ' + this.state.location + ' ' + this.state.dayNight]}
+       projectNameInput={this.props.ProjectNameInput}
+       ObjofProje={this.props.ObjofProje}
+       activeProject={this.props.activeProject}/>)
      }/>
   </NativeRouter>
 )}}

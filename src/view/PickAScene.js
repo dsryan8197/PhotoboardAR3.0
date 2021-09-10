@@ -79,11 +79,24 @@ render() {
     </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
-           (<PickAPic {...props} deletePicture={this.props.deletePicture} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ProjectNameInput={this.props.ProjectNameInput} Info={this.props.ObjofProje[this.state.activeScene]}/>)
+           (<PickAPic {...props}
+           deletePicture={this.props.deletePicture}
+           activeProject={this.props.Info.activeProject}
+           updatePictures={this.props.updatePictures}
+           ProjectNameInput={this.props.ProjectNameInput}
+           Info={this.props.ObjofProje[this.state.activeScene]}/>)
           }/>
           {/* select "+" to route to create a scene */}
              <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} created={"true"} deletePicture={this.props.deletePicture} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
+           (<NameAScene {...props}
+           created={"true"}
+           deletePicture={this.props.deletePicture}
+           activeProject={this.props.Info.activeProject}
+           updatePictures={this.props.updatePictures}
+           ObjofProje={this.props.ObjofProje}
+           ProjectNameInput={this.props.ProjectNameInput}
+           AddSceneDescription={this.props.AddSceneDescription}
+           Info={this.props.Info}/>)
           }/>
   </NativeRouter>
   )}}

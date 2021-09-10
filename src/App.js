@@ -50,15 +50,15 @@ this.setState((prevState) => ({
   )
 }
 
-AddSceneDescription = (project, intro, sceneName, outro) => {
+AddSceneDescription = (project, intro, sceneName, outro, full) => {
 this.setState((prevState) => ({
   ...prevState,
   ProjectObj: {
     ...prevState.ProjectObj,
     [project]: {
       ...prevState.ProjectObj[project],
-    [sceneName]: {
-       description: intro + ' ' + sceneName + ' ' + outro,
+    [full]: {
+       description: full,
        images: []
      }
     }
@@ -181,11 +181,29 @@ render() {
       </Route>
           {/* route for when you click an existing project */}
           <Route path="/scene" render={props => 
-          (<PickAScene {...props} DeleteSceneDescription={this.DeleteSceneDescription} deletePicture={this.deletePicture} updatePictures={this.updatePictures} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} Info={this.state} Draggable={this.state[this.state.activeProject]} ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
+          (<PickAScene {...props} 
+          DeleteSceneDescription={this.DeleteSceneDescription}
+          deletePicture={this.deletePicture}
+          updatePictures={this.updatePictures}
+          ProjectNameInput={this.state.ProjectNameInput}
+          AddSceneDescription={this.AddSceneDescription}
+          Info={this.state}
+          Draggable={this.state[this.state.activeProject]}
+          ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>
           {/* route for when you click "+" add a new project */}
           <Route path="/addAProject" render={props => 
-          (<NameAProject {...props} created={"true"} DeleteSceneDescription={this.DeleteSceneDescription} deletePicture={this.deletePicture} updatePictures={this.updatePictures} ObjofProje={this.state.ProjectObj} ProjectNameInput={this.state.ProjectNameInput} AddSceneDescription={this.AddSceneDescription} AddProject={this.AddProject} handleChange={this.handleChange} Info={this.state}/>)
+          (<NameAProject {...props}
+          created={"true"}
+          DeleteSceneDescription={this.DeleteSceneDescription}
+          deletePicture={this.deletePicture}
+          updatePictures={this.updatePictures}
+          ObjofProje={this.state.ProjectObj}
+          ProjectNameInput={this.state.ProjectNameInput}
+          AddSceneDescription={this.AddSceneDescription}
+          AddProject={this.AddProject}
+          handleChange={this.handleChange}
+          Info={this.state}/>)
           }/>
     </NativeRouter>
     )}}
