@@ -173,9 +173,10 @@ if (this.state.navigator == 'PIC') {
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                     onPress: () => { this.props.deletePicture(el, this.props.Info.description, this.props.Info.images, this.props.activeProject) }
                   }]} autoClose='true'
-                  style={{width: 200, height: 130, alignItems: 'center'}}
-                     backgroundColor= 'transparent'>
-             <TouchableHighlight style={{width: 200, paddingBottom: 20, height: 130, alignItems: 'center'}}key={i} >
+                  style={{alignItems: 'center'}}
+                     backgroundColor= 'transparent'
+                    >
+             <TouchableHighlight style={{paddingBottom: 20, alignItems: 'center'}}key={i} >
               <Image style={localStyles.imagesthing} source={{ uri :el }}></Image>
              </TouchableHighlight>
             </Swipeout>
@@ -353,6 +354,7 @@ var localStyles = StyleSheet.create({
  inner: {
     flex : 1,
     width: '100%',
+    height:'100%',
     flexDirection: 'column',
     alignItems:'center',
     backgroundColor: "#FFFFFF",
@@ -445,9 +447,10 @@ var localStyles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,.2)',
   },
   imagesthing : {
-    height: 200,
-    width: 200,
+    width: 169,
+    height: 300,
     paddingTop:20,
+    transform: [{ rotate: "270deg" }],
     paddingBottom:20,
     marginTop: 10,
     marginBottom: 10,
@@ -481,11 +484,11 @@ var localStyles = StyleSheet.create({
     borderColor: '#fff',
   },
   viewforobjects : {
-    width: '100%',
+    // width: '100%',
     alignItems:'center',
     justifyContent: 'center',
     paddingBottom: '10%',
-    height: '100%',
+    // height: '100%',
   },
    modelobjects : {
     alignItems:'center',

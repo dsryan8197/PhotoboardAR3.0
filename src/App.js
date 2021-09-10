@@ -159,7 +159,7 @@ render() {
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                     onPress: () => { this.deleteProj(el) }
                   }]} autoClose='true'
-                  style={{width: 200, height: 130, alignItems: 'center'}}
+                  style={{alignItems: 'center'}}
                      backgroundColor= 'transparent'>
               <Link to="/scene" key={i} style={localStyles.buttons} onPress={()=> {(
                 this.setState((prevState) => ({
@@ -247,7 +247,8 @@ var localStyles = StyleSheet.create({
     textAlign:'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 25
+    fontSize : 25,
+    width: 300
   },
   buttonText: {
     color:'#C3BEF7',
@@ -259,7 +260,7 @@ var localStyles = StyleSheet.create({
   },
   buttons : {
     height: 80,
-    width: '70%',
+    width: '100%',
     paddingTop:20,
     paddingBottom:20,
     marginTop: 10,
