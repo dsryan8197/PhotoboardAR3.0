@@ -20,7 +20,6 @@ import {
 } from 'react-viro';
 
 export default class HelloWorldSceneAR extends Component {
-
   constructor(props) {
     super();
     this.state = {
@@ -30,27 +29,26 @@ export default class HelloWorldSceneAR extends Component {
     this._onInitialized = this._onInitialized.bind(this);
     this.renderModels = this.renderModels.bind(this);
   }
-
+//rotates the character
 _onClick = (z) => {
-let ar = this.state.animation
-let flag = this.state.animation[z]
-let falsear = [false,false,false,false,false,false,false,false,false,false,false]
-if (flag) {
-  ar[z] = false
-  this.setState((prevState) => ({animation: ar}));
-}
-if (!flag) {
-ar[z] = true
-  this.setState((prevState) => ({
+  let ar = this.state.animation
+  let flag = this.state.animation[z]
+  let falsear = [false,false,false,false,false,false,false,false,false,false,false]
+  if (flag) {
+    ar[z] = false
+    this.setState((prevState) => ({animation: ar}));
+  }
+  if (!flag) {
+   ar[z] = true
+    this.setState((prevState) => ({
     animation: ar
   }))
+  }
 }
-}
-//this is the AR view that gets rendered
+//creates the array of characters to render
 renderModels = () => {
-let arr = []
-// this loops over all the selected models in state and creates components for them
-for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
+  let arr = []
+  for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
   arr.push(
     <ViroNode key={i} position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
       <Viro3DObject
@@ -58,24 +56,21 @@ for (let i = 0; i < this.props.sceneNavigator.viroAppProps.length; i++) {
        onClick={() => {this._onClick(i)}}
       //  resources={[(this.props.sceneNavigator.viroAppProps[i][1])]}
        position={[0,-2.5,-1]}
-      //  rotation={this.state.rotate[i]}
        animation={{name: "rotate", run: this.state.animation[i] , loop: true}}
        scale={[2.2, 2.2, 2.2]}
        type="GLB" />
-     </ViroNode>
+    </ViroNode>
   )}
-return [arr]
+  return [arr]
 }
 //rendered AR view
   render() {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized} style={styles.ARNav}  >
-        {/* <ViroText text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} /> */}
-        {/* <ViroBox position={[0, -.5, -2]} scale={[.3, .3, .1]} materials={["grid"]} animation={{name: "rotate", run: true, loop: true}}/> */}
         <ViroAmbientLight color={"#aaaaaa"} />
         <ViroSpotLight innerAngle={5} outerAngle={90} direction={[0,-1,-.2]}
           position={[0, 3, 1]} color="#ffffff" castsShadow={true} />
-      <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
+        <ViroNode position={[1,-0.5,-2]} dragType="FixedToWorld" onDrag={()=>{}} >
            {/* <Viro3DObject
             source={require('../finalModels/Fall/AutumnManA.002.glb')}
             onClick={() => {this._onClick(0)}}
@@ -86,7 +81,6 @@ return [arr]
             scale={[2.5, 2.5, 2.5]}
             type="GLB" /> */}
         </ViroNode>
-        {/* function on line 33 that creates all the selected models */}
         {this.renderModels()}
       </ViroARScene>
     );

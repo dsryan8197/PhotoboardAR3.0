@@ -10,12 +10,13 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-// import FastImage from 'react-native-fast-image'
 
 import Swipeout from 'react-native-swipeout';
 import trash from '../../trashicon2.png'
 import download from '../../downArrow.png'
 import back from '../../backArrow.png'
+import PickAPic from './PickAPic'
+import NameAScene from '../create/NameAScene'
 
 import {
   ViroVRSceneNavigator,
@@ -23,12 +24,8 @@ import {
 } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
-import PickAPic from './PickAPic'
-import NameAScene from '../create/NameAScene'
-// var sharedProps = {
-//   apiKey:"API_KEY_HERE",
-// }
 
+//on selecting a film (project),this shows all the scenes in that film or allows you to create a new
 export default class PickAScene extends Component {
   constructor(props) {
     super();
@@ -39,11 +36,8 @@ export default class PickAScene extends Component {
 goBack(){
   this.props.history.push('/')
 }
-//on selecting a projec,this shows all the scenes in that project or allows you to create a new
-  render() {
-// window.alert(JSON.stringify(this.props))
-
-    return (
+render() {
+  return (
       <NativeRouter>
        <Route exact path="/">
          <View style={localStyles.inner} >
@@ -52,7 +46,6 @@ goBack(){
                <Image style={localStyles.Modelbuttons} source={back}></Image>
              </TouchableHighlight>
              <Text style={localStyles.titleText}>Scene</Text>
-             {/* <Image style={localStyles.Modelbuttons} source={trash}></Image> */}
           </View>
           <View style={localStyles.viewforobjects} >
             {Object.keys(this.props.ObjofProje).map((el, i) => { 
@@ -62,15 +55,16 @@ goBack(){
                     backgroundColor: 'red',
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                     onPress: () => { this.props.DeleteSceneDescription(el, this.props.ProjectNameInput, this.props.Info) }
-                  }]} autoClose='true'
-                  style={{width: 200, height: 130, alignItems: 'center'}}
-                     backgroundColor= 'transparent'>
-               <Link to="/pics" key={i} style={localStyles.buttons} onPress={()=> {(
-                this.setState((prevState) => ({
-                  ...prevState,
-                  activeScene : el
-                })))}}>
-                 <Text style={localStyles.titleText2}>{this.props.ObjofProje[el].description}</Text>
+                  }]}
+                  autoClose='true'
+                  style={{alignItems: 'center'}}
+                  backgroundColor= 'transparent'>
+                <Link to="/pics" key={i} style={localStyles.buttons} onPress={()=> {(
+                   this.setState((prevState) => ({
+                     ...prevState,
+                     activeScene : el
+                    })))}}>
+                    <Text style={localStyles.titleText2}>{this.props.ObjofProje[el].description}</Text>
                 </Link>
               </Swipeout>
             )})}
@@ -82,16 +76,29 @@ goBack(){
       <View style={localStyles.outer}>
          <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
       </View>
-          </Route>
+    </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
-           (<PickAPic {...props} deletePicture={this.props.deletePicture} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ProjectNameInput={this.props.ProjectNameInput} Info={this.props.ObjofProje[this.state.activeScene]}/>)
+           (<PickAPic {...props}
+           deletePicture={this.props.deletePicture}
+           activeProject={this.props.Info.activeProject}
+           updatePictures={this.props.updatePictures}
+           ProjectNameInput={this.props.ProjectNameInput}
+           Info={this.props.ObjofProje[this.state.activeScene]}/>)
           }/>
           {/* select "+" to route to create a scene */}
              <Route path="/NameAScene" render={props => 
-           (<NameAScene {...props} created={"true"} deletePicture={this.props.deletePicture} activeProject={this.props.Info.activeProject} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} Info={this.props.Info}/>)
+           (<NameAScene {...props}
+           created={"true"}
+           deletePicture={this.props.deletePicture}
+           activeProject={this.props.Info.activeProject}
+           updatePictures={this.props.updatePictures}
+           ObjofProje={this.props.ObjofProje}
+           ProjectNameInput={this.props.ProjectNameInput}
+           AddSceneDescription={this.props.AddSceneDescription}
+           Info={this.props.Info}/>)
           }/>
-    </NativeRouter>
+  </NativeRouter>
   )}}
 
 var localStyles = StyleSheet.create({
@@ -127,7 +134,8 @@ var localStyles = StyleSheet.create({
     textAlign:'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 25
+    fontSize : 25,
+    width: 300
   },
   buttonText: {
     color:'#C3BEF7',
@@ -136,7 +144,7 @@ var localStyles = StyleSheet.create({
   },
   buttons : {
     height: 80,
-    width: '70%',
+    width: '100%',
     paddingTop:20,
     paddingBottom:20,
     marginTop: 10,
@@ -161,24 +169,14 @@ var localStyles = StyleSheet.create({
    Modelbuttons : {
     height: 25,
     width: 25,
-    // paddingTop:35,
     paddingBottom:20,
-    // marginLeft: '0%',
-    // marginTop: 10,
-    // marginBottom: 30,
     position: 'absolute',
     right: 120,
     top: 2,
-    // justifyContent: 'flex-start',
   },
    Modelbuttons2 : {
     height: 25,
     width: 25,
-    // paddingTop:20,
-    // paddingBottom:10,
-    // marginLeft: '0%',
-    // marginTop: 10,
-    // marginBottom: 10,
     position: 'absolute',
     left: '85%',
     top: '20%',

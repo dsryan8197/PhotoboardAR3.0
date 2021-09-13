@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import trash from '../../trashicon2.png'
+import download from '../../downArrow.png'
+import back from '../../backArrow.png'
+import PickAPic from '../view/PickAPic'
+import PickAScene from '../view/PickAScene'
+
 import {
   AppRegistry,
   Text,
@@ -11,18 +17,12 @@ import {
   PixelRatio,
   TouchableHighlight,
 } from 'react-native';
-import trash from '../../trashicon2.png'
-import download from '../../downArrow.png'
-import back from '../../backArrow.png'
-
 import {
   ViroVRSceneNavigator,
   ViroARSceneNavigator
 } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
-import PickAPic from '../view/PickAPic'
-import PickAScene from '../view/PickAScene'
 
 export default class NameAScene extends Component {
   constructor(props) {
@@ -37,8 +37,7 @@ goBack(){
   this.props.history.push('/')
 }
 
-//function that enables you to create the three params of a film scene 
-// (INTerior/EXTerior, location, time of day) routes to list of pics
+//create a film scene and routes to list of pics
 render() {
   return (
     <NativeRouter>
@@ -78,19 +77,30 @@ render() {
           </Picker>
          </View>
             <Link to="/pics" style={localStyles.buttonsplus}
-            onPress={() => {this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight)}}>
+            onPress={() => {
+              this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight, this.state.intExt + ' ' + this.state.location + ' ' + this.state.dayNight)}
+              }>
               <Text >+</Text>
             </Link >
         </View>
 
-      <View style={localStyles.outer}>
-      </View>
-      </Route>
+     <View style={localStyles.outer}>
+   </View>
+ </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
      <Route path="/pics" render={props => 
-       (<PickAPic {...props} created={"true"} deletePicture={this.props.deletePicture} DataForPic={this.props.DataForPic} updatePictures={this.props.updatePictures} Info={this.props.ObjofProje[this.state.location]} projectNameInput={this.props.ProjectNameInput} ObjofProje={this.props.ObjofProje} activeProject={this.props.activeProject}/>)
+       (<PickAPic {...props}
+       created={"true"}
+       deletePicture={this.props.deletePicture}
+       DataForPic={this.props.DataForPic}
+       updatePictures={this.props.updatePictures}
+       reRender={this.props.Info}
+       Info={this.props.ObjofProje[this.state.intExt + ' ' + this.state.location + ' ' + this.state.dayNight]}
+       projectNameInput={this.props.ProjectNameInput}
+       ObjofProje={this.props.ObjofProje}
+       activeProject={this.props.activeProject}/>)
      }/>
-    </NativeRouter>
+  </NativeRouter>
 )}}
 
 var localStyles = StyleSheet.create({

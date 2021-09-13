@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import trash from '../../trashicon2.png'
 import download from '../../downArrow.png'
 import back from '../../backArrow.png'
+import PickAPic from '../view/PickAPic'
+import NameAScene from './NameAScene'
 
 import {
   AppRegistry,
@@ -21,8 +23,6 @@ import {
 } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
-import PickAPic from '../view/PickAPic'
-import NameAScene from './NameAScene'
 
 export default class NameAProject extends Component {
   constructor(props) {
@@ -35,8 +35,7 @@ goBack(){
   this.props.history.push('/')
 }
 
-//this is all the functinality to add a new project to state and immediatley route to
-//create a new scene in that project
+//add a new project and immediatley route to 'create a new scene' in that project
 render() {
   return (
     <NativeRouter>
@@ -66,10 +65,18 @@ render() {
      </View>
    <View style={localStyles.outer}>
    </View>
-      </Route>
+  </Route>
       {/* create a scene route */}
        <Route path="/NameAScene" render={props => 
-         (<NameAScene {...props} DeleteSceneDescription={this.props.DeleteSceneDescription} deletePicture={this.props.deletePicture} updatePictures={this.props.updatePictures} ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]} ProjectNameInput={this.props.ProjectNameInput} AddSceneDescription={this.props.AddSceneDescription} activeProject={this.props.Info.activeProject} Info={this.props.Info}/>)
+         (<NameAScene {...props}
+         DeleteSceneDescription={this.props.DeleteSceneDescription}
+         deletePicture={this.props.deletePicture}
+         updatePictures={this.props.updatePictures}
+         ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]}
+         ProjectNameInput={this.props.ProjectNameInput}
+         AddSceneDescription={this.props.AddSceneDescription}
+         activeProject={this.props.Info.activeProject}
+         Info={this.props.Info}/>)
        }/>   
 </NativeRouter>
 )}}
