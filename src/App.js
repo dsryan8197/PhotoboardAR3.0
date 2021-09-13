@@ -38,14 +38,14 @@ export default class PickAProject extends Component {
  storeData = async () => {
   try {
     const jsonValue = JSON.stringify(this.state)
-    await AsyncStorage.setItem('@s', jsonValue)
+    await AsyncStorage.setItem('photoboard', jsonValue)
   } catch (e) {
   }
 }
 
  getData = async () => {
   try {
-    const jsonValue = await AsyncStorage.getItem('@s')
+    const jsonValue = await AsyncStorage.getItem('photoboard')
     if(jsonValue != null) {
       this.setState(JSON.parse(jsonValue))
     }
@@ -64,9 +64,7 @@ this.setState((prevState) => ({
     ...prevState.ProjectObj,
     [project]: {
       ...x
-     }
-   }
-  }), () => {
+  }}}), () => {
   this.storeData()
   })
   )
@@ -82,10 +80,7 @@ this.setState((prevState) => ({
     [full]: {
        description: full,
        images: []
-     }
-    }
-  }
-}), () => {
+  }}}}), () => {
   this.storeData()
 })
 }
@@ -107,8 +102,7 @@ this.setState((prevState) => ({
   ProjectObj : {
     ...prevState.ProjectObj,
     [ProjectNameInput] : {}
-  }
-}), () => {
+  }}), () => {
   this.storeData()
 })  
 }
@@ -122,11 +116,9 @@ this.setState((prevState) => ({
   activeProject: ProjectNameInput,
   ProjectObj : {
      ...y
-  }
-}), () => {
+  }}), () => {
   this.storeData()
-})  
-)
+}))
 }
 
 updatePictures = (imageURL, Scene, Img, project ) => {
@@ -139,10 +131,7 @@ this.setState((prevState) => ({
       [Scene] : {
         description: [Scene],
         images: [...Img, imageURL]
-      }
-    }
-  }
-}), () => {
+  }}}}), () => {
 this.storeData()
 })
 }
@@ -157,12 +146,11 @@ this.setState((prevState) => ({
       [Scene] : {
         description: [Scene],
         images: [...Img].filter(el => el !== imageURL)
-      }
-    }
-  }
-}), () => {
+   }}}}), () => {
 this.storeData()
-})
+})}
+
+Arrange = ( imageURL, Scene, Img, project ) => {
 
 }
 
@@ -170,9 +158,7 @@ this.storeData()
 //  this.setState()
 //   this.storeData(this.state.ProjectObj)
 // }
-//  pathDirect = e => {
-//   this.props.history.push(e)
-//  }
+
 componentDidMount() {
 if (this.props.reRender) {
 this.setState((prevState) => ({
@@ -180,8 +166,7 @@ this.setState((prevState) => ({
   }))
 } else {
   this.getData()
-}
-}
+}}
 
 //home page that shows all your projects (films) and provides option to add a new project
 render() {
