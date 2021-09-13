@@ -45,6 +45,7 @@
 		8445A9643D5E40A2A6B7A087 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9265B398F3094889911AF752 /* libRNGestureHandler.a */; };
 		123B923DCFBE4B7BB2974402 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB5DD382830D4B5CAE107DDB /* libRNGestureHandler-tvOS.a */; };
 		5FC623120A7C4035950EBD02 /* libRNImageToPdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 110257146A704808AF5BAABF /* libRNImageToPdf.a */; };
+		F6923E0FE7634046AFE98AD2 /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BEEE12D2538465F95F0CF5F /* libRNCAsyncStorage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,6 +362,8 @@
 		AB5DD382830D4B5CAE107DDB /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; name = "libRNGestureHandler-tvOS.a"; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		0235F21702554277AC3EEEF3 /* RNImageToPdf.xcodeproj */ = {isa = PBXFileReference; name = "RNImageToPdf.xcodeproj"; path = "../node_modules/react-native-image-to-pdf/ios/RNImageToPdf.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		110257146A704808AF5BAABF /* libRNImageToPdf.a */ = {isa = PBXFileReference; name = "libRNImageToPdf.a"; path = "libRNImageToPdf.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		B5D30D822A4747C796EFC189 /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; name = "RNCAsyncStorage.xcodeproj"; path = "../node_modules/@react-native-async-storage/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		8BEEE12D2538465F95F0CF5F /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; name = "libRNCAsyncStorage.a"; path = "libRNCAsyncStorage.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,6 +396,7 @@
 				05E4BF2F068F46E0B922AE53 /* libRNFileViewer.a in Frameworks */,
 				8445A9643D5E40A2A6B7A087 /* libRNGestureHandler.a in Frameworks */,
 				5FC623120A7C4035950EBD02 /* libRNImageToPdf.a in Frameworks */,
+				F6923E0FE7634046AFE98AD2 /* libRNCAsyncStorage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +591,7 @@
 				3F8FAF3681A545EA8BE7CE7D /* RNFileViewer.xcodeproj */,
 				8CC30D469CE14668B40A1F50 /* RNGestureHandler.xcodeproj */,
 				0235F21702554277AC3EEEF3 /* RNImageToPdf.xcodeproj */,
+				B5D30D822A4747C796EFC189 /* RNCAsyncStorage.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1219,6 +1224,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1226,6 +1232,7 @@
 					"$(SRCROOT)/../node_modules/react-native-file-viewer/ios",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-to-pdf/ios",
+					"$(SRCROOT)/../node_modules/@react-native-async-storage/async-storage/ios/**",
 				);
 			};
 			name = Debug;
@@ -1252,6 +1259,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1259,6 +1267,7 @@
 					"$(SRCROOT)/../node_modules/react-native-file-viewer/ios",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-to-pdf/ios",
+					"$(SRCROOT)/../node_modules/@react-native-async-storage/async-storage/ios/**",
 				);
 			};
 			name = Release;
@@ -1285,6 +1294,7 @@
 					"$(SRCROOT)/../node_modules/react-native-file-viewer/ios",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-to-pdf/ios",
+					"$(SRCROOT)/../node_modules/@react-native-async-storage/async-storage/ios/**",
 				);
 			};
 			name = Debug;
@@ -1310,6 +1320,7 @@
 					"$(SRCROOT)/../node_modules/react-native-file-viewer/ios",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-to-pdf/ios",
+					"$(SRCROOT)/../node_modules/@react-native-async-storage/async-storage/ios/**",
 				);
 			};
 			name = Release;
@@ -1344,6 +1355,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1351,6 +1363,7 @@
 					"$(SRCROOT)/../node_modules/react-native-file-viewer/ios",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-to-pdf/ios",
+					"$(SRCROOT)/../node_modules/@react-native-async-storage/async-storage/ios/**",
 				);
 			};
 			name = Debug;
@@ -1385,6 +1398,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1392,6 +1406,7 @@
 					"$(SRCROOT)/../node_modules/react-native-file-viewer/ios",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-to-pdf/ios",
+					"$(SRCROOT)/../node_modules/@react-native-async-storage/async-storage/ios/**",
 				);
 			};
 			name = Release;
@@ -1425,6 +1440,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1432,6 +1448,7 @@
 					"$(SRCROOT)/../node_modules/react-native-file-viewer/ios",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-to-pdf/ios",
+					"$(SRCROOT)/../node_modules/@react-native-async-storage/async-storage/ios/**",
 				);
 			};
 			name = Debug;
@@ -1465,6 +1482,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1472,6 +1490,7 @@
 					"$(SRCROOT)/../node_modules/react-native-file-viewer/ios",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-to-pdf/ios",
+					"$(SRCROOT)/../node_modules/@react-native-async-storage/async-storage/ios/**",
 				);
 			};
 			name = Release;

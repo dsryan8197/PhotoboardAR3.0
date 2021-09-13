@@ -21,6 +21,7 @@ import {
   Button,
   ScrollView,
   StyleSheet,
+  SafeAreaView,
   PixelRatio,
   TouchableHighlight,
 } from 'react-native';
@@ -149,6 +150,7 @@ render() {
 //1.
 if (this.state.navigator == 'PIC') {
   return (
+    <SafeAreaView style={{width: '100%', height: '100%'}}>
    <NativeRouter>
      <Route exact path="/">
        <View style={localStyles.inner} >
@@ -204,6 +206,7 @@ if (this.state.navigator == 'PIC') {
           (<App {...props} renewed={"true"} reRender={this.props.reRender} />)
         }/>
   </NativeRouter>
+  </SafeAreaView>
   )}
 
   // 2.

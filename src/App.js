@@ -3,6 +3,7 @@ import PickAScene from './view/PickAScene'
 import NameAProject from './create/NameAProject'
 import trash from '../trashicon2.png'
 import Swipeout from 'react-native-swipeout';
+import { AsyncStorage } from 'react-native';
 
 import {
   AppRegistry,
@@ -33,6 +34,28 @@ export default class PickAProject extends Component {
       },
     } 
   }
+
+ storeData = async () => {
+  try {
+    const jsonValue = JSON.stringify(this.state)
+    await AsyncStorage.setItem('@storage_Key', jsonValue)
+  } catch (e) {
+    // saving error
+  }
+}
+
+ getData = async () => {
+  try {
+    const jsonValue = await AsyncStorage.getItem('@storage_Key')
+    if(jsonValue != null) {
+      window.alert(jsonValue)
+      this.setState(JSON.parse(jsonValue))
+    }
+  } catch(e) {
+    // error reading value
+  }
+}
+
 
 DeleteSceneDescription = (sceneName, project, states) => {
 const x = states.ProjectObj[project]
@@ -113,6 +136,7 @@ this.setState((prevState) => ({
     }
   }
 }))
+this.storeData(this.state)
 }
 
 deletePicture = (imageURL, Scene, Img, project ) => {
@@ -139,7 +163,10 @@ if (this.props.reRender) {
 this.setState((prevState) => ({
   ...this.props.reRender
   }))
-}}
+} else {
+  this.getData()
+}
+}
 
 //home page that shows all your projects (films) and provides option to add a new project
 render() {
