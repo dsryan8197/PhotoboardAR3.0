@@ -38,21 +38,18 @@ export default class PickAProject extends Component {
  storeData = async () => {
   try {
     const jsonValue = JSON.stringify(this.state)
-    await AsyncStorage.setItem('@storage_Key', jsonValue)
+    await AsyncStorage.setItem('@s', jsonValue)
   } catch (e) {
-    // saving error
   }
 }
 
  getData = async () => {
   try {
-    const jsonValue = await AsyncStorage.getItem('@storage_Key')
+    const jsonValue = await AsyncStorage.getItem('@s')
     if(jsonValue != null) {
-      window.alert(jsonValue)
       this.setState(JSON.parse(jsonValue))
     }
   } catch(e) {
-    // error reading value
   }
 }
 
@@ -69,7 +66,9 @@ this.setState((prevState) => ({
       ...x
      }
    }
-  }))
+  }), () => {
+  this.storeData()
+  })
   )
 }
 
@@ -86,7 +85,9 @@ this.setState((prevState) => ({
      }
     }
   }
-}))
+}), () => {
+  this.storeData()
+})
 }
 
 //this holds the typed onChange value of a project name when being created
@@ -94,7 +95,9 @@ handleChange = (e) => {
   this.setState((prevState) => ({
     ...prevState,
     ProjectNameInput : e
-  }));
+  }), () => {
+  this.storeData()
+  });
 }
 
 AddProject = (ProjectNameInput) => {
@@ -105,7 +108,9 @@ this.setState((prevState) => ({
     ...prevState.ProjectObj,
     [ProjectNameInput] : {}
   }
-}))  
+}), () => {
+  this.storeData()
+})  
 }
 
 deleteProj = (ProjectNameInput) => {
@@ -118,7 +123,9 @@ this.setState((prevState) => ({
   ProjectObj : {
      ...y
   }
-}))  
+}), () => {
+  this.storeData()
+})  
 )
 }
 
@@ -135,8 +142,9 @@ this.setState((prevState) => ({
       }
     }
   }
-}))
-this.storeData(this.state)
+}), () => {
+this.storeData()
+})
 }
 
 deletePicture = (imageURL, Scene, Img, project ) => {
@@ -152,9 +160,16 @@ this.setState((prevState) => ({
       }
     }
   }
-}))
+}), () => {
+this.storeData()
+})
+
 }
 
+// changeOrder = ( imageURL, Scene, Img, project ) => {
+//  this.setState()
+//   this.storeData(this.state.ProjectObj)
+// }
 //  pathDirect = e => {
 //   this.props.history.push(e)
 //  }

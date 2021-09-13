@@ -174,7 +174,8 @@ if (this.state.navigator == 'PIC') {
                     backgroundColor: 'red',
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                     onPress: () => { this.props.deletePicture(el, this.props.Info.description, this.props.Info.images, this.props.activeProject) }
-                  }]} autoClose='true'
+                  }
+                  ]} autoClose='true'
                   style={{alignItems: 'center'}}
                      backgroundColor= 'transparent'
                     >
