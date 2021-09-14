@@ -150,8 +150,41 @@ this.setState((prevState) => ({
 this.storeData()
 })}
 
-Arrange = ( imageURL, Scene, Img, project ) => {
+Arrange = ( imageURL, Scene, Img, project, direction, index ) => {
+if (direction == "↑" && index > 0) {
+  let d = Img[index]
+  Img[index] = Img[index - 1]
+  Img[index - 1] = d
+this.setState((prevState) => ({
+  ...prevState,
+  ProjectObj: {
+    ...prevState.ProjectObj,
+    [project] : {
+      ...prevState.ProjectObj.[project],
+      [Scene] : {
+        description: [Scene],
+        images: [...Img]
+  }}}}), () => {
+this.storeData()
+})
 
+} else if (direction == "↓" && index < Img.length -1) {
+  let q = Img[index]
+  Img[index] = Img[index + 1]
+  Img[index + 1] = q
+this.setState((prevState) => ({
+  ...prevState,
+  ProjectObj: {
+    ...prevState.ProjectObj,
+    [project] : {
+      ...prevState.ProjectObj.[project],
+      [Scene] : {
+        description: [Scene],
+        images: [...Img]
+  }}}}), () => {
+this.storeData()
+})
+}
 }
 
 // changeOrder = ( imageURL, Scene, Img, project ) => {
@@ -215,6 +248,7 @@ render() {
           ProjectNameInput={this.state.ProjectNameInput}
           AddSceneDescription={this.AddSceneDescription}
           Info={this.state}
+          Arrange={this.Arrange}
           Draggable={this.state[this.state.activeProject]}
           ObjofProje={this.state.ProjectObj[this.state.activeProject]}/>)
           }/>
@@ -222,6 +256,8 @@ render() {
           <Route path="/addAProject" render={props => 
           (<NameAProject {...props}
           created={"true"}
+          Arrange={this.Arrange}
+          Arrange={this.Arrange}
           DeleteSceneDescription={this.DeleteSceneDescription}
           deletePicture={this.deletePicture}
           updatePictures={this.updatePictures}

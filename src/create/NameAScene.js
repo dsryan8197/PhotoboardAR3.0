@@ -92,6 +92,7 @@ render() {
        (<PickAPic {...props}
        created={"true"}
        deletePicture={this.props.deletePicture}
+       Arrange={this.props.Arrange}
        DataForPic={this.props.DataForPic}
        updatePictures={this.props.updatePictures}
        reRender={this.props.Info}

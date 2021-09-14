@@ -108,10 +108,11 @@ _setARNavigatorRef(ARNavigator){
 }
 //takescreenshot function
 _takeScreenshot() {
+  // window.alert(JSON.stringify(this.state.screenshot_count))
   if (!this.state.writeAccessPermission) {
     this.requestWriteAccessPermission();
   }
-  this._arNavigator._takeScreenshot("figment_still_" + this.state.screenshot_count, true).then((retDict)=>{
+  this._arNavigator._takeScreenshot("pb_" + this.state.screenshot_count, false).then((retDict)=>{
     if (!retDict.success) {
       if (retDict.errorCode == ViroConstants.RECORD_ERROR_NO_PERMISSION) {
         this._displayVideoRecordAlert("Screenshot Error", "Please allow camera permissions!" + errorCode);
@@ -169,16 +170,25 @@ if (this.state.navigator == 'PIC') {
          <View style={localStyles.viewforobjects} >
            {this.props.Info.images.map((el, i) => { 
             return (
-            <Swipeout right={[{
+            <Swipeout right={[
+              {
                     text: 'Delete',
+                    buttonWidth: 80,
                     backgroundColor: 'red',
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                     onPress: () => { this.props.deletePicture(el, this.props.Info.description, this.props.Info.images, this.props.activeProject) }
                   },
-                  { text: 'Arrange',
-                    backgroundColor: 'Blue',
+                  { text: '↓',
+                    buttonWidth: 80,
+                    backgroundColor: 'green',
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-                    onPress: () => { this.props.Arrange(el, this.props.Info.description, this.props.Info.images, this.props.activeProject) }
+                    onPress: () => { this.props.Arrange(el, this.props.Info.description, this.props.Info.images, this.props.activeProject, "↓", i) }
+                  },
+                  { text: '↑',
+                    buttonWidth: 80,
+                    backgroundColor: 'blue',
+                    underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+                    onPress: () => { this.props.Arrange(el, this.props.Info.description, this.props.Info.images, this.props.activeProject, "↑", i) }
                   }
                   ]} autoClose='true'
                   style={{alignItems: 'center'}}

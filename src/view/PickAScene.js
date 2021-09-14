@@ -82,6 +82,7 @@ render() {
            (<PickAPic {...props}
            deletePicture={this.props.deletePicture}
            activeProject={this.props.Info.activeProject}
+           Arrange={this.props.Arrange}
            updatePictures={this.props.updatePictures}
            ProjectNameInput={this.props.ProjectNameInput}
            Info={this.props.ObjofProje[this.state.activeScene]}/>)
@@ -90,6 +91,7 @@ render() {
              <Route path="/NameAScene" render={props => 
            (<NameAScene {...props}
            created={"true"}
+           Arrange={this.props.Arrange}
            deletePicture={this.props.deletePicture}
            activeProject={this.props.Info.activeProject}
            updatePictures={this.props.updatePictures}

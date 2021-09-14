@@ -70,6 +70,7 @@ render() {
        <Route path="/NameAScene" render={props => 
          (<NameAScene {...props}
          DeleteSceneDescription={this.props.DeleteSceneDescription}
+         Arrange={this.props.Arrange}
          deletePicture={this.props.deletePicture}
          updatePictures={this.props.updatePictures}
          ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]}
