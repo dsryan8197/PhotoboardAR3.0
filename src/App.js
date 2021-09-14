@@ -151,7 +151,7 @@ this.storeData()
 })}
 
 Arrange = ( imageURL, Scene, Img, project, direction, index ) => {
-if (direction == "↑" && index > 0) {
+if (direction == "down" && index > 0) {
   let d = Img[index]
   Img[index] = Img[index - 1]
   Img[index - 1] = d
@@ -168,7 +168,7 @@ this.setState((prevState) => ({
 this.storeData()
 })
 
-} else if (direction == "↓" && index < Img.length -1) {
+} else if (direction == "up" && index < Img.length -1) {
   let q = Img[index]
   Img[index] = Img[index + 1]
   Img[index + 1] = q
@@ -186,7 +186,6 @@ this.storeData()
 })
 }
 }
-
 // changeOrder = ( imageURL, Scene, Img, project ) => {
 //  this.setState()
 //   this.storeData(this.state.ProjectObj)

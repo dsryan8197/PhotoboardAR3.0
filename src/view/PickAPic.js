@@ -182,13 +182,13 @@ if (this.state.navigator == 'PIC') {
                     buttonWidth: 80,
                     backgroundColor: 'green',
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-                    onPress: () => { this.props.Arrange(el, this.props.Info.description, this.props.Info.images, this.props.activeProject, "↓", i) }
+                    onPress: () => { this.props.Arrange(el, this.props.Info.description, this.props.Info.images, this.props.activeProject, "up", i) }
                   },
                   { text: '↑',
                     buttonWidth: 80,
                     backgroundColor: 'blue',
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-                    onPress: () => { this.props.Arrange(el, this.props.Info.description, this.props.Info.images, this.props.activeProject, "↑", i) }
+                    onPress: () => { this.props.Arrange(el, this.props.Info.description, this.props.Info.images, this.props.activeProject, "down", i) }
                   }
                   ]} autoClose='true'
                   style={{alignItems: 'center'}}
