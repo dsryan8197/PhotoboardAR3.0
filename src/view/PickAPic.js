@@ -137,9 +137,7 @@ shot() {
  }, 2000)
 }
 
-downloadMe = () => {
 
-}
 
 
 //this render method returns 4 possible functions
@@ -212,7 +210,7 @@ if (this.state.navigator == 'PIC') {
          </View>
        </View>
         <View style={localStyles.outer}>
-            <TouchableHighlight onPress={()=>{this.downloadMe()}}>
+            <TouchableHighlight onPress={()=>{window.alert('f')}}>
             <Image style={localStyles.Modelbuttonsone} source={download}></Image>
             </TouchableHighlight>
         </View>

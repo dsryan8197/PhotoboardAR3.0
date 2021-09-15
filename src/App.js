@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import PickAScene from './view/PickAScene'
 import NameAProject from './create/NameAProject'
 import trash from '../trashicon2.png'
+import Info1 from '../slate1.jpg'
+import Info2 from '../people1.jpg'
+import Info3 from '../camera1.jpg'
+import Info4 from '../Info4.jpg'
+import Info5 from '../Info5.jpg'
+import back from '../backArrow.png'
+import { Col, Row, Grid } from "react-native-easy-grid";
+import AnimatedDotsCarousel from 'react-native-animated-dots-carousel';
+
 import Swipeout from 'react-native-swipeout';
 import { AsyncStorage } from 'react-native';
 
@@ -30,6 +39,8 @@ export default class PickAProject extends Component {
     this.state = {
       activeProject : null,
       ProjectNameInput : '',
+      InfoPage: true,
+      InfoPageSpecific: 'one',
       ProjectObj : {
       },
     } 
@@ -202,6 +213,334 @@ this.setState((prevState) => ({
 
 //home page that shows all your projects (films) and provides option to add a new project
 render() {
+if (this.state.InfoPage) {
+
+if (this.state.InfoPageSpecific == 'one') {
+return (
+  <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+  <Grid>
+    <Row size={1} >
+    </Row>
+      <Row size={4}>
+    <TouchableHighlight>
+        <Image
+        style={{width: 400, height: 400,  alignContent: 'center', justifyContent: 'center'}}
+        source={Info1}
+        key="cbutton">
+       </Image>
+     </TouchableHighlight> 
+    </Row>
+  <Row size={2} style={{left: 40}}>
+  <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
+        <Text style={localStyles.buttonText}>Draft</Text>
+        {/* <Text>Create your films and draft your scenes</Text> */}
+  {/* </Row>
+  <Row size={1} style={{backgroundColor: 'red', left: 40}}> */}
+        {/* <Text style={localStyles.buttonText}>Draft</Text> */}
+        <Text style={{color: 'purple'}}>Create your films and draft your scenes</Text>
+    </View>
+  </Row>
+  <Row size={1} style={{ alignItems: 'center'}}>
+  <Col size={0.5}></Col>
+  <Col size={3} style={{top: 50}}>
+  <AnimatedDotsCarousel
+        length={4}
+        currentIndex={0}
+        maxIndicators={4}
+        interpolateOpacityAndColor={true}
+        activeIndicatorConfig={{
+          color: 'purple',
+          margin: 3,
+          opacity: 1,
+          size: 8,
+        }}
+        inactiveIndicatorConfig={{
+          color: 'white',
+          margin: 3,
+          borderColor: 'black',
+          borderWidth: 1,
+          opacity: 0.5,
+          size: 8,
+        }}
+        decreasingDots={[
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 6 },
+            quantity: 1,
+          },
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 4 },
+            quantity: 1,
+          },
+        ]}
+      />
+  </Col>
+  <Col size={1.5}>
+        <TouchableHighlight onPress={()=> {(
+                this.setState((prevState) => ({
+                  ...prevState,
+                  InfoPageSpecific : 'two'
+            })))}} style={localStyles.introButton}>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+        </TouchableHighlight>
+  </Col>
+  </Row>
+  <Row size={1}>
+  </Row>
+      {/* </TouchableHighlight> */}
+  {/* </View> */}
+  </Grid>
+  </SafeAreaView>
+  )
+}
+
+if (this.state.InfoPageSpecific == 'two') {
+return (
+  <SafeAreaView style={{width: '100%', height: '100%'}}>
+  <Grid>
+    <Row size={1}>
+    </Row>
+      <Row size={4}>
+    {/* <View style={{width: '100%', height: '80%'}}> */}
+    <TouchableHighlight>
+        <Image
+        style={{width: 300, height: 300,  alignContent: 'center', justifyContent: 'center'}}
+        source={Info2}
+        key="cbutton">
+       </Image>
+     </TouchableHighlight> 
+    </Row>
+  <Row size={2} style={{left: 40}}>
+  <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
+        <Text style={localStyles.buttonText}>Frame</Text>
+        {/* <Text>Create your films and draft your scenes</Text> */}
+  {/* </Row>
+  <Row size={1} style={{backgroundColor: 'red', left: 40}}> */}
+        {/* <Text style={localStyles.buttonText}>Draft</Text> */}
+        <Text style={{color: 'purple'}}>Frame your shots in AR with up to 150 unique 3D models and poses</Text>
+    </View>
+  </Row>
+  <Row size={1} style={{alignItems: 'center'}}>
+  <Col size={0.5}></Col>
+  <Col size={3} style={{top: 50}}>
+  <AnimatedDotsCarousel
+        length={4}
+        // style={{alignItems: 'flex-end'}}
+        currentIndex={1}
+        maxIndicators={4}
+        interpolateOpacityAndColor={true}
+        activeIndicatorConfig={{
+          color: 'purple',
+          margin: 3,
+          opacity: 1,
+          size: 8,
+        }}
+        inactiveIndicatorConfig={{
+          color: 'white',
+          margin: 3,
+          borderColor: 'black',
+          borderWidth: 1,
+          opacity: 0.5,
+          size: 8,
+        }}
+        decreasingDots={[
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 6 },
+            quantity: 1,
+          },
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 4 },
+            quantity: 1,
+          },
+        ]}
+      />
+  </Col>
+  <Col size={1.5}>
+        <TouchableHighlight onPress={()=> {(
+                this.setState((prevState) => ({
+                  ...prevState,
+                  InfoPageSpecific : 'three'
+            })))}} style={localStyles.introButton}>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+        </TouchableHighlight>
+  </Col>
+  </Row>
+  <Row size={1}>
+  </Row>
+      {/* </TouchableHighlight> */}
+  {/* </View> */}
+  </Grid>
+  </SafeAreaView>
+  )
+}
+
+if (this.state.InfoPageSpecific == 'three') {
+return (
+  <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+  <Grid>
+    <Row size={1}>
+    </Row>
+      <Row size={4}>
+    <TouchableHighlight>
+        <Image
+        style={{width: 300, height: 300,  alignContent: 'center', justifyContent: 'center'}}
+        source={Info3}
+        key="cbutton">
+       </Image>
+     </TouchableHighlight> 
+    </Row>
+  <Row size={2} style={{ left: 40}}>
+  <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
+        <Text style={localStyles.buttonText}>Snap and Save</Text>
+        {/* <Text>Create your films and draft your scenes</Text> */}
+  {/* </Row>
+  <Row size={1} style={{backgroundColor: 'red', left: 40}}> */}
+        {/* <Text style={localStyles.buttonText}>Draft</Text> */}
+        <Text style={{color: 'purple'}}>Create your storyboards and save them to your phones gallery</Text>
+    </View>
+  </Row>
+  <Row size={1} style={{alignItems: 'center'}}>
+  <Col size={0.5}></Col>
+  <Col size={3} style={{top: 50}}>
+  <AnimatedDotsCarousel
+        length={4}
+        // style={{alignItems: 'flex-end'}}
+        currentIndex={2}
+        maxIndicators={4}
+        interpolateOpacityAndColor={true}
+        activeIndicatorConfig={{
+          color: 'purple',
+          margin: 3,
+          opacity: 2,
+          size: 8,
+        }}
+        inactiveIndicatorConfig={{
+          color: 'white',
+          margin: 3,
+          borderColor: 'black',
+          borderWidth: 1,
+          opacity: 0.5,
+          size: 8,
+        }}
+        decreasingDots={[
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 6 },
+            quantity: 1,
+          },
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 4 },
+            quantity: 1,
+          },
+        ]}
+      />
+  </Col>
+  <Col size={1.5}>
+        <TouchableHighlight onPress={()=> {(
+                this.setState((prevState) => ({
+                  ...prevState,
+                  InfoPageSpecific : 'four'
+            })))}} style={localStyles.introButton}>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+        </TouchableHighlight>
+  </Col>
+  </Row>
+  <Row size={1}>
+  </Row>
+      {/* </TouchableHighlight> */}
+  {/* </View> */}
+  </Grid>
+  </SafeAreaView>
+  )
+}
+
+if (this.state.InfoPageSpecific == 'four') {
+return (
+  <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+  <Grid>
+  <Row size={1}>
+  </Row>
+  <Row size={2}>
+  {/* <View style={{width: '100%', height: '80%'}}> */}
+    {/* <View> */}
+    <TouchableHighlight>
+        <Image
+        style={{width: 300, height: 220,  alignContent: 'center', justifyContent: 'center'}}
+        source={Info4}
+        key="cbutton">
+       </Image>
+     </TouchableHighlight> 
+  </Row>
+  <Row size={2}>
+     <TouchableHighlight>
+        <Image
+        style={{width: 300, height: 220,  alignContent: 'center', justifyContent: 'center'}}
+        source={Info5}
+        key="cbutton">
+       </Image>
+     </TouchableHighlight>
+    {/* </View>  */}
+  </Row>
+  <Row size={2} style={{ left: 40}}>
+  <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
+        <Text style={localStyles.buttonText}>Tips</Text>
+        <Text style={{color: 'purple'}}>Swipe to Delete and Reorder your scenes and storyboards</Text>
+        <Text style={{color: 'purple'}}>Tap your 3D models to rotate</Text>
+    </View>
+  </Row>
+  <Row size={1} style={{alignItems: 'center'}}>
+    <Col size={0.5}></Col>
+    <Col size={3} style={{top: 50}}>
+      <AnimatedDotsCarousel
+        length={4}
+        // style={{alignItems: 'flex-end'}}
+        currentIndex={3}
+        maxIndicators={4}
+        interpolateOpacityAndColor={true}
+        activeIndicatorConfig={{
+          color: 'purple',
+          margin: 3,
+          opacity: 1,
+          size: 8,
+        }}
+        inactiveIndicatorConfig={{
+          color: 'white',
+          margin: 3,
+          borderColor: 'black',
+          borderWidth: 1,
+          opacity: 0.5,
+          size: 8,
+        }}
+        decreasingDots={[
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 6 },
+            quantity: 1,
+          },
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 4 },
+            quantity: 1,
+          },
+        ]}
+      />
+  </Col>
+    <Col size={1.5}>
+        <TouchableHighlight onPress={()=> {(
+                this.setState((prevState) => ({
+                  ...prevState,
+                  InfoPageSpecific : 'one',
+                  InfoPage: true;
+            })))}} style={localStyles.introButton}>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+        </TouchableHighlight>
+    </Col>
+  </Row>
+  <Row size={1}>
+  </Row>
+  </Grid> 
+  </SafeAreaView> 
+  )
+}
+
+}
+if (!this.state.InfoPage) {
  return (
     <NativeRouter>
       <Route exact path="/">
@@ -269,6 +608,8 @@ render() {
           }/>
     </NativeRouter>
     )}}
+
+}
 
 var localStyles = StyleSheet.create({
   viroContainer :{
@@ -355,6 +696,17 @@ var localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
+  },
+  introButton : {
+     width: 80,
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    borderRadius: 50,
+    // color: 'white',
+    backgroundColor: '#7844CA'
+
   },
    Modelbuttons : {
     height: 25,
