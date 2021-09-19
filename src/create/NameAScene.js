@@ -4,6 +4,7 @@ import download from '../../downArrow.png'
 import back from '../../backArrow.png'
 import PickAPic from '../view/PickAPic'
 import PickAScene from '../view/PickAScene'
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 import {
   AppRegistry,
@@ -13,6 +14,8 @@ import {
   Image,
   View,
   Picker,
+  ScrollView,
+  SafeAreaView,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
@@ -40,15 +43,29 @@ goBack(){
 //create a film scene and routes to list of pics
 render() {
   return (
+      <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
     <NativeRouter>
       <Route exact path="/">
-         <View style={localStyles.inner} >
-           <View style={localStyles.outer} >
-             {this.props.created && <TouchableHighlight onPress={() => this.goBack()}>
-                <Image style={localStyles.Modelbuttons} source={back}></Image>     
+             <Grid>
+          <Row size={1} style={{backgroundColor: 'red'}}>
+         <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+         {/* <View style={localStyles.inner} > */}
+           {/* <View style={localStyles.outer} > */}
+             {this.props.created && <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}} onPress={() => this.goBack()}>
+                <Image style={localStyles.backButton} source={back}></Image>     
              </TouchableHighlight> }
-            <Text style={localStyles.titleText}>Create A Scene</Text>
-           </View>
+            </Col>
+               <Col size={3} style={{justifyContent: 'center'}}>
+            <Text style={localStyles.Film}>Create A Scene</Text>
+           </Col>
+              <Col size={1}></Col>  
+         </Row>
+           {/* </View> */}
+
+          <Row size={5} style={{backgroundColor: 'blue'}}>
+    <Col size={1}></Col>
+        <Col size={6}>
+           {/* <ScrollView> */}
          <View style={localStyles.createSCene} >
            <Picker
            style={{backgroundColor: 'white', width:'25%', paddingRight: 20}}
@@ -76,16 +93,29 @@ render() {
              <Picker.Item label="Night" value="Night" />
           </Picker>
          </View>
-            <Link to="/pics" style={localStyles.buttonsplus}
+          </Col>
+    <Col size={1}></Col>
+    </Row>
+     <Row size={1} style={{backgroundColor: 'purple'}}>
+        <Col size={1} style={{backgroundColor: 'blue'}}></Col>
+          
+          <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+              {/* <View style={{}}> */}
+            <Link to="/pics"
+             style={localStyles.buttonsplus}
             onPress={() => {
               this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight, this.state.intExt + ' ' + this.state.location + ' ' + this.state.dayNight)}
               }>
-              <Text >+</Text>
+              <Text style={localStyles.buttonText}>+</Text>
             </Link >
-        </View>
-
-     <View style={localStyles.outer}>
-   </View>
+          </Col>
+          
+        <Col size={1} style={{backgroundColor: 'black'}}></Col>
+        {/* </View> */}
+      </Row>
+     {/* <View style={localStyles.outer}>
+   </View> */}
+        </Grid>
  </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
      <Route path="/pics" render={props => 
@@ -102,6 +132,7 @@ render() {
        activeProject={this.props.activeProject}/>)
      }/>
   </NativeRouter>
+  </SafeAreaView>
 )}}
 
 var localStyles = StyleSheet.create({
@@ -131,6 +162,10 @@ var localStyles = StyleSheet.create({
     borderRadius: 50,
     fontSize : 25
   },
+    backButton : {
+    height: 25,
+    width: 25,
+  },
   littleText: {
      paddingTop: 30,
     paddingBottom: 20,
@@ -138,9 +173,32 @@ var localStyles = StyleSheet.create({
     textAlign:'center',
     fontSize : 10
   },
+    titleText2: {
+    color:'white',
+    textAlign:'center',
+    justifyContent: 'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25,
+    width: 300
+  },
+  Film: {
+    // paddingTop: 35,
+    color:'#7844CA',
+    justifyContent: 'center', //Centered horizontally
+       alignItems: 'center', //Centered vertically
+    // textAlign:'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25
+  },
   buttonText: {
     color:'#C3BEF7',
-    fontSize : 30
+    fontSize : 30,
+        textAlign:'center',
+
   },
   buttons : {
     height: 80,
@@ -155,17 +213,19 @@ var localStyles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,.2)',
   },
   buttonsplus : {
-    height: 80,
+   height: 80,
     width: 80,
     borderRadius: 80/2,
-    marginTop: '50%',
+    // textAlign:'center',
+    // paddingTop:10,
+    // paddingBottom:20,
+    // marginTop: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
+    // marginBottom: 10,
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',
-    color:'#C3BEF7',
-    textAlign:'center',
-    justifyContent: 'center',
-    fontSize : 30
   },
    Modelbuttons : {
     height: 25,

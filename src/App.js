@@ -6,11 +6,9 @@ import Info1 from '../slate1.jpg'
 import Info2 from '../people1.jpg'
 import Info3 from '../camera1.jpg'
 import Info4 from '../Info4.jpg'
-import Info5 from '../Info5.jpg'
 import back from '../backArrow.png'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import AnimatedDotsCarousel from 'react-native-animated-dots-carousel';
-
 import Swipeout from 'react-native-swipeout';
 import { AsyncStorage } from 'react-native';
 
@@ -22,6 +20,7 @@ import {
   SafeAreaView,
   StyleSheet,
   PixelRatio,
+  ScrollView,
   Image,
   TouchableHighlight,
 } from 'react-native';
@@ -197,10 +196,6 @@ this.storeData()
 })
 }
 }
-// changeOrder = ( imageURL, Scene, Img, project ) => {
-//  this.setState()
-//   this.storeData(this.state.ProjectObj)
-// }
 
 componentDidMount() {
 if (this.props.reRender) {
@@ -213,7 +208,7 @@ this.setState((prevState) => ({
 
 //home page that shows all your projects (films) and provides option to add a new project
 render() {
-if (this.state.InfoPage) {
+if (!this.state.InfoPage) {
 
 if (this.state.InfoPageSpecific == 'one') {
 return (
@@ -222,22 +217,18 @@ return (
     <Row size={1} >
     </Row>
       <Row size={4}>
-    <TouchableHighlight>
+    {/* <TouchableHighlight> */}
         <Image
-        style={{width: 400, height: 400,  alignContent: 'center', justifyContent: 'center'}}
+        style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info1}
         key="cbutton">
        </Image>
-     </TouchableHighlight> 
+     {/* </TouchableHighlight>  */}
     </Row>
   <Row size={2} style={{left: 40}}>
   <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
-        <Text style={localStyles.buttonText}>Draft</Text>
-        {/* <Text>Create your films and draft your scenes</Text> */}
-  {/* </Row>
-  <Row size={1} style={{backgroundColor: 'red', left: 40}}> */}
-        {/* <Text style={localStyles.buttonText}>Draft</Text> */}
-        <Text style={{color: 'purple'}}>Create your films and draft your scenes</Text>
+        <Text style={localStyles.buttonTextII}>Draft</Text>
+        <Text style={{color: '#8F8F8F', fontSize: 20}}>Create your films and draft your scenes</Text>
     </View>
   </Row>
   <Row size={1} style={{ alignItems: 'center'}}>
@@ -280,6 +271,8 @@ return (
                   ...prevState,
                   InfoPageSpecific : 'two'
             })))}} style={localStyles.introButton}>
+            {/* <ArrowCircleRightIcon /> */}
+
             <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
         </TouchableHighlight>
   </Col>
@@ -299,24 +292,24 @@ return (
   <Grid>
     <Row size={1}>
     </Row>
-      <Row size={4}>
+      <Row size={4} style={{backgroundColor: 'blue'}}>
     {/* <View style={{width: '100%', height: '80%'}}> */}
-    <TouchableHighlight>
+    {/* <TouchableHighlight style={{alignContent: 'center'}}> */}
         <Image
-        style={{width: 300, height: 300,  alignContent: 'center', justifyContent: 'center'}}
+        style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info2}
         key="cbutton">
        </Image>
-     </TouchableHighlight> 
+     {/* </TouchableHighlight>  */}
     </Row>
-  <Row size={2} style={{left: 40}}>
-  <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
-        <Text style={localStyles.buttonText}>Frame</Text>
+  <Row size={2} style={{paddingLeft: '10%'}}>
+  <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
+        <Text style={localStyles.buttonTextII}>Frame</Text>
         {/* <Text>Create your films and draft your scenes</Text> */}
   {/* </Row>
   <Row size={1} style={{backgroundColor: 'red', left: 40}}> */}
         {/* <Text style={localStyles.buttonText}>Draft</Text> */}
-        <Text style={{color: 'purple'}}>Frame your shots in AR with up to 150 unique 3D models and poses</Text>
+        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Frame your shots in AR with up to 150 unique 3D models and poses</Text>
     </View>
   </Row>
   <Row size={1} style={{alignItems: 'center'}}>
@@ -360,6 +353,7 @@ return (
                   ...prevState,
                   InfoPageSpecific : 'three'
             })))}} style={localStyles.introButton}>
+            {/* <ArrowCircleRightIcon className="w-8 h-8"/> */}
             <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
         </TouchableHighlight>
   </Col>
@@ -380,22 +374,18 @@ return (
     <Row size={1}>
     </Row>
       <Row size={4}>
-    <TouchableHighlight>
+    {/* <TouchableHighlight> */}
         <Image
-        style={{width: 300, height: 300,  alignContent: 'center', justifyContent: 'center'}}
+        style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info3}
         key="cbutton">
        </Image>
-     </TouchableHighlight> 
+     {/* </TouchableHighlight>  */}
     </Row>
-  <Row size={2} style={{ left: 40}}>
-  <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
-        <Text style={localStyles.buttonText}>Snap and Save</Text>
-        {/* <Text>Create your films and draft your scenes</Text> */}
-  {/* </Row>
-  <Row size={1} style={{backgroundColor: 'red', left: 40}}> */}
-        {/* <Text style={localStyles.buttonText}>Draft</Text> */}
-        <Text style={{color: 'purple'}}>Create your storyboards and save them to your phones gallery</Text>
+  <Row size={2} style={{paddingLeft: '10%'}}>
+  <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
+        <Text style={localStyles.buttonTextII}>Snap and Save</Text>
+        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Create your storyboards and save them to your phones gallery</Text>
     </View>
   </Row>
   <Row size={1} style={{alignItems: 'center'}}>
@@ -403,7 +393,6 @@ return (
   <Col size={3} style={{top: 50}}>
   <AnimatedDotsCarousel
         length={4}
-        // style={{alignItems: 'flex-end'}}
         currentIndex={2}
         maxIndicators={4}
         interpolateOpacityAndColor={true}
@@ -458,32 +447,18 @@ return (
   <Grid>
   <Row size={1}>
   </Row>
-  <Row size={2}>
-  {/* <View style={{width: '100%', height: '80%'}}> */}
-    {/* <View> */}
-    <TouchableHighlight>
+  <Row size={4}>
         <Image
-        style={{width: 300, height: 220,  alignContent: 'center', justifyContent: 'center'}}
+        style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info4}
         key="cbutton">
        </Image>
-     </TouchableHighlight> 
   </Row>
-  <Row size={2}>
-     <TouchableHighlight>
-        <Image
-        style={{width: 300, height: 220,  alignContent: 'center', justifyContent: 'center'}}
-        source={Info5}
-        key="cbutton">
-       </Image>
-     </TouchableHighlight>
-    {/* </View>  */}
-  </Row>
-  <Row size={2} style={{ left: 40}}>
-  <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
-        <Text style={localStyles.buttonText}>Tips</Text>
-        <Text style={{color: 'purple'}}>Swipe to Delete and Reorder your scenes and storyboards</Text>
-        <Text style={{color: 'purple'}}>Tap your 3D models to rotate</Text>
+  <Row size={2} style={{paddingLeft: '10%'}}>
+  <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
+        <Text style={localStyles.buttonTextII}>Tips</Text>
+        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Swipe to Delete and Reorder your scenes and storyboards</Text>
+        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Tap your 3D models to rotate</Text>
     </View>
   </Row>
   <Row size={1} style={{alignItems: 'center'}}>
@@ -525,8 +500,8 @@ return (
         <TouchableHighlight onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
-                  InfoPageSpecific : 'one',
-                  InfoPage: true;
+                  // InfoPageSpecific : 'one'
+                  InfoPage: false
             })))}} style={localStyles.introButton}>
             <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
         </TouchableHighlight>
@@ -540,15 +515,26 @@ return (
 }
 
 }
-if (!this.state.InfoPage) {
+if (this.state.InfoPage) {
  return (
-    <NativeRouter>
+    <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+    <NativeRouter >
       <Route exact path="/">
-         <View style={localStyles.inner} >
-           <View style={localStyles.outer}>
-             <Text style={localStyles.titleText}>Films</Text>
-           </View>
-         <View style={localStyles.viewforobjects} >
+      <Grid>
+        <Row size={1} style={{backgroundColor: 'red'}}>
+         {/* <View style={localStyles.inner} > */}
+         <Col size={1} style={{backgroundColor: 'blue'}}></Col>
+           {/* <View style={localStyles.outer}> */}
+           <Col size={3} style={{justifyContent: 'center'}}>
+             <Text style={localStyles.Film}>Films</Text>
+           </Col>
+           {/* </View> */}
+         <Col size={1}></Col>
+        </Row>
+        <Row size={5} style={{backgroundColor: 'blue'}}>
+        <Col size={1}></Col>
+        <Col size={6}>
+          <ScrollView>
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
                <Swipeout right={[{
@@ -569,13 +555,24 @@ if (!this.state.InfoPage) {
              </Link>
              </Swipeout>
           )})}
+            </ScrollView>
+          </Col>
+          <Col size={1}></Col>
+          </Row>
+         <Row size={1} style={{backgroundColor: 'red'}}>
+          <Col size={1} style={{backgroundColor: 'blue'}}></Col>
+          <Col size={5} style={{justifyContent: 'center', alignItems: 'center'}}>
            <Link to="/addAProject" style={localStyles.buttonsplus}>
                <Text style={localStyles.buttonText}>{"+"}</Text>
            </Link>
-          </View>
-        </View>
-       <View style={localStyles.outer}>
-       </View>
+           </Col>
+            <Col size={1} style={{backgroundColor: 'black'}}></Col>
+        </Row>
+          {/* </View> */}
+        {/* </View> */}
+       {/* <View style={localStyles.outer}>
+       </View> */}
+       </Grid>
       </Route>
           {/* route for when you click an existing project */}
           <Route path="/scene" render={props => 
@@ -607,6 +604,8 @@ if (!this.state.InfoPage) {
           Info={this.state}/>)
           }/>
     </NativeRouter>
+      </SafeAreaView>
+
     )}}
 
 }
@@ -637,10 +636,23 @@ var localStyles = StyleSheet.create({
     paddingBottom: '10%',
     height: '100%',
   },
+  Film: {
+    // paddingTop: 35,
+    color:'#7844CA',
+    justifyContent: 'center', //Centered horizontally
+       alignItems: 'center', //Centered vertically
+    // textAlign:'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25
+  },
   titleText: {
     paddingTop: 35,
     color:'white',
     textAlign:'center',
+    // alignContent: 'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
     fontSize : 25
@@ -648,6 +660,7 @@ var localStyles = StyleSheet.create({
   titleText2: {
     color:'white',
     textAlign:'center',
+    justifyContent: 'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
     fontSize : 25,
@@ -658,16 +671,24 @@ var localStyles = StyleSheet.create({
     textAlign:'center',
     fontSize : 30
   },
+  buttonTextII: {
+    color:'#C3BEF7',
+    textAlign:'center',
+    fontSize : 40,
+  },
   deleteButton : {
     color: 'white'
   },
   buttons : {
     height: 80,
     width: '100%',
-    paddingTop:20,
-    paddingBottom:20,
+    alignContent: 'center',
+    alignItems: 'center', //Centered vertically    justifyContent: 'center',
     marginTop: 10,
     marginBottom: 10,
+    // textAlign: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
     backgroundColor:'#C3BEF7',
     borderRadius: 10,
     borderWidth: 5,
@@ -677,10 +698,13 @@ var localStyles = StyleSheet.create({
     height: 80,
     width: 80,
     borderRadius: 80/2,
-    paddingTop:10,
-    paddingBottom:20,
-    marginTop: 10,
-    marginBottom: 10,
+    // textAlign:'center',
+    // paddingTop:10,
+    // paddingBottom:20,
+    // marginTop: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
+    // marginBottom: 10,
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',

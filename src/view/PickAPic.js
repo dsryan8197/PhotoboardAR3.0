@@ -13,6 +13,7 @@ import character from '../../charactericon.png'
 import Swipeout from 'react-native-swipeout';
 import App from '../App.js';
 import ARScene from '../../js/HelloWorldSceneAR'
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 import {
   AppRegistry,
@@ -149,23 +150,33 @@ render() {
 //1.
 if (this.state.navigator == 'PIC') {
   return (
-    <SafeAreaView style={{width: '100%', height: '100%'}}>
+  <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
    <NativeRouter>
-     <Route exact path="/">
-       <View style={localStyles.inner} >
-        <View style={localStyles.outer}>
+  <Route exact path="/">
+  <Grid>
+  <Row size={1} style={{backgroundColor: 'red'}}>
+    <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
         {!this.props.created ? 
-        <TouchableHighlight onPress={() => this.goBac()}>
-            <Image style={localStyles.Modelbuttons} source={back}></Image>
+        <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}}  onPress={() => this.goBac()}>
+            <Image style={localStyles.backButton} source={back}></Image>
           </TouchableHighlight>
         : 
-          <Link to={'/homepage'}>
-            <Image style={localStyles.Modelbuttons} source={back}></Image>
+          <Link style={localStyles.backButton, {justifyContent: 'center'}}  to={'/homepage'}>
+            <Image style={localStyles.backButton} source={back}></Image>
           </Link>
         }
-          <Text style={localStyles.titleText}>Snapshot</Text>
-        </View>
-         <View style={localStyles.viewforobjects} >
+     </Col>
+         <Col size={3} style={{justifyContent: 'center'}}>
+           <Text style={localStyles.Film}>Snapshot</Text>
+        </Col>
+       <Col size={1}></Col>  
+</Row>
+<Row size={5} style={{backgroundColor: 'blue'}}>
+   <Col size={1}></Col>
+        <Col size={6}>
+        <ScrollView>
+        {/* </View> */}
+         {/* <View style={localStyles.viewforobjects} > */}
            {this.props.Info.images.map((el, i) => { 
             return (
             <Swipeout right={[
@@ -197,7 +208,15 @@ if (this.state.navigator == 'PIC') {
              </TouchableHighlight>
             </Swipeout>
            )})}
-           <TouchableHighlight
+         {/* </View> */}
+         </ScrollView>
+      </Col>
+        <Col size={1}></Col>
+   </Row>
+  <Row size={1} style={{backgroundColor: 'purple'}}>
+        <Col size={1} style={{backgroundColor: 'blue'}}></Col>
+          <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+        <TouchableHighlight
             style={localStyles.buttonsplus}
             onPress={()=> {(
                 this.setState((prevState) => ({
@@ -206,14 +225,19 @@ if (this.state.navigator == 'PIC') {
             })))}} 
             underlayColor={'#68a0ff'} >
                <Text style={localStyles.buttonText}>+</Text>
-            </TouchableHighlight>
-         </View>
-       </View>
-        <View style={localStyles.outer}>
+         </TouchableHighlight>
             <TouchableHighlight onPress={()=>{window.alert('f')}}>
             <Image style={localStyles.Modelbuttonsone} source={download}></Image>
             </TouchableHighlight>
-        </View>
+        </Col>
+        <Col size={1} style={{backgroundColor: 'black'}}>
+        </Col>
+          </Row>
+
+       {/* </View> */}
+        {/* <View style={localStyles.outer}> */}
+        {/* </View> */}
+     </Grid>
   </Route>
       {/* route for when you click an existing project */}
         <Route path="/homepage" render={props => 
@@ -226,21 +250,18 @@ if (this.state.navigator == 'PIC') {
   // 2.
 else if (this.state.navigator == 'AR') { 
 return (
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
  <NativeRouter>
-  <View style={localStyles.inner} >
-    <View style={localStyles.outer}>
-      <TouchableHighlight onPress={()=> {(
-       this.setState((prevState) => ({
-        ...prevState,
-         navigator : 'PIC'
-          })))}}>
-       <Image
-        style={localStyles.Modelbuttons2}
-        source={back} >
-       </Image>
-      </TouchableHighlight>
-    </View>
-      <View style={localStyles.ARNav} >
+<Grid>
+  {/* <Row size={1} style={{backgroundColor: 'red'}}>
+    <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+    </Col>
+   <Col size={3}></Col>  
+   <Col size={1}></Col>  
+
+  </Row> */}
+  <Row size={1}>
+      {/* <View style={localStyles.ARNav} > */}
           {/* this is the AR view that is found in helloWorldSceneAR.js */}
        <ViroARSceneNavigator
          ref={this._setARNavigatorRef} 
@@ -248,9 +269,16 @@ return (
          initialScene={{scene: ARScene}}
          viroAppProps={this.state.Viro} 
         />
-    </View>
-  </View>
-   <View style={localStyles.outer}>
+      <TouchableHighlight style={{position: 'absolute', top: '5%', left: '5%', justifyContent: 'center'}} onPress={()=> {(
+       this.setState((prevState) => ({
+        ...prevState,
+         navigator : 'PIC'
+          })))}}>
+       <Image
+        style={localStyles.backButton}
+        source={back} >
+       </Image>
+      </TouchableHighlight>
      <TouchableHighlight style={localStyles.Modelbuttonschar} onPress={()=> {(
        this.setState((prevState) => ({
         navigator : 'Characters'
@@ -261,15 +289,25 @@ return (
           key='character' >
          </Image>  
     </TouchableHighlight>
-     <TouchableHighlight onPress={()=> this.shot()}>
+     <TouchableHighlight style={localStyles.capture} onPress={()=> this.shot()}>
         <Image
         style={localStyles.buttonsplus}
         source={camera}
         key="camera_button">
        </Image>
      </TouchableHighlight> 
-  </View>
+    {/* </View> */}
+  </Row>
+  {/* <Row size={1} style={{backgroundColor: 'purple'}}> */}
+    {/* <Col size={1} style={{backgroundColor: 'white'}}></Col>
+     <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+  </Col>
+  <Col size={1} style={{backgroundColor: 'white'}}></Col> */}
+  
+  {/* </Row> */}
+</Grid>
 </NativeRouter>
+</SafeAreaView>
 );
 } 
   // 3.
@@ -278,29 +316,48 @@ if (this.state.navigator == 'Characters') {
   for (let i = 0; i < modelArray.length; i++) {
     Display.push(
       <TouchableHighlight loading="lazy" key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
-        <Image style={localStyles.models} source={modelArray[i].image}></Image>
+        <Image loading="lazy" style={localStyles.models} source={modelArray[i].image}></Image>
       </TouchableHighlight>
    )}
 
   return (
+  <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
     <NativeRouter>
-        <View style={localStyles.outer}>
-          <TouchableHighlight onPress={()=> {(
+      <Grid>
+        <Row size={1} style={{backgroundColor: 'red'}}>
+        <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+          <TouchableHighlight style={localStyles.backForCharacters, {justifyContent: 'center'}} onPress={()=> {(
                 this.setState((prevState) => ({
                   navigator : 'AR'
                 })))}}>
               <Image 
-              style={localStyles.Modelbuttons3}
+              style={localStyles.backForCharacters}
               source={back}></Image>
          </TouchableHighlight>
-         <Text style={localStyles.titleText}>Characters</Text>
-      </View>
+        </Col>
+            <Col size={3} style={{justifyContent: 'center'}}>
+           {/* <Text style={localStyles.Film}>Snapshot</Text> */}
+               <Text style={localStyles.Film}>Characters</Text>
+             </Col>
+             <Col size={1}></Col> 
+       </Row>
+        {/* <View style={localStyles.outer}> */}
+      {/* </View> */}
+      <Row size={6} style={{backgroundColor: 'blue'}}>
+   <Col size={1}></Col>
+        <Col size={6}>
+
         <ScrollView contentContainerStyle={localStyles.modelobjects}>
           {Display}
         </ScrollView>
-        <View style={localStyles.outer}>
-        </View>
+        </Col>
+       <Col size={1}></Col>
+      </Row>
+        {/* <View style={localStyles.outer}>
+        </View> */}
+        </Grid>
      </NativeRouter>
+</SafeAreaView>
 )}
 
 // 4.
@@ -315,29 +372,47 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
       navigator : 'AR',
       Viro: [...prevState.Viro, modelArray[this.state.chosenModel].gltf[i]]
        })))}}>
-        <Image style={localStyles.models} source={ modelArray[this.state.chosenModel].models[i]}></Image>
+        <Image loading="lazy" style={localStyles.models} source={ modelArray[this.state.chosenModel].models[i]}></Image>
       </TouchableHighlight>
 )}
 }
  return (
+     <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
   <NativeRouter>
-    <View style={localStyles.outer} >
-      <TouchableHighlight onPress={()=> {(
+        <Grid>
+          <Row size={1} style={{backgroundColor: 'red'}}>
+                  <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+
+    {/* <View style={localStyles.outer} > */}
+      <TouchableHighlight style={localStyles.backForCharacters, {justifyContent: 'center'}}  onPress={()=> {(
          this.setState((prevState) => ({
              navigator : 'Characters'
             })))}}>
          <Image
-            style={localStyles.Modelbuttons4} source={back}>
+            style={localStyles.backForCharacters} source={back}>
          </Image>
       </TouchableHighlight>
-      <Text style={localStyles.titleText}>Poses</Text>
-    </View>
+      </Col>
+   <Col size={3} style={{justifyContent: 'center'}}>
+      <Text style={localStyles.Film}>Poses</Text>
+   </Col>
+  <Col size={1}></Col> 
+         </Row>
+      <Row size={6} style={{backgroundColor: 'blue'}}>
+   <Col size={1}></Col>
+        <Col size={6}>
+    {/* </View> */}
      <ScrollView contentContainerStyle={localStyles.modelobjects}>
         {stance}
      </ScrollView> 
-     <View style={localStyles.outer}>
-        </View>
+     </Col>
+            <Col size={1}></Col>
+      </Row>
+     {/* <View style={localStyles.outer}>
+        </View> */}
+    </Grid>
    </NativeRouter>
+   </SafeAreaView>
 )}}
 }
 
@@ -378,14 +453,23 @@ var localStyles = StyleSheet.create({
   },
   titleText: {
     paddingTop: 35,
-    color:'#fff',
+    color:'white',
     textAlign:'center',
+    // alignContent: 'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
     fontSize : 25
   },
   buttonText: {
    color:'#C3BEF7',
     textAlign:'center',
     fontSize : 30
+  },
+  capture: {
+    position: 'absolute',
+    right: '50%',
+    left: '40%',
+    bottom: '2%',
   },
   models: {
     height: 200,
@@ -395,6 +479,20 @@ var localStyles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 5,
     borderColor: 'rgba(0,0,0,.2)'
+  },
+    titleText2: {
+    color:'white',
+    textAlign:'center',
+    justifyContent: 'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25,
+    width: 300
+  },
+     buttonTextII: {
+    color:'#C3BEF7',
+    textAlign:'center',
+    fontSize : 40,
   },
   pictures : {
     height: 25,
@@ -408,9 +506,11 @@ var localStyles = StyleSheet.create({
     height: 25,
     width: 25,
     paddingBottom:20,
-    position: 'absolute',
-    left: '85%',
-    top: '20%',
+      justifyContent: 'center',
+    alignItems: 'center'
+    // position: 'absolute',
+    // left: '85%',
+    // top: '20%',
   },
   Modelbuttons : {
     height: 25,
@@ -429,11 +529,11 @@ var localStyles = StyleSheet.create({
     top: 2,
   },
   Modelbuttonschar: {
-    height: 25,
-    width: 25,
+    height: 35,
+    width: 35,
     position: 'absolute',
-    right: '85%',
-    top: '20%',
+    left: '10%',
+    bottom: '5%',
   },
   Modelbuttons3 : {
     height: 25,
@@ -452,12 +552,15 @@ var localStyles = StyleSheet.create({
     top: 2,
   },
   buttons : {
-    height: 80,
-    width: '70%',
-    paddingTop:20,
-    paddingBottom:20,
+ height: 80,
+    width: '100%',
+    alignContent: 'center',
+    alignItems: 'center', //Centered vertically    justifyContent: 'center',
     marginTop: 10,
     marginBottom: 10,
+    // textAlign: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
     backgroundColor:'#C3BEF7',
     borderRadius: 10,
     borderWidth: 5,
@@ -499,6 +602,29 @@ var localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
+  },
+  Film: {
+    // paddingTop: 35,
+    color:'#7844CA',
+    justifyContent: 'center', //Centered horizontally
+       alignItems: 'center', //Centered vertically
+    // textAlign:'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25
+  },
+    backButton : {
+    height: 25,
+    width: 25,
+    position: 'absolute',
+    left: '10%',
+    top: '50%',
+  },
+  backForCharacters : {
+height: 25,
+    width: 25,
   },
   viewforobjects : {
     // width: '100%',

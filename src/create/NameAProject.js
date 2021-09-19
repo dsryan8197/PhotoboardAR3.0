@@ -4,6 +4,7 @@ import download from '../../downArrow.png'
 import back from '../../backArrow.png'
 import PickAPic from '../view/PickAPic'
 import NameAScene from './NameAScene'
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 import {
   AppRegistry,
@@ -11,6 +12,8 @@ import {
   Button,
   TextInput,
   Image,
+  ScrollView,
+  SafeAreaView,
   View,
   StyleSheet,
   PixelRatio,
@@ -38,17 +41,33 @@ goBack(){
 //add a new project and immediatley route to 'create a new scene' in that project
 render() {
   return (
+          <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+
     <NativeRouter>
      <Route exact path="/">
-      <View style={localStyles.inner} >
-        <View style={localStyles.outer} >
-           {this.props.created && <TouchableHighlight onPress={() => this.goBack()}>
-             <Image style={localStyles.Modelbuttons} source={back}></Image>      
+                  <Grid>
+<Row size={1} style={{backgroundColor: 'red'}}>
+         <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+
+      {/* <View style={localStyles.inner} > */}
+        {/* <View style={localStyles.outer} > */}
+           {this.props.created && <TouchableHighlight  style={localStyles.backButton, {justifyContent: 'center'}} onPress={() => this.goBack()}>
+             <Image style={localStyles.backButton} source={back}></Image>      
            </TouchableHighlight>}
-          <Text style={localStyles.titleText}>Name Your Film</Text>
-       </View>
+            </Col>
+               <Col size={3} style={{justifyContent: 'center'}}>
+
+          <Text style={localStyles.Film}>Name Your Film</Text>
+                     </Col>
+              <Col size={1}></Col>  
+         </Row>
+       {/* </View> */}
+
+    <Row size={5} style={{backgroundColor: 'blue'}}>
+    <Col size={1}></Col>
+        <Col size={6}>
          <View style={localStyles.viewforobjects}>
-           <View style={localStyles.createSCene}>
+           {/* <View style={localStyles.createSCene}> */}
              <TextInput 
              placeholder="Title"
              value={this.state.ProjectNameInput}
@@ -56,15 +75,30 @@ render() {
              onChangeText={e => {this.props.handleChange(e)}}
              />
            </View>
-             <View style={localStyles.createSCene}>
-               <Link to="/NameAScene" onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
+        </Col>
+            <Col size={1}></Col>
+    </Row>
+    <Row size={1} style={{backgroundColor: 'purple'}}>
+        <Col size={1} style={{backgroundColor: 'blue'}}></Col>
+          
+          <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+
+             {/* <View style={localStyles.createSCene}> */}
+               <Link to="/NameAScene"  style={localStyles.buttonsplus} onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
                  <Text style={localStyles.buttonText}>+</Text>
                </Link>
-             </View>
-        </View>
-     </View>
-   <View style={localStyles.outer}>
-   </View>
+             {/* </View> */}
+                  </Col>
+          
+        <Col size={1} style={{backgroundColor: 'black'}}></Col>
+        {/* </View> */}
+      </Row>
+        {/* </View> */}
+     {/* </View> */}
+   {/* <View style={localStyles.outer}>
+   </View> */}
+    </Grid>
+
   </Route>
       {/* create a scene route */}
        <Route path="/NameAScene" render={props => 
@@ -80,6 +114,7 @@ render() {
          Info={this.props.Info}/>)
        }/>   
 </NativeRouter>
+</SafeAreaView>
 )}}
 
 var localStyles = StyleSheet.create({
@@ -144,13 +179,16 @@ var localStyles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,.2)',
   },
  buttonsplus : {
-  height: 80,
+height: 80,
     width: 80,
     borderRadius: 80/2,
-    paddingTop:10,
-    paddingBottom:20,
-    marginTop: 10,
-    marginBottom: 10,
+    // textAlign:'center',
+    // paddingTop:10,
+    // paddingBottom:20,
+    // marginTop: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
+    // marginBottom: 10,
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',
@@ -174,6 +212,22 @@ var localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
+  },
+      backButton : {
+    height: 25,
+    width: 25,
+  },
+    Film: {
+    // paddingTop: 35,
+    color:'#7844CA',
+    justifyContent: 'center', //Centered horizontally
+       alignItems: 'center', //Centered vertically
+    // textAlign:'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25
   },
   viewforobjects : {
     width: '100%',

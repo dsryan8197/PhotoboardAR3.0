@@ -5,12 +5,14 @@ import {
   Button,
   View,
   StyleSheet,
+  ScrollView,
+  SafeAreaView,
   Image,
   PixelRatio,
   TouchableHighlight,
 } from 'react-native';
 
-
+import { Col, Row, Grid } from "react-native-easy-grid";
 import Swipeout from 'react-native-swipeout';
 import trash from '../../trashicon2.png'
 import download from '../../downArrow.png'
@@ -24,7 +26,6 @@ import {
 } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
-
 //on selecting a film (project),this shows all the scenes in that film or allows you to create a new
 export default class PickAScene extends Component {
   constructor(props) {
@@ -38,16 +39,28 @@ goBack(){
 }
 render() {
   return (
+  <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
       <NativeRouter>
        <Route exact path="/">
-         <View style={localStyles.inner} >
-           <View style={localStyles.outer}>
-             <TouchableHighlight onPress={() => this.goBack()}>
-               <Image style={localStyles.Modelbuttons} source={back}></Image>
+       <Grid>
+        <Row size={1} style={{backgroundColor: 'red'}}>
+         {/* <View style={localStyles.inner} > */}
+           {/* <View style={localStyles.outer}> */}
+         <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+             <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}} onPress={() => this.goBack()}>
+               <Image style={localStyles.backButton} source={back}></Image>
              </TouchableHighlight>
-             <Text style={localStyles.titleText}>Scene</Text>
-          </View>
-          <View style={localStyles.viewforobjects} >
+         </Col>
+           <Col size={3} style={{justifyContent: 'center'}}>
+             <Text style={localStyles.Film}>Scene</Text>
+            </Col>
+            <Col size={1}></Col>  
+        </Row>
+      <Row size={5} style={{backgroundColor: 'blue'}}>
+      <Col size={1}></Col>
+        <Col size={6}>
+           <ScrollView>
+          {/* <View style={localStyles.viewforobjects} > */}
             {Object.keys(this.props.ObjofProje).map((el, i) => { 
              return (
                <Swipeout right={[{
@@ -68,14 +81,30 @@ render() {
                 </Link>
               </Swipeout>
             )})}
-            <Link to="/NameAScene"  style={localStyles.buttonsplus}>
-              <Text style={localStyles.buttonText}>{"+"}</Text>
-            </Link>
-        </View>
-      </View>
-      <View style={localStyles.outer}>
-         <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
-      </View>
+               </ScrollView>
+          </Col>
+    <Col size={1}></Col>
+      </Row>
+     <Row size={1} style={{backgroundColor: 'purple'}}>
+        <Col size={1} style={{backgroundColor: 'blue'}}></Col>
+          
+          <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+              {/* <View style={{}}> */}
+              <Link to="/NameAScene"  style={localStyles.buttonsplus}>
+                <Text style={localStyles.buttonText}>{"+"}</Text>
+              </Link>
+              {/* </View> */}
+              {/* <View> */}
+             <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
+              {/* </View> */}
+          </Col>
+          
+        <Col size={1} style={{backgroundColor: 'black'}}>
+        </Col>
+  </Row>
+        {/* </View> */}
+      {/* </View> */}
+    </Grid>
     </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
@@ -101,6 +130,7 @@ render() {
            Info={this.props.Info}/>)
           }/>
   </NativeRouter>
+  </SafeAreaView>
   )}}
 
 var localStyles = StyleSheet.create({
@@ -116,6 +146,18 @@ var localStyles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: "#8A4FFF",
   },
+  Film: {
+    // paddingTop: 35,
+    color:'#7844CA',
+    justifyContent: 'center', //Centered horizontally
+       alignItems: 'center', //Centered vertically
+    // textAlign:'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25
+  },
   inner: {
     flex : 1,
     width: '100%',
@@ -124,9 +166,10 @@ var localStyles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   titleText: {
-    paddingTop: 35,
+  paddingTop: 35,
     color:'white',
     textAlign:'center',
+    // alignContent: 'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
     fontSize : 25
@@ -134,6 +177,7 @@ var localStyles = StyleSheet.create({
   titleText2: {
     color:'white',
     textAlign:'center',
+    justifyContent: 'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
     fontSize : 25,
@@ -144,29 +188,44 @@ var localStyles = StyleSheet.create({
     textAlign:'center',
     fontSize : 30
   },
+    buttonTextII: {
+    color:'#C3BEF7',
+    textAlign:'center',
+    fontSize : 40,
+  },
   buttons : {
-    height: 80,
+ height: 80,
     width: '100%',
-    paddingTop:20,
-    paddingBottom:20,
+    alignContent: 'center',
+    alignItems: 'center', //Centered vertically    justifyContent: 'center',
     marginTop: 10,
     marginBottom: 10,
+    // textAlign: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
     backgroundColor:'#C3BEF7',
     borderRadius: 10,
     borderWidth: 5,
     borderColor: 'rgba(0,0,0,.2)',
   },
   buttonsplus : {
-      height: 80,
+    height: 80,
     width: 80,
     borderRadius: 80/2,
-    paddingTop:10,
-    paddingBottom:20,
-    marginTop: 10,
-    marginBottom: 10,
+    // textAlign:'center',
+    // paddingTop:10,
+    // paddingBottom:20,
+    // marginTop: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
+    // marginBottom: 10,
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',
+  },
+  backButton : {
+    height: 25,
+    width: 25,
   },
    Modelbuttons : {
     height: 25,
@@ -179,9 +238,11 @@ var localStyles = StyleSheet.create({
    Modelbuttons2 : {
     height: 25,
     width: 25,
-    position: 'absolute',
-    left: '85%',
-    top: '20%',
+    justifyContent: 'center',
+    alignItems: 'center'
+    // position: 'absolute',
+    // left: '85%',
+    // top: '20%',
   },
   exitButton : {
     height: 50,
