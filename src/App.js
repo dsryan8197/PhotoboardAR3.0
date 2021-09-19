@@ -212,27 +212,26 @@ if (!this.state.InfoPage) {
 
 if (this.state.InfoPageSpecific == 'one') {
 return (
-  <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
   <Grid>
-    <Row size={1} >
-    </Row>
-      <Row size={4}>
+    <Row size={1}></Row>
+    <Row size={4}>
         <Image
         style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info1}
         key="cbutton">
        </Image>
     </Row>
-  <Row size={2} style={{left: 40}}>
-  <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
-        <Text style={localStyles.buttonTextII}>Draft</Text>
-        <Text style={{color: '#8F8F8F', fontSize: 20}}>Create your films and draft your scenes</Text>
-    </View>
-  </Row>
-  <Row size={1} style={{ alignItems: 'center'}}>
-  <Col size={0.5}></Col>
-  <Col size={3} style={{top: 50}}>
-  <AnimatedDotsCarousel
+    <Row size={2} style={{left: 40}}>
+       <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
+         <Text style={localStyles.buttonTextII}>Draft</Text>
+         <Text style={{color: '#8F8F8F', fontSize: 20}}>Create your films and draft your scenes</Text>
+      </View>
+    </Row>
+    <Row size={1} style={{ alignItems: 'center'}}>
+      <Col size={0.5}></Col>
+      <Col size={3} style={{top: 50}}>
+        <AnimatedDotsCarousel
         length={4}
         currentIndex={0}
         maxIndicators={4}
@@ -262,8 +261,8 @@ return (
           },
         ]}
       />
-  </Col>
-  <Col size={1.5}>
+      </Col>
+      <Col size={1.5}>
         <TouchableHighlight onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
@@ -271,22 +270,20 @@ return (
             })))}} style={localStyles.introButton}>
 
             <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
-        </TouchableHighlight>
-  </Col>
-  </Row>
-  <Row size={1}>
-  </Row>
+         </TouchableHighlight>
+      </Col>
+    </Row>
+    <Row size={1}></Row>
   </Grid>
-  </SafeAreaView>
-  )
+</SafeAreaView>
+)
 }
 
 if (this.state.InfoPageSpecific == 'two') {
 return (
-  <SafeAreaView style={{width: '100%', height: '100%'}}>
+<SafeAreaView style={{width: '100%', height: '100%'}}>
   <Grid>
-    <Row size={1}>
-    </Row>
+    <Row size={1}></Row>
       <Row size={4} style={{backgroundColor: 'blue'}}>
         <Image
         style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
@@ -294,16 +291,16 @@ return (
         key="cbutton">
        </Image>
     </Row>
-  <Row size={2} style={{paddingLeft: '10%'}}>
-  <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
+    <Row size={2} style={{paddingLeft: '10%'}}>
+      <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
         <Text style={localStyles.buttonTextII}>Frame</Text>
         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Frame your shots in AR with up to 150 unique 3D models and poses</Text>
-    </View>
-  </Row>
-  <Row size={1} style={{alignItems: 'center'}}>
-  <Col size={0.5}></Col>
-  <Col size={3} style={{top: 50}}>
-  <AnimatedDotsCarousel
+      </View>
+    </Row>
+    <Row size={1} style={{alignItems: 'center'}}>
+      <Col size={0.5}></Col>
+      <Col size={3} style={{top: 50}}>
+        <AnimatedDotsCarousel
         length={4}
         currentIndex={1}
         maxIndicators={4}
@@ -333,8 +330,8 @@ return (
           },
         ]}
       />
-  </Col>
-  <Col size={1.5}>
+    </Col>
+    <Col size={1.5}>
         <TouchableHighlight onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
@@ -342,38 +339,36 @@ return (
             })))}} style={localStyles.introButton}>
             <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
         </TouchableHighlight>
-  </Col>
-  </Row>
-  <Row size={1}>
-  </Row>
+      </Col>
+    </Row>
+    <Row size={1}></Row>
   </Grid>
-  </SafeAreaView>
+</SafeAreaView>
   )
 }
 
 if (this.state.InfoPageSpecific == 'three') {
 return (
-  <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
   <Grid>
-    <Row size={1}>
-    </Row>
-      <Row size={4}>
+    <Row size={1}></Row>
+    <Row size={4}>
         <Image
         style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info3}
         key="cbutton">
        </Image>
     </Row>
-  <Row size={2} style={{paddingLeft: '10%'}}>
-  <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
+    <Row size={2} style={{paddingLeft: '10%'}}>
+      <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
         <Text style={localStyles.buttonTextII}>Snap and Save</Text>
         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Create your storyboards and save them to your phones gallery</Text>
-    </View>
-  </Row>
-  <Row size={1} style={{alignItems: 'center'}}>
-  <Col size={0.5}></Col>
-  <Col size={3} style={{top: 50}}>
-  <AnimatedDotsCarousel
+      </View>
+    </Row>
+    <Row size={1} style={{alignItems: 'center'}}>
+      <Col size={0.5}></Col>
+      <Col size={3} style={{top: 50}}>
+         <AnimatedDotsCarousel
         length={4}
         currentIndex={2}
         maxIndicators={4}
@@ -403,8 +398,8 @@ return (
           },
         ]}
       />
-  </Col>
-  <Col size={1.5}>
+    </Col>
+    <Col size={1.5}>
         <TouchableHighlight onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
@@ -412,39 +407,37 @@ return (
             })))}} style={localStyles.introButton}>
             <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
         </TouchableHighlight>
-  </Col>
-  </Row>
-  <Row size={1}>
-  </Row>
+    </Col>
+   </Row>
+   <Row size={1}></Row>
   </Grid>
-  </SafeAreaView>
+</SafeAreaView>
   )
 }
 
 if (this.state.InfoPageSpecific == 'four') {
 return (
-  <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
   <Grid>
-  <Row size={1}>
-  </Row>
-  <Row size={4}>
+    <Row size={1}></Row>
+    <Row size={4}>
         <Image
         style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info4}
         key="cbutton">
        </Image>
-  </Row>
-  <Row size={2} style={{paddingLeft: '10%'}}>
-  <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
-        <Text style={localStyles.buttonTextII}>Tips</Text>
-        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Swipe to Delete and Reorder your scenes and storyboards</Text>
-        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Tap your 3D models to rotate</Text>
-    </View>
-  </Row>
-  <Row size={1} style={{alignItems: 'center'}}>
-    <Col size={0.5}></Col>
-    <Col size={3} style={{top: 50}}>
-      <AnimatedDotsCarousel
+     </Row>
+     <Row size={2} style={{paddingLeft: '10%'}}>
+        <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
+          <Text style={localStyles.buttonTextII}>Tips</Text>
+         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Swipe to Delete and Reorder your scenes and storyboards</Text>
+         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Tap your 3D models to rotate</Text>
+       </View>
+      </Row>
+      <Row size={1} style={{alignItems: 'center'}}>
+       <Col size={0.5}></Col>
+       <Col size={3} style={{top: 50}}>
+         <AnimatedDotsCarousel
         length={4}
         currentIndex={3}
         maxIndicators={4}
@@ -474,8 +467,8 @@ return (
           },
         ]}
       />
-  </Col>
-    <Col size={1.5}>
+     </Col>
+      <Col size={1.5}>
         <TouchableHighlight onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
@@ -483,33 +476,32 @@ return (
             })))}} style={localStyles.introButton}>
             <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
         </TouchableHighlight>
-    </Col>
-  </Row>
-  <Row size={1}>
-  </Row>
+      </Col>
+    </Row>
+    <Row size={1}></Row>
   </Grid> 
-  </SafeAreaView> 
+</SafeAreaView> 
   )
 }
 
 }
 if (this.state.InfoPage) {
  return (
-    <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
-    <NativeRouter >
-      <Route exact path="/">
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+  <NativeRouter >
+    <Route exact path="/">
       <Grid>
         <Row size={1}>
-         <Col size={1}></Col>
-           <Col size={3} style={{justifyContent: 'center'}}>
+          <Col size={1}></Col>
+          <Col size={3} style={{justifyContent: 'center'}}>
              <Text style={localStyles.Film}>Films</Text>
            </Col>
-         <Col size={1}></Col>
+          <Col size={1}></Col>
         </Row>
         <Row size={7}>
-        <Col size={1}></Col>
-        <Col size={6}>
-          <ScrollView>
+           <Col size={1}></Col>
+           <Col size={6}>
+             <ScrollView>
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
                <Swipeout right={[{
@@ -533,20 +525,20 @@ if (this.state.InfoPage) {
             </ScrollView>
           </Col>
           <Col size={1}></Col>
-          </Row>
-         <Row size={1} style={{paddingTop: 10}}>
-          <Col size={1}></Col>
-          <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, justifyContent: 'center', alignItems: 'center'}}>
+      </Row>
+      <Row size={1} style={{paddingTop: 10}}>
+        <Col size={1}></Col>
+        <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, justifyContent: 'center', alignItems: 'center'}}>
            <Link to="/addAProject" style={localStyles.buttonsplus}>
                <Text style={localStyles.buttonText}>{"+"}</Text>
            </Link>
-           </Col>
-            <Col size={1}></Col>
-        </Row>
+        </Col>
+         <Col size={1}></Col>
+      </Row>
 
-       </Grid>
-      </Route>
-          <Route path="/scene" render={props => 
+   </Grid>
+  </Route>
+      <Route path="/scene" render={props => 
           (<PickAScene {...props} 
           DeleteSceneDescription={this.DeleteSceneDescription}
           deletePicture={this.deletePicture}
@@ -574,9 +566,8 @@ if (this.state.InfoPage) {
           handleChange={this.handleChange}
           Info={this.state}/>)
           }/>
-    </NativeRouter>
-      </SafeAreaView>
-
+  </NativeRouter>
+</SafeAreaView>
     )}}
 
 }
@@ -608,14 +599,9 @@ var localStyles = StyleSheet.create({
     height: '100%',
   },
   Film: {
-    // paddingTop: 35,
     color:'#7844CA',
-    // fontWeight: 'bold',
     justifyContent: 'center', //Centered horizontally
-       alignItems: 'center', //Centered vertically
-    // textAlign:'center',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
     fontSize : 25
@@ -624,7 +610,6 @@ var localStyles = StyleSheet.create({
     paddingTop: 35,
     color:'white',
     textAlign:'center',
-    // alignContent: 'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
     fontSize : 25
@@ -670,13 +655,8 @@ var localStyles = StyleSheet.create({
     height: 80,
     width: 80,
     borderRadius: 80/2,
-    // textAlign:'center',
-    // paddingTop:10,
-    // paddingBottom:20,
-    // marginTop: 10,
     alignContent: 'center',
     justifyContent: 'center',
-    // marginBottom: 10,
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',
@@ -700,7 +680,6 @@ var localStyles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     borderRadius: 50,
-    // color: 'white',
     backgroundColor: '#7844CA'
 
   },

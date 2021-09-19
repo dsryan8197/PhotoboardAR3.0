@@ -38,74 +38,62 @@ goBack(){
   this.props.history.push('/')
 }
 render() {
-  return (
-  <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
-      <NativeRouter>
-       <Route exact path="/">
+return (
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+  <NativeRouter>
+     <Route exact path="/">
        <Grid>
-        <Row size={1}>
-         {/* <View style={localStyles.inner} > */}
-           {/* <View style={localStyles.outer}> */}
-         <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
-             <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}} onPress={() => this.goBack()}>
-               <Image style={localStyles.backButton} source={back}></Image>
-             </TouchableHighlight>
-         </Col>
-           <Col size={3} style={{justifyContent: 'center'}}>
-             <Text style={localStyles.Film}>Scene</Text>
-            </Col>
-            <Col size={1}></Col>  
-        </Row>
-      <Row size={7}>
-      <Col size={1}></Col>
-        <Col size={6}>
-           <ScrollView>
-          {/* <View style={localStyles.viewforobjects} > */}
-            {Object.keys(this.props.ObjofProje).map((el, i) => { 
-             return (
-               <Swipeout right={[{
+          <Row size={1}>
+              <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
+                 <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}} onPress={() => this.goBack()}>
+                  <Image style={localStyles.backButton} source={back}></Image>
+                  </TouchableHighlight>
+              </Col>
+               <Col size={3} style={{justifyContent: 'center'}}>
+                  <Text style={localStyles.Film}>Scene</Text>
+               </Col>
+               <Col size={1}></Col>  
+          </Row>
+          <Row size={7}>
+            <Col size={1}></Col>
+             <Col size={6}>
+                <ScrollView>
+                  {Object.keys(this.props.ObjofProje).map((el, i) => { 
+                   return (
+                 <Swipeout right={[{
                     text: 'Delete',
                     backgroundColor: 'red',
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                     onPress: () => { this.props.DeleteSceneDescription(el, this.props.ProjectNameInput, this.props.Info) }
-                  }]}
-                  autoClose='true'
-                  style={{alignItems: 'center'}}
-                  backgroundColor= 'transparent'>
-                <Link to="/pics" key={i} style={localStyles.buttons} onPress={()=> {(
+                    }]}
+                       autoClose='true'
+                      style={{alignItems: 'center'}}
+                       backgroundColor= 'transparent'>
+                  <Link to="/pics" key={i} style={localStyles.buttons} onPress={()=> {(
                    this.setState((prevState) => ({
                      ...prevState,
                      activeScene : el
                     })))}}>
                     <Text style={localStyles.titleText2}>{this.props.ObjofProje[el].description}</Text>
                 </Link>
-              </Swipeout>
-            )})}
-               </ScrollView>
+               </Swipeout>
+             )})}
+            </ScrollView>
           </Col>
-    <Col size={1}></Col>
-      </Row>
-     <Row size={1} style={{paddingTop: 10}}>
-        <Col size={1}></Col>
-          
+          <Col size={1}></Col>
+       </Row>
+      <Row size={1} style={{paddingTop: 10}}>
+         <Col size={1}></Col> 
           <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
-              {/* <View style={{}}> */}
               <Link to="/NameAScene"  style={localStyles.buttonsplus}>
                 <Text style={localStyles.buttonText}>{"+"}</Text>
               </Link>
-              {/* </View> */}
-              {/* <View> */}
              <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
-              {/* </View> */}
           </Col>
-          
-        <Col size={1}>
-        </Col>
-  </Row>
-        {/* </View> */}
-      {/* </View> */}
+          <Col size={1}></Col>
+      </Row>
     </Grid>
-    </Route>
+  </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
            (<PickAPic {...props}
@@ -129,8 +117,8 @@ render() {
            AddSceneDescription={this.props.AddSceneDescription}
            Info={this.props.Info}/>)
           }/>
-  </NativeRouter>
-  </SafeAreaView>
+</NativeRouter>
+</SafeAreaView>
   )}}
 
 var localStyles = StyleSheet.create({
@@ -147,13 +135,9 @@ var localStyles = StyleSheet.create({
     backgroundColor: "#8A4FFF",
   },
   Film: {
-    // paddingTop: 35,
     color:'#7844CA',
     justifyContent: 'center', //Centered horizontally
-       alignItems: 'center', //Centered vertically
-    // textAlign:'center',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
     fontSize : 25
@@ -169,7 +153,6 @@ var localStyles = StyleSheet.create({
   paddingTop: 35,
     color:'white',
     textAlign:'center',
-    // alignContent: 'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
     fontSize : 25
@@ -200,7 +183,6 @@ var localStyles = StyleSheet.create({
     alignItems: 'center', //Centered vertically    justifyContent: 'center',
     marginTop: 10,
     marginBottom: 10,
-    // textAlign: 'center',
     justifyContent: 'center',
     textAlign: 'center',
     backgroundColor:'#C3BEF7',
@@ -212,13 +194,8 @@ var localStyles = StyleSheet.create({
     height: 80,
     width: 80,
     borderRadius: 80/2,
-    // textAlign:'center',
-    // paddingTop:10,
-    // paddingBottom:20,
-    // marginTop: 10,
     alignContent: 'center',
     justifyContent: 'center',
-    // marginBottom: 10,
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',
@@ -240,9 +217,6 @@ var localStyles = StyleSheet.create({
     width: 25,
     justifyContent: 'center',
     alignItems: 'center'
-    // position: 'absolute',
-    // left: '85%',
-    // top: '20%',
   },
   exitButton : {
     height: 50,

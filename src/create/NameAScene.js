@@ -43,37 +43,32 @@ goBack(){
 //create a film scene and routes to list of pics
 render() {
   return (
-      <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
-    <NativeRouter>
-      <Route exact path="/">
-             <Grid>
-          <Row size={1}>
-         <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
-         {/* <View style={localStyles.inner} > */}
-           {/* <View style={localStyles.outer} > */}
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+ <NativeRouter>
+  <Route exact path="/">
+   <Grid>
+     <Row size={1}>
+        <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
              {this.props.created && <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}} onPress={() => this.goBack()}>
                 <Image style={localStyles.backButton} source={back}></Image>     
              </TouchableHighlight> }
-            </Col>
-               <Col size={3} style={{justifyContent: 'center'}}>
+        </Col>
+        <Col size={3} style={{justifyContent: 'center'}}>
             <Text style={localStyles.Film}>Create A Scene</Text>
-           </Col>
-              <Col size={1}></Col>  
-         </Row>
-           {/* </View> */}
-
-          <Row size={7}>
-    <Col size={1}></Col>
+        </Col>
+        <Col size={1}></Col>  
+    </Row>
+    <Row size={7}>
+        <Col size={1}></Col>
         <Col size={6}>
-           {/* <ScrollView> */}
-         <View style={localStyles.createSCene} >
-           <Picker
-           style={{backgroundColor: 'white', width:'25%', paddingRight: 20}}
-           selectedValue={this.state.intExt}
-           onValueChange={(itemValue,itemIndex) => this.setState({intExt: itemValue})}
-           >
-            <Picker.Item label="INT" value="INT" />
-            <Picker.Item label="EXT" value="EXT" />
+          <View style={localStyles.createSCene} >
+            <Picker
+             style={{backgroundColor: 'white', width:'25%', paddingRight: 20}}
+            selectedValue={this.state.intExt}
+            onValueChange={(itemValue,itemIndex) => this.setState({intExt: itemValue})}
+            >
+               <Picker.Item label="INT" value="INT" />
+               <Picker.Item label="EXT" value="EXT" />
            </Picker>
 
            <TextInput 
@@ -88,34 +83,28 @@ render() {
             <Picker  style={{backgroundColor: 'white', paddingRight: 20, width:'25%'}}
               selectedValue={this.state.dayNight}
               onValueChange={(itemValue,itemIndex) => this.setState({dayNight: itemValue})}
-             >
-             <Picker.Item label="Day" value="Day" />
-             <Picker.Item label="Night" value="Night" />
-          </Picker>
+               >
+               <Picker.Item label="Day" value="Day" />
+               <Picker.Item label="Night" value="Night" />
+           </Picker>
          </View>
-          </Col>
-    <Col size={1}></Col>
+       </Col>
+       <Col size={1}></Col>
     </Row>
      <Row size={1} style={{paddingTop:5}} >
-        <Col size={1} ></Col>
-          
-          <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
-              {/* <View style={{}}> */}
-            <Link to="/pics"
+        <Col size={1} ></Col>  
+        <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+          <Link to="/pics"
              style={localStyles.buttonsplus}
-            onPress={() => {
+             onPress={() => {
               this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight, this.state.intExt + ' ' + this.state.location + ' ' + this.state.dayNight)}
               }>
               <Text style={localStyles.buttonText}>+</Text>
-            </Link >
-          </Col>
-          
+          </Link>
+        </Col>   
         <Col size={1}></Col>
-        {/* </View> */}
-      </Row>
-     {/* <View style={localStyles.outer}>
-   </View> */}
-        </Grid>
+    </Row>
+  </Grid>
  </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
      <Route path="/pics" render={props => 
@@ -131,8 +120,8 @@ render() {
        ObjofProje={this.props.ObjofProje}
        activeProject={this.props.activeProject}/>)
      }/>
-  </NativeRouter>
-  </SafeAreaView>
+</NativeRouter>
+</SafeAreaView>
 )}}
 
 var localStyles = StyleSheet.create({
