@@ -217,13 +217,11 @@ return (
     <Row size={1} >
     </Row>
       <Row size={4}>
-    {/* <TouchableHighlight> */}
         <Image
         style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info1}
         key="cbutton">
        </Image>
-     {/* </TouchableHighlight>  */}
     </Row>
   <Row size={2} style={{left: 40}}>
   <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
@@ -271,7 +269,6 @@ return (
                   ...prevState,
                   InfoPageSpecific : 'two'
             })))}} style={localStyles.introButton}>
-            {/* <ArrowCircleRightIcon /> */}
 
             <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
         </TouchableHighlight>
@@ -279,8 +276,6 @@ return (
   </Row>
   <Row size={1}>
   </Row>
-      {/* </TouchableHighlight> */}
-  {/* </View> */}
   </Grid>
   </SafeAreaView>
   )
@@ -293,22 +288,15 @@ return (
     <Row size={1}>
     </Row>
       <Row size={4} style={{backgroundColor: 'blue'}}>
-    {/* <View style={{width: '100%', height: '80%'}}> */}
-    {/* <TouchableHighlight style={{alignContent: 'center'}}> */}
         <Image
         style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info2}
         key="cbutton">
        </Image>
-     {/* </TouchableHighlight>  */}
     </Row>
   <Row size={2} style={{paddingLeft: '10%'}}>
   <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
         <Text style={localStyles.buttonTextII}>Frame</Text>
-        {/* <Text>Create your films and draft your scenes</Text> */}
-  {/* </Row>
-  <Row size={1} style={{backgroundColor: 'red', left: 40}}> */}
-        {/* <Text style={localStyles.buttonText}>Draft</Text> */}
         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Frame your shots in AR with up to 150 unique 3D models and poses</Text>
     </View>
   </Row>
@@ -317,7 +305,6 @@ return (
   <Col size={3} style={{top: 50}}>
   <AnimatedDotsCarousel
         length={4}
-        // style={{alignItems: 'flex-end'}}
         currentIndex={1}
         maxIndicators={4}
         interpolateOpacityAndColor={true}
@@ -353,15 +340,12 @@ return (
                   ...prevState,
                   InfoPageSpecific : 'three'
             })))}} style={localStyles.introButton}>
-            {/* <ArrowCircleRightIcon className="w-8 h-8"/> */}
             <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
         </TouchableHighlight>
   </Col>
   </Row>
   <Row size={1}>
   </Row>
-      {/* </TouchableHighlight> */}
-  {/* </View> */}
   </Grid>
   </SafeAreaView>
   )
@@ -374,13 +358,11 @@ return (
     <Row size={1}>
     </Row>
       <Row size={4}>
-    {/* <TouchableHighlight> */}
         <Image
         style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info3}
         key="cbutton">
        </Image>
-     {/* </TouchableHighlight>  */}
     </Row>
   <Row size={2} style={{paddingLeft: '10%'}}>
   <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
@@ -434,8 +416,6 @@ return (
   </Row>
   <Row size={1}>
   </Row>
-      {/* </TouchableHighlight> */}
-  {/* </View> */}
   </Grid>
   </SafeAreaView>
   )
@@ -466,7 +446,6 @@ return (
     <Col size={3} style={{top: 50}}>
       <AnimatedDotsCarousel
         length={4}
-        // style={{alignItems: 'flex-end'}}
         currentIndex={3}
         maxIndicators={4}
         interpolateOpacityAndColor={true}
@@ -500,7 +479,6 @@ return (
         <TouchableHighlight onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
-                  // InfoPageSpecific : 'one'
                   InfoPage: false
             })))}} style={localStyles.introButton}>
             <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
@@ -521,17 +499,14 @@ if (this.state.InfoPage) {
     <NativeRouter >
       <Route exact path="/">
       <Grid>
-        <Row size={1} style={{backgroundColor: 'red'}}>
-         {/* <View style={localStyles.inner} > */}
-         <Col size={1} style={{backgroundColor: 'blue'}}></Col>
-           {/* <View style={localStyles.outer}> */}
+        <Row size={1}>
+         <Col size={1}></Col>
            <Col size={3} style={{justifyContent: 'center'}}>
              <Text style={localStyles.Film}>Films</Text>
            </Col>
-           {/* </View> */}
          <Col size={1}></Col>
         </Row>
-        <Row size={5} style={{backgroundColor: 'blue'}}>
+        <Row size={7}>
         <Col size={1}></Col>
         <Col size={6}>
           <ScrollView>
@@ -559,22 +534,18 @@ if (this.state.InfoPage) {
           </Col>
           <Col size={1}></Col>
           </Row>
-         <Row size={1} style={{backgroundColor: 'red'}}>
-          <Col size={1} style={{backgroundColor: 'blue'}}></Col>
-          <Col size={5} style={{justifyContent: 'center', alignItems: 'center'}}>
+         <Row size={1} style={{paddingTop: 10}}>
+          <Col size={1}></Col>
+          <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, justifyContent: 'center', alignItems: 'center'}}>
            <Link to="/addAProject" style={localStyles.buttonsplus}>
                <Text style={localStyles.buttonText}>{"+"}</Text>
            </Link>
            </Col>
-            <Col size={1} style={{backgroundColor: 'black'}}></Col>
+            <Col size={1}></Col>
         </Row>
-          {/* </View> */}
-        {/* </View> */}
-       {/* <View style={localStyles.outer}>
-       </View> */}
+
        </Grid>
       </Route>
-          {/* route for when you click an existing project */}
           <Route path="/scene" render={props => 
           (<PickAScene {...props} 
           DeleteSceneDescription={this.DeleteSceneDescription}
@@ -639,6 +610,7 @@ var localStyles = StyleSheet.create({
   Film: {
     // paddingTop: 35,
     color:'#7844CA',
+    // fontWeight: 'bold',
     justifyContent: 'center', //Centered horizontally
        alignItems: 'center', //Centered vertically
     // textAlign:'center',

@@ -46,8 +46,8 @@ render() {
     <NativeRouter>
      <Route exact path="/">
                   <Grid>
-<Row size={1} style={{backgroundColor: 'red'}}>
-         <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+<Row size={1}>
+         <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
 
       {/* <View style={localStyles.inner} > */}
         {/* <View style={localStyles.outer} > */}
@@ -63,7 +63,7 @@ render() {
          </Row>
        {/* </View> */}
 
-    <Row size={5} style={{backgroundColor: 'blue'}}>
+    <Row size={7} >
     <Col size={1}></Col>
         <Col size={6}>
          <View style={localStyles.viewforobjects}>
@@ -78,10 +78,10 @@ render() {
         </Col>
             <Col size={1}></Col>
     </Row>
-    <Row size={1} style={{backgroundColor: 'purple'}}>
-        <Col size={1} style={{backgroundColor: 'blue'}}></Col>
+    <Row size={1} style={{paddingTop: 5}}>
+        <Col size={1}></Col>
           
-          <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+          <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
 
              {/* <View style={localStyles.createSCene}> */}
                <Link to="/NameAScene"  style={localStyles.buttonsplus} onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
@@ -90,7 +90,7 @@ render() {
              {/* </View> */}
                   </Col>
           
-        <Col size={1} style={{backgroundColor: 'black'}}></Col>
+        <Col size={1}></Col>
         {/* </View> */}
       </Row>
         {/* </View> */}
@@ -214,7 +214,7 @@ height: 80,
     borderColor: '#fff',
   },
       backButton : {
-    height: 25,
+    height: 35,
     width: 25,
   },
     Film: {

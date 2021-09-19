@@ -47,8 +47,8 @@ render() {
     <NativeRouter>
       <Route exact path="/">
              <Grid>
-          <Row size={1} style={{backgroundColor: 'red'}}>
-         <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+          <Row size={1}>
+         <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
          {/* <View style={localStyles.inner} > */}
            {/* <View style={localStyles.outer} > */}
              {this.props.created && <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}} onPress={() => this.goBack()}>
@@ -62,7 +62,7 @@ render() {
          </Row>
            {/* </View> */}
 
-          <Row size={5} style={{backgroundColor: 'blue'}}>
+          <Row size={7}>
     <Col size={1}></Col>
         <Col size={6}>
            {/* <ScrollView> */}
@@ -96,10 +96,10 @@ render() {
           </Col>
     <Col size={1}></Col>
     </Row>
-     <Row size={1} style={{backgroundColor: 'purple'}}>
-        <Col size={1} style={{backgroundColor: 'blue'}}></Col>
+     <Row size={1} style={{paddingTop:5}} >
+        <Col size={1} ></Col>
           
-          <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+          <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
               {/* <View style={{}}> */}
             <Link to="/pics"
              style={localStyles.buttonsplus}
@@ -110,7 +110,7 @@ render() {
             </Link >
           </Col>
           
-        <Col size={1} style={{backgroundColor: 'black'}}></Col>
+        <Col size={1}></Col>
         {/* </View> */}
       </Row>
      {/* <View style={localStyles.outer}>
@@ -163,7 +163,7 @@ var localStyles = StyleSheet.create({
     fontSize : 25
   },
     backButton : {
-    height: 25,
+    height: 35,
     width: 25,
   },
   littleText: {

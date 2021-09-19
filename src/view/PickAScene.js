@@ -43,10 +43,10 @@ render() {
       <NativeRouter>
        <Route exact path="/">
        <Grid>
-        <Row size={1} style={{backgroundColor: 'red'}}>
+        <Row size={1}>
          {/* <View style={localStyles.inner} > */}
            {/* <View style={localStyles.outer}> */}
-         <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+         <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
              <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}} onPress={() => this.goBack()}>
                <Image style={localStyles.backButton} source={back}></Image>
              </TouchableHighlight>
@@ -56,7 +56,7 @@ render() {
             </Col>
             <Col size={1}></Col>  
         </Row>
-      <Row size={5} style={{backgroundColor: 'blue'}}>
+      <Row size={7}>
       <Col size={1}></Col>
         <Col size={6}>
            <ScrollView>
@@ -85,10 +85,10 @@ render() {
           </Col>
     <Col size={1}></Col>
       </Row>
-     <Row size={1} style={{backgroundColor: 'purple'}}>
-        <Col size={1} style={{backgroundColor: 'blue'}}></Col>
+     <Row size={1} style={{paddingTop: 10}}>
+        <Col size={1}></Col>
           
-          <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+          <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
               {/* <View style={{}}> */}
               <Link to="/NameAScene"  style={localStyles.buttonsplus}>
                 <Text style={localStyles.buttonText}>{"+"}</Text>
@@ -99,7 +99,7 @@ render() {
               {/* </View> */}
           </Col>
           
-        <Col size={1} style={{backgroundColor: 'black'}}>
+        <Col size={1}>
         </Col>
   </Row>
         {/* </View> */}
@@ -224,7 +224,7 @@ var localStyles = StyleSheet.create({
     borderColor: '#C3BEF7',
   },
   backButton : {
-    height: 25,
+    height: 35,
     width: 25,
   },
    Modelbuttons : {

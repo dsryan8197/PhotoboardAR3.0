@@ -3,6 +3,7 @@ import modelArray from '../../modelScript'
 import trash from '../../trashicon2.png'
 import download from '../../downArrow.png'
 import back from '../../backArrow.png'
+import back2 from '../../ARbackArrow.png'
 import camera from '../../camerasnapshot.png'
 import character from '../../charactericon.png'
 // import RNImageToPdf from 'react-native-image-to-pdf';
@@ -154,8 +155,8 @@ if (this.state.navigator == 'PIC') {
    <NativeRouter>
   <Route exact path="/">
   <Grid>
-  <Row size={1} style={{backgroundColor: 'red'}}>
-    <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+  <Row size={1}>
+    <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
         {!this.props.created ? 
         <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}}  onPress={() => this.goBac()}>
             <Image style={localStyles.backButton} source={back}></Image>
@@ -171,7 +172,7 @@ if (this.state.navigator == 'PIC') {
         </Col>
        <Col size={1}></Col>  
 </Row>
-<Row size={5} style={{backgroundColor: 'blue'}}>
+<Row size={7}>
    <Col size={1}></Col>
         <Col size={6}>
         <ScrollView>
@@ -213,9 +214,9 @@ if (this.state.navigator == 'PIC') {
       </Col>
         <Col size={1}></Col>
    </Row>
-  <Row size={1} style={{backgroundColor: 'purple'}}>
-        <Col size={1} style={{backgroundColor: 'blue'}}></Col>
-          <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+  <Row size={1} style={{paddingTop: 5}}>
+        <Col size={1}></Col>
+          <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50,flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
         <TouchableHighlight
             style={localStyles.buttonsplus}
             onPress={()=> {(
@@ -230,7 +231,7 @@ if (this.state.navigator == 'PIC') {
             <Image style={localStyles.Modelbuttonsone} source={download}></Image>
             </TouchableHighlight>
         </Col>
-        <Col size={1} style={{backgroundColor: 'black'}}>
+        <Col size={1}>
         </Col>
           </Row>
 
@@ -275,8 +276,8 @@ return (
          navigator : 'PIC'
           })))}}>
        <Image
-        style={localStyles.backButton}
-        source={back} >
+        style={localStyles.backButtonAR}
+        source={back2} >
        </Image>
       </TouchableHighlight>
      <TouchableHighlight style={localStyles.Modelbuttonschar} onPress={()=> {(
@@ -324,14 +325,14 @@ if (this.state.navigator == 'Characters') {
   <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
     <NativeRouter>
       <Grid>
-        <Row size={1} style={{backgroundColor: 'red'}}>
-        <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
-          <TouchableHighlight style={localStyles.backForCharacters, {justifyContent: 'center'}} onPress={()=> {(
+        <Row size={1}>
+        <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
+          <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}} onPress={()=> {(
                 this.setState((prevState) => ({
                   navigator : 'AR'
                 })))}}>
               <Image 
-              style={localStyles.backForCharacters}
+              style={localStyles.backButton}
               source={back}></Image>
          </TouchableHighlight>
         </Col>
@@ -343,7 +344,7 @@ if (this.state.navigator == 'Characters') {
        </Row>
         {/* <View style={localStyles.outer}> */}
       {/* </View> */}
-      <Row size={6} style={{backgroundColor: 'blue'}}>
+      <Row size={7}>
    <Col size={1}></Col>
         <Col size={6}>
 
@@ -353,6 +354,7 @@ if (this.state.navigator == 'Characters') {
         </Col>
        <Col size={1}></Col>
       </Row>
+      <Row size={0.4}></Row>
         {/* <View style={localStyles.outer}>
         </View> */}
         </Grid>
@@ -380,16 +382,16 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
      <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
   <NativeRouter>
         <Grid>
-          <Row size={1} style={{backgroundColor: 'red'}}>
-                  <Col size={1} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+          <Row size={1}>
+                  <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
 
     {/* <View style={localStyles.outer} > */}
-      <TouchableHighlight style={localStyles.backForCharacters, {justifyContent: 'center'}}  onPress={()=> {(
+      <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}}  onPress={()=> {(
          this.setState((prevState) => ({
              navigator : 'Characters'
             })))}}>
          <Image
-            style={localStyles.backForCharacters} source={back}>
+            style={localStyles.backButton} source={back}>
          </Image>
       </TouchableHighlight>
       </Col>
@@ -398,7 +400,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
    </Col>
   <Col size={1}></Col> 
          </Row>
-      <Row size={6} style={{backgroundColor: 'blue'}}>
+      <Row size={7}>
    <Col size={1}></Col>
         <Col size={6}>
     {/* </View> */}
@@ -408,6 +410,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
      </Col>
             <Col size={1}></Col>
       </Row>
+      <Row size={0.4}></Row>
      {/* <View style={localStyles.outer}>
         </View> */}
     </Grid>
@@ -615,12 +618,19 @@ var localStyles = StyleSheet.create({
     borderRadius: 50,
     fontSize : 25
   },
-    backButton : {
-    height: 25,
+  backButtonAR: {
+      height: 35,
     width: 25,
-    position: 'absolute',
+      position: 'absolute',
     left: '10%',
     top: '50%',
+  },
+    backButton : {
+    height: 35,
+    width: 25,
+    // position: 'absolute',
+    // left: '10%',
+    // top: '50%',
   },
   backForCharacters : {
 height: 25,
