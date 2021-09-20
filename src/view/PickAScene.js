@@ -5,12 +5,14 @@ import {
   Button,
   View,
   StyleSheet,
+  ScrollView,
+  SafeAreaView,
   Image,
   PixelRatio,
   TouchableHighlight,
 } from 'react-native';
 
-
+import { Col, Row, Grid } from "react-native-easy-grid";
 import Swipeout from 'react-native-swipeout';
 import trash from '../../trashicon2.png'
 import download from '../../downArrow.png'
@@ -24,7 +26,6 @@ import {
 } from 'react-viro';
 
 import { NativeRouter, Route, Link } from "react-router-native";
-
 //on selecting a film (project),this shows all the scenes in that film or allows you to create a new
 export default class PickAScene extends Component {
   constructor(props) {
@@ -37,51 +38,69 @@ goBack(){
   this.props.history.push('/')
 }
 render() {
-  return (
-      <NativeRouter>
-       <Route exact path="/">
-         <View style={localStyles.inner} >
-           <View style={localStyles.outer}>
-             <TouchableHighlight onPress={() => this.goBack()}>
-               <Image style={localStyles.Modelbuttons} source={back}></Image>
-             </TouchableHighlight>
-             <Text style={localStyles.titleText}>Scene</Text>
-          </View>
-          <View style={localStyles.viewforobjects} >
-            {Object.keys(this.props.ObjofProje).map((el, i) => { 
-             return (
-               <Swipeout right={[{
+return (
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+ <StatusBar hidden={false} />
+ <NativeRouter>
+     <Route exact path="/">
+       <Grid>
+          <Row size={1}>
+              <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
+                 <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}} onPress={() => this.goBack()}>
+                  <Image style={localStyles.backButton} source={back}></Image>
+                  </TouchableHighlight>
+              </Col>
+               <Col size={3} style={{justifyContent: 'center'}}>
+                  <Text style={localStyles.Film}>Scene</Text>
+               </Col>
+               <Col size={1}></Col>  
+          </Row>
+          <Row size={7}>
+            <Col size={1}></Col>
+             <Col size={6}>
+                <ScrollView>
+                  {Object.keys(this.props.ObjofProje).map((el, i) => { 
+                   return (
+                 <Swipeout right={[{
                     text: 'Delete',
                     backgroundColor: 'red',
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                     onPress: () => { this.props.DeleteSceneDescription(el, this.props.ProjectNameInput, this.props.Info) }
-                  }]}
-                  autoClose='true'
-                  style={{alignItems: 'center'}}
-                  backgroundColor= 'transparent'>
-                <Link to="/pics" key={i} style={localStyles.buttons} onPress={()=> {(
+                    }]}
+                       autoClose='true'
+                      style={{alignItems: 'center'}}
+                       backgroundColor= 'transparent'>
+                  <Link to="/pics" key={i} style={localStyles.buttons} onPress={()=> {(
                    this.setState((prevState) => ({
                      ...prevState,
                      activeScene : el
                     })))}}>
                     <Text style={localStyles.titleText2}>{this.props.ObjofProje[el].description}</Text>
                 </Link>
-              </Swipeout>
-            )})}
-            <Link to="/NameAScene"  style={localStyles.buttonsplus}>
-              <Text style={localStyles.buttonText}>{"+"}</Text>
-            </Link>
-        </View>
-      </View>
-      <View style={localStyles.outer}>
-         <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
-      </View>
-    </Route>
+               </Swipeout>
+             )})}
+            </ScrollView>
+          </Col>
+          <Col size={1}></Col>
+       </Row>
+      <Row size={1} style={{paddingTop: 10}}>
+         <Col size={1}></Col> 
+          <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+              <Link to="/NameAScene"  style={localStyles.buttonsplus}>
+                <Text style={localStyles.buttonText}>{"+"}</Text>
+              </Link>
+             <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
+          </Col>
+          <Col size={1}></Col>
+      </Row>
+    </Grid>
+  </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
            (<PickAPic {...props}
            deletePicture={this.props.deletePicture}
            activeProject={this.props.Info.activeProject}
+           Arrange={this.props.Arrange}
            updatePictures={this.props.updatePictures}
            ProjectNameInput={this.props.ProjectNameInput}
            Info={this.props.ObjofProje[this.state.activeScene]}/>)
@@ -90,6 +109,7 @@ render() {
              <Route path="/NameAScene" render={props => 
            (<NameAScene {...props}
            created={"true"}
+           Arrange={this.props.Arrange}
            deletePicture={this.props.deletePicture}
            activeProject={this.props.Info.activeProject}
            updatePictures={this.props.updatePictures}
@@ -98,7 +118,8 @@ render() {
            AddSceneDescription={this.props.AddSceneDescription}
            Info={this.props.Info}/>)
           }/>
-  </NativeRouter>
+</NativeRouter>
+</SafeAreaView>
   )}}
 
 var localStyles = StyleSheet.create({
@@ -114,6 +135,14 @@ var localStyles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: "#8A4FFF",
   },
+  Film: {
+    color:'#7844CA',
+    justifyContent: 'center', //Centered horizontally
+    alignItems: 'center', //Centered vertically
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25
+  },
   inner: {
     flex : 1,
     width: '100%',
@@ -122,7 +151,7 @@ var localStyles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   titleText: {
-    paddingTop: 35,
+  paddingTop: 35,
     color:'white',
     textAlign:'center',
     borderColor: '#C3BEF7',
@@ -132,6 +161,7 @@ var localStyles = StyleSheet.create({
   titleText2: {
     color:'white',
     textAlign:'center',
+    justifyContent: 'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
     fontSize : 25,
@@ -142,29 +172,38 @@ var localStyles = StyleSheet.create({
     textAlign:'center',
     fontSize : 30
   },
+    buttonTextII: {
+    color:'#C3BEF7',
+    textAlign:'center',
+    fontSize : 40,
+  },
   buttons : {
-    height: 80,
+ height: 80,
     width: '100%',
-    paddingTop:20,
-    paddingBottom:20,
+    alignContent: 'center',
+    alignItems: 'center', //Centered vertically    justifyContent: 'center',
     marginTop: 10,
     marginBottom: 10,
+    justifyContent: 'center',
+    textAlign: 'center',
     backgroundColor:'#C3BEF7',
     borderRadius: 10,
     borderWidth: 5,
     borderColor: 'rgba(0,0,0,.2)',
   },
   buttonsplus : {
-      height: 80,
+    height: 80,
     width: 80,
     borderRadius: 80/2,
-    paddingTop:10,
-    paddingBottom:20,
-    marginTop: 10,
-    marginBottom: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',
+  },
+  backButton : {
+    height: 35,
+    width: 25,
   },
    Modelbuttons : {
     height: 25,
@@ -177,9 +216,8 @@ var localStyles = StyleSheet.create({
    Modelbuttons2 : {
     height: 25,
     width: 25,
-    position: 'absolute',
-    left: '85%',
-    top: '20%',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   exitButton : {
     height: 50,

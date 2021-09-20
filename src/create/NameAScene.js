@@ -4,6 +4,7 @@ import download from '../../downArrow.png'
 import back from '../../backArrow.png'
 import PickAPic from '../view/PickAPic'
 import PickAScene from '../view/PickAScene'
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 import {
   AppRegistry,
@@ -13,6 +14,8 @@ import {
   Image,
   View,
   Picker,
+  ScrollView,
+  SafeAreaView,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
@@ -40,23 +43,33 @@ goBack(){
 //create a film scene and routes to list of pics
 render() {
   return (
-    <NativeRouter>
-      <Route exact path="/">
-         <View style={localStyles.inner} >
-           <View style={localStyles.outer} >
-             {this.props.created && <TouchableHighlight onPress={() => this.goBack()}>
-                <Image style={localStyles.Modelbuttons} source={back}></Image>     
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+ <StatusBar hidden={false} />
+<NativeRouter>
+  <Route exact path="/">
+   <Grid>
+     <Row size={1}>
+        <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
+             {this.props.created && <TouchableHighlight style={localStyles.backButton, {justifyContent: 'center'}} onPress={() => this.goBack()}>
+                <Image style={localStyles.backButton} source={back}></Image>     
              </TouchableHighlight> }
-            <Text style={localStyles.titleText}>Create A Scene</Text>
-           </View>
-         <View style={localStyles.createSCene} >
-           <Picker
-           style={{backgroundColor: 'white', width:'25%', paddingRight: 20}}
-           selectedValue={this.state.intExt}
-           onValueChange={(itemValue,itemIndex) => this.setState({intExt: itemValue})}
-           >
-            <Picker.Item label="INT" value="INT" />
-            <Picker.Item label="EXT" value="EXT" />
+        </Col>
+        <Col size={3} style={{justifyContent: 'center'}}>
+            <Text style={localStyles.Film}>Create A Scene</Text>
+        </Col>
+        <Col size={1}></Col>  
+    </Row>
+    <Row size={7}>
+        <Col size={1}></Col>
+        <Col size={6}>
+          <View style={localStyles.createSCene} >
+            <Picker
+             style={{backgroundColor: 'white', width:'25%', paddingRight: 20}}
+            selectedValue={this.state.intExt}
+            onValueChange={(itemValue,itemIndex) => this.setState({intExt: itemValue})}
+            >
+               <Picker.Item label="INT" value="INT" />
+               <Picker.Item label="EXT" value="EXT" />
            </Picker>
 
            <TextInput 
@@ -71,27 +84,35 @@ render() {
             <Picker  style={{backgroundColor: 'white', paddingRight: 20, width:'25%'}}
               selectedValue={this.state.dayNight}
               onValueChange={(itemValue,itemIndex) => this.setState({dayNight: itemValue})}
-             >
-             <Picker.Item label="Day" value="Day" />
-             <Picker.Item label="Night" value="Night" />
-          </Picker>
+               >
+               <Picker.Item label="Day" value="Day" />
+               <Picker.Item label="Night" value="Night" />
+           </Picker>
          </View>
-            <Link to="/pics" style={localStyles.buttonsplus}
-            onPress={() => {
+       </Col>
+       <Col size={1}></Col>
+    </Row>
+     <Row size={1} style={{paddingTop:5}} >
+        <Col size={1} ></Col>  
+        <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+          <Link to="/pics"
+             style={localStyles.buttonsplus}
+             onPress={() => {
               this.props.AddSceneDescription(this.props.ProjectNameInput, this.state.intExt, this.state.location, this.state.dayNight, this.state.intExt + ' ' + this.state.location + ' ' + this.state.dayNight)}
               }>
-              <Text >+</Text>
-            </Link >
-        </View>
-
-     <View style={localStyles.outer}>
-   </View>
+              <Text style={localStyles.buttonText}>+</Text>
+          </Link>
+        </Col>   
+        <Col size={1}></Col>
+    </Row>
+  </Grid>
  </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
      <Route path="/pics" render={props => 
        (<PickAPic {...props}
        created={"true"}
        deletePicture={this.props.deletePicture}
+       Arrange={this.props.Arrange}
        DataForPic={this.props.DataForPic}
        updatePictures={this.props.updatePictures}
        reRender={this.props.Info}
@@ -100,7 +121,8 @@ render() {
        ObjofProje={this.props.ObjofProje}
        activeProject={this.props.activeProject}/>)
      }/>
-  </NativeRouter>
+</NativeRouter>
+</SafeAreaView>
 )}}
 
 var localStyles = StyleSheet.create({
@@ -130,6 +152,10 @@ var localStyles = StyleSheet.create({
     borderRadius: 50,
     fontSize : 25
   },
+    backButton : {
+    height: 35,
+    width: 25,
+  },
   littleText: {
      paddingTop: 30,
     paddingBottom: 20,
@@ -137,9 +163,32 @@ var localStyles = StyleSheet.create({
     textAlign:'center',
     fontSize : 10
   },
+    titleText2: {
+    color:'white',
+    textAlign:'center',
+    justifyContent: 'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25,
+    width: 300
+  },
+  Film: {
+    // paddingTop: 35,
+    color:'#7844CA',
+    justifyContent: 'center', //Centered horizontally
+       alignItems: 'center', //Centered vertically
+    // textAlign:'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25
+  },
   buttonText: {
     color:'#C3BEF7',
-    fontSize : 30
+    fontSize : 30,
+        textAlign:'center',
+
   },
   buttons : {
     height: 80,
@@ -154,17 +203,19 @@ var localStyles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,.2)',
   },
   buttonsplus : {
-    height: 80,
+   height: 80,
     width: 80,
     borderRadius: 80/2,
-    marginTop: '50%',
+    // textAlign:'center',
+    // paddingTop:10,
+    // paddingBottom:20,
+    // marginTop: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
+    // marginBottom: 10,
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',
-    color:'#C3BEF7',
-    textAlign:'center',
-    justifyContent: 'center',
-    fontSize : 30
   },
    Modelbuttons : {
     height: 25,

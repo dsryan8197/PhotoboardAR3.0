@@ -4,6 +4,7 @@ import download from '../../downArrow.png'
 import back from '../../backArrow.png'
 import PickAPic from '../view/PickAPic'
 import NameAScene from './NameAScene'
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 import {
   AppRegistry,
@@ -11,6 +12,8 @@ import {
   Button,
   TextInput,
   Image,
+  ScrollView,
+  SafeAreaView,
   View,
   StyleSheet,
   PixelRatio,
@@ -38,38 +41,53 @@ goBack(){
 //add a new project and immediatley route to 'create a new scene' in that project
 render() {
   return (
-    <NativeRouter>
-     <Route exact path="/">
-      <View style={localStyles.inner} >
-        <View style={localStyles.outer} >
-           {this.props.created && <TouchableHighlight onPress={() => this.goBack()}>
-             <Image style={localStyles.Modelbuttons} source={back}></Image>      
-           </TouchableHighlight>}
-          <Text style={localStyles.titleText}>Name Your Film</Text>
-       </View>
-         <View style={localStyles.viewforobjects}>
-           <View style={localStyles.createSCene}>
-             <TextInput 
-             placeholder="Title"
-             value={this.state.ProjectNameInput}
-             style={localStyles.insertfilmname}
-             onChangeText={e => {this.props.handleChange(e)}}
-             />
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+ <StatusBar hidden={false} />
+<NativeRouter>
+   <Route exact path="/">
+     <Grid>
+      <Row size={1}>
+         <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
+            {this.props.created && <TouchableHighlight  style={localStyles.backButton, {justifyContent: 'center'}} onPress={() => this.goBack()}>
+             <Image style={localStyles.backButton} source={back}></Image>      
+               </TouchableHighlight>}
+          </Col>
+          <Col size={3} style={{justifyContent: 'center'}}>
+            <Text style={localStyles.Film}>Name Your Film</Text>
+          </Col>
+           <Col size={1}></Col>  
+      </Row>
+      <Row size={7} >
+        <Col size={1}></Col>
+         <Col size={6}>
+           <View style={localStyles.viewforobjects}>
+             {/* <View style={localStyles.createSCene}> */}
+               <TextInput 
+              placeholder="Title"
+              value={this.state.ProjectNameInput}
+              style={localStyles.insertfilmname}
+              onChangeText={e => {this.props.handleChange(e)}}
+              />
            </View>
-             <View style={localStyles.createSCene}>
-               <Link to="/NameAScene" onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
-                 <Text style={localStyles.buttonText}>+</Text>
-               </Link>
-             </View>
-        </View>
-     </View>
-   <View style={localStyles.outer}>
-   </View>
+        </Col>
+        <Col size={1}></Col>
+      </Row>
+      <Row size={1} style={{paddingTop: 5}}>
+        <Col size={1}></Col>   
+        <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+           <Link to="/NameAScene"  style={localStyles.buttonsplus} onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
+             <Text style={localStyles.buttonText}>+</Text>
+          </Link>
+        </Col>
+        <Col size={1}></Col>
+    </Row>
+  </Grid>
   </Route>
       {/* create a scene route */}
        <Route path="/NameAScene" render={props => 
          (<NameAScene {...props}
          DeleteSceneDescription={this.props.DeleteSceneDescription}
+         Arrange={this.props.Arrange}
          deletePicture={this.props.deletePicture}
          updatePictures={this.props.updatePictures}
          ObjofProje={this.props.ObjofProje[this.props.Info.activeProject]}
@@ -79,6 +97,7 @@ render() {
          Info={this.props.Info}/>)
        }/>   
 </NativeRouter>
+</SafeAreaView>
 )}}
 
 var localStyles = StyleSheet.create({
@@ -143,13 +162,11 @@ var localStyles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,.2)',
   },
  buttonsplus : {
-  height: 80,
+height: 80,
     width: 80,
     borderRadius: 80/2,
-    paddingTop:10,
-    paddingBottom:20,
-    marginTop: 10,
-    marginBottom: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',
@@ -173,6 +190,18 @@ var localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
+  },
+    backButton : {
+    height: 35,
+    width: 25,
+  },
+    Film: {
+    color:'#7844CA',
+    justifyContent: 'center', //Centered horizontally
+      alignItems: 'center', //Centered vertically
+    borderColor: '#C3BEF7',
+    borderRadius: 50,
+    fontSize : 25
   },
   viewforobjects : {
     width: '100%',
