@@ -151,7 +151,8 @@ render() {
 if (this.state.navigator == 'PIC') {
 return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
- <NativeRouter>
+ <StatusBar hidden={false} />
+<NativeRouter>
   <Route exact path="/">
    <Grid>
      <Row size={1}>
@@ -243,7 +244,8 @@ return (
 else if (this.state.navigator == 'AR') { 
 return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
- <NativeRouter>
+ <StatusBar hidden={false} />
+<NativeRouter>
   <Grid>
    <Row size={1}>
      <ViroARSceneNavigator
@@ -297,7 +299,8 @@ if (this.state.navigator == 'Characters') {
 
 return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
-  <NativeRouter>
+ <StatusBar hidden={false} />
+ <NativeRouter>
     <Grid>
       <Row size={1}>
         <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -348,7 +351,8 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
 }
  return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
-  <NativeRouter>
+  <StatusBar hidden={false} />
+<NativeRouter>
     <Grid>
      <Row size={1}>
        <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>

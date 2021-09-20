@@ -18,6 +18,7 @@ import {
   Button,
   View,
   SafeAreaView,
+  StatusBar,
   StyleSheet,
   PixelRatio,
   ScrollView,
@@ -213,6 +214,7 @@ if (!this.state.InfoPage) {
 if (this.state.InfoPageSpecific == 'one') {
 return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+ <StatusBar hidden={false} />
   <Grid>
     <Row size={1}></Row>
     <Row size={4}>
@@ -282,7 +284,8 @@ return (
 if (this.state.InfoPageSpecific == 'two') {
 return (
 <SafeAreaView style={{width: '100%', height: '100%'}}>
-  <Grid>
+ <StatusBar hidden={false} />
+ <Grid>
     <Row size={1}></Row>
       <Row size={4} style={{backgroundColor: 'blue'}}>
         <Image
@@ -350,7 +353,8 @@ return (
 if (this.state.InfoPageSpecific == 'three') {
 return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
-  <Grid>
+  <StatusBar hidden={false} />
+<Grid>
     <Row size={1}></Row>
     <Row size={4}>
         <Image
@@ -418,7 +422,8 @@ return (
 if (this.state.InfoPageSpecific == 'four') {
 return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
-  <Grid>
+  <StatusBar hidden={false} />
+<Grid>
     <Row size={1}></Row>
     <Row size={4}>
         <Image
@@ -488,6 +493,7 @@ return (
 if (this.state.InfoPage) {
  return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+<StatusBar hidden={false} />
   <NativeRouter >
     <Route exact path="/">
       <Grid>

@@ -44,7 +44,8 @@ goBack(){
 render() {
   return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
- <NativeRouter>
+ <StatusBar hidden={false} />
+<NativeRouter>
   <Route exact path="/">
    <Grid>
      <Row size={1}>
