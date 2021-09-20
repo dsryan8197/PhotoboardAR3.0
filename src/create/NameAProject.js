@@ -6,6 +6,7 @@ import PickAPic from '../view/PickAPic'
 import NameAScene from './NameAScene'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import help from '../../help.png'
+import bigDownload from '../../bigDownload.png'
 
 import {
   AppRegistry,
@@ -57,7 +58,7 @@ render() {
           <Col size={3} style={{justifyContent: 'center'}}>
             <Text style={localStyles.Film}>Name Your Film</Text>
           </Col>
-           <Col size={1}>
+           <Col size={1}  style={{justifyContent: 'center'}}>
             <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
               <Image style={localStyles.Modelbuttonsone} source={help}></Image>
            </TouchableHighlight>
@@ -81,9 +82,11 @@ render() {
       <Row size={1} style={{paddingTop: 5}}>
         <Col size={1}></Col>   
         <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+        <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
            <Link to="/NameAScene"  style={localStyles.buttonsplus} onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
              <Text style={localStyles.buttonText}>+</Text>
           </Link>
+         <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
         </Col>
         <Col size={1}></Col>
     </Row>
@@ -155,6 +158,13 @@ var localStyles = StyleSheet.create({
     marginBottom: 30,
     fontSize: 20
   },
+   Modelbuttons2 : {
+    height: 35,
+    opacity: 0.3,
+    width: 35,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   buttons : {
    height: 80,
     width: '70%',
@@ -196,6 +206,13 @@ height: 80,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
+  },
+      Modelbuttonsone : {
+    height: 27,
+    width: 27,
+    // paddingBottom:20,
+      justifyContent: 'center',
+    alignItems: 'center'
   },
     backButton : {
     height: 35,

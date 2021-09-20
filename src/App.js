@@ -12,6 +12,7 @@ import AnimatedDotsCarousel from 'react-native-animated-dots-carousel';
 import Swipeout from 'react-native-swipeout';
 import { AsyncStorage } from 'react-native';
 import download from '../downArrow.png'
+import bigDownload from '../bigDownload.png'
 import back2 from '../ARbackArrow.png'
 import camera from '../camerasnapshot.png'
 import character from '../charactericon.png'
@@ -219,13 +220,13 @@ const arr = [Info1, Info2, Info3, Info4, back, back2, camera, character, help]
 arr.map((e) => (
     <img src={e} style={{ display: "none" }} />
 ))
-if (this.props.reRender) {
-this.setState((prevState) => ({
-  ...this.props.reRender
-  }))
-} else {
+// if (this.props.reRender) {
+// this.setState((prevState) => ({
+//   ...this.props.reRender
+//   }))
+// } else {
   this.getData()
-}}
+}
 
 //home page that shows all your projects (films) and provides option to add a new project
 render() {
@@ -583,9 +584,12 @@ if (!this.state.InfoPage) {
            {/* <TouchableHighlight onPress={()=>{this.goBackToInfo()}}>
             <Image style={localStyles.Modelbuttonsone} source={help}></Image>
           </TouchableHighlight> */}
+          <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
+
            <Link to="/addAProject" style={localStyles.buttonsplus}>
                <Text style={localStyles.buttonText}>{"+"}</Text>
            </Link>
+       <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
         </Col>
          <Col size={1}></Col>
       </Row>
@@ -746,6 +750,13 @@ var localStyles = StyleSheet.create({
     paddingBottom:20,
     marginTop: 10,
     marginBottom: 10,
+  },
+    Modelbuttons2 : {
+    height: 35,
+    opacity: 0.3,
+    width: 35,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
     Modelbuttonsone : {
     height: 27,

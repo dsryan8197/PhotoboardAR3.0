@@ -92,7 +92,7 @@ return (
        </Row>
       <Row size={1} style={{paddingTop: 10}}>
          <Col size={1}></Col> 
-          <Col size={5} style={{backgroundColor: '#7844CA',  flexDirection: 'row',borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+          <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
               {/* <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
                 <Image style={localStyles.Modelbuttonsone} source={help}></Image>
              </TouchableHighlight> */}
@@ -227,8 +227,8 @@ var localStyles = StyleSheet.create({
     top: 2,
   },
    Modelbuttons2 : {
-    height: 25,
-    width: 25,
+    height: 35,
+    width: 35,
     justifyContent: 'center',
     alignItems: 'center'
   },

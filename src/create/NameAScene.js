@@ -6,7 +6,7 @@ import PickAPic from '../view/PickAPic'
 import PickAScene from '../view/PickAScene'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import help from '../../help.png'
-
+import bigDownload from '../../bigDownload.png'
 import {
   AppRegistry,
   Text,
@@ -59,7 +59,7 @@ render() {
         <Col size={3} style={{justifyContent: 'center'}}>
             <Text style={localStyles.Film}>Create A Scene</Text>
         </Col>
-        <Col size={1}>
+        <Col size={1}  style={{justifyContent: 'center'}}>
          <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
               <Image style={localStyles.Modelbuttonsone} source={help}></Image>
            </TouchableHighlight>
@@ -101,6 +101,7 @@ render() {
      <Row size={1} style={{paddingTop:5}} >
         <Col size={1} ></Col>  
         <Col size={5} style={{backgroundColor: '#7844CA', flexDirection: 'row', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+           <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
           <Link to="/pics"
              style={localStyles.buttonsplus}
              onPress={() => {
@@ -108,6 +109,7 @@ render() {
               }>
               <Text style={localStyles.buttonText}>+</Text>
           </Link>
+        <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
         </Col>   
         <Col size={1}></Col>
     </Row>
@@ -144,6 +146,20 @@ var localStyles = StyleSheet.create({
     height: '10%',
     flexDirection: 'row',
     backgroundColor: "#8A4FFF",
+  },
+   Modelbuttons2 : {
+    height: 35,
+    opacity: 0.3,
+    width: 35,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+      Modelbuttonsone : {
+    height: 27,
+    width: 27,
+    // paddingBottom:20,
+      justifyContent: 'center',
+    alignItems: 'center'
   },
   inner: {
     flex : 1,
