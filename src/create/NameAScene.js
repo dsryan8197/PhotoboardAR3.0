@@ -5,6 +5,7 @@ import back from '../../backArrow.png'
 import PickAPic from '../view/PickAPic'
 import PickAScene from '../view/PickAScene'
 import { Col, Row, Grid } from "react-native-easy-grid";
+import help from '../../help.png'
 
 import {
   AppRegistry,
@@ -13,6 +14,7 @@ import {
   TextInput,
   Image,
   View,
+  StatusBar,
   Picker,
   ScrollView,
   SafeAreaView,
@@ -57,7 +59,11 @@ render() {
         <Col size={3} style={{justifyContent: 'center'}}>
             <Text style={localStyles.Film}>Create A Scene</Text>
         </Col>
-        <Col size={1}></Col>  
+        <Col size={1}>
+         <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+              <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+           </TouchableHighlight>
+        </Col>  
     </Row>
     <Row size={7}>
         <Col size={1}></Col>
@@ -94,7 +100,7 @@ render() {
     </Row>
      <Row size={1} style={{paddingTop:5}} >
         <Col size={1} ></Col>  
-        <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+        <Col size={5} style={{backgroundColor: '#7844CA', flexDirection: 'row', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
           <Link to="/pics"
              style={localStyles.buttonsplus}
              onPress={() => {
@@ -112,6 +118,7 @@ render() {
        (<PickAPic {...props}
        created={"true"}
        deletePicture={this.props.deletePicture}
+       goBackToInfo={this.props.goBackToInfo}
        Arrange={this.props.Arrange}
        DataForPic={this.props.DataForPic}
        updatePictures={this.props.updatePictures}

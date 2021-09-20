@@ -11,6 +11,11 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import AnimatedDotsCarousel from 'react-native-animated-dots-carousel';
 import Swipeout from 'react-native-swipeout';
 import { AsyncStorage } from 'react-native';
+import download from '../downArrow.png'
+import back2 from '../ARbackArrow.png'
+import camera from '../camerasnapshot.png'
+import character from '../charactericon.png'
+import help from '../help.png'
 
 import {
   AppRegistry,
@@ -40,12 +45,11 @@ export default class PickAProject extends Component {
       activeProject : null,
       ProjectNameInput : '',
       InfoPage: true,
-      InfoPageSpecific: 'one',
+      InfoPageSpecific: 'zero',
       ProjectObj : {
       },
     } 
   }
-
  storeData = async () => {
   try {
     const jsonValue = JSON.stringify(this.state)
@@ -53,6 +57,18 @@ export default class PickAProject extends Component {
   } catch (e) {
   }
 }
+
+  goBackToInfo = () => {
+    return (
+      this.setState((prevState) => ({
+        ...prevState,
+        InfoPage: true,
+        InfoPageSpecific: 'zero'
+      })
+    ), () => {
+      this.storeData()
+    })
+  }
 
  getData = async () => {
   try {
@@ -199,6 +215,10 @@ this.storeData()
 }
 
 componentDidMount() {
+const arr = [Info1, Info2, Info3, Info4, back, back2, camera, character, help]
+arr.map((e) => (
+    <img src={e} style={{ display: "none" }} />
+))
 if (this.props.reRender) {
 this.setState((prevState) => ({
   ...this.props.reRender
@@ -209,7 +229,27 @@ this.setState((prevState) => ({
 
 //home page that shows all your projects (films) and provides option to add a new project
 render() {
-if (!this.state.InfoPage) {
+if (this.state.InfoPage) {
+
+if (this.state.InfoPageSpecific == 'zero') {
+return (
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+ <StatusBar hidden={false} />
+  <Grid>
+    <Row size={1}>
+      <TouchableHighlight onPress={()=> {(
+                this.setState((prevState) => ({
+                  ...prevState,
+                  InfoPageSpecific : 'one'
+            })))}} style={localStyles.introButton}>
+
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
+         </TouchableHighlight>
+    </Row>
+  </Grid>
+</SafeAreaView>
+)
+}
 
 if (this.state.InfoPageSpecific == 'one') {
 return (
@@ -271,7 +311,7 @@ return (
                   InfoPageSpecific : 'two'
             })))}} style={localStyles.introButton}>
 
-            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
          </TouchableHighlight>
       </Col>
     </Row>
@@ -340,7 +380,7 @@ return (
                   ...prevState,
                   InfoPageSpecific : 'three'
             })))}} style={localStyles.introButton}>
-            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
         </TouchableHighlight>
       </Col>
     </Row>
@@ -409,7 +449,7 @@ return (
                   ...prevState,
                   InfoPageSpecific : 'four'
             })))}} style={localStyles.introButton}>
-            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
         </TouchableHighlight>
     </Col>
    </Row>
@@ -477,9 +517,10 @@ return (
         <TouchableHighlight onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
-                  InfoPage: false
+                  InfoPage: false,
+                  InfoPageSpecific: 'zero'
             })))}} style={localStyles.introButton}>
-            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
         </TouchableHighlight>
       </Col>
     </Row>
@@ -490,7 +531,7 @@ return (
 }
 
 }
-if (this.state.InfoPage) {
+if (!this.state.InfoPage) {
  return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
 <StatusBar hidden={false} />
@@ -502,7 +543,11 @@ if (this.state.InfoPage) {
           <Col size={3} style={{justifyContent: 'center'}}>
              <Text style={localStyles.Film}>Films</Text>
            </Col>
-          <Col size={1}></Col>
+          <Col size={1} style={{justifyContent: 'center'}}>
+            <TouchableHighlight onPress={()=>{this.goBackToInfo()}}>
+              <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+           </TouchableHighlight>
+        </Col>
         </Row>
         <Row size={7}>
            <Col size={1}></Col>
@@ -534,7 +579,10 @@ if (this.state.InfoPage) {
       </Row>
       <Row size={1} style={{paddingTop: 10}}>
         <Col size={1}></Col>
-        <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, justifyContent: 'center', alignItems: 'center'}}>
+        <Col size={5} style={{backgroundColor: '#7844CA', flexDirection: 'row', borderRadius: 50, justifyContent: 'center', alignItems: 'center'}}>
+           {/* <TouchableHighlight onPress={()=>{this.goBackToInfo()}}>
+            <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+          </TouchableHighlight> */}
            <Link to="/addAProject" style={localStyles.buttonsplus}>
                <Text style={localStyles.buttonText}>{"+"}</Text>
            </Link>
@@ -550,6 +598,7 @@ if (this.state.InfoPage) {
           deletePicture={this.deletePicture}
           updatePictures={this.updatePictures}
           ProjectNameInput={this.state.ProjectNameInput}
+          goBackToInfo={this.goBackToInfo}
           AddSceneDescription={this.AddSceneDescription}
           Info={this.state}
           Arrange={this.Arrange}
@@ -562,6 +611,7 @@ if (this.state.InfoPage) {
           created={"true"}
           Arrange={this.Arrange}
           Arrange={this.Arrange}
+          goBackToInfo={this.goBackToInfo}
           DeleteSceneDescription={this.DeleteSceneDescription}
           deletePicture={this.deletePicture}
           updatePictures={this.updatePictures}
@@ -649,7 +699,6 @@ var localStyles = StyleSheet.create({
     alignItems: 'center', //Centered vertically    justifyContent: 'center',
     marginTop: 10,
     marginBottom: 10,
-    // textAlign: 'center',
     justifyContent: 'center',
     textAlign: 'center',
     backgroundColor:'#C3BEF7',
@@ -697,6 +746,13 @@ var localStyles = StyleSheet.create({
     paddingBottom:20,
     marginTop: 10,
     marginBottom: 10,
+  },
+    Modelbuttonsone : {
+    height: 27,
+    width: 27,
+    // paddingBottom:20,
+      justifyContent: 'center',
+    alignItems: 'center'
   },
 });
 

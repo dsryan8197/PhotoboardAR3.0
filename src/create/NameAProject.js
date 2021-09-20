@@ -5,12 +5,14 @@ import back from '../../backArrow.png'
 import PickAPic from '../view/PickAPic'
 import NameAScene from './NameAScene'
 import { Col, Row, Grid } from "react-native-easy-grid";
+import help from '../../help.png'
 
 import {
   AppRegistry,
   Text,
   Button,
   TextInput,
+  StatusBar,
   Image,
   ScrollView,
   SafeAreaView,
@@ -55,7 +57,11 @@ render() {
           <Col size={3} style={{justifyContent: 'center'}}>
             <Text style={localStyles.Film}>Name Your Film</Text>
           </Col>
-           <Col size={1}></Col>  
+           <Col size={1}>
+            <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+              <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+           </TouchableHighlight>
+           </Col>  
       </Row>
       <Row size={7} >
         <Col size={1}></Col>

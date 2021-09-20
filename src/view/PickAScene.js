@@ -8,14 +8,17 @@ import {
   ScrollView,
   SafeAreaView,
   Image,
+  StatusBar,
   PixelRatio,
   TouchableHighlight,
 } from 'react-native';
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 import Swipeout from 'react-native-swipeout';
+import help from '../../help.png'
 import trash from '../../trashicon2.png'
 import download from '../../downArrow.png'
+import bigDownload from '../../bigDownload.png'
 import back from '../../backArrow.png'
 import PickAPic from './PickAPic'
 import NameAScene from '../create/NameAScene'
@@ -53,7 +56,11 @@ return (
                <Col size={3} style={{justifyContent: 'center'}}>
                   <Text style={localStyles.Film}>Scene</Text>
                </Col>
-               <Col size={1}></Col>  
+               <Col size={1} style={{justifyContent: 'center'}}>
+                <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+                   <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+                </TouchableHighlight>
+               </Col>  
           </Row>
           <Row size={7}>
             <Col size={1}></Col>
@@ -85,7 +92,11 @@ return (
        </Row>
       <Row size={1} style={{paddingTop: 10}}>
          <Col size={1}></Col> 
-          <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+          <Col size={5} style={{backgroundColor: '#7844CA',  flexDirection: 'row',borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+              {/* <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+                <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+             </TouchableHighlight> */}
+               <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
               <Link to="/NameAScene"  style={localStyles.buttonsplus}>
                 <Text style={localStyles.buttonText}>{"+"}</Text>
               </Link>
@@ -99,6 +110,7 @@ return (
           <Route path="/pics" render={props => 
            (<PickAPic {...props}
            deletePicture={this.props.deletePicture}
+           goBackToInfo={this.props.goBackToInfo}
            activeProject={this.props.Info.activeProject}
            Arrange={this.props.Arrange}
            updatePictures={this.props.updatePictures}
@@ -110,6 +122,7 @@ return (
            (<NameAScene {...props}
            created={"true"}
            Arrange={this.props.Arrange}
+          goBackToInfo={this.props.goBackToInfo}
            deletePicture={this.props.deletePicture}
            activeProject={this.props.Info.activeProject}
            updatePictures={this.props.updatePictures}
@@ -217,6 +230,13 @@ var localStyles = StyleSheet.create({
     height: 25,
     width: 25,
     justifyContent: 'center',
+    alignItems: 'center'
+  },
+   Modelbuttonsone : {
+    height: 25,
+    width: 25,
+    paddingBottom:20,
+      justifyContent: 'center',
     alignItems: 'center'
   },
   exitButton : {

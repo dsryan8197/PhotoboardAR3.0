@@ -2,10 +2,14 @@ import React, { Component } from 'react'
 import modelArray from '../../modelScript'
 import trash from '../../trashicon2.png'
 import download from '../../downArrow.png'
+import bigDownload from '../../bigDownload.png'
 import back from '../../backArrow.png'
 import back2 from '../../ARbackArrow.png'
 import camera from '../../camerasnapshot.png'
 import character from '../../charactericon.png'
+import help from '../../help.png'
+
+
 // import RNImageToPdf from 'react-native-image-to-pdf';
 // const PDFDocument = require('pdfkit');
 // const fs = require('fs');
@@ -21,6 +25,7 @@ import {
   Text,
   View,
   Button,
+  StatusBar,
   ScrollView,
   StyleSheet,
   SafeAreaView,
@@ -170,7 +175,11 @@ return (
      <Col size={3} style={{justifyContent: 'center'}}>
         <Text style={localStyles.Film}>Snapshot</Text>
      </Col>
-    <Col size={1}></Col>  
+    <Col size={1} style={{justifyContent: 'center'}}>
+     <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+        <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+     </TouchableHighlight>
+    </Col>  
   </Row>
   <Row size={7}>
     <Col size={1}></Col>
@@ -214,6 +223,12 @@ return (
   <Row size={1} style={{paddingTop: 5}}>
       <Col size={1}></Col>
       <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50,flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+        {/* <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+            <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+          </TouchableHighlight> */}
+          <TouchableHighlight onPress={()=>{window.alert('f')}}>
+            <Image style={localStyles.Modelbuttonsone} onPress={()=>{alert('download')}} source={bigDownload}></Image>
+          </TouchableHighlight>
         <TouchableHighlight
             style={localStyles.buttonsplus}
             onPress={()=> {(
@@ -254,7 +269,7 @@ return (
          initialScene={{scene: ARScene}}
          viroAppProps={this.state.Viro} 
         />
-     <TouchableHighlight style={{position: 'absolute', top: '5%', left: '5%', justifyContent: 'center'}} onPress={()=> {(
+     <TouchableHighlight style={{position: 'absolute', top: '5%', transform: [{ rotate: "90deg" }], right: '5%', justifyContent: 'center'}} onPress={()=> {(
        this.setState((prevState) => ({
         ...prevState,
          navigator : 'PIC'
@@ -276,7 +291,7 @@ return (
     </TouchableHighlight>
      <TouchableHighlight style={localStyles.capture} onPress={()=> this.shot()}>
         <Image
-        style={localStyles.buttonsplus}
+        style={localStyles.cameraButton}
         source={camera}
         key="camera_button">
        </Image>
@@ -316,7 +331,11 @@ return (
         <Col size={3} style={{justifyContent: 'center'}}>
            <Text style={localStyles.Film}>Characters</Text>
         </Col>
-        <Col size={1}></Col> 
+        <Col size={1} style={{justifyContent: 'center'}}>
+         <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+              <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+           </TouchableHighlight>
+        </Col> 
     </Row>
    <Row size={7}>
       <Col size={1}></Col>
@@ -368,7 +387,11 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
       <Col size={3} style={{justifyContent: 'center'}}>
          <Text style={localStyles.Film}>Poses</Text>
      </Col>
-    <Col size={1}></Col> 
+    <Col size={1} style={{justifyContent: 'center'}}>
+     <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+              <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+           </TouchableHighlight>
+    </Col> 
    </Row>
    <Row size={7}>
       <Col size={1}></Col>
@@ -440,6 +463,19 @@ var localStyles = StyleSheet.create({
     left: '40%',
     bottom: '2%',
   },
+  cameraButton : {
+    height: 80,
+    width: 80,
+    borderRadius: 80/2,
+    backgroundColor:'#FFFFFF',
+    borderWidth: 8,
+    borderColor: '#C3BEF7',
+    transform: [{ rotate: "90deg" }],
+    paddingTop:10,
+    paddingBottom:20,
+    marginTop: 10,
+    marginBottom: 10,
+  },
   models: {
     height: 200,
     width: 200,
@@ -497,9 +533,10 @@ var localStyles = StyleSheet.create({
   Modelbuttonschar: {
     height: 35,
     width: 35,
+    transform: [{ rotate: "90deg" }],
     position: 'absolute',
     left: '10%',
-    bottom: '5%',
+    top: '5%',
   },
   Modelbuttons3 : {
     height: 25,
@@ -518,7 +555,7 @@ var localStyles = StyleSheet.create({
     top: 2,
   },
   buttons : {
- height: 80,
+   height: 80,
     width: '100%',
     alignContent: 'center',
     alignItems: 'center', //Centered vertically    justifyContent: 'center',
