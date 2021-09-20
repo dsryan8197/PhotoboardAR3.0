@@ -6,6 +6,7 @@ import Info1 from '../slate1.jpg'
 import Info2 from '../people1.jpg'
 import Info3 from '../camera1.jpg'
 import Info4 from '../Info4.jpg'
+import Info5 from '../Info5.jpg'
 import back from '../backArrow.png'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import AnimatedDotsCarousel from 'react-native-animated-dots-carousel';
@@ -275,7 +276,7 @@ return (
       <Col size={0.5}></Col>
       <Col size={3} style={{top: 50}}>
         <AnimatedDotsCarousel
-        length={4}
+        length={5}
         currentIndex={0}
         maxIndicators={4}
         interpolateOpacityAndColor={true}
@@ -345,7 +346,7 @@ return (
       <Col size={0.5}></Col>
       <Col size={3} style={{top: 50}}>
         <AnimatedDotsCarousel
-        length={4}
+        length={5}
         currentIndex={1}
         maxIndicators={4}
         interpolateOpacityAndColor={true}
@@ -414,7 +415,7 @@ return (
       <Col size={0.5}></Col>
       <Col size={3} style={{top: 50}}>
          <AnimatedDotsCarousel
-        length={4}
+        length={5}
         currentIndex={2}
         maxIndicators={4}
         interpolateOpacityAndColor={true}
@@ -469,6 +470,77 @@ return (
     <Row size={4}>
         <Image
         style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
+        source={Info5}
+        key="cbutton">
+       </Image>
+     </Row>
+     <Row size={2} style={{paddingLeft: '10%'}}>
+        <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
+          <Text style={localStyles.buttonTextII}>Download</Text>
+         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Download your photos individually</Text>
+         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Or craft a shotlist</Text>
+       </View>
+      </Row>
+      <Row size={1} style={{alignItems: 'center'}}>
+       <Col size={0.5}></Col>
+       <Col size={3} style={{top: 50}}>
+         <AnimatedDotsCarousel
+        length={5}
+        currentIndex={3}
+        maxIndicators={4}
+        interpolateOpacityAndColor={true}
+        activeIndicatorConfig={{
+          color: 'purple',
+          margin: 3,
+          opacity: 1,
+          size: 8,
+        }}
+        inactiveIndicatorConfig={{
+          color: 'white',
+          margin: 3,
+          borderColor: 'black',
+          borderWidth: 1,
+          opacity: 0.5,
+          size: 8,
+        }}
+        decreasingDots={[
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 6 },
+            quantity: 1,
+          },
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 4 },
+            quantity: 1,
+          },
+        ]}
+      />
+     </Col>
+      <Col size={1.5}>
+        <TouchableHighlight onPress={()=> {(
+                this.setState((prevState) => ({
+                  ...prevState,
+                  InfoPageSpecific: 'five'
+            })))}} style={localStyles.introButton}>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
+        </TouchableHighlight>
+      </Col>
+    </Row>
+    <Row size={1}></Row>
+  </Grid> 
+</SafeAreaView> 
+  )
+}
+
+
+if (this.state.InfoPageSpecific == 'five') {
+return (
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+  <StatusBar hidden={false} />
+<Grid>
+    <Row size={1}></Row>
+    <Row size={4}>
+        <Image
+        style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info4}
         key="cbutton">
        </Image>
@@ -484,8 +556,8 @@ return (
        <Col size={0.5}></Col>
        <Col size={3} style={{top: 50}}>
          <AnimatedDotsCarousel
-        length={4}
-        currentIndex={3}
+        length={5}
+        currentIndex={4}
         maxIndicators={4}
         interpolateOpacityAndColor={true}
         activeIndicatorConfig={{
@@ -530,6 +602,7 @@ return (
 </SafeAreaView> 
   )
 }
+
 
 }
 if (!this.state.InfoPage) {
