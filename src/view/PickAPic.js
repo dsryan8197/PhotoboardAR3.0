@@ -675,7 +675,7 @@ var localStyles = StyleSheet.create({
   },
     backButton : {
     height: 35,
-    width: 25,
+    width: 35,
   },
   backForCharacters : {
 height: 25,

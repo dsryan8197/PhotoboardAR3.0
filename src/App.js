@@ -272,7 +272,7 @@ return (
     <Row size={2} style={{left: 40}}>
        <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
          <Text style={localStyles.buttonTextII}>Draft</Text>
-         <Text style={{color: '#8F8F8F', fontSize: 20}}>Create your films and draft your scenes</Text>
+         <Text style={{color: '#8F8F8F',fontSize: 20}}>Create your films and draft your scenes</Text>
       </View>
     </Row>
     <Row size={1} style={{ alignItems: 'center'}}>
@@ -639,7 +639,7 @@ if (!this.state.InfoPage) {
         <Row size={7}>
            <Col size={1}></Col>
            <Col size={6}>
-             <ScrollView>
+             <ScrollView horizontal={false} style={{width: '100%', height: '100%'}}>
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
                <Swipeout right={[{
@@ -801,10 +801,10 @@ var localStyles = StyleSheet.create({
    buttonsplus : {
     height: 80,
     width: 80,
-    borderRadius: 80/2,
     alignContent: 'center',
     justifyContent: 'center',
     backgroundColor:'#FFFFFF',
+    borderRadius: 80/2,
     borderWidth: 8,
     borderColor: '#C3BEF7',
   },

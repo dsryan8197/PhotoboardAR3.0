@@ -230,7 +230,7 @@ height: 80,
   },
     backButton : {
     height: 35,
-    width: 25,
+    width: 35,
   },
     Film: {
     color:'#7844CA',
