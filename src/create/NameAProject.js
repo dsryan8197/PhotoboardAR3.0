@@ -5,12 +5,16 @@ import back from '../../backArrow.png'
 import PickAPic from '../view/PickAPic'
 import NameAScene from './NameAScene'
 import { Col, Row, Grid } from "react-native-easy-grid";
+import help from '../../help.png'
+import bigDownload from '../../bigDownload.png'
 
 import {
   AppRegistry,
+  Dimensions,
   Text,
   Button,
   TextInput,
+  StatusBar,
   Image,
   ScrollView,
   SafeAreaView,
@@ -40,11 +44,23 @@ goBack(){
 
 //add a new project and immediatley route to 'create a new scene' in that project
 render() {
+  const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
+
   return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
  <StatusBar hidden={false} />
 <NativeRouter>
    <Route exact path="/">
+   <View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
      <Grid>
       <Row size={1}>
          <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -55,7 +71,11 @@ render() {
           <Col size={3} style={{justifyContent: 'center'}}>
             <Text style={localStyles.Film}>Name Your Film</Text>
           </Col>
-           <Col size={1}></Col>  
+           <Col size={1}  style={{justifyContent: 'center'}}>
+            <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+              <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+           </TouchableHighlight>
+           </Col>  
       </Row>
       <Row size={7} >
         <Col size={1}></Col>
@@ -75,13 +95,16 @@ render() {
       <Row size={1} style={{paddingTop: 5}}>
         <Col size={1}></Col>   
         <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+        <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
            <Link to="/NameAScene"  style={localStyles.buttonsplus} onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
              <Text style={localStyles.buttonText}>+</Text>
           </Link>
+         <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
         </Col>
         <Col size={1}></Col>
     </Row>
   </Grid>
+  </View>
   </Route>
       {/* create a scene route */}
        <Route path="/NameAScene" render={props => 
@@ -149,6 +172,13 @@ var localStyles = StyleSheet.create({
     marginBottom: 30,
     fontSize: 20
   },
+   Modelbuttons2 : {
+    height: 35,
+    opacity: 0.3,
+    width: 35,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   buttons : {
    height: 80,
     width: '70%',
@@ -191,9 +221,16 @@ height: 80,
     borderWidth: 1,
     borderColor: '#fff',
   },
+      Modelbuttonsone : {
+    height: 27,
+    width: 27,
+    // paddingBottom:20,
+      justifyContent: 'center',
+    alignItems: 'center'
+  },
     backButton : {
     height: 35,
-    width: 25,
+    width: 35,
   },
     Film: {
     color:'#7844CA',
@@ -201,7 +238,7 @@ height: 80,
       alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 25
+    fontSize : 35
   },
   viewforobjects : {
     width: '100%',

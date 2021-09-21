@@ -5,7 +5,8 @@ import back from '../../backArrow.png'
 import PickAPic from '../view/PickAPic'
 import PickAScene from '../view/PickAScene'
 import { Col, Row, Grid } from "react-native-easy-grid";
-
+import help from '../../help.png'
+import bigDownload from '../../bigDownload.png'
 import {
   AppRegistry,
   Text,
@@ -13,10 +14,12 @@ import {
   TextInput,
   Image,
   View,
+  StatusBar,
   Picker,
   ScrollView,
   SafeAreaView,
   StyleSheet,
+    Dimensions,
   PixelRatio,
   TouchableHighlight,
 } from 'react-native';
@@ -42,11 +45,23 @@ goBack(){
 
 //create a film scene and routes to list of pics
 render() {
+  const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
+
   return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
  <StatusBar hidden={false} />
 <NativeRouter>
   <Route exact path="/">
+  <View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
    <Grid>
      <Row size={1}>
         <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -57,7 +72,11 @@ render() {
         <Col size={3} style={{justifyContent: 'center'}}>
             <Text style={localStyles.Film}>Create A Scene</Text>
         </Col>
-        <Col size={1}></Col>  
+        <Col size={1}  style={{justifyContent: 'center'}}>
+         <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+              <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+           </TouchableHighlight>
+        </Col>  
     </Row>
     <Row size={7}>
         <Col size={1}></Col>
@@ -94,7 +113,8 @@ render() {
     </Row>
      <Row size={1} style={{paddingTop:5}} >
         <Col size={1} ></Col>  
-        <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+        <Col size={5} style={{backgroundColor: '#7844CA', flexDirection: 'row', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+           <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
           <Link to="/pics"
              style={localStyles.buttonsplus}
              onPress={() => {
@@ -102,16 +122,19 @@ render() {
               }>
               <Text style={localStyles.buttonText}>+</Text>
           </Link>
+        <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
         </Col>   
         <Col size={1}></Col>
     </Row>
   </Grid>
+  </View>
  </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
      <Route path="/pics" render={props => 
        (<PickAPic {...props}
        created={"true"}
        deletePicture={this.props.deletePicture}
+       goBackToInfo={this.props.goBackToInfo}
        Arrange={this.props.Arrange}
        DataForPic={this.props.DataForPic}
        updatePictures={this.props.updatePictures}
@@ -138,6 +161,20 @@ var localStyles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: "#8A4FFF",
   },
+   Modelbuttons2 : {
+    height: 35,
+    opacity: 0.3,
+    width: 35,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+      Modelbuttonsone : {
+    height: 27,
+    width: 27,
+    // paddingBottom:20,
+      justifyContent: 'center',
+    alignItems: 'center'
+  },
   inner: {
     flex : 1,
     width: '100%',
@@ -154,7 +191,7 @@ var localStyles = StyleSheet.create({
   },
     backButton : {
     height: 35,
-    width: 25,
+    width: 35,
   },
   littleText: {
      paddingTop: 30,
@@ -182,7 +219,7 @@ var localStyles = StyleSheet.create({
     // justifyContent: 'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 25
+    fontSize : 35
   },
   buttonText: {
     color:'#C3BEF7',

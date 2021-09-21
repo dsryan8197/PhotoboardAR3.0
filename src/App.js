@@ -6,11 +6,18 @@ import Info1 from '../slate1.jpg'
 import Info2 from '../people1.jpg'
 import Info3 from '../camera1.jpg'
 import Info4 from '../Info4.jpg'
+import Info5 from '../Info5.jpg'
 import back from '../backArrow.png'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import AnimatedDotsCarousel from 'react-native-animated-dots-carousel';
 import Swipeout from 'react-native-swipeout';
 import { AsyncStorage } from 'react-native';
+import download from '../downArrow.png'
+import bigDownload from '../bigDownload.png'
+import back2 from '../ARbackArrow.png'
+import camera from '../camerasnapshot.png'
+import character from '../charactericon.png'
+import help from '../help.png'
 
 import {
   AppRegistry,
@@ -21,6 +28,7 @@ import {
   StatusBar,
   StyleSheet,
   PixelRatio,
+  Dimensions,
   ScrollView,
   Image,
   TouchableHighlight,
@@ -40,12 +48,11 @@ export default class PickAProject extends Component {
       activeProject : null,
       ProjectNameInput : '',
       InfoPage: true,
-      InfoPageSpecific: 'one',
+      InfoPageSpecific: 'zero',
       ProjectObj : {
       },
     } 
   }
-
  storeData = async () => {
   try {
     const jsonValue = JSON.stringify(this.state)
@@ -53,6 +60,18 @@ export default class PickAProject extends Component {
   } catch (e) {
   }
 }
+
+  goBackToInfo = () => {
+    return (
+      this.setState((prevState) => ({
+        ...prevState,
+        InfoPage: true,
+        InfoPageSpecific: 'zero'
+      })
+    ), () => {
+      this.storeData()
+    })
+  }
 
  getData = async () => {
   try {
@@ -199,17 +218,43 @@ this.storeData()
 }
 
 componentDidMount() {
-if (this.props.reRender) {
-this.setState((prevState) => ({
-  ...this.props.reRender
-  }))
-} else {
+const arr = [Info1, Info2, Info3, Info4, back, back2, camera, character, help]
+arr.map((e) => (
+    <img src={e} style={{ display: "none" }} />
+))
+// if (this.props.reRender) {
+// this.setState((prevState) => ({
+//   ...this.props.reRender
+//   }))
+// } else {
   this.getData()
-}}
+}
 
 //home page that shows all your projects (films) and provides option to add a new project
 render() {
-if (!this.state.InfoPage) {
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
+
+if (this.state.InfoPage) {
+
+if (this.state.InfoPageSpecific == 'zero') {
+return (
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+ <StatusBar hidden={false} />
+  <Grid>
+    <Row size={1}>
+      <TouchableHighlight onPress={()=> {(
+                this.setState((prevState) => ({
+                  ...prevState,
+                  InfoPageSpecific : 'one'
+            })))}} style={localStyles.introButton}>
+
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
+         </TouchableHighlight>
+    </Row>
+  </Grid>
+</SafeAreaView>
+)
+}
 
 if (this.state.InfoPageSpecific == 'one') {
 return (
@@ -227,14 +272,14 @@ return (
     <Row size={2} style={{left: 40}}>
        <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
          <Text style={localStyles.buttonTextII}>Draft</Text>
-         <Text style={{color: '#8F8F8F', fontSize: 20}}>Create your films and draft your scenes</Text>
+         <Text style={{color: '#8F8F8F',fontSize: 20}}>Create your films and draft your scenes</Text>
       </View>
     </Row>
     <Row size={1} style={{ alignItems: 'center'}}>
       <Col size={0.5}></Col>
       <Col size={3} style={{top: 50}}>
         <AnimatedDotsCarousel
-        length={4}
+        length={5}
         currentIndex={0}
         maxIndicators={4}
         interpolateOpacityAndColor={true}
@@ -271,7 +316,7 @@ return (
                   InfoPageSpecific : 'two'
             })))}} style={localStyles.introButton}>
 
-            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
          </TouchableHighlight>
       </Col>
     </Row>
@@ -304,7 +349,7 @@ return (
       <Col size={0.5}></Col>
       <Col size={3} style={{top: 50}}>
         <AnimatedDotsCarousel
-        length={4}
+        length={5}
         currentIndex={1}
         maxIndicators={4}
         interpolateOpacityAndColor={true}
@@ -340,7 +385,7 @@ return (
                   ...prevState,
                   InfoPageSpecific : 'three'
             })))}} style={localStyles.introButton}>
-            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
         </TouchableHighlight>
       </Col>
     </Row>
@@ -365,15 +410,15 @@ return (
     </Row>
     <Row size={2} style={{paddingLeft: '10%'}}>
       <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
-        <Text style={localStyles.buttonTextII}>Snap and Save</Text>
-        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Create your storyboards and save them to your phones gallery</Text>
+        <Text style={localStyles.buttonTextII}>Snap</Text>
+        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Shoot Your Storyboards</Text>
       </View>
     </Row>
     <Row size={1} style={{alignItems: 'center'}}>
       <Col size={0.5}></Col>
       <Col size={3} style={{top: 50}}>
          <AnimatedDotsCarousel
-        length={4}
+        length={5}
         currentIndex={2}
         maxIndicators={4}
         interpolateOpacityAndColor={true}
@@ -409,7 +454,7 @@ return (
                   ...prevState,
                   InfoPageSpecific : 'four'
             })))}} style={localStyles.introButton}>
-            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
         </TouchableHighlight>
     </Col>
    </Row>
@@ -428,22 +473,22 @@ return (
     <Row size={4}>
         <Image
         style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
-        source={Info4}
+        source={Info5}
         key="cbutton">
        </Image>
      </Row>
      <Row size={2} style={{paddingLeft: '10%'}}>
         <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
-          <Text style={localStyles.buttonTextII}>Tips</Text>
-         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Swipe to Delete and Reorder your scenes and storyboards</Text>
-         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Tap your 3D models to rotate</Text>
+          <Text style={localStyles.buttonTextII}>Download</Text>
+         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Download your photos individually or craft a shotlist</Text>
+         {/* <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Or craft a shotlist</Text> */}
        </View>
       </Row>
       <Row size={1} style={{alignItems: 'center'}}>
        <Col size={0.5}></Col>
        <Col size={3} style={{top: 50}}>
          <AnimatedDotsCarousel
-        length={4}
+        length={5}
         currentIndex={3}
         maxIndicators={4}
         interpolateOpacityAndColor={true}
@@ -477,9 +522,9 @@ return (
         <TouchableHighlight onPress={()=> {(
                 this.setState((prevState) => ({
                   ...prevState,
-                  InfoPage: false
+                  InfoPageSpecific: 'five'
             })))}} style={localStyles.introButton}>
-            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back}></Image>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
         </TouchableHighlight>
       </Col>
     </Row>
@@ -489,25 +534,112 @@ return (
   )
 }
 
+
+if (this.state.InfoPageSpecific == 'five') {
+return (
+<SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
+  <StatusBar hidden={false} />
+<Grid>
+    <Row size={1}></Row>
+    <Row size={4}>
+        <Image
+        style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
+        source={Info4}
+        key="cbutton">
+       </Image>
+     </Row>
+     <Row size={2} style={{paddingLeft: '10%'}}>
+        <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
+          <Text style={localStyles.buttonTextII}>Tips</Text>
+         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Swipe to Delete and Reorder your scenes and storyboards</Text>
+         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Tap your 3D models to rotate</Text>
+       </View>
+      </Row>
+      <Row size={1} style={{alignItems: 'center'}}>
+       <Col size={0.5}></Col>
+       <Col size={3} style={{top: 50}}>
+         <AnimatedDotsCarousel
+        length={5}
+        currentIndex={4}
+        maxIndicators={4}
+        interpolateOpacityAndColor={true}
+        activeIndicatorConfig={{
+          color: 'purple',
+          margin: 3,
+          opacity: 1,
+          size: 8,
+        }}
+        inactiveIndicatorConfig={{
+          color: 'white',
+          margin: 3,
+          borderColor: 'black',
+          borderWidth: 1,
+          opacity: 0.5,
+          size: 8,
+        }}
+        decreasingDots={[
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 6 },
+            quantity: 1,
+          },
+          {
+            config: { color: 'white', margin: 3, opacity: 0.5, size: 4 },
+            quantity: 1,
+          },
+        ]}
+      />
+     </Col>
+      <Col size={1.5}>
+        <TouchableHighlight onPress={()=> {(
+                this.setState((prevState) => ({
+                  ...prevState,
+                  InfoPage: false,
+                  InfoPageSpecific: 'zero'
+            })))}} style={localStyles.introButton}>
+            <Image style={{color: 'white', width: '50%', height: '50%', transform: [{ scaleX: -1 }]}} source={back2}></Image>
+        </TouchableHighlight>
+      </Col>
+    </Row>
+    <Row size={1}></Row>
+  </Grid> 
+</SafeAreaView> 
+  )
 }
-if (this.state.InfoPage) {
+
+
+}
+if (!this.state.InfoPage) {
  return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
 <StatusBar hidden={false} />
   <NativeRouter >
     <Route exact path="/">
-      <Grid>
+   <View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
+      <Grid style={localStyles.test}>
         <Row size={1}>
           <Col size={1}></Col>
           <Col size={3} style={{justifyContent: 'center'}}>
              <Text style={localStyles.Film}>Films</Text>
            </Col>
-          <Col size={1}></Col>
+          <Col size={1} style={{justifyContent: 'center'}}>
+            <TouchableHighlight onPress={()=>{this.goBackToInfo()}}>
+              <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+           </TouchableHighlight>
+        </Col>
         </Row>
         <Row size={7}>
            <Col size={1}></Col>
            <Col size={6}>
-             <ScrollView>
+             <ScrollView horizontal={false} style={{width: '100%', height: '100%'}}>
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
             return (
                <Swipeout right={[{
@@ -534,15 +666,23 @@ if (this.state.InfoPage) {
       </Row>
       <Row size={1} style={{paddingTop: 10}}>
         <Col size={1}></Col>
-        <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, justifyContent: 'center', alignItems: 'center'}}>
+        <Col size={5} style={{backgroundColor: '#7844CA', flexDirection: 'row', borderRadius: 50, justifyContent: 'center', alignItems: 'center'}}>
+           {/* <TouchableHighlight onPress={()=>{this.goBackToInfo()}}>
+            <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+          </TouchableHighlight> */}
+          <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
+
            <Link to="/addAProject" style={localStyles.buttonsplus}>
                <Text style={localStyles.buttonText}>{"+"}</Text>
            </Link>
+       <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
         </Col>
          <Col size={1}></Col>
       </Row>
 
    </Grid>
+   </View>
+   {/* </View> */}
   </Route>
       <Route path="/scene" render={props => 
           (<PickAScene {...props} 
@@ -550,6 +690,7 @@ if (this.state.InfoPage) {
           deletePicture={this.deletePicture}
           updatePictures={this.updatePictures}
           ProjectNameInput={this.state.ProjectNameInput}
+          goBackToInfo={this.goBackToInfo}
           AddSceneDescription={this.AddSceneDescription}
           Info={this.state}
           Arrange={this.Arrange}
@@ -562,6 +703,7 @@ if (this.state.InfoPage) {
           created={"true"}
           Arrange={this.Arrange}
           Arrange={this.Arrange}
+          goBackToInfo={this.goBackToInfo}
           DeleteSceneDescription={this.DeleteSceneDescription}
           deletePicture={this.deletePicture}
           updatePictures={this.updatePictures}
@@ -610,7 +752,7 @@ var localStyles = StyleSheet.create({
     alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 25
+    fontSize : 35
   },
   titleText: {
     paddingTop: 35,
@@ -649,7 +791,6 @@ var localStyles = StyleSheet.create({
     alignItems: 'center', //Centered vertically    justifyContent: 'center',
     marginTop: 10,
     marginBottom: 10,
-    // textAlign: 'center',
     justifyContent: 'center',
     textAlign: 'center',
     backgroundColor:'#C3BEF7',
@@ -660,13 +801,17 @@ var localStyles = StyleSheet.create({
    buttonsplus : {
     height: 80,
     width: 80,
-    borderRadius: 80/2,
     alignContent: 'center',
     justifyContent: 'center',
     backgroundColor:'#FFFFFF',
+    borderRadius: 80/2,
     borderWidth: 8,
     borderColor: '#C3BEF7',
   },
+  // test: {
+  //   backgroundColor: 'linear-gradient(165deg, #f7f5fb 50%, #fff 50%)',
+  //   // backgroundImage: linear-gradient(165deg, rgb(247, 245, 251) 50%, rgb(255, 255, 255) 50%);
+  // },
   exitButton : {
     height: 50,
     width: 100,
@@ -697,6 +842,20 @@ var localStyles = StyleSheet.create({
     paddingBottom:20,
     marginTop: 10,
     marginBottom: 10,
+  },
+    Modelbuttons2 : {
+    height: 35,
+    opacity: 0.3,
+    width: 35,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+    Modelbuttonsone : {
+    height: 27,
+    width: 27,
+    // paddingBottom:20,
+      justifyContent: 'center',
+    alignItems: 'center'
   },
 });
 

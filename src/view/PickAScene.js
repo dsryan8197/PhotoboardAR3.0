@@ -8,14 +8,18 @@ import {
   ScrollView,
   SafeAreaView,
   Image,
+  StatusBar,
   PixelRatio,
+  Dimensions,
   TouchableHighlight,
 } from 'react-native';
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 import Swipeout from 'react-native-swipeout';
+import help from '../../help.png'
 import trash from '../../trashicon2.png'
 import download from '../../downArrow.png'
+import bigDownload from '../../bigDownload.png'
 import back from '../../backArrow.png'
 import PickAPic from './PickAPic'
 import NameAScene from '../create/NameAScene'
@@ -38,11 +42,23 @@ goBack(){
   this.props.history.push('/')
 }
 render() {
+  const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
+
 return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
  <StatusBar hidden={false} />
  <NativeRouter>
      <Route exact path="/">
+     <View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
        <Grid>
           <Row size={1}>
               <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -53,7 +69,11 @@ return (
                <Col size={3} style={{justifyContent: 'center'}}>
                   <Text style={localStyles.Film}>Scene</Text>
                </Col>
-               <Col size={1}></Col>  
+               <Col size={1} style={{justifyContent: 'center'}}>
+                <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+                   <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+                </TouchableHighlight>
+               </Col>  
           </Row>
           <Row size={7}>
             <Col size={1}></Col>
@@ -86,6 +106,10 @@ return (
       <Row size={1} style={{paddingTop: 10}}>
          <Col size={1}></Col> 
           <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+              {/* <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+                <Image style={localStyles.Modelbuttonsone} source={help}></Image>
+             </TouchableHighlight> */}
+               <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
               <Link to="/NameAScene"  style={localStyles.buttonsplus}>
                 <Text style={localStyles.buttonText}>{"+"}</Text>
               </Link>
@@ -94,11 +118,13 @@ return (
           <Col size={1}></Col>
       </Row>
     </Grid>
+    </View>
   </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
            (<PickAPic {...props}
            deletePicture={this.props.deletePicture}
+           goBackToInfo={this.props.goBackToInfo}
            activeProject={this.props.Info.activeProject}
            Arrange={this.props.Arrange}
            updatePictures={this.props.updatePictures}
@@ -110,6 +136,7 @@ return (
            (<NameAScene {...props}
            created={"true"}
            Arrange={this.props.Arrange}
+          goBackToInfo={this.props.goBackToInfo}
            deletePicture={this.props.deletePicture}
            activeProject={this.props.Info.activeProject}
            updatePictures={this.props.updatePictures}
@@ -141,7 +168,7 @@ var localStyles = StyleSheet.create({
     alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 25
+    fontSize : 35
   },
   inner: {
     flex : 1,
@@ -203,7 +230,7 @@ var localStyles = StyleSheet.create({
   },
   backButton : {
     height: 35,
-    width: 25,
+    width: 35,
   },
    Modelbuttons : {
     height: 25,
@@ -214,9 +241,16 @@ var localStyles = StyleSheet.create({
     top: 2,
   },
    Modelbuttons2 : {
+    height: 35,
+    width: 35,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+   Modelbuttonsone : {
     height: 25,
     width: 25,
-    justifyContent: 'center',
+    paddingBottom:20,
+      justifyContent: 'center',
     alignItems: 'center'
   },
   exitButton : {
