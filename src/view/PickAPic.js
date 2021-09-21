@@ -28,6 +28,7 @@ import {
   StatusBar,
   ScrollView,
   StyleSheet,
+    Dimensions,
   SafeAreaView,
   PixelRatio,
   TouchableHighlight,
@@ -152,6 +153,8 @@ shot() {
 //3. Character - upon clicking a new model in AR view , this function shows all types of models. onclick routes to 4.
 //4. Position - this shows all the stances of a selected Character. Routes to AR view with that model rendered
 render() {
+  const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
+
 //1.
 if (this.state.navigator == 'PIC') {
 return (
@@ -159,6 +162,16 @@ return (
  <StatusBar hidden={false} />
 <NativeRouter>
   <Route exact path="/">
+  <View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
    <Grid>
      <Row size={1}>
        <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -227,7 +240,7 @@ return (
             <Image style={localStyles.Modelbuttonsone} source={help}></Image>
           </TouchableHighlight> */}
           <TouchableHighlight onPress={()=>{window.alert('f')}}>
-            <Image style={localStyles.Modelbuttonsone} onPress={()=>{alert('download')}} source={bigDownload}></Image>
+            <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
           </TouchableHighlight>
         <TouchableHighlight
             style={localStyles.buttonsplus}
@@ -240,12 +253,13 @@ return (
                <Text style={localStyles.buttonText}>+</Text>
          </TouchableHighlight>
          <TouchableHighlight onPress={()=>{window.alert('f')}}>
-            <Image style={localStyles.Modelbuttonsone} source={download}></Image>
+            <Image style={localStyles.Modelbuttons2} source={download}></Image>
           </TouchableHighlight>
       </Col>
       <Col size={1}></Col>
     </Row>
   </Grid>
+  </View>
 </Route>
       {/* route for when you click an existing project */}
         <Route path="/homepage" render={props => 
@@ -261,6 +275,16 @@ return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
  <StatusBar hidden={false} />
 <NativeRouter>
+<View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
   <Grid>
    <Row size={1}>
      <ViroARSceneNavigator
@@ -298,6 +322,7 @@ return (
      </TouchableHighlight> 
   </Row>
 </Grid>
+</View>
 </NativeRouter>
 </SafeAreaView>
 );
@@ -316,6 +341,16 @@ return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
  <StatusBar hidden={false} />
  <NativeRouter>
+ <View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
     <Grid>
       <Row size={1}>
         <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -348,6 +383,7 @@ return (
     </Row>
     <Row size={0.4}></Row>
  </Grid>
+  </View>
 </NativeRouter>
 </SafeAreaView>
 )}
@@ -372,6 +408,16 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
   <StatusBar hidden={false} />
 <NativeRouter>
+<View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
     <Grid>
      <Row size={1}>
        <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -404,6 +450,7 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
   </Row>
   <Row size={0.4}></Row>
 </Grid>
+  </View>
 </NativeRouter>
 </SafeAreaView>
 )}}
@@ -538,6 +585,12 @@ var localStyles = StyleSheet.create({
     left: '10%',
     top: '5%',
   },
+  Modelbuttons2 : {
+    height: 35,
+    width: 35,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   Modelbuttons3 : {
     height: 25,
     width: 25,
@@ -611,7 +664,7 @@ var localStyles = StyleSheet.create({
     alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 25
+    fontSize : 35
   },
   backButtonAR: {
       height: 35,

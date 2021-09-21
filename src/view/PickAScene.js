@@ -10,6 +10,7 @@ import {
   Image,
   StatusBar,
   PixelRatio,
+  Dimensions,
   TouchableHighlight,
 } from 'react-native';
 
@@ -41,11 +42,23 @@ goBack(){
   this.props.history.push('/')
 }
 render() {
+  const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
+
 return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
  <StatusBar hidden={false} />
  <NativeRouter>
      <Route exact path="/">
+     <View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
        <Grid>
           <Row size={1}>
               <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -105,6 +118,7 @@ return (
           <Col size={1}></Col>
       </Row>
     </Grid>
+    </View>
   </Route>
           {/* select a projec to go to the list of images (pics) */}
           <Route path="/pics" render={props => 
@@ -154,7 +168,7 @@ var localStyles = StyleSheet.create({
     alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 25
+    fontSize : 35
   },
   inner: {
     flex : 1,

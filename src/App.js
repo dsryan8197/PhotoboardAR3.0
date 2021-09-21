@@ -28,6 +28,7 @@ import {
   StatusBar,
   StyleSheet,
   PixelRatio,
+  Dimensions,
   ScrollView,
   Image,
   TouchableHighlight,
@@ -231,6 +232,8 @@ arr.map((e) => (
 
 //home page that shows all your projects (films) and provides option to add a new project
 render() {
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
+
 if (this.state.InfoPage) {
 
 if (this.state.InfoPageSpecific == 'zero') {
@@ -407,8 +410,8 @@ return (
     </Row>
     <Row size={2} style={{paddingLeft: '10%'}}>
       <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
-        <Text style={localStyles.buttonTextII}>Snap and Save</Text>
-        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Create your storyboards and save them to your phones gallery</Text>
+        <Text style={localStyles.buttonTextII}>Snap</Text>
+        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Shoot Your Storyboards</Text>
       </View>
     </Row>
     <Row size={1} style={{alignItems: 'center'}}>
@@ -477,8 +480,8 @@ return (
      <Row size={2} style={{paddingLeft: '10%'}}>
         <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
           <Text style={localStyles.buttonTextII}>Download</Text>
-         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Download your photos individually</Text>
-         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Or craft a shotlist</Text>
+         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Download your photos individually or craft a shotlist</Text>
+         {/* <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Or craft a shotlist</Text> */}
        </View>
       </Row>
       <Row size={1} style={{alignItems: 'center'}}>
@@ -611,7 +614,17 @@ if (!this.state.InfoPage) {
 <StatusBar hidden={false} />
   <NativeRouter >
     <Route exact path="/">
-      <Grid>
+   <View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
+      <Grid style={localStyles.test}>
         <Row size={1}>
           <Col size={1}></Col>
           <Col size={3} style={{justifyContent: 'center'}}>
@@ -668,6 +681,8 @@ if (!this.state.InfoPage) {
       </Row>
 
    </Grid>
+   </View>
+   {/* </View> */}
   </Route>
       <Route path="/scene" render={props => 
           (<PickAScene {...props} 
@@ -737,7 +752,7 @@ var localStyles = StyleSheet.create({
     alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 25
+    fontSize : 35
   },
   titleText: {
     paddingTop: 35,
@@ -793,6 +808,10 @@ var localStyles = StyleSheet.create({
     borderWidth: 8,
     borderColor: '#C3BEF7',
   },
+  // test: {
+  //   backgroundColor: 'linear-gradient(165deg, #f7f5fb 50%, #fff 50%)',
+  //   // backgroundImage: linear-gradient(165deg, rgb(247, 245, 251) 50%, rgb(255, 255, 255) 50%);
+  // },
   exitButton : {
     height: 50,
     width: 100,

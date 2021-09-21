@@ -10,6 +10,7 @@ import bigDownload from '../../bigDownload.png'
 
 import {
   AppRegistry,
+  Dimensions,
   Text,
   Button,
   TextInput,
@@ -43,11 +44,23 @@ goBack(){
 
 //add a new project and immediatley route to 'create a new scene' in that project
 render() {
+  const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
+
   return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
  <StatusBar hidden={false} />
 <NativeRouter>
    <Route exact path="/">
+   <View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
      <Grid>
       <Row size={1}>
          <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -91,6 +104,7 @@ render() {
         <Col size={1}></Col>
     </Row>
   </Grid>
+  </View>
   </Route>
       {/* create a scene route */}
        <Route path="/NameAScene" render={props => 
@@ -224,7 +238,7 @@ height: 80,
       alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 25
+    fontSize : 35
   },
   viewforobjects : {
     width: '100%',

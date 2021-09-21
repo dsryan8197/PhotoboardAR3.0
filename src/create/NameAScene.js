@@ -19,6 +19,7 @@ import {
   ScrollView,
   SafeAreaView,
   StyleSheet,
+    Dimensions,
   PixelRatio,
   TouchableHighlight,
 } from 'react-native';
@@ -44,11 +45,23 @@ goBack(){
 
 //create a film scene and routes to list of pics
 render() {
+  const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
+
   return (
 <SafeAreaView style={{width: '100%', height: '100%', background: 'transparent'}}>
  <StatusBar hidden={false} />
 <NativeRouter>
   <Route exact path="/">
+  <View style={{flex: 1}}>
+       <View style={{width: SCREEN_WIDTH,
+                    height: 0,
+                    borderTopColor: '#F7F5FB',
+                    opacity: 1,
+                    borderTopWidth: SCREEN_HEIGHT / 1.7,
+                    borderRightWidth: SCREEN_WIDTH,
+                    borderRightColor: 'transparent',
+                    position: 'absolute'}}></View>
+
    <Grid>
      <Row size={1}>
         <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -114,6 +127,7 @@ render() {
         <Col size={1}></Col>
     </Row>
   </Grid>
+  </View>
  </Route>
          {/* routes to your list of pics in that scene (which will be none) */}
      <Route path="/pics" render={props => 
@@ -205,7 +219,7 @@ var localStyles = StyleSheet.create({
     // justifyContent: 'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 25
+    fontSize : 35
   },
   buttonText: {
     color:'#C3BEF7',
