@@ -69,8 +69,8 @@ return (
                <Col size={3} style={{justifyContent: 'center'}}>
                   <Text style={localStyles.Film}>Scene</Text>
                </Col>
-               <Col size={1} style={{justifyContent: 'center'}}>
-                <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+               <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
+                <TouchableHighlight style={{justifyContent: 'center'}} onPress={()=>{this.props.goBackToInfo()}}>
                    <Image style={localStyles.Modelbuttonsone} source={help}></Image>
                 </TouchableHighlight>
                </Col>  
@@ -109,11 +109,15 @@ return (
               {/* <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
                 <Image style={localStyles.Modelbuttonsone} source={help}></Image>
              </TouchableHighlight> */}
+                      <View style={{paddingRight: 5}}>
                <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
+        </View>
               <Link to="/NameAScene"  style={localStyles.buttonsplus}>
                 <Text style={localStyles.buttonText}>{"+"}</Text>
               </Link>
+                     <View style={{paddingLeft: 5}}>
              <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
+        </View>
           </Col>
           <Col size={1}></Col>
       </Row>
@@ -168,7 +172,8 @@ var localStyles = StyleSheet.create({
     alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 35
+    fontSize : 30,
+    fontWeight: '200',
   },
   inner: {
     flex : 1,
@@ -230,7 +235,7 @@ var localStyles = StyleSheet.create({
   },
   backButton : {
     height: 35,
-    width: 35,
+    width: 36,
   },
    Modelbuttons : {
     height: 25,
@@ -247,8 +252,8 @@ var localStyles = StyleSheet.create({
     alignItems: 'center'
   },
    Modelbuttonsone : {
-    height: 25,
-    width: 25,
+    height: 31,
+    width: 27,
     paddingBottom:20,
       justifyContent: 'center',
     alignItems: 'center'
