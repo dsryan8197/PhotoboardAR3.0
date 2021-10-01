@@ -48,7 +48,7 @@ export default class PickAProject extends Component {
     this.state = {
       activeProject : null,
       ProjectNameInput : '',
-      InfoPage: null,
+      InfoPage: false,
       inf: 'zero',
       ProjectObj : {
       },
@@ -234,7 +234,7 @@ const splash = false
 
 if (!this.state.InfoPage) {
 
-   if (this.state.inf == 'zero') {
+if (this.state.inf == 'zero') {
         setTimeout(() => {
         this.setState({inf : 'one'});
     }, 3500) 
@@ -289,10 +289,10 @@ return (
        </Image>
     </Row>
     <Row size={2} style={{left: 40}}>
-       <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
+       <View style={{alignItems: 'flex-start', width: '80%', justifyContent: 'center'}}>
          <Text style={localStyles.buttonTextII}>Draft</Text>
-         <Text style={{color: '#8F8F8F',fontSize: 20}}>Create your films and draft your scenes</Text>
-         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Tip! Swipe left on scenes to delete or reorder</Text>
+         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Create your films and your scenes</Text>
+         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Swipe left on scenes to delete or reorder</Text>
       </View>
     </Row>
     <Row size={1} style={{ alignItems: 'center'}}>
@@ -360,10 +360,10 @@ return (
        </Image>
     </Row>
     <Row size={2} style={{paddingLeft: '10%'}}>
-      <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
+      <View style={{alignItems: 'flex-start', width: '80%', justifyContent: 'center'}}>
         <Text style={localStyles.buttonTextII}>Frame</Text>
-        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Frame your shots in AR with up to 150 unique 3D models and poses</Text>
-        <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Tap your 3D models to rotate</Text>
+        <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Frame your shots in AR with up to 150 3D models</Text>
+        <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Tap your models to rotate</Text>
       </View>
     </Row>
     <Row size={1} style={{alignItems: 'center'}}>
@@ -430,10 +430,10 @@ return (
        </Image>
      </Row>
      <Row size={2} style={{paddingLeft: '10%'}}>
-        <View style={{alignItems: 'flex-start', width: '75%', justifyContent: 'center'}}>
+        <View style={{alignItems: 'flex-start', width: '80%', justifyContent: 'center'}}>
           <Text style={localStyles.buttonTextII}>Download</Text>
-         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Download your photos individually</Text>
-         <Text style={{color: '#8F8F8F', paddintTop: '5%', fontSize: 20}}>Or craft a shotlist</Text>
+         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Download your photos individually</Text>
+         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Or craft a shotlist</Text>
        </View>
       </Row>
       <Row size={1} style={{alignItems: 'center'}}>
@@ -510,8 +510,8 @@ if (this.state.InfoPage) {
           <Col size={3} style={{justifyContent: 'center'}}>
              <Text style={localStyles.Film}>Films</Text>
            </Col>
-          <Col size={1} style={{justifyContent: 'center'}}>
-            <TouchableHighlight onPress={()=>{this.goBackToInfo()}}>
+          <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
+            <TouchableHighlight  style={{justifyContent: 'center'}} onPress={()=>{this.goBackToInfo()}}>
               <Image style={localStyles.Modelbuttonsone} source={help}></Image>
            </TouchableHighlight>
         </Col>
@@ -550,12 +550,15 @@ if (this.state.InfoPage) {
            {/* <TouchableHighlight onPress={()=>{this.goBackToInfo()}}>
             <Image style={localStyles.Modelbuttonsone} source={help}></Image>
           </TouchableHighlight> */}
+          <View style={{paddingRight: 5}}>
           <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
-
+          </View>
            <Link to="/addAProject" style={localStyles.buttonsplus}>
                <Text style={localStyles.buttonText}>{"+"}</Text>
            </Link>
+        <View style={{paddingLeft: 5}}>
        <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
+        </View>
         </Col>
          <Col size={1}></Col>
       </Row>
@@ -731,7 +734,7 @@ var localStyles = StyleSheet.create({
     alignItems: 'center'
   },
     Modelbuttonsone : {
-    height: 27,
+    height: 31,
     width: 27,
     // paddingBottom:20,
       justifyContent: 'center',

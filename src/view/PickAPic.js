@@ -188,8 +188,8 @@ return (
      <Col size={3} style={{justifyContent: 'center'}}>
         <Text style={localStyles.Film}>Snapshot</Text>
      </Col>
-    <Col size={1} style={{justifyContent: 'center'}}>
-     <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+    <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
+     <TouchableHighlight style={{justifyContent: 'center'}} onPress={()=>{this.props.goBackToInfo()}}>
         <Image style={localStyles.Modelbuttonsone} source={help}></Image>
      </TouchableHighlight>
     </Col>  
@@ -239,9 +239,9 @@ return (
         {/* <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
             <Image style={localStyles.Modelbuttonsone} source={help}></Image>
           </TouchableHighlight> */}
-          <TouchableHighlight onPress={()=>{window.alert('f')}}>
-            <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
-          </TouchableHighlight>
+        <View style={{paddingRight: 5}}>
+          <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
+        </View>          
         <TouchableHighlight
             style={localStyles.buttonsplus}
             onPress={()=> {(
@@ -252,9 +252,9 @@ return (
             underlayColor={'#68a0ff'} >
                <Text style={localStyles.buttonText}>+</Text>
          </TouchableHighlight>
-         <TouchableHighlight onPress={()=>{window.alert('f')}}>
-            <Image style={localStyles.Modelbuttons2} source={download}></Image>
-          </TouchableHighlight>
+        <View style={{paddingLeft: 5}}>
+                   <Image style={localStyles.Modelbuttons2} source={download}></Image>
+        </View> 
       </Col>
       <Col size={1}></Col>
     </Row>
@@ -366,8 +366,8 @@ return (
         <Col size={3} style={{justifyContent: 'center'}}>
            <Text style={localStyles.Film}>Characters</Text>
         </Col>
-        <Col size={1} style={{justifyContent: 'center'}}>
-         <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+        <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
+         <TouchableHighlight style={{justifyContent: 'center'}} onPress={()=>{this.props.goBackToInfo()}}>
               <Image style={localStyles.Modelbuttonsone} source={help}></Image>
            </TouchableHighlight>
         </Col> 
@@ -433,8 +433,8 @@ for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
       <Col size={3} style={{justifyContent: 'center'}}>
          <Text style={localStyles.Film}>Poses</Text>
      </Col>
-    <Col size={1} style={{justifyContent: 'center'}}>
-     <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+    <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
+     <TouchableHighlight style={{justifyContent: 'center'}} onPress={()=>{this.props.goBackToInfo()}}>
               <Image style={localStyles.Modelbuttonsone} source={help}></Image>
            </TouchableHighlight>
     </Col> 
@@ -555,8 +555,8 @@ var localStyles = StyleSheet.create({
     marginBottom: 10,
   },
   Modelbuttonsone : {
-    height: 25,
-    width: 25,
+    height: 31,
+    width: 27,
     paddingBottom:20,
       justifyContent: 'center',
     alignItems: 'center'
@@ -638,10 +638,12 @@ var localStyles = StyleSheet.create({
     height: 80,
     width: 80,
     borderRadius: 80/2,
-    paddingTop:10,
-    paddingBottom:20,
-    marginTop: 10,
-    marginBottom: 10,
+     alignContent: 'center',
+    justifyContent: 'center',
+    // paddingTop:10,
+    // paddingBottom:20,
+    // marginTop: 10,
+    // marginBottom: 10,
     backgroundColor:'#FFFFFF',
     borderWidth: 8,
     borderColor: '#C3BEF7',
@@ -675,7 +677,7 @@ var localStyles = StyleSheet.create({
   },
     backButton : {
     height: 35,
-    width: 35,
+    width: 36,
   },
   backForCharacters : {
 height: 25,

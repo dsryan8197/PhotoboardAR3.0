@@ -71,8 +71,8 @@ render() {
           <Col size={3} style={{justifyContent: 'center'}}>
             <Text style={localStyles.Film}>Name Your Film</Text>
           </Col>
-           <Col size={1}  style={{justifyContent: 'center'}}>
-            <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
+           <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
+            <TouchableHighlight style={{justifyContent: 'center'}}  onPress={()=>{this.props.goBackToInfo()}}>
               <Image style={localStyles.Modelbuttonsone} source={help}></Image>
            </TouchableHighlight>
            </Col>  
@@ -95,11 +95,15 @@ render() {
       <Row size={1} style={{paddingTop: 5}}>
         <Col size={1}></Col>   
         <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+               <View style={{paddingRight: 5}}>
         <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
+        </View>
            <Link to="/NameAScene"  style={localStyles.buttonsplus} onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
              <Text style={localStyles.buttonText}>+</Text>
           </Link>
+                 <View style={{paddingLeft: 5}}>
          <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
+        </View>
         </Col>
         <Col size={1}></Col>
     </Row>
@@ -222,7 +226,7 @@ height: 80,
     borderColor: '#fff',
   },
       Modelbuttonsone : {
-    height: 27,
+    height: 31,
     width: 27,
     // paddingBottom:20,
       justifyContent: 'center',
@@ -230,7 +234,7 @@ height: 80,
   },
     backButton : {
     height: 35,
-    width: 35,
+    width: 36,
   },
     Film: {
     color:'#7844CA',
