@@ -289,10 +289,10 @@ return (
        </Image>
     </Row>
     <Row size={2} style={{left: 40}}>
-       <View style={{alignItems: 'flex-start', width: '80%', justifyContent: 'center'}}>
+       <View style={{alignItems: 'flex-start', width: '100%', justifyContent: 'center'}}>
          <Text style={localStyles.buttonTextII}>Draft</Text>
          <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Create your films and your scenes</Text>
-         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Swipe left on scenes to delete or reorder</Text>
+         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Swipe scenes to delete or reorder</Text>
       </View>
     </Row>
     <Row size={1} style={{ alignItems: 'center'}}>
@@ -360,9 +360,9 @@ return (
        </Image>
     </Row>
     <Row size={2} style={{paddingLeft: '10%'}}>
-      <View style={{alignItems: 'flex-start', width: '80%', justifyContent: 'center'}}>
+      <View style={{alignItems: 'flex-start', width: '100%', justifyContent: 'center'}}>
         <Text style={localStyles.buttonTextII}>Frame</Text>
-        <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Frame your shots in AR with up to 150 3D models</Text>
+        <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Frame shots in AR with 150 models</Text>
         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Tap your models to rotate</Text>
       </View>
     </Row>
@@ -430,7 +430,7 @@ return (
        </Image>
      </Row>
      <Row size={2} style={{paddingLeft: '10%'}}>
-        <View style={{alignItems: 'flex-start', width: '80%', justifyContent: 'center'}}>
+        <View style={{alignItems: 'flex-start', width: '100%', justifyContent: 'center'}}>
           <Text style={localStyles.buttonTextII}>Download</Text>
          <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Download your photos individually</Text>
          <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Or craft a shotlist</Text>
@@ -635,7 +635,8 @@ var localStyles = StyleSheet.create({
     alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 35
+    fontSize : 30,
+    fontWeight: '200',
   },
   titleText: {
     paddingTop: 35,

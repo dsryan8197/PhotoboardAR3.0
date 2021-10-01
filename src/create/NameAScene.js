@@ -70,7 +70,7 @@ render() {
              </TouchableHighlight> }
         </Col>
         <Col size={3} style={{justifyContent: 'center'}}>
-            <Text style={localStyles.Film}>Create A Scene</Text>
+            <Text style={localStyles.Film}>Create a Scene</Text>
         </Col>
         <Col size={1} style={{justifyContent: 'center', alignItems: 'center'}}>
          <TouchableHighlight style={{justifyContent: 'center'}} onPress={()=>{this.props.goBackToInfo()}}>
@@ -78,12 +78,12 @@ render() {
            </TouchableHighlight>
         </Col>  
     </Row>
-    <Row size={7}>
+    <Row size={7} style={{justifyContent: 'center', alignItems: 'center', paddingBottom: '15%'}}>
         <Col size={1}></Col>
         <Col size={6}>
           <View style={localStyles.createSCene} >
             <Picker
-             style={{backgroundColor: 'white', width:'25%', paddingRight: 20}}
+             style={{ width:'25%'}}
             selectedValue={this.state.intExt}
             onValueChange={(itemValue,itemIndex) => this.setState({intExt: itemValue})}
             >
@@ -94,13 +94,14 @@ render() {
            <TextInput 
              placeholder="location"
              value={this.state.ProjectNameInput}
-             style={{paddingLeft: 10, fontSize: 20, textAlign: 'center', width: '40%', paddingRight: 20}}
+             style={{paddingLeft: 10, fontSize: 23, textAlign: 'center', width: '50%', marginRight: 20, marginLeft: 20, paddingBottom: 10,
+                borderBottomColor: '#C4C4C4', borderBottomWidth: 2 }}
              onChangeText={e => this.setState((prevState) => ({
                location: e
              }))}
              />
 
-            <Picker  style={{backgroundColor: 'white', paddingRight: 20, width:'25%'}}
+            <Picker  style={{backgroundColor: 'white', width:'25%'}}
               selectedValue={this.state.dayNight}
               onValueChange={(itemValue,itemIndex) => this.setState({dayNight: itemValue})}
                >
@@ -223,7 +224,9 @@ var localStyles = StyleSheet.create({
     // justifyContent: 'center',
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 35
+    fontSize : 30,
+        fontWeight: '200',
+
   },
   buttonText: {
     color:'#C3BEF7',
@@ -288,11 +291,11 @@ var localStyles = StyleSheet.create({
    createSCene : {
     justifyContent: 'center',
     height: 150,
-    top: '50%',
+    // top: '50%',
     width: '100%',
     flexDirection: 'row',
     alignItems:'center',
-    paddingBottom: '10%',
+    // paddingBottom: '10%',
   },
   createSCene2 : {
     position: 'absolute',

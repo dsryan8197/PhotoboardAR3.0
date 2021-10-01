@@ -170,11 +170,11 @@ var localStyles = StyleSheet.create({
     height: 80, 
     width: '70%',
     alignItems: 'center',
-    borderBottomColor:'rgba(0,0,0,.2)',
+    borderBottomColor:'#C4C4C4',
     borderBottomWidth: 2,
     textAlign: 'center',
-    marginBottom: 30,
-    fontSize: 20
+    // marginBottom: 30,
+    fontSize: 23
   },
    Modelbuttons2 : {
     height: 35,
@@ -242,13 +242,15 @@ height: 80,
       alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 35
+    fontSize : 30,
+        fontWeight: '200',
+
   },
   viewforobjects : {
     width: '100%',
     alignItems:'center',
     justifyContent: 'center',
-    paddingBottom: '10%',
+    paddingBottom: '15%',
     height: '100%',
   },
    createSCene : {

@@ -666,7 +666,8 @@ var localStyles = StyleSheet.create({
     alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 35
+    fontSize : 30,
+    fontWeight: '200',
   },
   backButtonAR: {
       height: 35,
