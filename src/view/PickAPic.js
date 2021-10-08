@@ -195,9 +195,9 @@ return (
     </Col>  
   </Row>
   <Row size={7}>
-    <Col size={1}></Col>
+    {/* <Col size={1}></Col> */}
     <Col size={6}>
-     <ScrollView>
+     <ScrollView style={{width: '100%', height: '100%'}}>
            {this.props.Info.images.map((el, i) => { 
             return (
             <Swipeout right={[
@@ -221,17 +221,17 @@ return (
                     onPress: () => { this.props.Arrange(el, this.props.Info.description, this.props.Info.images, this.props.activeProject, "down", i) }
                   }
                   ]} autoClose='true'
-                  style={{alignItems: 'center'}}
+                  style={{alignItems: 'center', width: '100%', textAlign: 'center', justifyContent: 'center'}}
                      backgroundColor= 'transparent'
                     >
-             <TouchableHighlight style={{paddingBottom: 20, alignItems: 'center'}}key={i} >
+             <TouchableHighlight style={{alignItems: 'center', transform: [{ rotate: "270deg" }] }}key={i} >
               <Image style={localStyles.imagesthing} source={{ uri :el }}></Image>
              </TouchableHighlight>
             </Swipeout>
            )})}
        </ScrollView>
     </Col>
-    <Col size={1}></Col>
+    {/* <Col size={1}></Col> */}
   </Row>
   <Row size={1} style={{paddingTop: 5}}>
       <Col size={1}></Col>
@@ -624,11 +624,11 @@ var localStyles = StyleSheet.create({
   imagesthing : {
     width: 169,
     height: 300,
-    paddingTop:20,
-    transform: [{ rotate: "270deg" }],
-    paddingBottom:20,
+    // paddingTop:20,
+    // transform: [{ rotate: "270deg" }],
+    // paddingBottom:20,
     marginTop: 10,
-    marginBottom: 10,
+    // marginBottom: 10,
     backgroundColor:'#C3BEF7',
     borderRadius: 10,
     borderWidth: 5,

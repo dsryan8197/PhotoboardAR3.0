@@ -242,7 +242,7 @@ height: 80,
       alignItems: 'center', //Centered vertically
     borderColor: '#C3BEF7',
     borderRadius: 50,
-    fontSize : 30,
+    fontSize : 25,
         fontWeight: '200',
 
   },

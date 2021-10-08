@@ -49,7 +49,7 @@ export default class PickAProject extends Component {
       activeProject : null,
       ProjectNameInput : '',
       InfoPage: false,
-      inf: 'zero',
+      inf: 'one',
       ProjectObj : {
       },
     } 
@@ -67,7 +67,7 @@ export default class PickAProject extends Component {
       this.setState((prevState) => ({
         ...prevState,
         InfoPage: false,
-        inf: 'zero'
+        inf: 'one'
       })
     ), () => {
       this.storeData()
@@ -83,7 +83,6 @@ export default class PickAProject extends Component {
   } catch(e) {
   }
 }
-
 
 DeleteSceneDescription = (sceneName, project, states) => {
 const x = states.ProjectObj[project]
@@ -230,50 +229,50 @@ componentDidMount() {
 //home page that shows all your projects (films) and provides option to add a new project
 render() {
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
-const splash = false
+// let splash = true
 
 if (!this.state.InfoPage) {
 
-if (this.state.inf == 'zero') {
-        setTimeout(() => {
-        this.setState({inf : 'one'});
-    }, 3500) 
-return (
-<SafeAreaView style={{width: '100%', height: '100%', backgroundColor: '#7844CA'}}>
- <StatusBar hidden={false} />
- {/* <View style={{width: SCREEN_WIDTH,
-                    height: 0,
-                    borderTopColor: '#F7F5FB',
-                    opacity: .5,
-                    borderTopWidth: SCREEN_HEIGHT / 1.7,
-                    borderRightWidth: SCREEN_WIDTH,
-                    borderRightColor: 'transparent',
-                    position: 'absolute'}}></View>
-                    <View style={{width: SCREEN_WIDTH,
-                    height: 0,
-                    borderTopColor: 'transparent',
-                    opacity: .5,
-                    borderTopWidth: SCREEN_HEIGHT ,
-                    borderRightWidth: SCREEN_WIDTH / 1.5,
-                    borderRightColor: '#F7F5FB',
-                    position: 'absolute'}}></View> */}
-  <Grid>
-    <Row size={1} style={{width: '100%', height: '100%', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-    {/* <View style={{width: '100%', height: '100%', flex: 1, alignItems: 'center', justifyContent: 'center'}}> */}
-    <Image
-        style={{width: 115, height: 170, alignItems: 'center', justifyContent: 'center'}}
-        source={persons}
-        key="cbutton">
-       </Image>
-       {/* </View> */}
-      {/* <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center', textAlign: 'center', justifyContent: 'center'}}>
-        <Text style={{ color: '#8F8F8F', fontSize: 30}}>photobo</Text><Text style={{color: '#C3BEF7', fontSize:35}}>AR</Text><Text style={{color: '#8F8F8F', fontSize: 30}}>d</Text>
-       </View> */}
-    </Row>
-  </Grid>
-</SafeAreaView>
-)
-}
+// if (this.state.inf == 'zero') {
+//         setTimeout(() => {
+//         this.setState({inf : 'one'});
+//     }, 3500) 
+// return (
+// <SafeAreaView style={{width: '100%', height: '100%', backgroundColor: '#7844CA'}}>
+//  <StatusBar hidden={false} />
+//  {/* <View style={{width: SCREEN_WIDTH,
+//                     height: 0,
+//                     borderTopColor: '#F7F5FB',
+//                     opacity: .5,
+//                     borderTopWidth: SCREEN_HEIGHT / 1.7,
+//                     borderRightWidth: SCREEN_WIDTH,
+//                     borderRightColor: 'transparent',
+//                     position: 'absolute'}}></View>
+//                     <View style={{width: SCREEN_WIDTH,
+//                     height: 0,
+//                     borderTopColor: 'transparent',
+//                     opacity: .5,
+//                     borderTopWidth: SCREEN_HEIGHT ,
+//                     borderRightWidth: SCREEN_WIDTH / 1.5,
+//                     borderRightColor: '#F7F5FB',
+//                     position: 'absolute'}}></View> */}
+//   <Grid>
+//     <Row size={1} style={{width: '100%', height: '100%', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+//     {/* <View style={{width: '100%', height: '100%', flex: 1, alignItems: 'center', justifyContent: 'center'}}> */}
+//     <Image
+//         style={{width: 115, height: 170, alignItems: 'center', justifyContent: 'center'}}
+//         source={persons}
+//         key="cbutton">
+//        </Image>
+//        {/* </View> */}
+//       {/* <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center', textAlign: 'center', justifyContent: 'center'}}>
+//         <Text style={{ color: '#8F8F8F', fontSize: 30}}>photobo</Text><Text style={{color: '#C3BEF7', fontSize:35}}>AR</Text><Text style={{color: '#8F8F8F', fontSize: 30}}>d</Text>
+//        </View> */}
+//     </Row>
+//   </Grid>
+// </SafeAreaView>
+// )
+// }
 
 if (this.state.inf == 'one') {
 return (
@@ -288,11 +287,11 @@ return (
         key="cbutton">
        </Image>
     </Row>
-    <Row size={2} style={{left: 40}}>
-       <View style={{alignItems: 'flex-start', width: '100%', justifyContent: 'center'}}>
+    <Row size={2} style={{marginBottom: '10%'}}>
+       <View style={{alignItems: 'flex-start',  paddingLeft: '10%',width: '90%', justifyContent: 'center'}}>
          <Text style={localStyles.buttonTextII}>Draft</Text>
-         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Create your films and your scenes</Text>
-         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Swipe scenes to delete or reorder</Text>
+         <Text style={{color: '#8F8F8F',  paddingTop: '3%', fontSize: 20}}>Create your films and your scenes</Text>
+         <Text style={{color: '#8F8F8F',paddingTop: '3%', fontSize: 20}}>Swipe scenes to delete</Text>
       </View>
     </Row>
     <Row size={1} style={{ alignItems: 'center'}}>
@@ -352,15 +351,15 @@ return (
  <StatusBar hidden={false} />
  <Grid>
     <Row size={1}></Row>
-      <Row size={4} style={{backgroundColor: 'blue'}}>
+      <Row size={4} style={{paddingBottom: '5%'}}>
         <Image
         style={{width: '100%', height: '100%',  alignContent: 'center', justifyContent: 'center'}}
         source={Info2}
         key="cbutton">
        </Image>
     </Row>
-    <Row size={2} style={{paddingLeft: '10%'}}>
-      <View style={{alignItems: 'flex-start', width: '100%', justifyContent: 'center'}}>
+    <Row size={2} style={{marginBottom: '10%'}}>
+      <View style={{alignItems: 'flex-start', paddingLeft: '10%', width: '90%', justifyContent: 'center'}}>
         <Text style={localStyles.buttonTextII}>Frame</Text>
         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Frame shots in AR with 150 models</Text>
         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Tap your models to rotate</Text>
@@ -429,8 +428,8 @@ return (
         key="cbutton">
        </Image>
      </Row>
-     <Row size={2} style={{paddingLeft: '10%'}}>
-        <View style={{alignItems: 'flex-start', width: '100%', justifyContent: 'center'}}>
+     <Row size={2} style={{marginBottom: '10%'}} >
+        <View style={{alignItems: 'flex-start',  paddingLeft: '10%', width: '90%', justifyContent: 'center'}}>
           <Text style={localStyles.buttonTextII}>Download</Text>
          <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Download your photos individually</Text>
          <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Or craft a shotlist</Text>
@@ -475,7 +474,7 @@ return (
                 this.setState((prevState) => ({
                   ...prevState,
                   InfoPage: true,
-                  inf: 'zero' 
+                  inf: 'one' 
               })))}} style={localStyles.introButton}>
             <Image style={{width: 80, height: 80}} source={back2}></Image>
         </TouchableHighlight>
@@ -517,7 +516,7 @@ if (this.state.InfoPage) {
         </Col>
         </Row>
         <Row size={7}>
-           <Col size={1}></Col>
+           {/* <Col size={1}></Col> */}
            <Col size={6}>
              <ScrollView horizontal={false} style={{width: '100%', height: '100%'}}>
           {Object.keys(this.state.ProjectObj).map((el, i) => { 
@@ -528,7 +527,7 @@ if (this.state.InfoPage) {
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                     onPress: () => { this.deleteProj(el) }
                   }]} autoClose='true'
-                  style={{alignItems: 'center'}}
+                  style={{alignItems: 'center',  width: '100%', justifyContent: 'center'}}
                      backgroundColor= 'transparent'>
               <Link to="/scene" key={i} style={localStyles.buttons} onPress={()=> {(
                 this.setState((prevState) => ({
@@ -536,13 +535,26 @@ if (this.state.InfoPage) {
                   activeProject : el,
                   ProjectNameInput: el
                 })))}}>
-              <Text style={localStyles.titleText2}>{el}</Text>
+                {/* <Image /> */}
+                <View style={{width: '90%', height: '100%', flexDirection: 'row'}}>
+                    <View style={{width: '50%', height: '100%', justifyContent: 'center'}}>
+                      <View style={localStyles.buttonsCube}>
+                       <Image source={Info1} style={{width: '100%',height:'100%',  borderRadius: 5, }}></Image>
+                     {/* {!this.state.ProjectObj[el][Object.keys(this.state.ProjectObj[el])[0]].images.length > 0 && <Image source={Info1} style={{width: '100%',height:'100%',  borderRadius: 5,}}></Image>} */}
+                      </View>
+                    </View>
+                     <View style={{ textAlign: 'center', justifyContent: 'center',  width: '50%', height: '100%'}}>
+                    <Text style={localStyles.titleText2}>{el}</Text>
+                    {Object.keys(this.state.ProjectObj[el]).length === 1 ? <Text style={localStyles.ScenesText}>1 Scene</Text>
+                    : <Text style={localStyles.ScenesText}>{Object.keys(this.state.ProjectObj[el]).length} Scenes</Text> }
+                    </View>
+                </View>
              </Link>
              </Swipeout>
           )})}
             </ScrollView>
           </Col>
-          <Col size={1}></Col>
+          {/* <Col size={1}></Col> */}
       </Row>
       <Row size={1} style={{paddingTop: 10}}>
         <Col size={1}></Col>
@@ -599,9 +611,10 @@ if (this.state.InfoPage) {
           }/>
   </NativeRouter>
 </SafeAreaView>
-    )}}
+    )
+  }
+    }}
 
-}
 
 var localStyles = StyleSheet.create({
   viroContainer :{
@@ -643,17 +656,29 @@ var localStyles = StyleSheet.create({
     color:'white',
     textAlign:'center',
     borderColor: '#C3BEF7',
-    borderRadius: 50,
+    // borderRadius: 50,
     fontSize : 25
   },
   titleText2: {
-    color:'white',
-    textAlign:'center',
+    color:'black',
+    fontWeight: '200',
+    paddingBottom: 5,
+    // textAlign:'center',
     justifyContent: 'center',
-    borderColor: '#C3BEF7',
-    borderRadius: 50,
+    // borderColor: '#C3BEF7',
+    // borderRadius: 50,
     fontSize : 25,
-    width: 300
+    width: '70%'
+  },
+    ScenesText: {
+    color:'gray',
+    fontWeight: '200',
+    // textAlign:'center',
+    justifyContent: 'center',
+    // borderColor: '#C3BEF7',
+    // borderRadius: 50,
+    fontSize : 15,
+    width: '70%'
   },
   buttonText: {
     color:'#C3BEF7',
@@ -662,24 +687,41 @@ var localStyles = StyleSheet.create({
   },
   buttonTextII: {
     color:'#C3BEF7',
+    paddingTop: '15%',
     textAlign:'center',
     fontSize : 40,
   },
   deleteButton : {
     color: 'white'
   },
-  buttons : {
-    height: 80,
-    width: '100%',
+  buttonsCube: {
+    height: 120,
+    width: 120,
     alignContent: 'center',
     alignItems: 'center', //Centered vertically    justifyContent: 'center',
-    marginTop: 10,
-    marginBottom: 10,
+    // marginTop: 20,
+    // marginBottom: 20,
     justifyContent: 'center',
+    alignContent: 'center',
     textAlign: 'center',
     backgroundColor:'#C3BEF7',
+    // marginBottom: 50,
     borderRadius: 10,
     borderWidth: 5,
+    borderColor: 'rgba(0,0,0,.1)',
+  },
+  buttons : {
+    height: 150,
+    width: '88%',
+    alignContent: 'center',
+    alignItems: 'center', //Centered vertically    justifyContent: 'center',
+    // marginTop: 10,
+    // marginBottom: 10,
+    justifyContent: 'center',
+    textAlign: 'center',
+    // backgroundColor:'#C3BEF7',
+    // borderRadius: 10,
+    borderBottomWidth: 2,
     borderColor: 'rgba(0,0,0,.2)',
   },
    buttonsplus : {
@@ -744,4 +786,3 @@ var localStyles = StyleSheet.create({
 });
 
 module.exports = PickAProject
-
