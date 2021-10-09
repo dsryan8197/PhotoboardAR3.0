@@ -225,7 +225,7 @@ return (
                   style={{alignItems: 'center', marginBottom: 30, width: '100%', height: 169, alignContent: 'center', justifyContent: 'center'}}
                   backgroundColor= 'transparent'
                     >
-             <TouchableHighlight style={{alignItems: 'center', transform: [{ rotate: "270deg" }] }}key={i} >
+             <TouchableHighlight style={{alignItems: 'center', justifyContent: 'center', height: '100%',transform: [{ rotate: "270deg" }] }}key={i} >
               <Image style={localStyles.imagesthing} source={{ uri :el }}></Image>
              </TouchableHighlight>
             </Swipeout>
