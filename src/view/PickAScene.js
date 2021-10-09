@@ -84,7 +84,7 @@ return (
                    return (
                  <Swipeout right={[{
                     text: 'Delete',
-                    backgroundColor: 'red',
+                    backgroundColor: '#FB003F',
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                     onPress: () => { this.props.DeleteSceneDescription(el, this.props.ProjectNameInput, this.props.Info) }
                     }]}
@@ -237,7 +237,7 @@ var localStyles = StyleSheet.create({
     backgroundColor:'#C3BEF7',
     // marginBottom: 50,
     borderRadius: 10,
-    borderWidth: 5,
+    borderWidth: 4,
     borderColor: 'rgba(0,0,0,.1)',
   },
   buttonText: {
@@ -251,7 +251,7 @@ var localStyles = StyleSheet.create({
     fontSize : 40,
   },
   buttons : {
-  height: 150,
+    height: 150,
     width: '88%',
     alignContent: 'center',
     alignItems: 'center', //Centered vertically    justifyContent: 'center',

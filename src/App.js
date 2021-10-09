@@ -707,7 +707,7 @@ var localStyles = StyleSheet.create({
     backgroundColor:'#C3BEF7',
     // marginBottom: 50,
     borderRadius: 10,
-    borderWidth: 5,
+    borderWidth: 4,
     borderColor: 'rgba(0,0,0,.1)',
   },
   buttons : {
