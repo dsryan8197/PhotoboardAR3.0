@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PickAScene from './view/PickAScene'
+// import PickAScene from './view/PickAScene'
 import NameAProject from './create/NameAProject'
 import persons from '../Group8.png'
 import trash from '../trashicon2.png'
@@ -21,7 +21,6 @@ import character from '../charactericon.png'
 import help from '../help.png'
 import PickAProject  from './App'
 
-import { Redirect } from 'react-router-dom'
 import {
   AppRegistry,
   Text,
@@ -43,38 +42,30 @@ import {
   ViroARSceneNavigator
 } from 'react-viro';
 
-import { NativeRouter, Route, Link } from "react-router-native";
+// import { , Switch } from 'react-router-dom'
+import { Redirect, NativeRouter, Route, Link } from "react-router-native";
 
 export default class Splash extends Component {
  constructor(props) {
     super();
+    this.state = {
+      path : "/"
+    }
   }
 render() {
     setTimeout(() => {
-      return <Redirect to="/App" />
-    }, 3500)
+    this.setState(() => ({
+          path: "/App",
+        }));
+     }, 3500)
 return (
-<SafeAreaView style={{width: '100%', height: '100%', backgroundColor: '#7844CA'}}>
+  <NativeRouter>
  <StatusBar hidden={false} />
-   <NativeRouter >
-    <Route exact path="/">
- {/* <View style={{width: SCREEN_WIDTH,
-                    height: 0,
-                    borderTopColor: '#F7F5FB',
-                    opacity: .5,
-                    borderTopWidth: SCREEN_HEIGHT / 1.7,
-                    borderRightWidth: SCREEN_WIDTH,
-                    borderRightColor: 'transparent',
-                    position: 'absolute'}}></View>
-                    <View style={{width: SCREEN_WIDTH,
-                    height: 0,
-                    borderTopColor: 'transparent',
-                    opacity: .5,
-                    borderTopWidth: SCREEN_HEIGHT ,
-                    borderRightWidth: SCREEN_WIDTH / 1.5,
-                    borderRightColor: '#F7F5FB',
-                    position: 'absolute'}}></View> */}
-  <Grid>
+ 
+ {this.state.path == "/" &&
+  <Route>
+  <SafeAreaView style={{width: '100%', height: '100%',backgroundColor: '#7844CA' }}>
+      <Grid>
     <Row size={1} style={{width: '100%', height: '100%', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
     {/* <View style={{width: '100%', height: '100%', flex: 1, alignItems: 'center', justifyContent: 'center'}}> */}
     <Image
@@ -87,11 +78,15 @@ return (
         <Text style={{ color: '#8F8F8F', fontSize: 30}}>photobo</Text><Text style={{color: '#C3BEF7', fontSize:35}}>AR</Text><Text style={{color: '#8F8F8F', fontSize: 30}}>d</Text>
        </View> */}
     </Row>
-  </Grid>
-  </Route>
-      <Route path="/App" render={props => (<PickAScene {...props} />)}/>
-</NativeRouter >
+     </Grid>
 </SafeAreaView>
+  </Route>
+  }
+
+
+  {this.state.path == "/App" && <Route render={() => (<PickAProject  />)}/>}
+
+</NativeRouter >
 )
   }
 }

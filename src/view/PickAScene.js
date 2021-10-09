@@ -20,6 +20,7 @@ import help from '../../help.png'
 import trash from '../../trashicon2.png'
 import download from '../../downArrow.png'
 import bigDownload from '../../bigDownload.png'
+import arrowright from '../../arrowforpages.png'
 import back from '../../backArrow.png'
 import PickAPic from './PickAPic'
 import NameAScene from '../create/NameAScene'
@@ -108,6 +109,9 @@ return (
                     {this.props.ObjofProje[el].images.length === 1 ? <Text style={localStyles.ScenesText}> 1 Shot</Text>
                     : <Text style={localStyles.ScenesText}>{this.props.ObjofProje[el].images.length} Shots</Text> }
                  </View>
+                 <View style={{ textAlign: 'center', justifyContent: 'center'}}>
+                    <Image source={arrowright} style={{ width: 20, height: 20}}/>
+                  </View>
                 </View>
                 </Link>
                </Swipeout>

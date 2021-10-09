@@ -1,6 +1,7 @@
 import { AppRegistry } from 'react-native';
 import Splash from './src/Splash.js';
 import VRSelect from './VRSelect';
+import Splash from './src/Splash.js';
 
 AppRegistry.registerComponent('StoryboardAR3', () => Splash);
 

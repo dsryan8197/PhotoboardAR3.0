@@ -8,6 +8,7 @@ import Info2 from '../people1.jpg'
 import Info3 from '../camera1.jpg'
 import Info4 from '../Info4.jpg'
 import Info5 from '../Info5.jpg'
+import arrowright from '../arrowforpages.png'
 import back from '../backArrow.png'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import AnimatedDotsCarousel from 'react-native-animated-dots-carousel';
@@ -535,7 +536,7 @@ if (this.state.InfoPage) {
                   activeProject : el,
                   ProjectNameInput: el
                 })))}}>
-                {/* <Image /> */}
+              {/* <View style={{width: '100%', height: '100%', backgroundColor: 'orange'}}> */}
                 <View style={{width: '90%', height: '100%', flexDirection: 'row'}}>
                     <View style={{width: '50%', height: '100%', justifyContent: 'center'}}>
                       <View style={localStyles.buttonsCube}>
@@ -548,7 +549,11 @@ if (this.state.InfoPage) {
                     {Object.keys(this.state.ProjectObj[el]).length === 1 ? <Text style={localStyles.ScenesText}>1 Scene</Text>
                     : <Text style={localStyles.ScenesText}>{Object.keys(this.state.ProjectObj[el]).length} Scenes</Text> }
                     </View>
+                  <View style={{ textAlign: 'center', justifyContent: 'center'}}>
+                    <Image source={arrowright} style={{ width: 20, height: 20}}/>
+                  </View>
                 </View>
+                {/* </View> */}
              </Link>
              </Swipeout>
           )})}
