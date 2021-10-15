@@ -1,4 +1,18 @@
 {
-  "name": "StoryboardAR3",
-  "displayName": "StoryboardAR3"
+  "name": "photoboARd",
+  "displayName": "photoboARd",
+  "expo": {
+    "name": "photoboARd",
+    "icon": "./Group6.png",
+    "version": "1.0.0",
+    "slug": "your-app-slug",
+    "ios": {
+      "bundleIdentifier": "com.yourcompany.yourappname",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.yourcompany.yourappname",
+      "versionCode": 1
+    }
+   }
 }

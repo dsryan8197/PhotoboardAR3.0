@@ -21,6 +21,7 @@ import camera from '../camerasnapshot.png'
 import character from '../charactericon.png'
 import help from '../help.png'
 
+// import {AnimatePResence, motion } from 'framer-motion'
 import {
   AppRegistry,
   Text,

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PickAScene from './view/PickAScene'
 import NameAProject from './create/NameAProject'
 import persons from '../Group8.png'
 import trash from '../trashicon2.png'
@@ -20,6 +19,8 @@ import camera from '../camerasnapshot.png'
 import character from '../charactericon.png'
 import help from '../help.png'
 import PickAProject  from './App'
+import ARbackArrow from '../ARbackArrow.png'
+import arrowforpages from '../arrowforpages.png'
 
 import {
   AppRegistry,
@@ -29,7 +30,6 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  // Redirect,
   PixelRatio,
   Dimensions,
   ScrollView,
@@ -42,9 +42,8 @@ import {
   ViroARSceneNavigator
 } from 'react-viro';
 
-// import { , Switch } from 'react-router-dom'
 import { Redirect, NativeRouter, Route, Link } from "react-router-native";
-
+// import { FileSystem } from 'expo'
 export default class Splash extends Component {
  constructor(props) {
     super();
@@ -52,12 +51,20 @@ export default class Splash extends Component {
       path : "/"
     }
   }
+  
 render() {
     setTimeout(() => {
     this.setState(() => ({
           path: "/App",
         }));
      }, 3500)
+
+const arrayofimages = [trash, Info1, Info2, Info3, Info4, Info5, back, download, bigDownload, back2, camera, character, help, ARbackArrow, arrowforpages]
+const newArr = []
+for (let i =0; i < arrayofimages.length; i++) {
+  newArr.push(<Image source={arrayofimages[i]} style={{width: 1, height: 1, position: 'absolute', right: 1, bottom: 1}}></Image>)
+}
+
 return (
   <NativeRouter>
  <StatusBar hidden={false} />
@@ -67,25 +74,18 @@ return (
   <SafeAreaView style={{width: '100%', height: '100%',backgroundColor: '#7844CA' }}>
       <Grid>
     <Row size={1} style={{width: '100%', height: '100%', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-    {/* <View style={{width: '100%', height: '100%', flex: 1, alignItems: 'center', justifyContent: 'center'}}> */}
     <Image
         style={{width: 115, height: 170, alignItems: 'center', justifyContent: 'center'}}
         source={persons}
         key="cbutton">
        </Image>
-       {/* </View> */}
-      {/* <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center', textAlign: 'center', justifyContent: 'center'}}>
-        <Text style={{ color: '#8F8F8F', fontSize: 30}}>photobo</Text><Text style={{color: '#C3BEF7', fontSize:35}}>AR</Text><Text style={{color: '#8F8F8F', fontSize: 30}}>d</Text>
-       </View> */}
+       {newArr}
     </Row>
      </Grid>
 </SafeAreaView>
   </Route>
   }
-
-
   {this.state.path == "/App" && <Route render={() => (<PickAProject  />)}/>}
-
 </NativeRouter >
 )
   }
@@ -179,10 +179,6 @@ var localStyles = StyleSheet.create({
     borderWidth: 8,
     borderColor: '#C3BEF7',
   },
-  // test: {
-  //   backgroundColor: 'linear-gradient(165deg, #f7f5fb 50%, #fff 50%)',
-  //   // backgroundImage: linear-gradient(165deg, rgb(247, 245, 251) 50%, rgb(255, 255, 255) 50%);
-  // },
   exitButton : {
     height: 50,
     width: 100,
@@ -224,8 +220,7 @@ var localStyles = StyleSheet.create({
     Modelbuttonsone : {
     height: 31,
     width: 27,
-    // paddingBottom:20,
-      justifyContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center'
   },
 });

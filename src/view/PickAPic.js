@@ -9,16 +9,12 @@ import camera from '../../camerasnapshot.png'
 import character from '../../charactericon.png'
 import help from '../../help.png'
 
-
-// import RNImageToPdf from 'react-native-image-to-pdf';
-// const PDFDocument = require('pdfkit');
-// const fs = require('fs');
-// const ejs = require('ejs');
-// const htmlPdf = require('html-pdf');
 import Swipeout from 'react-native-swipeout';
 import App from '../App.js';
 import ARScene from '../../js/HelloWorldSceneAR'
 import { Col, Row, Grid } from "react-native-easy-grid";
+// import * as Permissions from 'expo-permissions'
+// import { MediaLibrary } from 'expo-media-library'
 
 import {
   AppRegistry,
@@ -27,8 +23,11 @@ import {
   Button,
   StatusBar,
   ScrollView,
+  Share,
+  Platform,
+  Alert,
   StyleSheet,
-    Dimensions,
+  Dimensions,
   SafeAreaView,
   PixelRatio,
   TouchableHighlight,
@@ -144,9 +143,45 @@ shot() {
  }, 2000)
 }
 
+  getPermissionAndroid = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        {
+          title: 'Image Download Permission',
+          message: 'Your permission is required to save images to your device',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        return true;
+      }
+      Alert.alert(
+        'Save remote Image',
+        'Grant Me Permission to save Image',
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+        {cancelable: false},
+      );
+    } catch (err) {
+      Alert.alert(
+        'Save remote Image',
+        'Failed to save Image: ' + err.message,
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+        {cancelable: false},
+      );
+    }
+  };
 
-
-
+// handleSave = async(photo) => {
+//   const {status} = await Permissions.askAsync(Permissions.CAMERA_ROLL)
+//   if (status === "granted"){
+//     const asset = await MediaLibrary.createAssetAsync(photo)
+//     MediaLibrary.createAlbumAsync('testExpo', asset)
+//   }else {
+//     window.alert('no ho')
+//   }
+// }
 //this render method returns 4 possible functions
 //1. PIC - shows all pics (images) in a selected scene or allows you to add a new which routes to AR
 //2. AR - AR view that shows all the models, enables user to take screenshot or add model which routes to 3.
@@ -242,7 +277,9 @@ return (
             <Image style={localStyles.Modelbuttonsone} source={help}></Image>
           </TouchableHighlight> */}
         <View style={{paddingRight: 5}}>
-          <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
+        <TouchableHighlight onPress={() => {this.handleSave(this.props.Info.images[0])}}>
+          <Image style={localStyles.Modelbuttons2} source={bigDownload}></Image>
+          </TouchableHighlight>
         </View>          
         <TouchableHighlight
             style={localStyles.buttonsplus}
@@ -255,7 +292,9 @@ return (
                <Text style={localStyles.buttonText}>+</Text>
          </TouchableHighlight>
         <View style={{paddingLeft: 5}}>
-                   <Image style={localStyles.Modelbuttons2} source={download}></Image>
+           <TouchableHighlight  onPress={() => Sharing.shareAsync(this.props.Info.images[0])}>
+            <Image style={localStyles.Modelbuttons2} source={download}></Image>
+          </TouchableHighlight>
         </View> 
       </Col>
       <Col size={1}></Col>

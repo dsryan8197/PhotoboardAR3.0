@@ -43,6 +43,7 @@ export default class PickAScene extends Component {
 goBack(){
   this.props.history.push('/')
 }
+
 render() {
   const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
 
@@ -101,7 +102,7 @@ return (
                <View style={{width: '90%', height: '100%', flexDirection: 'row'}}>
                   <View style={{width: '50%', height: '100%', justifyContent: 'center'}}>
                       <View style={localStyles.buttonsCube}>
-                      <Image source={Info1} style={{width: '100%',height:'100%',  borderRadius: 5, }}></Image>
+                      <Image source={Info1} style={{width: '100%',height:'100%', borderRadius: 5 }}></Image>
                       </View>
                  </View>
                  <View style={{ textAlign: 'center', justifyContent: 'center',  width: '50%', height: '100%'}}>
@@ -133,7 +134,7 @@ return (
                 <Text style={localStyles.buttonText}>{"+"}</Text>
               </Link>
                      <View style={{paddingLeft: 5}}>
-             <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
+             <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('g')}} source={download}></Image>
         </View>
           </Col>
           <Col size={1}></Col>
