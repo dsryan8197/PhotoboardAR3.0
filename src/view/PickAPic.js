@@ -118,7 +118,7 @@ _takeScreenshot() {
   if (!this.state.writeAccessPermission) {
     this.requestWriteAccessPermission();
   }
-  this._arNavigator._takeScreenshot("pb_" + this.state.screenshot_count, false).then((retDict)=>{
+  this._arNavigator._takeScreenshot("pb_" + this.state.screenshot_count, true).then((retDict)=>{
     if (!retDict.success) {
       if (retDict.errorCode == ViroConstants.RECORD_ERROR_NO_PERMISSION) {
         this._displayVideoRecordAlert("Screenshot Error", "Please allow camera permissions!" + errorCode);
@@ -272,15 +272,15 @@ return (
   </Row>
   <Row size={1} style={{paddingTop: 5}}>
       <Col size={1}></Col>
-      <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50,flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+      <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
         {/* <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
             <Image style={localStyles.Modelbuttonsone} source={help}></Image>
           </TouchableHighlight> */}
-        <View style={{paddingRight: 5}}>
+        {/* <View style={{paddingRight: 5}}>
         <TouchableHighlight onPress={() => {this.handleSave(this.props.Info.images[0])}}>
           <Image style={localStyles.Modelbuttons2} source={bigDownload}></Image>
           </TouchableHighlight>
-        </View>          
+        </View>           */}
         <TouchableHighlight
             style={localStyles.buttonsplus}
             onPress={()=> {(
@@ -291,11 +291,11 @@ return (
             underlayColor={'#68a0ff'} >
                <Text style={localStyles.buttonText}>+</Text>
          </TouchableHighlight>
-        <View style={{paddingLeft: 5}}>
+        {/* <View style={{paddingLeft: 5}}>
            <TouchableHighlight  onPress={() => Sharing.shareAsync(this.props.Info.images[0])}>
             <Image style={localStyles.Modelbuttons2} source={download}></Image>
           </TouchableHighlight>
-        </View> 
+        </View>  */}
       </Col>
       <Col size={1}></Col>
     </Row>
@@ -373,7 +373,7 @@ if (this.state.navigator == 'Characters') {
   let Display = []
   for (let i = 0; i < modelArray.length; i++) {
     Display.push(
-      <TouchableHighlight loading="lazy" key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
+      <TouchableHighlight loading="lazy" key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i + 1, navigator : 'Positions' })))}}>
         <Image loading="lazy" style={localStyles.models} source={modelArray[i].image}></Image>
       </TouchableHighlight>
    )}
@@ -432,16 +432,18 @@ return (
 // 4.
 if (this.state.navigator == 'Positions') {
 const stance = []
+// window.alert(this.state.chosenModel)
 if (this.state.chosenModel) {
-for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
+  window.alert(this.state.chosenModel -1)
+for (let i = 0; i < modelArray[this.state.chosenModel -1].models.length; i++) {
   stance.push(
     <TouchableHighlight loading="lazy" key={i} onPress={()=> {(this.setState((prevState) => ({ 
       ...prevState,
-      chosenStyle: modelArray[this.state.chosenModel].models[i], 
+      chosenStyle: modelArray[this.state.chosenModel -1].models[i], 
       navigator : 'AR',
-      Viro: [...prevState.Viro, modelArray[this.state.chosenModel].gltf[i]]
+      Viro: [...prevState.Viro, modelArray[this.state.chosenModel -1].gltf[i]]
        })))}}>
-        <Image loading="lazy" style={localStyles.models} source={ modelArray[this.state.chosenModel].models[i]}></Image>
+        <Image loading="lazy" style={localStyles.models} source={ modelArray[this.state.chosenModel -1].models[i]}></Image>
       </TouchableHighlight>
 )}
 }

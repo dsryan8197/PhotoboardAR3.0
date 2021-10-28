@@ -432,9 +432,9 @@ return (
      </Row>
      <Row size={2} style={{marginBottom: '10%'}} >
         <View style={{alignItems: 'flex-start',  paddingLeft: '10%', width: '90%', justifyContent: 'center'}}>
-          <Text style={localStyles.buttonTextII}>Download</Text>
-         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Download your photos individually</Text>
-         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Or craft a shotlist</Text>
+          <Text style={localStyles.buttonTextII}>Save</Text>
+         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>Check your photo gallery</Text>
+         <Text style={{color: '#8F8F8F', paddingTop: '3%', fontSize: 20}}>For your storyboards</Text>
        </View>
       </Row>
       <Row size={1} style={{alignItems: 'center'}}>
@@ -564,19 +564,19 @@ if (this.state.InfoPage) {
       </Row>
       <Row size={1} style={{paddingTop: 10}}>
         <Col size={1}></Col>
-        <Col size={5} style={{backgroundColor: '#7844CA', flexDirection: 'row', borderRadius: 50, justifyContent: 'center', alignItems: 'center'}}>
+        <Col size={5} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
            {/* <TouchableHighlight onPress={()=>{this.goBackToInfo()}}>
             <Image style={localStyles.Modelbuttonsone} source={help}></Image>
           </TouchableHighlight> */}
-          <View style={{paddingRight: 5}}>
-          <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
-          </View>
+          {/* <View style={{paddingRight: 5}}> */}
+          {/* <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
+          </View> */}
            <Link to="/addAProject" style={localStyles.buttonsplus}>
                <Text style={localStyles.buttonText}>{"+"}</Text>
            </Link>
-        <View style={{paddingLeft: 5}}>
+        {/* <View style={{paddingLeft: 5}}>
        <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
-        </View>
+        </View> */}
         </Col>
          <Col size={1}></Col>
       </Row>

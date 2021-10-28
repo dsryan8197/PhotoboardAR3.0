@@ -94,16 +94,16 @@ render() {
       </Row>
       <Row size={1} style={{paddingTop: 5}}>
         <Col size={1}></Col>   
-        <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50, flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
-               <View style={{paddingRight: 5}}>
+        <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+               {/* <View style={{paddingRight: 5}}>
         <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
-        </View>
+        </View> */}
            <Link to="/NameAScene"  style={localStyles.buttonsplus} onPress={() => {this.props.AddProject(this.props.ProjectNameInput)}} style={localStyles.buttonsplus}>
              <Text style={localStyles.buttonText}>+</Text>
           </Link>
-                 <View style={{paddingLeft: 5}}>
+                 {/* <View style={{paddingLeft: 5}}>
          <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={download}></Image>
-        </View>
+        </View> */}
         </Col>
         <Col size={1}></Col>
     </Row>

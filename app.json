@@ -1,17 +1,20 @@
 {
   "name": "photoboARd",
   "displayName": "photoboARd",
+  "assetBundlePatterns": [
+    "assets/images/*"
+  ],
   "expo": {
     "name": "photoboARd",
     "icon": "./Group6.png",
     "version": "1.0.0",
     "slug": "your-app-slug",
     "ios": {
-      "bundleIdentifier": "com.yourcompany.yourappname",
+      "bundleIdentifier": "com.photoboard.photoboard",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "com.yourcompany.yourappname",
+      "package": "com.photoboard.photoboard",
       "versionCode": 1
     }
    }
