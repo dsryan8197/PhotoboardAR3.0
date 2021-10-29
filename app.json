@@ -1,4 +1,21 @@
 {
-  "name": "StoryboardAR3",
-  "displayName": "StoryboardAR3"
+  "name": "photoboARd",
+  "displayName": "photoboARd",
+  "assetBundlePatterns": [
+    "assets/images/*"
+  ],
+  "expo": {
+    "name": "photoboARd",
+    "icon": "./Group6.png",
+    "version": "1.0.0",
+    "slug": "your-app-slug",
+    "ios": {
+      "bundleIdentifier": "com.photoboard.photoboard",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.photoboard.photoboard",
+      "versionCode": 1
+    }
+   }
 }

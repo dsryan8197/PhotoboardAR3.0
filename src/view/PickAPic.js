@@ -9,16 +9,12 @@ import camera from '../../camerasnapshot.png'
 import character from '../../charactericon.png'
 import help from '../../help.png'
 
-
-// import RNImageToPdf from 'react-native-image-to-pdf';
-// const PDFDocument = require('pdfkit');
-// const fs = require('fs');
-// const ejs = require('ejs');
-// const htmlPdf = require('html-pdf');
 import Swipeout from 'react-native-swipeout';
 import App from '../App.js';
 import ARScene from '../../js/HelloWorldSceneAR'
 import { Col, Row, Grid } from "react-native-easy-grid";
+// import * as Permissions from 'expo-permissions'
+// import { MediaLibrary } from 'expo-media-library'
 
 import {
   AppRegistry,
@@ -27,8 +23,11 @@ import {
   Button,
   StatusBar,
   ScrollView,
+  Share,
+  Platform,
+  Alert,
   StyleSheet,
-    Dimensions,
+  Dimensions,
   SafeAreaView,
   PixelRatio,
   TouchableHighlight,
@@ -119,7 +118,7 @@ _takeScreenshot() {
   if (!this.state.writeAccessPermission) {
     this.requestWriteAccessPermission();
   }
-  this._arNavigator._takeScreenshot("pb_" + this.state.screenshot_count, false).then((retDict)=>{
+  this._arNavigator._takeScreenshot("pb_" + this.state.screenshot_count, true).then((retDict)=>{
     if (!retDict.success) {
       if (retDict.errorCode == ViroConstants.RECORD_ERROR_NO_PERMISSION) {
         this._displayVideoRecordAlert("Screenshot Error", "Please allow camera permissions!" + errorCode);
@@ -144,9 +143,45 @@ shot() {
  }, 2000)
 }
 
+  getPermissionAndroid = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        {
+          title: 'Image Download Permission',
+          message: 'Your permission is required to save images to your device',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        return true;
+      }
+      Alert.alert(
+        'Save remote Image',
+        'Grant Me Permission to save Image',
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+        {cancelable: false},
+      );
+    } catch (err) {
+      Alert.alert(
+        'Save remote Image',
+        'Failed to save Image: ' + err.message,
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+        {cancelable: false},
+      );
+    }
+  };
 
-
-
+// handleSave = async(photo) => {
+//   const {status} = await Permissions.askAsync(Permissions.CAMERA_ROLL)
+//   if (status === "granted"){
+//     const asset = await MediaLibrary.createAssetAsync(photo)
+//     MediaLibrary.createAlbumAsync('testExpo', asset)
+//   }else {
+//     window.alert('no ho')
+//   }
+// }
 //this render method returns 4 possible functions
 //1. PIC - shows all pics (images) in a selected scene or allows you to add a new which routes to AR
 //2. AR - AR view that shows all the models, enables user to take screenshot or add model which routes to 3.
@@ -195,53 +230,57 @@ return (
     </Col>  
   </Row>
   <Row size={7}>
-    <Col size={1}></Col>
+    {/* <Col size={1}></Col> */}
     <Col size={6}>
-     <ScrollView>
+     <ScrollView style={{width: '100%', height: '100%'}} contentContainerStyle={{alignItems: 'center', justifyContent: 'center'}}>
            {this.props.Info.images.map((el, i) => { 
             return (
+            <View style={{width: '80%', marginBottom: 30, justifyContent: 'center', borderBottomWidth: 2, borderColor: 'rgba(0,0,0,.2)',}}>
             <Swipeout right={[
               {
                     text: 'Delete',
                     buttonWidth: 80,
-                    backgroundColor: 'red',
+                    backgroundColor: '#FB003F',
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                     onPress: () => { this.props.deletePicture(el, this.props.Info.description, this.props.Info.images, this.props.activeProject) }
                   },
                   { text: '↓',
                     buttonWidth: 80,
-                    backgroundColor: 'green',
-                    underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+                    backgroundColor: '#FE9B07',
+                    underlayColor: 'rgba(0, 0, 0, 1, 0.2)',
                     onPress: () => { this.props.Arrange(el, this.props.Info.description, this.props.Info.images, this.props.activeProject, "up", i) }
                   },
                   { text: '↑',
                     buttonWidth: 80,
-                    backgroundColor: 'blue',
+                    backgroundColor: '#F8A6D2',
                     underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                     onPress: () => { this.props.Arrange(el, this.props.Info.description, this.props.Info.images, this.props.activeProject, "down", i) }
                   }
                   ]} autoClose='true'
-                  style={{alignItems: 'center'}}
-                     backgroundColor= 'transparent'
+                  style={{alignItems: 'center', marginBottom: 30, width: '100%', height: 169, alignContent: 'center', justifyContent: 'center'}}
+                  backgroundColor= 'transparent'
                     >
-             <TouchableHighlight style={{paddingBottom: 20, alignItems: 'center'}}key={i} >
+             <TouchableHighlight style={{alignItems: 'center', justifyContent: 'center', height: '100%',transform: [{ rotate: "270deg" }] }}key={i} >
               <Image style={localStyles.imagesthing} source={{ uri :el }}></Image>
              </TouchableHighlight>
             </Swipeout>
+            </View>
            )})}
        </ScrollView>
     </Col>
-    <Col size={1}></Col>
+    {/* <Col size={1}></Col> */}
   </Row>
   <Row size={1} style={{paddingTop: 5}}>
       <Col size={1}></Col>
-      <Col size={5} style={{backgroundColor: '#7844CA', borderRadius: 50,flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+      <Col size={5} style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
         {/* <TouchableHighlight onPress={()=>{this.props.goBackToInfo()}}>
             <Image style={localStyles.Modelbuttonsone} source={help}></Image>
           </TouchableHighlight> */}
-        <View style={{paddingRight: 5}}>
-          <Image style={localStyles.Modelbuttons2} onPress={()=>{alert('download')}} source={bigDownload}></Image>
-        </View>          
+        {/* <View style={{paddingRight: 5}}>
+        <TouchableHighlight onPress={() => {this.handleSave(this.props.Info.images[0])}}>
+          <Image style={localStyles.Modelbuttons2} source={bigDownload}></Image>
+          </TouchableHighlight>
+        </View>           */}
         <TouchableHighlight
             style={localStyles.buttonsplus}
             onPress={()=> {(
@@ -252,9 +291,11 @@ return (
             underlayColor={'#68a0ff'} >
                <Text style={localStyles.buttonText}>+</Text>
          </TouchableHighlight>
-        <View style={{paddingLeft: 5}}>
-                   <Image style={localStyles.Modelbuttons2} source={download}></Image>
-        </View> 
+        {/* <View style={{paddingLeft: 5}}>
+           <TouchableHighlight  onPress={() => Sharing.shareAsync(this.props.Info.images[0])}>
+            <Image style={localStyles.Modelbuttons2} source={download}></Image>
+          </TouchableHighlight>
+        </View>  */}
       </Col>
       <Col size={1}></Col>
     </Row>
@@ -332,7 +373,7 @@ if (this.state.navigator == 'Characters') {
   let Display = []
   for (let i = 0; i < modelArray.length; i++) {
     Display.push(
-      <TouchableHighlight loading="lazy" key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i, navigator : 'Positions' })))}}>
+      <TouchableHighlight loading="lazy" key={i} onPress={()=> {(this.setState((prevState) => ({ chosenModel: i + 1, navigator : 'Positions' })))}}>
         <Image loading="lazy" style={localStyles.models} source={modelArray[i].image}></Image>
       </TouchableHighlight>
    )}
@@ -391,16 +432,18 @@ return (
 // 4.
 if (this.state.navigator == 'Positions') {
 const stance = []
+// window.alert(this.state.chosenModel)
 if (this.state.chosenModel) {
-for (let i = 0; i < modelArray[this.state.chosenModel].models.length; i++) {
+  window.alert(this.state.chosenModel -1)
+for (let i = 0; i < modelArray[this.state.chosenModel -1].models.length; i++) {
   stance.push(
     <TouchableHighlight loading="lazy" key={i} onPress={()=> {(this.setState((prevState) => ({ 
       ...prevState,
-      chosenStyle: modelArray[this.state.chosenModel].models[i], 
+      chosenStyle: modelArray[this.state.chosenModel -1].models[i], 
       navigator : 'AR',
-      Viro: [...prevState.Viro, modelArray[this.state.chosenModel].gltf[i]]
+      Viro: [...prevState.Viro, modelArray[this.state.chosenModel -1].gltf[i]]
        })))}}>
-        <Image loading="lazy" style={localStyles.models} source={ modelArray[this.state.chosenModel].models[i]}></Image>
+        <Image loading="lazy" style={localStyles.models} source={ modelArray[this.state.chosenModel -1].models[i]}></Image>
       </TouchableHighlight>
 )}
 }
@@ -624,14 +667,14 @@ var localStyles = StyleSheet.create({
   imagesthing : {
     width: 169,
     height: 300,
-    paddingTop:20,
-    transform: [{ rotate: "270deg" }],
-    paddingBottom:20,
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor:'#C3BEF7',
+    // paddingTop:20,
+    // transform: [{ rotate: "270deg" }],
+    // paddingBottom:20,
+    // marginTop: 10,
+    // marginBottom: 10,
     borderRadius: 10,
     borderWidth: 5,
+    backgroundColor:'#C3BEF7',
     borderColor: 'rgba(0,0,0,.2)',
   },
   buttonsplus : {

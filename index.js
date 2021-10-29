@@ -1,7 +1,7 @@
 import { AppRegistry } from 'react-native';
-import App from './src/App.js';
+import Splash from './src/Splash.js';
 
-AppRegistry.registerComponent('StoryboardAR3', () => App);
+AppRegistry.registerComponent('StoryboardAR3', () => Splash);
 
 // The below line is necessary for use with the TestBed App
-AppRegistry.registerComponent('ViroSample', () => App);
+AppRegistry.registerComponent('ViroSample', () => Splash);
