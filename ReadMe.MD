@@ -1,9 +1,8 @@
 <p align='center'>
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/logo.png' width=100%>
 </p>
+<h4 align='center'>an Augmented Reality app to help filmmakers storyboard their films</h4>
 
-# storyboardAR
-<h4>an Augmented Reality app to help filmmakers storyboard their films</h4>
 <div>
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboard2copy.gif' width=480 height=222/>
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width=222 height=480/>
