@@ -1,10 +1,5 @@
-<!-- <p align='center'>
-<img src='./assets/squrlheader.png' width=100%>
-</p> -->
-<!-- ### Connect Your Database and Visualize Your KPI's In An Interactive Dashboard
-<p align='left'> 
-<img src='./assets/gifv3.gif' width=560 height=361/>
-</p>
+# storyboardAR
+<h4>an Augmented Reality app to help filmmakers storyboard their films</h4>
 
 ### Create As Many Tables And Columns As You Want 
 ### & Download 100+ Million Rows of Unique Data To A SQL File
@@ -14,9 +9,6 @@
 <p align='left'> 
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width=560 height=361/>
 </p>
-# photoboARd
-<h4>an Augmented Reality app to help filmmakers storyboard their films</h4>
-
 ## Contribute
 <p>1. download the Viro Media App, swipe right and click on enter testbed</p>
 <p>2. Fork and clone photoboARd from this repo</p>
