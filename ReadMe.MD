@@ -3,13 +3,15 @@
 </p>
 
 # storyboardAR
+<div>
 <h4>an Augmented Reality app to help filmmakers storyboard their films</h4>
-<p align='left'> 
+<p> 
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboard2copy.gif' width=480 height=222/>
 </p>
-<p align='right'> 
+<p> 
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width=222 height=480/>
 </p>
+</div>
 ## Contribute
 <p>1. download the Viro Media App, swipe right and click on enter testbed</p>
 <p>2. Fork and clone photoboARd from this repo</p>
