@@ -7,7 +7,7 @@
 <p align='left'> 
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboard2copy.gif' width=480 height=222/>
 </p>
-<p align='left'> 
+<p align='right'> 
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width=222 height=480/>
 </p>
 ## Contribute
