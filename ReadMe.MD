@@ -10,6 +10,7 @@
 <div align='center' >
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width=222 height=480/>
 </div>
+
 ## Contribute
 <p>StoryboardAR is currently on 1.0.0 release</p>
 <p>1. download the Viro Media App, swipe right and click on enter testbed</p>
