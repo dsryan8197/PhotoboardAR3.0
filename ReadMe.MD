@@ -8,7 +8,7 @@
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboard2copy.gif' width='100%' height='100%'/>
 </p>
 <p align='left'> 
-<img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width='100%' height='100%'/>
+<img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width='100%' height='40%'/>
 </p>
 ## Contribute
 <p>1. download the Viro Media App, swipe right and click on enter testbed</p>
