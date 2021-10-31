@@ -1,13 +1,14 @@
+<p align='center'>
+<img src='https://github.com/dsryan8197/photoboardlanding/blob/master/logo.png' width=100%>
+</p>
+
 # storyboardAR
 <h4>an Augmented Reality app to help filmmakers storyboard their films</h4>
-
-### Create As Many Tables And Columns As You Want 
-### & Download 100+ Million Rows of Unique Data To A SQL File
 <p align='left'> 
-<img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboard2copy.gif' width=560 height=361/>
+<img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboard2copy.gif' width='100%' height='100%'/>
 </p>
 <p align='left'> 
-<img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width=560 height=361/>
+<img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width='100%' height='100%'/>
 </p>
 ## Contribute
 <p>1. download the Viro Media App, swipe right and click on enter testbed</p>
