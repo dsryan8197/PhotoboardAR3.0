@@ -5,7 +5,7 @@
 
 <div align='center'>
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboard2copy.gif' width=480 height=222/>
-<img src='./Group6.png' width=300 height=300/>
+<img src='./Group6.png' width=200 height=200/>
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width=222 height=480/>
 </div>
 
