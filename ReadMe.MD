@@ -9,9 +9,11 @@
 ### Create As Many Tables And Columns As You Want 
 ### & Download 100+ Million Rows of Unique Data To A SQL File
 <p align='left'> 
-<img src='./assets/finalGif2.gif' width=560 height=361/>
-</p> -->
-
+<img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboard2copy.gif' width=560 height=361/>
+</p>
+<p align='left'> 
+<img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width=560 height=361/>
+</p>
 # photoboARd
 <h4>an Augmented Reality app to help filmmakers storyboard their films</h4>
 
