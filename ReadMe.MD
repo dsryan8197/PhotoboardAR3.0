@@ -3,11 +3,13 @@
 </p>
 <h4 align='center'>an Augmented Reality app to help filmmakers storyboard their films</h4>
 
-<div>
+<div align='center'>
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboard2copy.gif' width=480 height=222/>
 <img src='https://github.com/dsryan8197/photoboardlanding/blob/master/storyboardfinal.gif' width=222 height=480/>
- </div>
+</div>
+
 ## Contribute
+<p>StoryboardAR is currently on 1.0.0 release</p>
 <p>1. download the Viro Media App, swipe right and click on enter testbed</p>
 <p>2. Fork and clone photoboARd from this repo</p>
 <p>3. npm install</p>
@@ -33,7 +35,6 @@ NameAScene          |
  -AR visualizer (also connected HlloWorldSceneAR.js)
  -Component of a dozen model selections
  -Component of a dozen stance selections)        
-
 
  MODLES/Images
  finalModles folder - all the gltfs of models
